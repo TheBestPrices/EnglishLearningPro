@@ -54,39 +54,47 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-    <!-- HEADER / NAVBAR -->
-    <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-50 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="bg-gradient-to-tr from-sky-500 to-emerald-500 p-2 rounded-xl text-slate-950 font-bold shadow-lg shadow-sky-500/20">
-                    <i data-lucide="cpu" class="w-6 h-6"></i>
+    <!-- HEADER / NAVBAR (Responsive Adjusted for Mobile) -->
+    <header class="border-b border-slate-800 bg-slate-900/95 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+            <div class="flex items-center justify-between w-full md:w-auto">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-gradient-to-tr from-sky-500 to-emerald-500 p-2 rounded-xl text-slate-950 font-bold shadow-lg shadow-sky-500/20">
+                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-base sm:text-lg text-slate-100 flex items-center gap-2">
+                            English Pro
+                            <span class="text-xs font-medium bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2 py-0.5 rounded-full" id="header-badge">Electronics</span>
+                        </h1>
+                    </div>
                 </div>
-                <div>
-                    <h1 class="font-bold text-lg text-slate-100 flex items-center gap-2">
-                        English Learning Pro
-                        <span class="text-xs font-medium bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2.5 py-0.5 rounded-full" id="header-badge">Electronics & Hardware</span>
-                    </h1>
-                </div>
+                <!-- Profile Toggle Button for Mobile -->
+                <button onclick="toggleModal()" class="md:hidden flex items-center space-x-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-xl border border-slate-700 transition cursor-pointer text-xs">
+                    <i data-lucide="briefcase" class="w-3.5 h-3.5 text-sky-400"></i>
+                    <span id="profile-label-mobile">Focus</span>
+                    <i data-lucide="chevron-down" class="w-3 h-3 text-slate-400"></i>
+                </button>
             </div>
 
-            <!-- Stats Bar -->
-            <div class="hidden md:flex items-center space-x-4 text-sm">
-                <div class="flex items-center space-x-2 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700/60">
-                    <i data-lucide="award" class="w-4 h-4 text-purple-400"></i>
+            <!-- Stats Bar (Optimized for Mobile & Desktop) -->
+            <div class="flex items-center justify-center flex-wrap gap-2 text-xs sm:text-sm w-full md:w-auto">
+                <div class="flex items-center space-x-1.5 bg-slate-800/90 px-2.5 py-1 rounded-full border border-slate-700/60">
+                    <i data-lucide="award" class="w-3.5 h-3.5 text-purple-400"></i>
                     <span class="text-slate-300">Rank: <strong class="text-white" id="user-rank">Beginner</strong></span>
                 </div>
-                <div class="flex items-center space-x-2 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700/60">
-                    <i data-lucide="flame" class="w-4 h-4 text-orange-400"></i>
+                <div class="flex items-center space-x-1.5 bg-slate-800/90 px-2.5 py-1 rounded-full border border-slate-700/60">
+                    <i data-lucide="flame" class="w-3.5 h-3.5 text-orange-400"></i>
                     <span class="text-slate-300">Streak: <strong class="text-white" id="streak-count">0 Days</strong></span>
                 </div>
-                <div class="flex items-center space-x-2 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700/60">
-                    <i data-lucide="book-open" class="w-4 h-4 text-emerald-400"></i>
+                <div class="flex items-center space-x-1.5 bg-slate-800/90 px-2.5 py-1 rounded-full border border-slate-700/60">
+                    <i data-lucide="book-open" class="w-3.5 h-3.5 text-emerald-400"></i>
                     <span class="text-slate-300">Mastered: <strong class="text-white" id="terms-count">0</strong></span>
                 </div>
             </div>
 
-            <!-- Profile / Focus Badge -->
-            <button onclick="toggleModal()" class="flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3.5 py-1.5 rounded-xl border border-slate-700 transition cursor-pointer">
+            <!-- Profile / Focus Badge for Desktop -->
+            <button onclick="toggleModal()" class="hidden md:flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3.5 py-1.5 rounded-xl border border-slate-700 transition cursor-pointer">
                 <i data-lucide="briefcase" class="w-4 h-4 text-sky-400"></i>
                 <span class="text-xs font-semibold" id="profile-label">Electronics & Hardware</span>
                 <i data-lucide="chevron-down" class="w-3 h-3 text-slate-400"></i>
@@ -95,16 +103,16 @@
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow">
         
         <!-- Welcome Banner & Session Progress -->
-        <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-slate-700/60 rounded-2xl p-6 mb-8 shadow-xl relative overflow-hidden">
+        <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-slate-700/60 rounded-2xl p-5 sm:p-6 mb-6 shadow-xl relative overflow-hidden">
             <div class="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <span class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Daily Rotating Session Active</span>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-white mt-3" id="welcome-title">Technical English Lab</h2>
-                    <p class="text-slate-300 mt-2 max-w-xl text-sm" id="welcome-desc">
+                    <h2 class="text-xl sm:text-3xl font-bold text-white mt-3" id="welcome-title">Technical English Lab</h2>
+                    <p class="text-slate-300 mt-2 max-w-xl text-xs sm:text-sm" id="welcome-desc">
                         Complete all 4 session modules with real voice verification to log your daily progress.
                     </p>
                 </div>
@@ -125,17 +133,17 @@
         </div>
 
         <!-- Navigation Tabs -->
-        <div class="flex border-b border-slate-800 mb-8 space-x-8 overflow-x-auto">
-            <button onclick="switchTab('speaking')" id="tab-speaking" class="tab-btn active pb-4 text-sm font-semibold flex items-center gap-2 whitespace-nowrap cursor-pointer transition">
+        <div class="flex border-b border-slate-800 mb-6 space-x-6 overflow-x-auto pb-1">
+            <button onclick="switchTab('speaking')" id="tab-speaking" class="tab-btn active pb-3 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap cursor-pointer transition">
                 <i data-lucide="mic" class="w-4 h-4"></i> 1. Speaking Lab <span id="badge-speaking" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
             </button>
-            <button onclick="switchTab('flashcards')" id="tab-flashcards" class="tab-btn pb-4 text-sm font-semibold flex items-center gap-2 whitespace-nowrap text-slate-400 cursor-pointer transition">
+            <button onclick="switchTab('flashcards')" id="tab-flashcards" class="tab-btn pb-3 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap text-slate-400 cursor-pointer transition">
                 <i data-lucide="layers" class="w-4 h-4"></i> 2. Flashcards <span id="badge-flashcards" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
             </button>
-            <button onclick="switchTab('grammar')" id="tab-grammar" class="tab-btn pb-4 text-sm font-semibold flex items-center gap-2 whitespace-nowrap text-slate-400 cursor-pointer transition">
+            <button onclick="switchTab('grammar')" id="tab-grammar" class="tab-btn pb-3 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap text-slate-400 cursor-pointer transition">
                 <i data-lucide="check-square" class="w-4 h-4"></i> 3. Grammar Quiz <span id="badge-grammar" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
             </button>
-            <button onclick="switchTab('shadowing')" id="tab-shadowing" class="tab-btn pb-4 text-sm font-semibold flex items-center gap-2 whitespace-nowrap text-slate-400 cursor-pointer transition">
+            <button onclick="switchTab('shadowing')" id="tab-shadowing" class="tab-btn pb-3 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap text-slate-400 cursor-pointer transition">
                 <i data-lucide="headphones" class="w-4 h-4"></i> 4. Shadowing <span id="badge-shadowing" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
             </button>
         </div>
@@ -143,41 +151,41 @@
         <!-- TAB 1: DAILY SPEAKING LAB -->
         <div id="content-speaking" class="space-y-6">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div class="lg:col-span-2 bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
+                <div class="lg:col-span-2 bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-4">
                             <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 flex items-center gap-1.5">
-                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Step 1: Real-Time Speaking Challenge (Voice Evaluated)
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Step 1: Real-Time Speaking Challenge
                             </span>
                         </div>
-                        <h3 class="text-lg font-bold text-white mb-2" id="prompt-title">Diagnostic Explanation</h3>
-                        <p class="text-slate-300 text-base italic bg-slate-950/60 p-4 rounded-xl border border-slate-800/80" id="prompt-text">
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-2" id="prompt-title">Diagnostic Explanation</h3>
+                        <p class="text-slate-300 text-sm sm:text-base italic bg-slate-950/60 p-4 rounded-xl border border-slate-800/80" id="prompt-text">
                             "Explain to a client why a switch-mode power supply failed and what steps you took to fix it."
                         </p>
                     </div>
 
                     <div class="mt-6">
-                        <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center justify-between mb-2 flex-wrap gap-2">
                             <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Spoken Response Evaluation:</label>
-                            <button onclick="toggleSpeechRecognition()" id="mic-btn" class="bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-3 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
+                            <button onclick="toggleSpeechRecognition()" id="mic-btn" class="bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
                                 <i data-lucide="mic" class="w-3.5 h-3.5"></i> <span id="mic-status-text">Start Speaking (Mic)</span>
                             </button>
                         </div>
                         <textarea id="user-response" rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-slate-200 focus:outline-none focus:border-sky-500 transition text-sm" placeholder="Click mic and speak your answer out loud..."></textarea>
                         
                         <div class="flex flex-wrap items-center justify-between mt-4 gap-3">
-                            <button onclick="evaluateResponse()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-sky-500/20 cursor-pointer">
+                            <button onclick="evaluateResponse()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm transition flex items-center gap-2 shadow-lg shadow-sky-500/20 cursor-pointer">
                                 <i data-lucide="send" class="w-4 h-4"></i> Evaluate Pronunciation & Complete Step 1
                             </button>
-                            <span class="text-xs text-slate-400" id="feedback-status">AI Voice Tutor listening for pronunciation.</span>
+                            <span class="text-xs text-slate-400" id="feedback-status">AI Voice Tutor listening.</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
+                <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg flex flex-col justify-between">
                     <div>
-                        <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider mb-3 flex items-center gap-2">
-                            <i data-lucide="bot" class="w-4 h-4 text-sky-400"></i> Pronunciation & Slang Feedback
+                        <h3 class="text-xs sm:text-sm font-bold text-slate-200 uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <i data-lucide="bot" class="w-4 h-4 text-sky-400"></i> Pronunciation Feedback
                         </h3>
                         <div id="feedback-box" class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-4 text-xs text-slate-300 space-y-3">
                             <p class="text-slate-400">Speak using the microphone to receive real-time fluency analysis.</p>
@@ -203,32 +211,32 @@
                     <div class="card-inner relative w-full h-full text-center">
                         <div class="card-front absolute w-full h-full bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col items-center justify-center shadow-xl">
                             <span class="text-xs font-semibold text-sky-400 mb-3 bg-sky-500/10 px-3 py-1 rounded-full" id="flash-badge">Term #1</span>
-                            <h4 class="text-2xl font-bold text-white mb-2" id="flash-term">Switch-Mode Power Supply</h4>
+                            <h4 class="text-xl sm:text-2xl font-bold text-white mb-2" id="flash-term">Switch-Mode Power Supply</h4>
                             <span class="text-xs text-slate-400">(Click to flip)</span>
                         </div>
                         <div class="card-back absolute w-full h-full bg-slate-900 border border-slate-700 rounded-2xl p-6 flex flex-col items-center justify-center shadow-xl">
                             <span class="text-xs font-semibold text-emerald-400 mb-3 bg-emerald-500/10 px-3 py-1 rounded-full">Definition</span>
-                            <p class="text-slate-200 text-sm mb-3" id="flash-def">Electronic power supply that incorporates a switching regulator for high efficiency conversion.</p>
+                            <p class="text-slate-200 text-xs sm:text-sm mb-3" id="flash-def">Electronic power supply that incorporates a switching regulator for high efficiency conversion.</p>
                             <span class="text-xs font-mono text-sky-300 bg-slate-950 px-3 py-1 rounded-lg border border-slate-800" id="flash-es">Fuente de alimentación conmutada</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="flex justify-center gap-4">
-                    <button onclick="prevCard()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-xl text-sm border border-slate-700 transition cursor-pointer">Previous</button>
-                    <button onclick="nextCard()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-sm transition cursor-pointer">Next / Complete Step 2</button>
+                    <button onclick="prevCard()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-xl text-xs sm:text-sm border border-slate-700 transition cursor-pointer">Previous</button>
+                    <button onclick="nextCard()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs sm:text-sm transition cursor-pointer">Next / Complete Step 2</button>
                 </div>
             </div>
         </div>
 
         <!-- TAB 3: GRAMMAR & SLANG TRAINER -->
         <div id="content-grammar" class="hidden space-y-6">
-            <div class="max-w-2xl mx-auto bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-lg">
+            <div class="max-w-2xl mx-auto bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg">
                 <div class="flex justify-between items-center mb-4">
                     <span class="text-xs font-semibold text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">Step 3: Daily Rotating Grammar Quiz</span>
                 </div>
-                <h3 class="text-lg font-bold text-white mb-4" id="quiz-title">Choose the correct professional expression:</h3>
-                <p class="text-slate-300 text-sm mb-6 bg-slate-950/60 p-4 rounded-xl border border-slate-800" id="quiz-desc">
+                <h3 class="text-base sm:text-lg font-bold text-white mb-4" id="quiz-title">Choose the correct professional expression:</h3>
+                <p class="text-slate-300 text-xs sm:text-sm mb-6 bg-slate-950/60 p-4 rounded-xl border border-slate-800" id="quiz-desc">
                     Select the correct option to complete this step.
                 </p>
                 <div class="space-y-3 mb-6" id="quiz-options"></div>
@@ -238,16 +246,16 @@
 
         <!-- TAB 4: DIAGNOSTICS SHADOWING -->
         <div id="content-shadowing" class="hidden space-y-6">
-            <div class="max-w-2xl mx-auto bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-lg">
+            <div class="max-w-2xl mx-auto bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg">
                 <div class="flex justify-between items-center mb-4">
                     <span class="text-xs font-semibold text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Step 4: Shadowing Lab</span>
                 </div>
-                <h3 class="text-lg font-bold text-white mb-2">Listen & Repeat</h3>
-                <p class="text-slate-300 text-sm mb-6">Listen to the native audio sample and repeat out loud to complete the final step of your session.</p>
+                <h3 class="text-base sm:text-lg font-bold text-white mb-2">Listen & Repeat</h3>
+                <p class="text-slate-300 text-xs sm:text-sm mb-6">Listen to the native audio sample and repeat out loud to complete the final step of your session.</p>
                 
-                <div class="bg-slate-950/80 p-5 rounded-xl border border-slate-800 mb-6 space-y-3">
-                    <p class="text-sm text-sky-300 font-mono" id="shadow-text">"I checked the rails and found a short to ground near the DC jack."</p>
-                    <div class="flex items-center justify-between pt-2 border-t border-slate-800/80">
+                <div class="bg-slate-950/80 p-4 sm:p-5 rounded-xl border border-slate-800 mb-6 space-y-3">
+                    <p class="text-xs sm:text-sm text-sky-300 font-mono" id="shadow-text">"I checked the rails and found a short to ground near the DC jack."</p>
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-800/80 flex-wrap gap-2">
                         <button onclick="speakShadowText()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition flex items-center gap-2 cursor-pointer">
                             <i data-lucide="volume-2" class="w-4 h-4"></i> Play Native Audio
                         </button>
@@ -263,48 +271,48 @@
 
     <!-- PROFILE MODAL -->
     <div id="profile-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-lg w-full mx-4 shadow-2xl max-h-[90vh] overflow-y-auto">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6 max-w-lg w-full mx-4 shadow-2xl max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-4">
-                <h3 class="font-bold text-lg text-white flex items-center gap-2">
+                <h3 class="font-bold text-base sm:text-lg text-white flex items-center gap-2">
                     <i data-lucide="briefcase" class="w-5 h-5 text-sky-400"></i> Select Professional Focus
                 </h3>
                 <button onclick="toggleModal()" class="text-slate-400 hover:text-white cursor-pointer"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
             <div class="space-y-2 mb-6">
-                <button onclick="setProfile('Electronics & Hardware', 'electronics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="setProfile('Electronics', 'electronics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>💻 Electronics & Hardware Repair</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
-                <button onclick="setProfile('Systems Engineering & IT', 'systems')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="setProfile('Systems & IT', 'systems')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🖥️ Systems Engineering & IT</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
-                <button onclick="setProfile('Accounting & Finance', 'accounting')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="setProfile('Accounting', 'accounting')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>📊 Accounting & Finance</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
-                <button onclick="setProfile('Law & Legal Services', 'law')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="setProfile('Law & Legal', 'law')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>⚖️ Law & Legal Services</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
-                <button onclick="setProfile('Medicine & Healthcare', 'medicine')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="setProfile('Healthcare', 'medicine')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🩺 Medicine & Healthcare</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
-                <button onclick="setProfile('Automotive Mechanics', 'mechanics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="setProfile('Automotive', 'mechanics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🔧 Automotive Mechanics</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
-                <button onclick="setProfile('Game Dev (Godot / 2D)', 'gamedev')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="setProfile('Game Dev', 'gamedev')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🎮 Game Dev (Godot / 2D)</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
-                <button onclick="setProfile('Music & Live Band', 'music')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="setProfile('Music', 'music')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🎸 Music & Live Band</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
             </div>
-            <button onclick="toggleModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-medium py-2.5 rounded-xl text-sm transition cursor-pointer">Close</button>
+            <button onclick="toggleModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-medium py-2.5 rounded-xl text-xs sm:text-sm transition cursor-pointer">Close</button>
         </div>
     </div>
 
@@ -317,14 +325,12 @@
     <script>
         lucide.createIcons();
 
-        // State control with localStorage
         let appState = JSON.parse(localStorage.getItem('english_pro_state')) || {
             streak: 0,
             termsMastered: 0,
             lastCompletedDate: null
         };
 
-        // 4 session steps status
         let sessionSteps = { speaking: false, flashcards: false, grammar: false, shadowing: false };
 
         function updateUIStats() {
@@ -395,7 +401,6 @@
             document.getElementById('profile-modal').classList.toggle('hidden');
         }
 
-        // Daily Index based on day of the year for automatic rotation
         function getDailyIndex(max) {
             const now = new Date();
             const start = new Date(now.getFullYear(), 0, 0);
@@ -404,7 +409,6 @@
             return dayOfYear % max;
         }
 
-        // Expanded Profile Databanks with multiple rotating options per day
         const profileData = {
             electronics: {
                 prompts: [
@@ -430,10 +434,7 @@
                 ]
             },
             systems: {
-                prompts: [
-                    { title: "System Architecture", text: "Describe how you deployed a web inventory service using Node.js, PostgreSQL, and Render." },
-                    { title: "Database Migration", text: "Explain how you managed relational schemas and handled connection pooling with Supabase." }
-                ],
+                prompts: [{ title: "System Architecture", text: "Describe how you deployed a web inventory service using Node.js, PostgreSQL, and Render." }],
                 flashcards: [
                     { term: "Deployment", def: "The process of making a software application available for use on a server or cloud platform.", es: "Despliegue / Publicación" },
                     { term: "Version Control", def: "A system that records changes to a file or set of files over time (e.g., Git).", es: "Control de versiones" },
@@ -530,6 +531,7 @@
 
         function setProfile(title, categoryKey) {
             document.getElementById('profile-label').innerText = title;
+            document.getElementById('profile-label-mobile').innerText = title;
             document.getElementById('header-badge').innerText = title;
             
             currentCategory = categoryKey;
@@ -541,12 +543,10 @@
         function loadDailyContent() {
             const data = profileData[currentCategory] || profileData['electronics'];
             
-            // Rotate prompt daily
             const promptIdx = getDailyIndex(data.prompts.length);
             document.getElementById('prompt-title').innerText = data.prompts[promptIdx].title;
             document.getElementById('prompt-text').innerText = '"' + data.prompts[promptIdx].text + '"';
 
-            // Rotate quiz daily
             const quizIdx = getDailyIndex(data.quizzes.length);
             const q = data.quizzes[quizIdx];
             document.getElementById('quiz-title').innerText = q.title;
@@ -558,7 +558,7 @@
 
             q.options.forEach(opt => {
                 const btn = document.createElement('button');
-                btn.className = "w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-4 rounded-xl text-sm text-slate-200 transition cursor-pointer";
+                btn.className = "w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-4 rounded-xl text-xs sm:text-sm text-slate-200 transition cursor-pointer";
                 btn.innerText = opt.text;
                 btn.onclick = () => {
                     if (opt.correct) {
@@ -573,7 +573,6 @@
                 optionsContainer.appendChild(btn);
             });
 
-            // Rotate shadowing text daily
             const shadowIdx = getDailyIndex(data.shadowTexts.length);
             document.getElementById('shadow-text').innerText = data.shadowTexts[shadowIdx];
 
@@ -611,7 +610,6 @@
             alert("✓ Step 4 Shadowing completed.");
         }
 
-        // Speech Recognition with Voice Confidence Evaluation
         let recognition = null;
         let isRecording = false;
 
@@ -638,25 +636,25 @@
 
             recognition.onstart = function() {
                 isRecording = true;
-                micBtn.className = 'bg-rose-500/20 border border-rose-500/40 text-rose-400 px-3 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 animate-pulse';
-                statusText.innerText = 'Listening & Analyzing Voice...';
+                micBtn.className = 'bg-rose-500/20 border border-rose-500/40 text-rose-400 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 animate-pulse';
+                statusText.innerText = 'Listening...';
             };
 
             recognition.onresult = function(event) {
                 const result = event.results[0][0];
                 textarea.value = result.transcript;
-                window.lastSpeechConfidence = result.confidence; // Store pronunciation confidence score
+                window.lastSpeechConfidence = result.confidence;
             };
 
             recognition.onerror = function() {
                 isRecording = false;
-                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 px-3 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5';
+                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5';
                 statusText.innerText = 'Start Speaking (Mic)';
             };
 
             recognition.onend = function() {
                 isRecording = false;
-                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 px-3 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5';
+                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5';
                 statusText.innerText = 'Start Speaking (Mic)';
             };
 
@@ -671,16 +669,15 @@
                 return;
             }
 
-            // Real-time speaking evaluation using confidence score and keyword density
             let confidence = window.lastSpeechConfidence !== undefined ? Math.round(window.lastSpeechConfidence * 100) : 88;
             let wordCount = text.split(/\s+/).length;
             
             let feedbackHTML = `
                 <div class="space-y-2">
                     <p class="text-emerald-400 font-semibold">✓ Speaking Analysis:</p>
-                    <p><strong>Pronunciation Clarity Score:</strong> ${confidence}%</p>
-                    <p><strong>Word Count:</strong> ${wordCount} words spoken.</p>
-                    <p class="text-slate-300">Great native flow and technical structure! Step 1 successfully completed.</p>
+                    <p><strong>Pronunciation Clarity:</strong> ${confidence}%</p>
+                    <p><strong>Words Spoken:</strong> ${wordCount}</p>
+                    <p class="text-slate-300">Great native flow and technical structure! Step 1 completed.</p>
                 </div>
             `;
 
@@ -703,7 +700,6 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // Initialize app
         updateUIStats();
         loadDailyContent();
         checkSessionProgress();
