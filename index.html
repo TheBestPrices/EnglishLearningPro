@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Learning Pro - Strict Evaluation Edition</title>
+    <title>English Learning Pro - Gamified Edition</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -99,11 +99,12 @@
     <!-- MAIN CONTENT -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow">
         
-        <!-- Welcome Banner with Interactive Mascot -->
+        <!-- Welcome Banner with Interactive Mascot (Owl) -->
         <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-slate-700/60 rounded-2xl p-5 sm:p-6 mb-6 shadow-xl relative overflow-hidden">
             <div class="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 
+                <!-- Mascot & Welcome Message Section -->
                 <div class="flex items-center gap-4">
                     <div onclick="interactWithMascot()" class="cursor-pointer group flex-shrink-0 mascot-float relative" title="Click me for a daily Slang or Tip!">
                         <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-tr from-sky-500 to-emerald-400 rounded-3xl p-1 shadow-lg shadow-sky-500/30 flex items-center justify-center transition group-hover:scale-105">
@@ -569,7 +570,7 @@
                 flashcards: [
                     { term: "Fuel Injector", def: "Nozzle that injects fuel into cylinders.", es: "Inyector", img: "🔧" }
                 ],
-                quizzes: [{ title: "Choose mechanics expression:", desc: "When explaining engine issue:", options: [{ text: "A) Let us check the fuel injectors.", correct: true }] }],
+                quizzes: [{ title: "Choose mechanics expression:", desc: "When explaining engine issue:", options: [{ text: "A) We detected a cylinder misfire.", correct: true }] }],
                 shadowTexts: ["\"We diagnosed an engine misfire.\""]
             },
             gamedev: {
@@ -743,7 +744,6 @@
             recognition.start();
         }
 
-        // STRICT & CRITICAL SPEECH EVALUATION ALGORITHM
         function evaluateResponse() {
             const text = document.getElementById('user-response').value.trim();
             const box = document.getElementById('feedback-box');
@@ -756,8 +756,7 @@
             const words = text.split(/\s+/);
             const wordCount = words.length;
 
-            // Strict evaluation logic based on length and clarity
-            let score = 50; // Base starting score
+            let score = 50;
             let critique = "";
 
             if (wordCount < 4) {
@@ -774,7 +773,6 @@
                 critique = "👑 Excellent articulation! Rich vocabulary and great fluency depth.";
             }
 
-            // Check for common filler words or stuttering patterns if any
             let feedbackHTML = `
                 <div class="space-y-2">
                     <p class="${score >= 80 ? 'text-emerald-400' : 'text-amber-400'} font-bold">Evaluation Score: ${score}%</p>
