@@ -97,7 +97,7 @@
             <div class="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                    <span class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Daily Rotating Session Active</span>
+                    <span id="time-badge" class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Daily Rotating Session Active</span>
                     <h2 class="text-xl sm:text-3xl font-bold text-white mt-3" id="welcome-title">Daily English Training Lab</h2>
                     <p class="text-slate-300 mt-2 max-w-xl text-xs sm:text-sm" id="welcome-desc">
                         Complete all 4 session modules with real voice verification to log your daily progress.
@@ -257,7 +257,7 @@
     </main>
 
     <!-- INITIAL / MANDATORY PROFILE MODAL -->
-    <div id="profile-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center">
+    <div id="profile-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center hidden">
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 max-w-lg w-full mx-4 shadow-2xl max-h-[90vh] overflow-y-auto">
             <div class="text-center mb-6">
                 <div class="bg-gradient-to-tr from-sky-500 to-emerald-500 p-3 rounded-2xl text-slate-950 inline-block font-bold shadow-lg mb-3">
@@ -267,7 +267,7 @@
                 <p class="text-xs sm:text-sm text-slate-400 mt-1">Select your learning focus to lock in your daily training path:</p>
             </div>
             <div class="space-y-2.5 mb-6">
-                <!-- NEW BEGINNER & GENERAL FOCUS OPTIONS -->
+                <!-- BEGINNER & GENERAL FOCUS -->
                 <button onclick="setProfile('Absolute Beginner', 'beginner')" class="w-full text-left bg-emerald-950/40 hover:bg-emerald-900/40 border border-emerald-500/30 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🌱 Absolute Beginner (Desde Cero)</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-400"></i>
@@ -284,6 +284,22 @@
                 </button>
                 <button onclick="setProfile('Systems & IT', 'systems')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🖥️ Systems Engineering & IT</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                </button>
+                <button onclick="setProfile('Accounting', 'accounting')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>📊 Accounting & Finance</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                </button>
+                <button onclick="setProfile('Law & Legal', 'law')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>⚖️ Law & Legal Services</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                </button>
+                <button onclick="setProfile('Healthcare', 'medicine')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>🩺 Medicine & Healthcare</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                </button>
+                <button onclick="setProfile('Automotive', 'mechanics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>🔧 Automotive Mechanics</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
                 <button onclick="setProfile('Game Dev', 'gamedev')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
@@ -311,11 +327,32 @@
             streak: 0,
             termsMastered: 0,
             lastCompletedDate: null,
+            sessionSteps: { speaking: false, flashcards: false, grammar: false, shadowing: false },
             selectedFocus: null,
             focusTitle: null
         };
 
-        let sessionSteps = { speaking: false, flashcards: false, grammar: false, shadowing: false };
+        // Set dynamic time greeting based on local clock
+        function setDynamicTimeBanner() {
+            const hour = new Date().getHours();
+            const badge = document.getElementById('time-badge');
+            const title = document.getElementById('welcome-title');
+            const desc = document.getElementById('welcome-desc');
+
+            if (hour >= 5 && hour < 12) {
+                badge.innerText = "☀️ Morning Session Active";
+                title.innerText = "Good morning! Start your day strong";
+                desc.innerText = "Complete your 4 morning session modules to energize your English fluency.";
+            } else if (hour >= 12 && hour < 18) {
+                badge.innerText = "🌤️ Afternoon Session Active";
+                title.innerText = "Good afternoon! Keep up the momentum";
+                desc.innerText = "Power through your afternoon session modules and boost your daily progress.";
+            } else {
+                badge.innerText = "🌙 Night Session Active";
+                title.innerText = "Good evening! Night training session";
+                desc.innerText = "Wrap up your day by completing your 4 training steps before rest.";
+            }
+        }
 
         function updateUIStats() {
             document.getElementById('streak-count').innerText = appState.streak + ' Days';
@@ -326,10 +363,29 @@
             else if (appState.termsMastered >= 16) rank = "🔥 Advanced";
             else if (appState.termsMastered >= 6) rank = "⚡ Amateur";
             document.getElementById('user-rank').innerText = rank;
+
+            // Restore completed steps visual state if already completed today
+            let today = new Date().toDateString();
+            if (appState.lastCompletedDate === today) {
+                markStepUI('speaking', 'badge-speaking');
+                markStepUI('flashcards', 'badge-flashcards');
+                markStepUI('grammar', 'badge-grammar');
+                markStepUI('shadowing', 'badge-shadowing');
+                
+                const claimBtn = document.getElementById('claim-btn');
+                claimBtn.className = "mt-3 w-full bg-slate-800 text-emerald-400 font-bold py-2 rounded-lg text-xs cursor-default transition";
+                claimBtn.innerText = "✨ Session already completed today!";
+                claimBtn.disabled = true;
+            } else {
+                checkSessionProgress();
+            }
         }
 
         function checkSessionProgress() {
-            let completedCount = Object.values(sessionSteps).filter(Boolean).length;
+            let today = new Date().toDateString();
+            if (appState.lastCompletedDate === today) return;
+
+            let completedCount = Object.values(appState.sessionSteps).filter(Boolean).length;
             document.getElementById('session-progress-text').innerText = `${completedCount} / 4 Completed`;
             document.getElementById('session-bar').style.width = `${(completedCount / 4) * 100}%`;
 
@@ -345,18 +401,25 @@
             }
         }
 
-        function markStep(stepKey, badgeId) {
-            sessionSteps[stepKey] = true;
+        function markStepUI(stepKey, badgeId) {
+            appState.sessionSteps[stepKey] = true;
             const badge = document.getElementById(badgeId);
-            badge.className = "text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full font-bold";
-            badge.innerText = "Completed ✓";
+            if(badge) {
+                badge.className = "text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full font-bold";
+                badge.innerText = "Completed ✓";
+            }
+        }
+
+        function markStep(stepKey, badgeId) {
+            markStepUI(stepKey, badgeId);
+            localStorage.setItem('english_pro_state', JSON.stringify(appState));
             checkSessionProgress();
         }
 
         function claimSession() {
             let today = new Date().toDateString();
             if (appState.lastCompletedDate === today) {
-                alert("You have already logged your session today, bro! Come back tomorrow to maintain your streak.");
+                alert("¡Ya registraste tu sesión de hoy, bro! Descansa y nos vemos mañana.");
                 return;
             }
 
@@ -366,7 +429,9 @@
             localStorage.setItem('english_pro_state', JSON.stringify(appState));
 
             updateUIStats();
-            alert("🎉 Session successfully logged! Your streak and rank have increased.");
+            
+            // Mensaje personalizado de despedida
+            alert("¡Muchas gracias por tu esfuerzo hoy, bro! 🎉 Has completado tu sesión con éxito. Descansa, nos vemos más tarde o mañana para seguir practicando.");
             location.reload();
         }
 
@@ -398,80 +463,129 @@
                 flashcards: [
                     { term: "Hello", def: "A greeting used when meeting someone.", es: "Hola" },
                     { term: "Thank you", def: "An expression of gratitude.", es: "Gracias" },
-                    { term: "Please", def: "Used to polite requests.", es: "Por favor" },
-                    { term: "Water", def: "Clear liquid essential for life.", es: "Agua" },
-                    { term: "Friend", def: "A person whom one knows and with whom one has a bond.", es: "Amigo" }
+                    { term: "Please", def: "Used for polite requests.", es: "Por favor" },
+                    { term: "Water", def: "Clear liquid essential for life.", es: "Agua" }
                 ],
                 quizzes: [
-                    { title: "Choose the correct pronoun:", desc: "Which pronoun refers to yourself?", options: [{ text: "A) He", correct: false }, { text: "B) I", correct: true }, { text: "C) They", correct: false }] },
-                    { title: "Choose the correct greeting:", desc: "What do you say in the morning?", options: [{ text: "A) Good morning", correct: true }, { text: "B) Good night", correct: false }, { text: "C) Goodbye", correct: false }] }
+                    { title: "Choose the correct pronoun:", desc: "Which pronoun refers to yourself?", options: [{ text: "A) He", correct: false }, { text: "B) I", correct: true }, { text: "C) They", correct: false }] }
                 ],
-                shadowTexts: [
-                    "\"Hello, my name is Kevin and I am learning English.\"",
-                    "\"Please give me a glass of water.\""
-                ]
+                shadowTexts: ["\"Hello, my name is Kevin and I am learning English.\""]
             },
             general: {
                 prompts: [
-                    { title: "Travel & Directions", text: "Ask politely where the nearest train station or restaurant is located." },
-                    { title: "Ordering Food", text: "Explain what you want to order for dinner at a local restaurant." }
+                    { title: "Travel & Directions", text: "Ask politely where the nearest train station or restaurant is located." }
                 ],
                 flashcards: [
-                    { term: "Airport", def: "A complex of runways and buildings for the take-off and landing of civil aircraft.", es: "Aeropuerto" },
-                    { term: "Restaurant", def: "A place where people pay to sit and eat meals.", es: "Restaurante" },
-                    { term: "Ticket", def: "A official pass that allows you to travel or enter a place.", es: "Boleto / Ticket" },
-                    { term: "Hotel", def: "An establishment providing accommodation, meals, and other services for travelers.", es: "Hotel" }
+                    { term: "Airport", def: "A complex of runways and buildings for aviation travel.", es: "Aeropuerto" },
+                    { term: "Restaurant", def: "A place where people sit and eat meals.", es: "Restaurante" }
                 ],
                 quizzes: [
-                    { title: "Choose the correct travel expression:", desc: "When asking for help at a store, what should you say?", options: [{ text: "A) Where is the exit please?", correct: true }, { text: "B) I am a computer.", correct: false }, { text: "C) Run away fast.", correct: false }] }
+                    { title: "Choose the correct travel expression:", desc: "When asking for help, what should you say?", options: [{ text: "A) Where is the exit please?", correct: true }, { text: "B) I am a computer.", correct: false }] }
                 ],
-                shadowTexts: [
-                    "\"Excuse me, can you help me find the nearest restaurant?\""
-                ]
+                shadowTexts: ["\"Excuse me, can you help me find the nearest restaurant?\""]
             },
             electronics: {
                 prompts: [
-                    { title: "Diagnostic Explanation", text: "Explain to a client why a switch-mode power supply failed and what steps you took to fix it." },
-                    { title: "TL431 Voltage Modification", text: "Describe how you calculated and soldered parallel SMD resistor networks on the TL431 reference circuit." }
+                    { title: "Diagnostic Explanation", text: "Explain to a client why a switch-mode power supply failed and what steps you took to fix it." }
                 ],
                 flashcards: [
-                    { term: "Switch-Mode Power Supply", def: "Electronic power supply that incorporates a switching regulator for high efficiency conversion.", es: "Fuente conmutada (SMPS)" },
-                    { term: "DC Jack", def: "The power input connector soldered onto the laptop motherboard.", es: "Conector de corriente / Jack DC" },
-                    { term: "Short to Ground", def: "An abnormal low-resistance connection to the chassis or ground plane.", es: "Cortocircuito a tierra" },
-                    { term: "Multimeter", def: "An electronic measuring instrument that combines several measurement functions.", es: "Multímetro" }
+                    { term: "Switch-Mode Power Supply", def: "Electronic power supply with a switching regulator for high efficiency.", es: "Fuente conmutada (SMPS)" },
+                    { term: "DC Jack", def: "The power input connector soldered onto the laptop motherboard.", es: "Conector de corriente / Jack DC" }
                 ],
                 quizzes: [
-                    { title: "Choose the correct electronics expression:", desc: "When explaining a hardware diagnostic, what is best?", options: [{ text: "A) Let me probe this real quick and check the rails.", correct: true }, { text: "B) I am going to look at electricity very slowly.", correct: false }] }
+                    { title: "Choose electronics expression:", desc: "When explaining a hardware diagnostic:", options: [{ text: "A) Let me probe this real quick and check the rails.", correct: true }, { text: "B) I am going to look at electricity very slowly.", correct: false }] }
                 ],
-                shadowTexts: [
-                    "\"I checked the rails and found a short to ground near the DC jack.\""
-                ]
+                shadowTexts: ["\"I checked the rails and found a short to ground near the DC jack.\""]
             },
             systems: {
-                prompts: [{ title: "System Architecture", text: "Describe how you deployed a web inventory service using Node.js, PostgreSQL, and Render." }],
+                prompts: [
+                    { title: "System Architecture", text: "Describe how you deployed a web inventory service using Node.js, PostgreSQL, and Render." }
+                ],
                 flashcards: [
                     { term: "Deployment", def: "Making a software application available for use on a server.", es: "Despliegue" },
                     { term: "API Endpoint", def: "A specific URL where an API receives requests.", es: "Punto de acceso API" }
                 ],
-                quizzes: [{ title: "Choose systems expression:", desc: "Best phrasing for deployment?", options: [{ text: "A) We successfully deployed the API endpoint to Render.", correct: true }, { text: "B) The code ran away.", correct: false }] }],
+                quizzes: [
+                    { title: "Choose systems expression:", desc: "Best phrasing for deployment:", options: [{ text: "A) We successfully deployed the API endpoint to Render.", correct: true }, { text: "B) The code ran away.", correct: false }] }
+                ],
                 shadowTexts: ["\"We pushed our code and deployed the Node.js application to Render.\""]
             },
+            accounting: {
+                prompts: [
+                    { title: "Financial Statement Review", text: "Explain quarterly balance sheet discrepancies and audit procedures to corporate stakeholders." }
+                ],
+                flashcards: [
+                    { term: "Balance Sheet", def: "Financial statement reporting assets, liabilities, and equity.", es: "Balance general" },
+                    { term: "Audit", def: "An official inspection of an organization's accounts.", es: "Auditoría" }
+                ],
+                quizzes: [
+                    { title: "Choose accounting expression:", desc: "When discussing financial reports:", options: [{ text: "A) We need to reconcile the ledger before the audit.", correct: true }, { text: "B) All money disappeared into a hat.", correct: false }] }
+                ],
+                shadowTexts: ["\"We audited the ledger and reconciled accounts receivable.\""]
+            },
+            law: {
+                prompts: [
+                    { title: "Contract Clause Analysis", text: "Discuss liability terms and conditions in a commercial agreement with a corporate client." }
+                ],
+                flashcards: [
+                    { term: "Liability", def: "The state of being legally responsible for something.", es: "Responsabilidad legal" },
+                    { term: "Breach of Contract", def: "An act of breaking terms set out in a contract.", es: "Incumplimiento" }
+                ],
+                quizzes: [
+                    { title: "Choose legal expression:", desc: "When advising a client regarding terms:", options: [{ text: "A) We must review liability clauses to avoid breach of contract.", correct: true }, { text: "B) You can break any promise.", correct: false }] }
+                ],
+                shadowTexts: ["\"We analyzed the agreement to limit client liability.\""]
+            },
+            medicine: {
+                prompts: [
+                    { title: "Patient Consultation", text: "Describe patient symptoms, diagnostic test results, and prescribed treatment plan." }
+                ],
+                flashcards: [
+                    { term: "Diagnosis", def: "The identification of the nature of an illness by examination.", es: "Diagnóstico médico" },
+                    { term: "Vitals", def: "Essential body functions measured to assess health.", es: "Signos vitales" }
+                ],
+                quizzes: [
+                    { title: "Choose medical expression:", desc: "When discussing patient evaluation:", options: [{ text: "A) Let us check the patient's vitals and lab results.", correct: true }, { text: "B) The patient is sleeping forever.", correct: false }] }
+                ],
+                shadowTexts: ["\"We evaluated the patient's vitals and reviewed the symptoms.\""]
+            },
+            mechanics: {
+                prompts: [
+                    { title: "Engine Troubleshooting", text: "Explain engine misfire diagnosis, fuel injector testing, and repair steps to a vehicle owner." }
+                ],
+                flashcards: [
+                    { term: "Fuel Injector", def: "A nozzle that injects fuel into engine cylinders.", es: "Inyector de combustible" },
+                    { term: "Misfire", def: "Failure of fuel-air mixture to ignite properly.", es: "Falla de encendido" }
+                ],
+                quizzes: [
+                    { title: "Choose mechanics expression:", desc: "When explaining an engine issue:", options: [{ text: "A) We detected a cylinder misfire and need to test fuel injectors.", correct: true }, { text: "B) The car is taking a nap.", correct: false }] }
+                ],
+                shadowTexts: ["\"We diagnosed an engine misfire and tested the fuel injectors.\""]
+            },
             gamedev: {
-                prompts: [{ title: "Game Mechanics", text: "Explain core mechanics of your 2D platformer TrashCalypsis in Godot 4." }],
+                prompts: [
+                    { title: "Game Mechanics", text: "Explain core mechanics of your 2D platformer TrashCalypsis in Godot 4." }
+                ],
                 flashcards: [
                     { term: "Sprite", def: "A two-dimensional bitmap integrated into a scene.", es: "Sprite / Gráfico 2D" },
                     { term: "Collision Box", def: "An invisible boundary used for collision detection.", es: "Caja de colisión" }
                 ],
-                quizzes: [{ title: "Choose gamedev expression:", desc: "Best phrasing for performance in Godot?", options: [{ text: "A) We need to optimize the game loop in Godot 4.", correct: true }, { text: "B) The pixels are sleeping.", correct: false }] }],
+                quizzes: [
+                    { title: "Choose gamedev expression:", desc: "Best phrasing for performance in Godot:", options: [{ text: "A) We need to optimize the game loop in Godot 4.", correct: true }, { text: "B) The pixels are sleeping.", correct: false }] }
+                ],
                 shadowTexts: ["\"In Godot 4, we scripted player movement for TrashCalypsis.\""]
             },
             music: {
-                prompts: [{ title: "Bass Performance", text: "Describe your favorite bass line to play live with your band." }],
+                prompts: [
+                    { title: "Bass Performance", text: "Describe your favorite bass line to play live with your band." }
+                ],
                 flashcards: [
                     { term: "Bass Line", def: "A sequence of low-frequency notes supporting rhythm.", es: "Línea de bajo" },
                     { term: "In-Ear Monitor", def: "Device worn by musicians for live performance monitoring.", es: "Monitoreo intraauricular" }
                 ],
-                quizzes: [{ title: "Choose music expression:", desc: "Best phrasing before a show?", options: [{ text: "A) Let us check in-ear monitors and rehearse the bass line.", correct: true }, { text: "B) Let us sleep during the concert.", correct: false }] }],
+                quizzes: [
+                    { title: "Choose music expression:", desc: "Best phrasing before a show:", options: [{ text: "A) Let us check in-ear monitors and rehearse the bass line.", correct: true }, { text: "B) Let us sleep during the concert.", correct: false }] }
+                ],
                 shadowTexts: ["\"During live band rehearsals, I plug in my electric bass.\""]
             }
         };
@@ -663,9 +777,9 @@
             window.speechSynthesis.speak(utterance);
         }
 
+        setDynamicTimeBanner();
         updateUIStats();
         checkInitialFocus();
-        checkSessionProgress();
     </script>
 </body>
 </html>
