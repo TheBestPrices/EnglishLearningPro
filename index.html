@@ -54,7 +54,7 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-    <!-- HEADER / NAVBAR (Responsive Adjusted for Mobile) -->
+    <!-- HEADER / NAVBAR -->
     <header class="border-b border-slate-800 bg-slate-900/95 sticky top-0 z-50 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
             <div class="flex items-center justify-between w-full md:w-auto">
@@ -69,15 +69,9 @@
                         </h1>
                     </div>
                 </div>
-                <!-- Profile Toggle Button for Mobile -->
-                <button onclick="toggleModal()" class="md:hidden flex items-center space-x-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-xl border border-slate-700 transition cursor-pointer text-xs">
-                    <i data-lucide="briefcase" class="w-3.5 h-3.5 text-sky-400"></i>
-                    <span id="profile-label-mobile">Focus</span>
-                    <i data-lucide="chevron-down" class="w-3 h-3 text-slate-400"></i>
-                </button>
             </div>
 
-            <!-- Stats Bar (Optimized for Mobile & Desktop) -->
+            <!-- Stats Bar -->
             <div class="flex items-center justify-center flex-wrap gap-2 text-xs sm:text-sm w-full md:w-auto">
                 <div class="flex items-center space-x-1.5 bg-slate-800/90 px-2.5 py-1 rounded-full border border-slate-700/60">
                     <i data-lucide="award" class="w-3.5 h-3.5 text-purple-400"></i>
@@ -92,13 +86,6 @@
                     <span class="text-slate-300">Mastered: <strong class="text-white" id="terms-count">0</strong></span>
                 </div>
             </div>
-
-            <!-- Profile / Focus Badge for Desktop -->
-            <button onclick="toggleModal()" class="hidden md:flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3.5 py-1.5 rounded-xl border border-slate-700 transition cursor-pointer">
-                <i data-lucide="briefcase" class="w-4 h-4 text-sky-400"></i>
-                <span class="text-xs font-semibold" id="profile-label">Electronics & Hardware</span>
-                <i data-lucide="chevron-down" class="w-3 h-3 text-slate-400"></i>
-            </button>
         </div>
     </header>
 
@@ -269,50 +256,50 @@
 
     </main>
 
-    <!-- PROFILE MODAL -->
-    <div id="profile-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6 max-w-lg w-full mx-4 shadow-2xl max-h-[90vh] overflow-y-auto">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="font-bold text-base sm:text-lg text-white flex items-center gap-2">
-                    <i data-lucide="briefcase" class="w-5 h-5 text-sky-400"></i> Select Professional Focus
-                </h3>
-                <button onclick="toggleModal()" class="text-slate-400 hover:text-white cursor-pointer"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <!-- INITIAL / MANDATORY PROFILE MODAL (Forces selection on startup if not set) -->
+    <div id="profile-modal" class="fixed inset-0 bg-slate-950/9ogen backdrop-blur-md z-50 flex items-center justify-center">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 max-w-lg w-full mx-4 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="text-center mb-6">
+                <div class="bg-gradient-to-tr from-sky-500 to-emerald-500 p-3 rounded-2xl text-slate-950 inline-block font-bold shadow-lg mb-3">
+                    <i data-lucide="cpu" class="w-8 h-8"></i>
+                </div>
+                <h3 class="font-bold text-xl text-white">Welcome to English Pro</h3>
+                <p class="text-xs sm:text-sm text-slate-400 mt-1">Select your professional focus to lock in your daily training path:</p>
             </div>
-            <div class="space-y-2 mb-6">
-                <button onclick="setProfile('Electronics', 'electronics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+            <div class="space-y-2.5 mb-6">
+                <button onclick="setProfile('Electronics', 'electronics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>💻 Electronics & Hardware Repair</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
                 </button>
-                <button onclick="setProfile('Systems & IT', 'systems')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="setProfile('Systems & IT', 'systems')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🖥️ Systems Engineering & IT</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
                 </button>
-                <button onclick="setProfile('Accounting', 'accounting')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="setProfile('Accounting', 'accounting')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>📊 Accounting & Finance</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
                 </button>
-                <button onclick="setProfile('Law & Legal', 'law')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="setProfile('Law & Legal', 'law')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>⚖️ Law & Legal Services</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
                 </button>
-                <button onclick="setProfile('Healthcare', 'medicine')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="setProfile('Healthcare', 'medicine')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🩺 Medicine & Healthcare</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
                 </button>
-                <button onclick="setProfile('Automotive', 'mechanics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="setProfile('Automotive', 'mechanics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🔧 Automotive Mechanics</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
                 </button>
-                <button onclick="setProfile('Game Dev', 'gamedev')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="setProfile('Game Dev', 'gamedev')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🎮 Game Dev (Godot / 2D)</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
                 </button>
-                <button onclick="setProfile('Music', 'music')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="setProfile('Music', 'music')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🎸 Music & Live Band</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
                 </button>
             </div>
-            <button onclick="toggleModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-medium py-2.5 rounded-xl text-xs sm:text-sm transition cursor-pointer">Close</button>
         </div>
     </div>
 
@@ -328,7 +315,9 @@
         let appState = JSON.parse(localStorage.getItem('english_pro_state')) || {
             streak: 0,
             termsMastered: 0,
-            lastCompletedDate: null
+            lastCompletedDate: null,
+            selectedFocus: null,
+            focusTitle: null
         };
 
         let sessionSteps = { speaking: false, flashcards: false, grammar: false, shadowing: false };
@@ -395,10 +384,6 @@
             const activeBtn = document.getElementById('tab-' + tabName);
             activeBtn.classList.add('active', 'text-sky-400');
             activeBtn.classList.remove('text-slate-400');
-        }
-
-        function toggleModal() {
-            document.getElementById('profile-modal').classList.toggle('hidden');
         }
 
         function getDailyIndex(max) {
@@ -526,18 +511,32 @@
             }
         };
 
-        let currentCategory = 'electronics';
+        let currentCategory = appState.selectedFocus || 'electronics';
         let currentCard = 0;
 
         function setProfile(title, categoryKey) {
-            document.getElementById('profile-label').innerText = title;
-            document.getElementById('profile-label-mobile').innerText = title;
+            appState.selectedFocus = categoryKey;
+            appState.focusTitle = title;
+            localStorage.setItem('english_pro_state', JSON.stringify(appState));
+
             document.getElementById('header-badge').innerText = title;
+            document.getElementById('profile-modal').classList.add('hidden');
             
             currentCategory = categoryKey;
             currentCard = 0;
             loadDailyContent();
-            toggleModal();
+        }
+
+        // Check startup focus
+        function checkInitialFocus() {
+            if (!appState.selectedFocus) {
+                document.getElementById('profile-modal').classList.remove('hidden');
+            } else {
+                document.getElementById('profile-modal').classList.add('hidden');
+                document.getElementById('header-badge').innerText = appState.focusTitle || 'Electronics';
+                currentCategory = appState.selectedFocus;
+                loadDailyContent();
+            }
         }
 
         function loadDailyContent() {
@@ -701,7 +700,7 @@
         }
 
         updateUIStats();
-        loadDailyContent();
+        checkInitialFocus();
         checkSessionProgress();
     </script>
 </body>
