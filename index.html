@@ -99,30 +99,27 @@
     <!-- MAIN CONTENT -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow">
         
-        <!-- Welcome Banner with Duolingo-Style Interactive Mascot -->
+        <!-- Welcome Banner with Interactive Mascot -->
         <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-slate-700/60 rounded-2xl p-5 sm:p-6 mb-6 shadow-xl relative overflow-hidden">
             <div class="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 
                 <!-- Mascot & Welcome Message Section -->
                 <div class="flex items-center gap-4">
-                    <!-- Interactive Mascot Avatar (Clickable for Slangs) -->
-                    <div onclick="interactWithMascot()" class="cursor-pointer group flex-shrink-0 mascot-float relative" title="¡Haz clic en mí para un Slang diario!">
+                    <div onclick="interactWithMascot()" class="cursor-pointer group flex-shrink-0 mascot-float relative" title="Click me for a daily Slang or Tip!">
                         <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-tr from-sky-500 to-emerald-400 rounded-3xl p-1 shadow-lg shadow-sky-500/30 flex items-center justify-center transition group-hover:scale-105">
                             <div class="w-full h-full bg-slate-950 rounded-[22px] flex items-center justify-center text-3xl sm:text-4xl shadow-inner select-none" id="mascot-emoji">
                                 🦉
                             </div>
                         </div>
-                        <!-- Notification Badge on Mascot -->
                         <span class="absolute -top-1 -right-1 bg-sky-500 text-slate-950 text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-slate-900 shadow">TIP</span>
                     </div>
 
                     <div>
                         <span id="time-badge" class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Session Active</span>
                         <h2 class="text-xl sm:text-2xl font-bold text-white mt-2" id="welcome-title">Welcome back!</h2>
-                        <!-- Mascot speech bubble -->
                         <p class="text-slate-300 mt-1 text-xs sm:text-sm bg-slate-950/70 border border-slate-800/80 px-3 py-2 rounded-xl italic" id="mascot-bubble">
-                            "¡Haz clic en mí para aprender un slang o consejo en inglés!"
+                            "Click on me anytime to learn a native slang or study tip!"
                         </p>
                     </div>
                 </div>
@@ -351,9 +348,9 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (Clean & Professional) -->
     <footer class="border-t border-slate-800 bg-slate-900/50 py-4 text-center text-xs text-slate-500">
-        English Learning Pro &copy; 2026 &bull; Gamified Edition
+        English Learning Pro &copy; 2026 &bull; Professional Edition
     </footer>
 
     <!-- SCRIPTS -->
@@ -370,24 +367,21 @@
             focusTitle: null
         };
 
-        // Mascot interactive quotes / slangs
         const mascotTips = [
-            "💡 Slang: 'Piece of cake' = ¡Muy fácil!",
-            "💡 Slang: 'Hit the books' = ¡A estudiar duro!",
-            "💡 Tip: La constancia le gana al talento natural, ¡tú puedes!",
-            "💡 Slang: 'Break a leg' = ¡Buena suerte / Rompela!",
-            "💡 Tip: Repite en voz alta los ejercicios de speaking para ganar soltura."
+            "💡 Slang: 'Piece of cake' = Very easy!",
+            "💡 Slang: 'Hit the books' = Study hard!",
+            "💡 Tip: Consistency beats natural talent every single time!",
+            "💡 Slang: 'Break a leg' = Good luck!",
+            "💡 Tip: Always speak out loud during your training sessions."
         ];
 
         function interactWithMascot() {
             const bubble = document.getElementById('mascot-bubble');
             const emoji = document.getElementById('mascot-emoji');
             
-            // Pick random tip
             const randomTip = mascotTips[Math.floor(Math.random() * mascotTips.length)];
             bubble.innerText = `"${randomTip}"`;
 
-            // Temporary happy emoji reaction
             emoji.innerText = "🤩";
             setTimeout(() => {
                 emoji.innerText = appState.streak > 0 ? "🔥" : "🦉";
@@ -488,7 +482,8 @@
             localStorage.setItem('english_pro_state', JSON.stringify(appState));
 
             updateUIStats();
-            alert(`¡Muchas gracias por tu esfuerzo hoy, ${appState.userName || 'bro'}! 🎉 Has completado tu sesión con éxito. Descansa y nos vemos mañana.`);
+            // English Completion Alert Message
+            alert(`Great job today, ${appState.userName || 'Learner'}! 🎉 You have successfully completed your training session. Keep up the amazing work and see you tomorrow!`);
             location.reload();
         }
 
