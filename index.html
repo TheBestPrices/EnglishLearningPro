@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Learning Pro - Professional & Beginner Edition</title>
+    <title>English Learning Pro - Interactive Edition</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -50,6 +50,13 @@
         .card-back {
             transform: rotateY(180deg);
         }
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 3s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
@@ -92,17 +99,39 @@
     <!-- MAIN CONTENT -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow">
         
-        <!-- Welcome Banner & Session Progress -->
+        <!-- Welcome Banner & Interactive Pet Container -->
         <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-slate-700/60 rounded-2xl p-5 sm:p-6 mb-6 shadow-xl relative overflow-hidden">
             <div class="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                    <span id="time-badge" class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Daily Rotating Session Active</span>
-                    <h2 class="text-xl sm:text-3xl font-bold text-white mt-3" id="welcome-title">Daily English Training Lab</h2>
-                    <p class="text-slate-300 mt-2 max-w-xl text-xs sm:text-sm" id="welcome-desc">
-                        Complete all 4 session modules with real voice verification to log your daily progress.
-                    </p>
+            <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                
+                <!-- Welcome Text & Mascot Bubble -->
+                <div class="flex items-start gap-4">
+                    <!-- Interactive Mascot (Animated SVG Owl / Buddy) -->
+                    <div onclick="interactWithPet()" class="cursor-pointer group flex-shrink-0 animate-bounce-slow title-tooltip relative" title="¡Haz clic en mí para hablar!">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-sky-400 to-emerald-400 rounded-2xl p-1 shadow-lg shadow-sky-500/20 flex items-center justify-center transition group-hover:scale-105">
+                            <div class="w-full h-full bg-slate-950 rounded-xl flex items-center justify-center text-sky-400">
+                                <!-- Cute Custom SVG Owl Mascot -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2a8 8 0 0 0-8 8v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a8 8 0 0 0-8-8z"></path>
+                                    <circle cx="9" cy="10" r="2" fill="currentColor"></circle>
+                                    <circle cx="15" cy="10" r="2" fill="currentColor"></circle>
+                                    <path d="M12 14v2"></path>
+                                    <path d="M9 18h6"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span id="time-badge" class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Session Active</span>
+                        <h2 class="text-xl sm:text-2xl font-bold text-white mt-2" id="welcome-title">Welcome back!</h2>
+                        <!-- Mascot Speech Bubble -->
+                        <p class="text-slate-300 mt-1.5 text-xs sm:text-sm bg-slate-950/70 border border-slate-800 p-3 rounded-xl" id="pet-message">
+                            "Hi there! Click on me anytime for a motivation boost or tip!"
+                        </p>
+                    </div>
                 </div>
+
                 <!-- Session Progress Bar -->
                 <div class="bg-slate-950/80 border border-slate-800 p-4 rounded-xl w-full md:w-72">
                     <div class="flex justify-between text-xs mb-1.5">
@@ -188,23 +217,31 @@
             </div>
         </div>
 
-        <!-- TAB 2: TECHNICAL FLASHCARDS -->
+        <!-- TAB 2: TECHNICAL FLASHCARDS WITH IMAGES -->
         <div id="content-flashcards" class="hidden space-y-6">
             <div class="max-w-md mx-auto text-center">
-                <h3 class="text-lg font-bold text-white mb-1">Step 2: Vocabulary & Flashcards</h3>
-                <p class="text-xs text-slate-400 mb-6">Review rotating flashcards to expand your knowledge.</p>
+                <h3 class="text-lg font-bold text-white mb-1">Step 2: Visual Flashcards</h3>
+                <p class="text-xs text-slate-400 mb-6">Review rotating cards with visual aids to expand your memory.</p>
                 
-                <div class="card-flip h-64 w-full cursor-pointer mb-6" onclick="this.classList.toggle('flipped')">
+                <div class="card-flip h-72 w-full cursor-pointer mb-6" onclick="this.classList.toggle('flipped')">
                     <div class="card-inner relative w-full h-full text-center">
-                        <div class="card-front absolute w-full h-full bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col items-center justify-center shadow-xl">
-                            <span class="text-xs font-semibold text-sky-400 mb-3 bg-sky-500/10 px-3 py-1 rounded-full" id="flash-badge">Term #1</span>
-                            <h4 class="text-xl sm:text-2xl font-bold text-white mb-2" id="flash-term">Hello / Greetings</h4>
-                            <span class="text-xs text-slate-400">(Click to flip)</span>
+                        <div class="card-front absolute w-full h-full bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col items-center justify-between shadow-xl">
+                            <span class="text-xs font-semibold text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full" id="flash-badge">Term #1</span>
+                            
+                            <!-- Flashcard Visual Image Container -->
+                            <div class="w-24 h-24 bg-slate-950 rounded-2xl border border-slate-800 flex items-center justify-center p-3 overflow-hidden shadow-inner my-2">
+                                <img id="flash-img" src="" alt="Visual Aid" class="w-full h-full object-contain filter drop-shadow">
+                            </div>
+
+                            <div>
+                                <h4 class="text-lg sm:text-xl font-bold text-white mb-1" id="flash-term">Hello</h4>
+                                <span class="text-xs text-slate-400">(Click card to flip)</span>
+                            </div>
                         </div>
                         <div class="card-back absolute w-full h-full bg-slate-900 border border-slate-700 rounded-2xl p-6 flex flex-col items-center justify-center shadow-xl">
-                            <span class="text-xs font-semibold text-emerald-400 mb-3 bg-emerald-500/10 px-3 py-1 rounded-full">Definition</span>
-                            <p class="text-slate-200 text-xs sm:text-sm mb-3" id="flash-def">Used to greet someone or start a conversation.</p>
-                            <span class="text-xs font-mono text-sky-300 bg-slate-950 px-3 py-1 rounded-lg border border-slate-800" id="flash-es">Hola / Saludos</span>
+                            <span class="text-xs font-semibold text-emerald-400 mb-3 bg-emerald-500/10 px-3 py-1 rounded-full">Definition & Translation</span>
+                            <p class="text-slate-200 text-xs sm:text-sm mb-3" id="flash-def">Used to greet someone.</p>
+                            <span class="text-xs font-mono text-sky-300 bg-slate-950 px-3 py-2 rounded-lg border border-slate-800" id="flash-es">Hola</span>
                         </div>
                     </div>
                 </div>
@@ -256,7 +293,7 @@
 
     </main>
 
-    <!-- INITIAL / MANDATORY PROFILE MODAL -->
+    <!-- INITIAL / MANDATORY PROFILE MODAL (Asks Name & Focus) -->
     <div id="profile-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center hidden">
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 max-w-lg w-full mx-4 shadow-2xl max-h-[90vh] overflow-y-auto">
             <div class="text-center mb-6">
@@ -264,49 +301,39 @@
                     <i data-lucide="book-open" class="w-8 h-8"></i>
                 </div>
                 <h3 class="font-bold text-xl text-white">Welcome to English Pro</h3>
-                <p class="text-xs sm:text-sm text-slate-400 mt-1">Select your learning focus to lock in your daily training path:</p>
+                <p class="text-xs sm:text-sm text-slate-400 mt-1">Enter your name and select your learning focus:</p>
             </div>
-            <div class="space-y-2.5 mb-6">
-                <!-- BEGINNER & GENERAL FOCUS -->
-                <button onclick="setProfile('Absolute Beginner', 'beginner')" class="w-full text-left bg-emerald-950/40 hover:bg-emerald-900/40 border border-emerald-500/30 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+
+            <!-- Name Input Field -->
+            <div class="mb-5">
+                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Your Name:</label>
+                <input type="text" id="user-name-input" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500 transition" placeholder="e.g. Kevin">
+            </div>
+
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Select Focus:</label>
+            <div class="space-y-2.5 mb-4">
+                <button onclick="saveUserProfileAndStart('Absolute Beginner', 'beginner')" class="w-full text-left bg-emerald-950/40 hover:bg-emerald-900/40 border border-emerald-500/30 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🌱 Absolute Beginner (Desde Cero)</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-400"></i>
                 </button>
-                <button onclick="setProfile('General & Travel', 'general')" class="w-full text-left bg-sky-950/40 hover:bg-sky-900/40 border border-sky-500/30 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="saveUserProfileAndStart('General & Travel', 'general')" class="w-full text-left bg-sky-950/40 hover:bg-sky-900/40 border border-sky-500/30 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>✈️ General & Travel English (Supervivencia)</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
                 </button>
                 <hr class="border-slate-800 my-2">
-                <!-- PROFESSIONAL FOCUS OPTIONS -->
-                <button onclick="setProfile('Electronics', 'electronics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="saveUserProfileAndStart('Electronics', 'electronics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>💻 Electronics & Hardware Repair</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
-                <button onclick="setProfile('Systems & IT', 'systems')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="saveUserProfileAndStart('Systems & IT', 'systems')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🖥️ Systems Engineering & IT</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
-                <button onclick="setProfile('Accounting', 'accounting')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>📊 Accounting & Finance</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
-                </button>
-                <button onclick="setProfile('Law & Legal', 'law')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>⚖️ Law & Legal Services</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
-                </button>
-                <button onclick="setProfile('Healthcare', 'medicine')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>🩺 Medicine & Healthcare</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
-                </button>
-                <button onclick="setProfile('Automotive', 'mechanics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>🔧 Automotive Mechanics</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
-                </button>
-                <button onclick="setProfile('Game Dev', 'gamedev')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="saveUserProfileAndStart('Game Dev', 'gamedev')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🎮 Game Dev (Godot / 2D)</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
-                <button onclick="setProfile('Music', 'music')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                <button onclick="saveUserProfileAndStart('Music', 'music')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🎸 Music & Live Band</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
@@ -316,7 +343,7 @@
 
     <!-- FOOTER -->
     <footer class="border-t border-slate-800 bg-slate-900/50 py-4 text-center text-xs text-slate-500">
-        English Learning Pro &copy; 2026 &bull; Professional & Beginner Edition
+        English Learning Pro &copy; 2026 &bull; Interactive Edition
     </footer>
 
     <!-- SCRIPTS -->
@@ -324,6 +351,7 @@
         lucide.createIcons();
 
         let appState = JSON.parse(localStorage.getItem('english_pro_state')) || {
+            userName: '',
             streak: 0,
             termsMastered: 0,
             lastCompletedDate: null,
@@ -332,25 +360,37 @@
             focusTitle: null
         };
 
-        // Set dynamic time greeting based on local clock
+        // Interactive Pet phrases
+        const petQuotes = [
+            "You are doing amazing today!",
+            "Consistent practice leads to fluency!",
+            "Never give up, you've got this!",
+            "Every new word makes you stronger!",
+            "Let's crush today's goals together!"
+        ];
+
+        function interactWithPet() {
+            const bubble = document.getElementById('pet-message');
+            const randomQuote = petQuotes[Math.floor(Math.random() * petQuotes.length)];
+            const nameGreet = appState.userName ? `${appState.userName}, ` : '';
+            bubble.innerText = `"${nameGreet}${randomQuote}"`;
+        }
+
         function setDynamicTimeBanner() {
             const hour = new Date().getHours();
             const badge = document.getElementById('time-badge');
             const title = document.getElementById('welcome-title');
-            const desc = document.getElementById('welcome-desc');
+            const name = appState.userName ? `, ${appState.userName}` : '';
 
             if (hour >= 5 && hour < 12) {
                 badge.innerText = "☀️ Morning Session Active";
-                title.innerText = "Good morning! Start your day strong";
-                desc.innerText = "Complete your 4 morning session modules to energize your English fluency.";
+                title.innerText = `Good morning${name}! Let's start strong`;
             } else if (hour >= 12 && hour < 18) {
                 badge.innerText = "🌤️ Afternoon Session Active";
-                title.innerText = "Good afternoon! Keep up the momentum";
-                desc.innerText = "Power through your afternoon session modules and boost your daily progress.";
+                title.innerText = `Good afternoon${name}! Keep up the momentum`;
             } else {
                 badge.innerText = "🌙 Night Session Active";
-                title.innerText = "Good evening! Night training session";
-                desc.innerText = "Wrap up your day by completing your 4 training steps before rest.";
+                title.innerText = `Good evening${name}! Night training session`;
             }
         }
 
@@ -364,7 +404,6 @@
             else if (appState.termsMastered >= 6) rank = "⚡ Amateur";
             document.getElementById('user-rank').innerText = rank;
 
-            // Restore completed steps visual state if already completed today
             let today = new Date().toDateString();
             if (appState.lastCompletedDate === today) {
                 markStepUI('speaking', 'badge-speaking');
@@ -418,10 +457,7 @@
 
         function claimSession() {
             let today = new Date().toDateString();
-            if (appState.lastCompletedDate === today) {
-                alert("¡Ya registraste tu sesión de hoy, bro! Descansa y nos vemos mañana.");
-                return;
-            }
+            if (appState.lastCompletedDate === today) return;
 
             appState.streak += 1;
             appState.termsMastered += 4;
@@ -429,9 +465,7 @@
             localStorage.setItem('english_pro_state', JSON.stringify(appState));
 
             updateUIStats();
-            
-            // Mensaje personalizado de despedida
-            alert("¡Muchas gracias por tu esfuerzo hoy, bro! 🎉 Has completado tu sesión con éxito. Descansa, nos vemos más tarde o mañana para seguir practicando.");
+            alert(`¡Muchas gracias por tu esfuerzo hoy, ${appState.userName || 'bro'}! 🎉 Has completado tu sesión con éxito. Descansa y nos vemos mañana.`);
             location.reload();
         }
 
@@ -457,143 +491,68 @@
         const profileData = {
             beginner: {
                 prompts: [
-                    { title: "Personal Introduction", text: "Say your name, where you are from, and your age in simple English." },
-                    { title: "Daily Routines", text: "Say three simple things you do every morning like drink coffee or water." }
+                    { title: "Personal Introduction", text: "Say your name, where you are from, and your age in simple English." }
                 ],
                 flashcards: [
-                    { term: "Hello", def: "A greeting used when meeting someone.", es: "Hola" },
-                    { term: "Thank you", def: "An expression of gratitude.", es: "Gracias" },
-                    { term: "Please", def: "Used for polite requests.", es: "Por favor" },
-                    { term: "Water", def: "Clear liquid essential for life.", es: "Agua" }
+                    { term: "Hello", def: "A greeting used when meeting someone.", es: "Hola", img: "https://api.iconify.design/lucide:hand.svg?color=%2338bdf8" },
+                    { term: "Thank you", def: "An expression of gratitude.", es: "Gracias", img: "https://api.iconify.design/lucide:heart.svg?color=%2338bdf8" },
+                    { term: "Water", def: "Clear liquid essential for life.", es: "Agua", img: "https://api.iconify.design/lucide:droplet.svg?color=%2338bdf8" }
                 ],
                 quizzes: [
-                    { title: "Choose the correct pronoun:", desc: "Which pronoun refers to yourself?", options: [{ text: "A) He", correct: false }, { text: "B) I", correct: true }, { text: "C) They", correct: false }] }
+                    { title: "Choose the correct pronoun:", desc: "Which pronoun refers to yourself?", options: [{ text: "A) He", correct: false }, { text: "B) I", correct: true }] }
                 ],
                 shadowTexts: ["\"Hello, my name is Kevin and I am learning English.\""]
             },
             general: {
-                prompts: [
-                    { title: "Travel & Directions", text: "Ask politely where the nearest train station or restaurant is located." }
-                ],
+                prompts: [{ title: "Travel & Directions", text: "Ask politely where the nearest train station or restaurant is located." }],
                 flashcards: [
-                    { term: "Airport", def: "A complex of runways and buildings for aviation travel.", es: "Aeropuerto" },
-                    { term: "Restaurant", def: "A place where people sit and eat meals.", es: "Restaurante" }
+                    { term: "Airport", def: "A complex of runways and buildings for aviation travel.", es: "Aeropuerto", img: "https://api.iconify.design/lucide:plane.svg?color=%2338bdf8" },
+                    { term: "Restaurant", def: "A place where people sit and eat meals.", es: "Restaurante", img: "https://api.iconify.design/lucide:utensils.svg?color=%2338bdf8" }
                 ],
-                quizzes: [
-                    { title: "Choose the correct travel expression:", desc: "When asking for help, what should you say?", options: [{ text: "A) Where is the exit please?", correct: true }, { text: "B) I am a computer.", correct: false }] }
-                ],
+                quizzes: [{ title: "Choose travel expression:", desc: "When asking for help:", options: [{ text: "A) Where is the exit please?", correct: true }, { text: "B) I am a computer.", correct: false }] }],
                 shadowTexts: ["\"Excuse me, can you help me find the nearest restaurant?\""]
             },
             electronics: {
-                prompts: [
-                    { title: "Diagnostic Explanation", text: "Explain to a client why a switch-mode power supply failed and what steps you took to fix it." }
-                ],
+                prompts: [{ title: "Diagnostic Explanation", text: "Explain to a client why a switch-mode power supply failed." }],
                 flashcards: [
-                    { term: "Switch-Mode Power Supply", def: "Electronic power supply with a switching regulator for high efficiency.", es: "Fuente conmutada (SMPS)" },
-                    { term: "DC Jack", def: "The power input connector soldered onto the laptop motherboard.", es: "Conector de corriente / Jack DC" }
+                    { term: "Power Supply", def: "Electronic power supply for high efficiency.", es: "Fuente conmutada", img: "https://api.iconify.design/lucide:cpu.svg?color=%2338bdf8" },
+                    { term: "Multimeter", def: "Measuring instrument for electrical values.", es: "Multímetro", img: "https://api.iconify.design/lucide:activity.svg?color=%2338bdf8" }
                 ],
-                quizzes: [
-                    { title: "Choose electronics expression:", desc: "When explaining a hardware diagnostic:", options: [{ text: "A) Let me probe this real quick and check the rails.", correct: true }, { text: "B) I am going to look at electricity very slowly.", correct: false }] }
-                ],
-                shadowTexts: ["\"I checked the rails and found a short to ground near the DC jack.\""]
+                quizzes: [{ title: "Choose electronics expression:", desc: "When diagnosing hardware:", options: [{ text: "A) Let me probe this real quick.", correct: true }, { text: "B) I am watching TV.", correct: false }] }],
+                shadowTexts: ["\"I checked the rails and found a short to ground.\""]
             },
             systems: {
-                prompts: [
-                    { title: "System Architecture", text: "Describe how you deployed a web inventory service using Node.js, PostgreSQL, and Render." }
-                ],
+                prompts: [{ title: "System Architecture", text: "Describe how you deployed a web inventory service." }],
                 flashcards: [
-                    { term: "Deployment", def: "Making a software application available for use on a server.", es: "Despliegue" },
-                    { term: "API Endpoint", def: "A specific URL where an API receives requests.", es: "Punto de acceso API" }
+                    { term: "Deployment", def: "Making an app available on a server.", es: "Despliegue", img: "https://api.iconify.design/lucide:server.svg?color=%2338bdf8" }
                 ],
-                quizzes: [
-                    { title: "Choose systems expression:", desc: "Best phrasing for deployment:", options: [{ text: "A) We successfully deployed the API endpoint to Render.", correct: true }, { text: "B) The code ran away.", correct: false }] }
-                ],
-                shadowTexts: ["\"We pushed our code and deployed the Node.js application to Render.\""]
-            },
-            accounting: {
-                prompts: [
-                    { title: "Financial Statement Review", text: "Explain quarterly balance sheet discrepancies and audit procedures to corporate stakeholders." }
-                ],
-                flashcards: [
-                    { term: "Balance Sheet", def: "Financial statement reporting assets, liabilities, and equity.", es: "Balance general" },
-                    { term: "Audit", def: "An official inspection of an organization's accounts.", es: "Auditoría" }
-                ],
-                quizzes: [
-                    { title: "Choose accounting expression:", desc: "When discussing financial reports:", options: [{ text: "A) We need to reconcile the ledger before the audit.", correct: true }, { text: "B) All money disappeared into a hat.", correct: false }] }
-                ],
-                shadowTexts: ["\"We audited the ledger and reconciled accounts receivable.\""]
-            },
-            law: {
-                prompts: [
-                    { title: "Contract Clause Analysis", text: "Discuss liability terms and conditions in a commercial agreement with a corporate client." }
-                ],
-                flashcards: [
-                    { term: "Liability", def: "The state of being legally responsible for something.", es: "Responsabilidad legal" },
-                    { term: "Breach of Contract", def: "An act of breaking terms set out in a contract.", es: "Incumplimiento" }
-                ],
-                quizzes: [
-                    { title: "Choose legal expression:", desc: "When advising a client regarding terms:", options: [{ text: "A) We must review liability clauses to avoid breach of contract.", correct: true }, { text: "B) You can break any promise.", correct: false }] }
-                ],
-                shadowTexts: ["\"We analyzed the agreement to limit client liability.\""]
-            },
-            medicine: {
-                prompts: [
-                    { title: "Patient Consultation", text: "Describe patient symptoms, diagnostic test results, and prescribed treatment plan." }
-                ],
-                flashcards: [
-                    { term: "Diagnosis", def: "The identification of the nature of an illness by examination.", es: "Diagnóstico médico" },
-                    { term: "Vitals", def: "Essential body functions measured to assess health.", es: "Signos vitales" }
-                ],
-                quizzes: [
-                    { title: "Choose medical expression:", desc: "When discussing patient evaluation:", options: [{ text: "A) Let us check the patient's vitals and lab results.", correct: true }, { text: "B) The patient is sleeping forever.", correct: false }] }
-                ],
-                shadowTexts: ["\"We evaluated the patient's vitals and reviewed the symptoms.\""]
-            },
-            mechanics: {
-                prompts: [
-                    { title: "Engine Troubleshooting", text: "Explain engine misfire diagnosis, fuel injector testing, and repair steps to a vehicle owner." }
-                ],
-                flashcards: [
-                    { term: "Fuel Injector", def: "A nozzle that injects fuel into engine cylinders.", es: "Inyector de combustible" },
-                    { term: "Misfire", def: "Failure of fuel-air mixture to ignite properly.", es: "Falla de encendido" }
-                ],
-                quizzes: [
-                    { title: "Choose mechanics expression:", desc: "When explaining an engine issue:", options: [{ text: "A) We detected a cylinder misfire and need to test fuel injectors.", correct: true }, { text: "B) The car is taking a nap.", correct: false }] }
-                ],
-                shadowTexts: ["\"We diagnosed an engine misfire and tested the fuel injectors.\""]
+                quizzes: [{ title: "Choose systems expression:", desc: "Best phrasing:", options: [{ text: "A) We successfully deployed the API.", correct: true }] }],
+                shadowTexts: ["\"We pushed our code to Render.\""]
             },
             gamedev: {
-                prompts: [
-                    { title: "Game Mechanics", text: "Explain core mechanics of your 2D platformer TrashCalypsis in Godot 4." }
-                ],
+                prompts: [{ title: "Game Mechanics", text: "Explain core mechanics of your 2D platformer." }],
                 flashcards: [
-                    { term: "Sprite", def: "A two-dimensional bitmap integrated into a scene.", es: "Sprite / Gráfico 2D" },
-                    { term: "Collision Box", def: "An invisible boundary used for collision detection.", es: "Caja de colisión" }
+                    { term: "Sprite", def: "A two-dimensional bitmap graphic.", es: "Sprite 2D", img: "https://api.iconify.design/lucide:image.svg?color=%2338bdf8" }
                 ],
-                quizzes: [
-                    { title: "Choose gamedev expression:", desc: "Best phrasing for performance in Godot:", options: [{ text: "A) We need to optimize the game loop in Godot 4.", correct: true }, { text: "B) The pixels are sleeping.", correct: false }] }
-                ],
-                shadowTexts: ["\"In Godot 4, we scripted player movement for TrashCalypsis.\""]
+                quizzes: [{ title: "Choose gamedev expression:", desc: "Performance in Godot:", options: [{ text: "A) Optimize game loop.", correct: true }] }],
+                shadowTexts: ["\"In Godot 4, we scripted player movement.\""]
             },
             music: {
-                prompts: [
-                    { title: "Bass Performance", text: "Describe your favorite bass line to play live with your band." }
-                ],
+                prompts: [{ title: "Bass Performance", text: "Describe your favorite bass line to play live." }],
                 flashcards: [
-                    { term: "Bass Line", def: "A sequence of low-frequency notes supporting rhythm.", es: "Línea de bajo" },
-                    { term: "In-Ear Monitor", def: "Device worn by musicians for live performance monitoring.", es: "Monitoreo intraauricular" }
+                    { term: "Bass Line", def: "Sequence of low-frequency notes.", es: "Línea de bajo", img: "https://api.iconify.design/lucide:music.svg?color=%2338bdf8" }
                 ],
-                quizzes: [
-                    { title: "Choose music expression:", desc: "Best phrasing before a show:", options: [{ text: "A) Let us check in-ear monitors and rehearse the bass line.", correct: true }, { text: "B) Let us sleep during the concert.", correct: false }] }
-                ],
-                shadowTexts: ["\"During live band rehearsals, I plug in my electric bass.\""]
+                quizzes: [{ title: "Choose music expression:", desc: "Before a show:", options: [{ text: "A) Check in-ear monitors.", correct: true }] }],
+                shadowTexts: ["\"I plug in my electric bass.\""]
             }
         };
 
         let currentCategory = appState.selectedFocus || 'beginner';
         let currentCard = 0;
 
-        function setProfile(title, categoryKey) {
+        function saveUserProfileAndStart(title, categoryKey) {
+            const nameInput = document.getElementById('user-name-input').value.trim();
+            appState.userName = nameInput || 'Learner';
             appState.selectedFocus = categoryKey;
             appState.focusTitle = title;
             localStorage.setItem('english_pro_state', JSON.stringify(appState));
@@ -603,16 +562,18 @@
             
             currentCategory = categoryKey;
             currentCard = 0;
+            setDynamicTimeBanner();
             loadDailyContent();
         }
 
         function checkInitialFocus() {
-            if (!appState.selectedFocus) {
+            if (!appState.selectedFocus || !appState.userName) {
                 document.getElementById('profile-modal').classList.remove('hidden');
             } else {
                 document.getElementById('profile-modal').classList.add('hidden');
                 document.getElementById('header-badge').innerText = appState.focusTitle || 'Beginner';
                 currentCategory = appState.selectedFocus;
+                setDynamicTimeBanner();
                 loadDailyContent();
             }
         }
@@ -664,6 +625,7 @@
             document.getElementById('flash-term').innerText = card.term;
             document.getElementById('flash-def').innerText = card.def;
             document.getElementById('flash-es').innerText = card.es;
+            document.getElementById('flash-img').src = card.img || "https://api.iconify.design/lucide:book-open.svg?color=%2338bdf8";
         }
 
         function nextCard() {
@@ -777,7 +739,6 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        setDynamicTimeBanner();
         updateUIStats();
         checkInitialFocus();
     </script>
