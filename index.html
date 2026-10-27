@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Learning Pro - Interactive Edition</title>
+    <title>English Learning Pro - Professional Edition</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -50,13 +50,6 @@
         .card-back {
             transform: rotateY(180deg);
         }
-        @keyframes bounce-slow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-        .animate-bounce-slow {
-            animation: bounce-slow 3s ease-in-out infinite;
-        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
@@ -72,7 +65,7 @@
                     <div>
                         <h1 class="font-bold text-base sm:text-lg text-slate-100 flex items-center gap-2">
                             English Pro
-                            <span class="text-xs font-medium bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2 py-0.5 rounded-full" id="header-badge">Beginner</span>
+                            <span class="text-xs font-medium bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2 py-0.5 rounded-full" id="header-badge">Focus</span>
                         </h1>
                     </div>
                 </div>
@@ -99,39 +92,17 @@
     <!-- MAIN CONTENT -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow">
         
-        <!-- Welcome Banner & Interactive Pet Container -->
+        <!-- Welcome Banner & Session Progress -->
         <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-slate-700/60 rounded-2xl p-5 sm:p-6 mb-6 shadow-xl relative overflow-hidden">
             <div class="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                
-                <!-- Welcome Text & Mascot Bubble -->
-                <div class="flex items-start gap-4">
-                    <!-- Interactive Mascot (Animated SVG Owl / Buddy) -->
-                    <div onclick="interactWithPet()" class="cursor-pointer group flex-shrink-0 animate-bounce-slow title-tooltip relative" title="¡Haz clic en mí para hablar!">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-sky-400 to-emerald-400 rounded-2xl p-1 shadow-lg shadow-sky-500/20 flex items-center justify-center transition group-hover:scale-105">
-                            <div class="w-full h-full bg-slate-950 rounded-xl flex items-center justify-center text-sky-400">
-                                <!-- Cute Custom SVG Owl Mascot -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 2a8 8 0 0 0-8 8v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a8 8 0 0 0-8-8z"></path>
-                                    <circle cx="9" cy="10" r="2" fill="currentColor"></circle>
-                                    <circle cx="15" cy="10" r="2" fill="currentColor"></circle>
-                                    <path d="M12 14v2"></path>
-                                    <path d="M9 18h6"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <span id="time-badge" class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Session Active</span>
-                        <h2 class="text-xl sm:text-2xl font-bold text-white mt-2" id="welcome-title">Welcome back!</h2>
-                        <!-- Mascot Speech Bubble -->
-                        <p class="text-slate-300 mt-1.5 text-xs sm:text-sm bg-slate-950/70 border border-slate-800 p-3 rounded-xl" id="pet-message">
-                            "Hi there! Click on me anytime for a motivation boost or tip!"
-                        </p>
-                    </div>
+                <div>
+                    <span id="time-badge" class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Session Active</span>
+                    <h2 class="text-xl sm:text-2xl font-bold text-white mt-3" id="welcome-title">Welcome back!</h2>
+                    <p class="text-slate-300 mt-2 max-w-xl text-xs sm:text-sm" id="welcome-desc">
+                        Complete all 4 session modules with real voice verification to log your daily progress.
+                    </p>
                 </div>
-
                 <!-- Session Progress Bar -->
                 <div class="bg-slate-950/80 border border-slate-800 p-4 rounded-xl w-full md:w-72">
                     <div class="flex justify-between text-xs mb-1.5">
@@ -228,7 +199,6 @@
                         <div class="card-front absolute w-full h-full bg-slate-900 border border-slate-800 rounded-2xl p-5 flex flex-col items-center justify-between shadow-xl">
                             <span class="text-xs font-semibold text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full" id="flash-badge">Term #1</span>
                             
-                            <!-- Flashcard Visual Image Container -->
                             <div class="w-24 h-24 bg-slate-950 rounded-2xl border border-slate-800 flex items-center justify-center p-3 overflow-hidden shadow-inner my-2">
                                 <img id="flash-img" src="" alt="Visual Aid" class="w-full h-full object-contain filter drop-shadow">
                             </div>
@@ -293,7 +263,7 @@
 
     </main>
 
-    <!-- INITIAL / MANDATORY PROFILE MODAL (Asks Name & Focus) -->
+    <!-- INITIAL / MANDATORY PROFILE MODAL (All Professions & Beginner options included) -->
     <div id="profile-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center hidden">
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 max-w-lg w-full mx-4 shadow-2xl max-h-[90vh] overflow-y-auto">
             <div class="text-center mb-6">
@@ -329,6 +299,22 @@
                     <span>🖥️ Systems Engineering & IT</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
+                <button onclick="saveUserProfileAndStart('Accounting', 'accounting')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>📊 Accounting & Finance</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                </button>
+                <button onclick="saveUserProfileAndStart('Law & Legal', 'law')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>⚖️ Law & Legal Services</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                </button>
+                <button onclick="saveUserProfileAndStart('Healthcare', 'medicine')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>🩺 Medicine & Healthcare</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                </button>
+                <button onclick="saveUserProfileAndStart('Automotive', 'mechanics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>🔧 Automotive Mechanics</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                </button>
                 <button onclick="saveUserProfileAndStart('Game Dev', 'gamedev')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🎮 Game Dev (Godot / 2D)</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
@@ -343,7 +329,7 @@
 
     <!-- FOOTER -->
     <footer class="border-t border-slate-800 bg-slate-900/50 py-4 text-center text-xs text-slate-500">
-        English Learning Pro &copy; 2026 &bull; Interactive Edition
+        English Learning Pro &copy; 2026 &bull; Professional Edition
     </footer>
 
     <!-- SCRIPTS -->
@@ -359,22 +345,6 @@
             selectedFocus: null,
             focusTitle: null
         };
-
-        // Interactive Pet phrases
-        const petQuotes = [
-            "You are doing amazing today!",
-            "Consistent practice leads to fluency!",
-            "Never give up, you've got this!",
-            "Every new word makes you stronger!",
-            "Let's crush today's goals together!"
-        ];
-
-        function interactWithPet() {
-            const bubble = document.getElementById('pet-message');
-            const randomQuote = petQuotes[Math.floor(Math.random() * petQuotes.length)];
-            const nameGreet = appState.userName ? `${appState.userName}, ` : '';
-            bubble.innerText = `"${nameGreet}${randomQuote}"`;
-        }
 
         function setDynamicTimeBanner() {
             const hour = new Date().getHours();
@@ -490,17 +460,13 @@
 
         const profileData = {
             beginner: {
-                prompts: [
-                    { title: "Personal Introduction", text: "Say your name, where you are from, and your age in simple English." }
-                ],
+                prompts: [{ title: "Personal Introduction", text: "Say your name, where you are from, and your age in simple English." }],
                 flashcards: [
                     { term: "Hello", def: "A greeting used when meeting someone.", es: "Hola", img: "https://api.iconify.design/lucide:hand.svg?color=%2338bdf8" },
                     { term: "Thank you", def: "An expression of gratitude.", es: "Gracias", img: "https://api.iconify.design/lucide:heart.svg?color=%2338bdf8" },
                     { term: "Water", def: "Clear liquid essential for life.", es: "Agua", img: "https://api.iconify.design/lucide:droplet.svg?color=%2338bdf8" }
                 ],
-                quizzes: [
-                    { title: "Choose the correct pronoun:", desc: "Which pronoun refers to yourself?", options: [{ text: "A) He", correct: false }, { text: "B) I", correct: true }] }
-                ],
+                quizzes: [{ title: "Choose pronoun:", desc: "Which pronoun refers to yourself?", options: [{ text: "A) He", correct: false }, { text: "B) I", correct: true }] }],
                 shadowTexts: ["\"Hello, my name is Kevin and I am learning English.\""]
             },
             general: {
@@ -509,7 +475,7 @@
                     { term: "Airport", def: "A complex of runways and buildings for aviation travel.", es: "Aeropuerto", img: "https://api.iconify.design/lucide:plane.svg?color=%2338bdf8" },
                     { term: "Restaurant", def: "A place where people sit and eat meals.", es: "Restaurante", img: "https://api.iconify.design/lucide:utensils.svg?color=%2338bdf8" }
                 ],
-                quizzes: [{ title: "Choose travel expression:", desc: "When asking for help:", options: [{ text: "A) Where is the exit please?", correct: true }, { text: "B) I am a computer.", correct: false }] }],
+                quizzes: [{ title: "Choose travel expression:", desc: "When asking for help:", options: [{ text: "A) Where is the exit please?", correct: true }] }],
                 shadowTexts: ["\"Excuse me, can you help me find the nearest restaurant?\""]
             },
             electronics: {
@@ -518,7 +484,7 @@
                     { term: "Power Supply", def: "Electronic power supply for high efficiency.", es: "Fuente conmutada", img: "https://api.iconify.design/lucide:cpu.svg?color=%2338bdf8" },
                     { term: "Multimeter", def: "Measuring instrument for electrical values.", es: "Multímetro", img: "https://api.iconify.design/lucide:activity.svg?color=%2338bdf8" }
                 ],
-                quizzes: [{ title: "Choose electronics expression:", desc: "When diagnosing hardware:", options: [{ text: "A) Let me probe this real quick.", correct: true }, { text: "B) I am watching TV.", correct: false }] }],
+                quizzes: [{ title: "Choose electronics expression:", desc: "When diagnosing hardware:", options: [{ text: "A) Let me probe this real quick.", correct: true }] }],
                 shadowTexts: ["\"I checked the rails and found a short to ground.\""]
             },
             systems: {
@@ -528,6 +494,38 @@
                 ],
                 quizzes: [{ title: "Choose systems expression:", desc: "Best phrasing:", options: [{ text: "A) We successfully deployed the API.", correct: true }] }],
                 shadowTexts: ["\"We pushed our code to Render.\""]
+            },
+            accounting: {
+                prompts: [{ title: "Financial Statement Review", text: "Explain quarterly balance sheet discrepancies and audit procedures." }],
+                flashcards: [
+                    { term: "Balance Sheet", def: "Financial statement reporting assets and liabilities.", es: "Balance general", img: "https://api.iconify.design/lucide:file-text.svg?color=%2338bdf8" }
+                ],
+                quizzes: [{ title: "Choose accounting expression:", desc: "When discussing financial reports:", options: [{ text: "A) We need to reconcile the ledger.", correct: true }] }],
+                shadowTexts: ["\"We audited the ledger and reconciled accounts.\""]
+            },
+            law: {
+                prompts: [{ title: "Contract Clause Analysis", text: "Discuss liability terms in a commercial agreement." }],
+                flashcards: [
+                    { term: "Liability", def: "Being legally responsible for something.", es: "Responsabilidad legal", img: "https://api.iconify.design/lucide:scale.svg?color=%2338bdf8" }
+                ],
+                quizzes: [{ title: "Choose legal expression:", desc: "When advising a client:", options: [{ text: "A) We must review liability clauses.", correct: true }] }],
+                shadowTexts: ["\"We analyzed the agreement to limit liability.\""]
+            },
+            medicine: {
+                prompts: [{ title: "Patient Consultation", text: "Describe patient symptoms and treatment plan." }],
+                flashcards: [
+                    { term: "Diagnosis", def: "Identification of an illness.", es: "Diagnóstico", img: "https://api.iconify.design/lucide:activity.svg?color=%2338bdf8" }
+                ],
+                quizzes: [{ title: "Choose medical expression:", desc: "When evaluating patient:", options: [{ text: "A) Let us check the patient's vitals.", correct: true }] }],
+                shadowTexts: ["\"We evaluated the patient's vitals.\""]
+            },
+            mechanics: {
+                prompts: [{ title: "Engine Troubleshooting", text: "Explain engine misfire diagnosis and repair steps." }],
+                flashcards: [
+                    { term: "Fuel Injector", def: "Nozzle that injects fuel into cylinders.", es: "Inyector", img: "https://api.iconify.design/lucide:settings.svg?color=%2338bdf8" }
+                ],
+                quizzes: [{ title: "Choose mechanics expression:", desc: "When explaining engine issue:", options: [{ text: "A) We detected a cylinder misfire.", correct: true }] }],
+                shadowTexts: ["\"We diagnosed an engine misfire.\""]
             },
             gamedev: {
                 prompts: [{ title: "Game Mechanics", text: "Explain core mechanics of your 2D platformer." }],
