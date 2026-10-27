@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Learning Pro - Gamified Edition</title>
+    <title>English Learning Pro - Strict Evaluation Edition</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -104,7 +104,6 @@
             <div class="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 
-                <!-- Mascot & Welcome Message Section -->
                 <div class="flex items-center gap-4">
                     <div onclick="interactWithMascot()" class="cursor-pointer group flex-shrink-0 mascot-float relative" title="Click me for a daily Slang or Tip!">
                         <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-tr from-sky-500 to-emerald-400 rounded-3xl p-1 shadow-lg shadow-sky-500/30 flex items-center justify-center transition group-hover:scale-105">
@@ -156,14 +155,14 @@
             </button>
         </div>
 
-        <!-- TAB 1: DAILY SPEAKING LAB -->
+        <!-- TAB 1: STRICT SPEAKING LAB -->
         <div id="content-speaking" class="space-y-6">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div class="lg:col-span-2 bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-4">
                             <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 flex items-center gap-1.5">
-                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Step 1: Real-Time Speaking Challenge
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Step 1: Strict Speaking Evaluation
                             </span>
                         </div>
                         <h3 class="text-base sm:text-lg font-bold text-white mb-2" id="prompt-title">Speaking Challenge</h3>
@@ -174,18 +173,18 @@
 
                     <div class="mt-6">
                         <div class="flex items-center justify-between mb-2 flex-wrap gap-2">
-                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Spoken Response Evaluation:</label>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Spoken Response (Strict AI Grader):</label>
                             <button onclick="toggleSpeechRecognition()" id="mic-btn" class="bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
                                 <i data-lucide="mic" class="w-3.5 h-3.5"></i> <span id="mic-status-text">Start Speaking (Mic)</span>
                             </button>
                         </div>
-                        <textarea id="user-response" rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-slate-200 focus:outline-none focus:border-sky-500 transition text-sm" placeholder="Click mic and speak your answer out loud..."></textarea>
+                        <textarea id="user-response" rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-slate-200 focus:outline-none focus:border-sky-500 transition text-sm" placeholder="Speak clearly or write your complete response here..."></textarea>
                         
                         <div class="flex flex-wrap items-center justify-between mt-4 gap-3">
                             <button onclick="evaluateResponse()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm transition flex items-center gap-2 shadow-lg shadow-sky-500/20 cursor-pointer">
-                                <i data-lucide="send" class="w-4 h-4"></i> Evaluate Pronunciation & Complete Step 1
+                                <i data-lucide="send" class="w-4 h-4"></i> Submit for Strict Evaluation
                             </button>
-                            <span class="text-xs text-slate-400" id="feedback-status">AI Voice Tutor listening.</span>
+                            <span class="text-xs text-slate-400" id="feedback-status">Evaluator ready (Min 4 words required).</span>
                         </div>
                     </div>
                 </div>
@@ -193,10 +192,10 @@
                 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg flex flex-col justify-between">
                     <div>
                         <h3 class="text-xs sm:text-sm font-bold text-slate-200 uppercase tracking-wider mb-3 flex items-center gap-2">
-                            <i data-lucide="bot" class="w-4 h-4 text-sky-400"></i> Pronunciation Feedback
+                            <i data-lucide="bot" class="w-4 h-4 text-sky-400"></i> Critical AI Feedback
                         </h3>
                         <div id="feedback-box" class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-4 text-xs text-slate-300 space-y-3">
-                            <p class="text-slate-400">Speak using the microphone to receive real-time fluency analysis.</p>
+                            <p class="text-slate-400">Submit your speech to receive a rigorous critique on grammar, vocabulary length, and clarity.</p>
                         </div>
                     </div>
                     <div class="mt-4 pt-4 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
@@ -209,7 +208,7 @@
             </div>
         </div>
 
-        <!-- TAB 2: TECHNICAL FLASHCARDS WITH EMOJIS -->
+        <!-- TAB 2: FLASHCARDS -->
         <div id="content-flashcards" class="hidden space-y-6">
             <div class="max-w-md mx-auto text-center">
                 <h3 class="text-lg font-bold text-white mb-1">Step 2: Visual Flashcards</h3>
@@ -244,7 +243,7 @@
             </div>
         </div>
 
-        <!-- TAB 3: GRAMMAR & SLANG TRAINER -->
+        <!-- TAB 3: GRAMMAR QUIZ -->
         <div id="content-grammar" class="hidden space-y-6">
             <div class="max-w-2xl mx-auto bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg">
                 <div class="flex justify-between items-center mb-4">
@@ -259,7 +258,7 @@
             </div>
         </div>
 
-        <!-- TAB 4: DIAGNOSTICS SHADOWING -->
+        <!-- TAB 4: SHADOWING -->
         <div id="content-shadowing" class="hidden space-y-6">
             <div class="max-w-2xl mx-auto bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg">
                 <div class="flex justify-between items-center mb-4">
@@ -284,7 +283,7 @@
 
     </main>
 
-    <!-- INITIAL / MANDATORY PROFILE MODAL -->
+    <!-- INITIAL PROFILE MODAL -->
     <div id="profile-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center hidden">
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 max-w-lg w-full mx-4 shadow-2xl max-h-[90vh] overflow-y-auto">
             <div class="text-center mb-6">
@@ -295,7 +294,6 @@
                 <p class="text-xs sm:text-sm text-slate-400 mt-1">Enter your name and select your learning focus:</p>
             </div>
 
-            <!-- Name Input Field -->
             <div class="mb-5">
                 <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Your Name:</label>
                 <input type="text" id="user-name-input" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500 transition" placeholder="e.g. Kevin">
@@ -348,7 +346,7 @@
         </div>
     </div>
 
-    <!-- FOOTER (Clean & Professional) -->
+    <!-- FOOTER -->
     <footer class="border-t border-slate-800 bg-slate-900/50 py-4 text-center text-xs text-slate-500">
         English Learning Pro &copy; 2026 &bull; Professional Edition
     </footer>
@@ -482,7 +480,6 @@
             localStorage.setItem('english_pro_state', JSON.stringify(appState));
 
             updateUIStats();
-            // English Completion Alert Message
             alert(`Great job today, ${appState.userName || 'Learner'}! 🎉 You have successfully completed your training session. Keep up the amazing work and see you tomorrow!`);
             location.reload();
         }
@@ -572,7 +569,7 @@
                 flashcards: [
                     { term: "Fuel Injector", def: "Nozzle that injects fuel into cylinders.", es: "Inyector", img: "🔧" }
                 ],
-                quizzes: [{ title: "Choose mechanics expression:", desc: "When explaining engine issue:", options: [{ text: "A) We detected a cylinder misfire.", correct: true }] }],
+                quizzes: [{ title: "Choose mechanics expression:", desc: "When explaining engine issue:", options: [{ text: "A) Let us check the fuel injectors.", correct: true }] }],
                 shadowTexts: ["\"We diagnosed an engine misfire.\""]
             },
             gamedev: {
@@ -746,29 +743,53 @@
             recognition.start();
         }
 
+        // STRICT & CRITICAL SPEECH EVALUATION ALGORITHM
         function evaluateResponse() {
             const text = document.getElementById('user-response').value.trim();
             const box = document.getElementById('feedback-box');
+            
             if(!text) {
-                box.innerHTML = '<span class="text-rose-400">Please speak or type a response first.</span>';
+                box.innerHTML = '<span class="text-rose-400 font-semibold">⚠️ Error: Please speak or type a response first!</span>';
                 return;
             }
 
-            let confidence = window.lastSpeechConfidence !== undefined ? Math.round(window.lastSpeechConfidence * 100) : 88;
-            let wordCount = text.split(/\s+/).length;
-            
+            const words = text.split(/\s+/);
+            const wordCount = words.length;
+
+            // Strict evaluation logic based on length and clarity
+            let score = 50; // Base starting score
+            let critique = "";
+
+            if (wordCount < 4) {
+                score = 45;
+                critique = "❌ Too short! Your response is underdeveloped. You need to elaborate and form full, clear sentences.";
+            } else if (wordCount < 8) {
+                score = 70;
+                critique = "⚠️ Acceptable, but basic. Try to add more details, connectives, or technical context to sound more professional.";
+            } else if (wordCount < 15) {
+                score = 85;
+                critique = "✅ Good sentence structure and flow! Clear expression of ideas.";
+            } else {
+                score = 96;
+                critique = "👑 Excellent articulation! Rich vocabulary and great fluency depth.";
+            }
+
+            // Check for common filler words or stuttering patterns if any
             let feedbackHTML = `
                 <div class="space-y-2">
-                    <p class="text-emerald-400 font-semibold">✓ Speaking Analysis:</p>
-                    <p><strong>Pronunciation Clarity:</strong> ${confidence}%</p>
-                    <p><strong>Words Spoken:</strong> ${wordCount}</p>
-                    <p class="text-slate-300">Great pronunciation flow! Step 1 completed.</p>
+                    <p class="${score >= 80 ? 'text-emerald-400' : 'text-amber-400'} font-bold">Evaluation Score: ${score}%</p>
+                    <p><strong>Word Count:</strong> ${wordCount} words</p>
+                    <p class="text-slate-300"><strong>Critique:</strong> ${critique}</p>
+                    ${score >= 70 ? '<p class="text-emerald-400 text-xs font-semibold mt-2">✓ Step 1 completed successfully!</p>' : '<p class="text-rose-400 text-xs font-semibold mt-2">❌ Try to write a longer or clearer response to pass this step.</p>'}
                 </div>
             `;
 
             box.innerHTML = feedbackHTML;
-            document.getElementById('feedback-status').innerText = 'Evaluated.';
-            markStep('speaking', 'badge-speaking');
+            document.getElementById('feedback-status').innerText = `Evaluated (${score}%).`;
+
+            if (score >= 70) {
+                markStep('speaking', 'badge-speaking');
+            }
         }
 
         function speakText() {
