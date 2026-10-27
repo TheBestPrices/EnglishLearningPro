@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Learning Pro - Professional & Technical Edition</title>
+    <title>English Learning Pro - Professional & Beginner Edition</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -60,12 +60,12 @@
             <div class="flex items-center justify-between w-full md:w-auto">
                 <div class="flex items-center space-x-3">
                     <div class="bg-gradient-to-tr from-sky-500 to-emerald-500 p-2 rounded-xl text-slate-950 font-bold shadow-lg shadow-sky-500/20">
-                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                        <i data-lucide="book-open" class="w-5 h-5"></i>
                     </div>
                     <div>
                         <h1 class="font-bold text-base sm:text-lg text-slate-100 flex items-center gap-2">
                             English Pro
-                            <span class="text-xs font-medium bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2 py-0.5 rounded-full" id="header-badge">Electronics</span>
+                            <span class="text-xs font-medium bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2 py-0.5 rounded-full" id="header-badge">Beginner</span>
                         </h1>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
             <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <span class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Daily Rotating Session Active</span>
-                    <h2 class="text-xl sm:text-3xl font-bold text-white mt-3" id="welcome-title">Technical English Lab</h2>
+                    <h2 class="text-xl sm:text-3xl font-bold text-white mt-3" id="welcome-title">Daily English Training Lab</h2>
                     <p class="text-slate-300 mt-2 max-w-xl text-xs sm:text-sm" id="welcome-desc">
                         Complete all 4 session modules with real voice verification to log your daily progress.
                     </p>
@@ -145,9 +145,9 @@
                                 <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Step 1: Real-Time Speaking Challenge
                             </span>
                         </div>
-                        <h3 class="text-base sm:text-lg font-bold text-white mb-2" id="prompt-title">Diagnostic Explanation</h3>
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-2" id="prompt-title">Speaking Challenge</h3>
                         <p class="text-slate-300 text-sm sm:text-base italic bg-slate-950/60 p-4 rounded-xl border border-slate-800/80" id="prompt-text">
-                            "Explain to a client why a switch-mode power supply failed and what steps you took to fix it."
+                            "Introduce yourself, tell where you live, and what you like to do."
                         </p>
                     </div>
 
@@ -191,20 +191,20 @@
         <!-- TAB 2: TECHNICAL FLASHCARDS -->
         <div id="content-flashcards" class="hidden space-y-6">
             <div class="max-w-md mx-auto text-center">
-                <h3 class="text-lg font-bold text-white mb-1">Step 2: Technical Flashcards</h3>
-                <p class="text-xs text-slate-400 mb-6">Review rotating flashcards to expand your professional terminology.</p>
+                <h3 class="text-lg font-bold text-white mb-1">Step 2: Vocabulary & Flashcards</h3>
+                <p class="text-xs text-slate-400 mb-6">Review rotating flashcards to expand your knowledge.</p>
                 
                 <div class="card-flip h-64 w-full cursor-pointer mb-6" onclick="this.classList.toggle('flipped')">
                     <div class="card-inner relative w-full h-full text-center">
                         <div class="card-front absolute w-full h-full bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col items-center justify-center shadow-xl">
                             <span class="text-xs font-semibold text-sky-400 mb-3 bg-sky-500/10 px-3 py-1 rounded-full" id="flash-badge">Term #1</span>
-                            <h4 class="text-xl sm:text-2xl font-bold text-white mb-2" id="flash-term">Switch-Mode Power Supply</h4>
+                            <h4 class="text-xl sm:text-2xl font-bold text-white mb-2" id="flash-term">Hello / Greetings</h4>
                             <span class="text-xs text-slate-400">(Click to flip)</span>
                         </div>
                         <div class="card-back absolute w-full h-full bg-slate-900 border border-slate-700 rounded-2xl p-6 flex flex-col items-center justify-center shadow-xl">
                             <span class="text-xs font-semibold text-emerald-400 mb-3 bg-emerald-500/10 px-3 py-1 rounded-full">Definition</span>
-                            <p class="text-slate-200 text-xs sm:text-sm mb-3" id="flash-def">Electronic power supply that incorporates a switching regulator for high efficiency conversion.</p>
-                            <span class="text-xs font-mono text-sky-300 bg-slate-950 px-3 py-1 rounded-lg border border-slate-800" id="flash-es">Fuente de alimentación conmutada</span>
+                            <p class="text-slate-200 text-xs sm:text-sm mb-3" id="flash-def">Used to greet someone or start a conversation.</p>
+                            <span class="text-xs font-mono text-sky-300 bg-slate-950 px-3 py-1 rounded-lg border border-slate-800" id="flash-es">Hola / Saludos</span>
                         </div>
                     </div>
                 </div>
@@ -222,7 +222,7 @@
                 <div class="flex justify-between items-center mb-4">
                     <span class="text-xs font-semibold text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">Step 3: Daily Rotating Grammar Quiz</span>
                 </div>
-                <h3 class="text-base sm:text-lg font-bold text-white mb-4" id="quiz-title">Choose the correct professional expression:</h3>
+                <h3 class="text-base sm:text-lg font-bold text-white mb-4" id="quiz-title">Choose the correct option:</h3>
                 <p class="text-slate-300 text-xs sm:text-sm mb-6 bg-slate-950/60 p-4 rounded-xl border border-slate-800" id="quiz-desc">
                     Select the correct option to complete this step.
                 </p>
@@ -241,7 +241,7 @@
                 <p class="text-slate-300 text-xs sm:text-sm mb-6">Listen to the native audio sample and repeat out loud to complete the final step of your session.</p>
                 
                 <div class="bg-slate-950/80 p-4 sm:p-5 rounded-xl border border-slate-800 mb-6 space-y-3">
-                    <p class="text-xs sm:text-sm text-sky-300 font-mono" id="shadow-text">"I checked the rails and found a short to ground near the DC jack."</p>
+                    <p class="text-xs sm:text-sm text-sky-300 font-mono" id="shadow-text">"Hello, nice to meet you."</p>
                     <div class="flex items-center justify-between pt-2 border-t border-slate-800/80 flex-wrap gap-2">
                         <button onclick="speakShadowText()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition flex items-center gap-2 cursor-pointer">
                             <i data-lucide="volume-2" class="w-4 h-4"></i> Play Native Audio
@@ -256,48 +256,43 @@
 
     </main>
 
-    <!-- INITIAL / MANDATORY PROFILE MODAL (Forces selection on startup if not set) -->
-    <div id="profile-modal" class="fixed inset-0 bg-slate-950/9ogen backdrop-blur-md z-50 flex items-center justify-center">
+    <!-- INITIAL / MANDATORY PROFILE MODAL -->
+    <div id="profile-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center">
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 max-w-lg w-full mx-4 shadow-2xl max-h-[90vh] overflow-y-auto">
             <div class="text-center mb-6">
                 <div class="bg-gradient-to-tr from-sky-500 to-emerald-500 p-3 rounded-2xl text-slate-950 inline-block font-bold shadow-lg mb-3">
-                    <i data-lucide="cpu" class="w-8 h-8"></i>
+                    <i data-lucide="book-open" class="w-8 h-8"></i>
                 </div>
                 <h3 class="font-bold text-xl text-white">Welcome to English Pro</h3>
-                <p class="text-xs sm:text-sm text-slate-400 mt-1">Select your professional focus to lock in your daily training path:</p>
+                <p class="text-xs sm:text-sm text-slate-400 mt-1">Select your learning focus to lock in your daily training path:</p>
             </div>
             <div class="space-y-2.5 mb-6">
+                <!-- NEW BEGINNER & GENERAL FOCUS OPTIONS -->
+                <button onclick="setProfile('Absolute Beginner', 'beginner')" class="w-full text-left bg-emerald-950/40 hover:bg-emerald-900/40 border border-emerald-500/30 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>🌱 Absolute Beginner (Desde Cero)</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-400"></i>
+                </button>
+                <button onclick="setProfile('General & Travel', 'general')" class="w-full text-left bg-sky-950/40 hover:bg-sky-900/40 border border-sky-500/30 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>✈️ General & Travel English (Supervivencia)</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
+                </button>
+                <hr class="border-slate-800 my-2">
+                <!-- PROFESSIONAL FOCUS OPTIONS -->
                 <button onclick="setProfile('Electronics', 'electronics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>💻 Electronics & Hardware Repair</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
                 <button onclick="setProfile('Systems & IT', 'systems')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🖥️ Systems Engineering & IT</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
-                </button>
-                <button onclick="setProfile('Accounting', 'accounting')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>📊 Accounting & Finance</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
-                </button>
-                <button onclick="setProfile('Law & Legal', 'law')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>⚖️ Law & Legal Services</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
-                </button>
-                <button onclick="setProfile('Healthcare', 'medicine')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>🩺 Medicine & Healthcare</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
-                </button>
-                <button onclick="setProfile('Automotive', 'mechanics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>🔧 Automotive Mechanics</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
                 <button onclick="setProfile('Game Dev', 'gamedev')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🎮 Game Dev (Godot / 2D)</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
                 <button onclick="setProfile('Music', 'music')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
                     <span>🎸 Music & Live Band</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
                 </button>
             </div>
         </div>
@@ -305,7 +300,7 @@
 
     <!-- FOOTER -->
     <footer class="border-t border-slate-800 bg-slate-900/50 py-4 text-center text-xs text-slate-500">
-        English Learning Pro &copy; 2026 &bull; Professional Edition
+        English Learning Pro &copy; 2026 &bull; Professional & Beginner Edition
     </footer>
 
     <!-- SCRIPTS -->
@@ -371,7 +366,7 @@
             localStorage.setItem('english_pro_state', JSON.stringify(appState));
 
             updateUIStats();
-            alert("🎉 Night session successfully logged! Your streak and rank have increased.");
+            alert("🎉 Session successfully logged! Your streak and rank have increased.");
             location.reload();
         }
 
@@ -395,123 +390,93 @@
         }
 
         const profileData = {
+            beginner: {
+                prompts: [
+                    { title: "Personal Introduction", text: "Say your name, where you are from, and your age in simple English." },
+                    { title: "Daily Routines", text: "Say three simple things you do every morning like drink coffee or water." }
+                ],
+                flashcards: [
+                    { term: "Hello", def: "A greeting used when meeting someone.", es: "Hola" },
+                    { term: "Thank you", def: "An expression of gratitude.", es: "Gracias" },
+                    { term: "Please", def: "Used to polite requests.", es: "Por favor" },
+                    { term: "Water", def: "Clear liquid essential for life.", es: "Agua" },
+                    { term: "Friend", def: "A person whom one knows and with whom one has a bond.", es: "Amigo" }
+                ],
+                quizzes: [
+                    { title: "Choose the correct pronoun:", desc: "Which pronoun refers to yourself?", options: [{ text: "A) He", correct: false }, { text: "B) I", correct: true }, { text: "C) They", correct: false }] },
+                    { title: "Choose the correct greeting:", desc: "What do you say in the morning?", options: [{ text: "A) Good morning", correct: true }, { text: "B) Good night", correct: false }, { text: "C) Goodbye", correct: false }] }
+                ],
+                shadowTexts: [
+                    "\"Hello, my name is Kevin and I am learning English.\"",
+                    "\"Please give me a glass of water.\""
+                ]
+            },
+            general: {
+                prompts: [
+                    { title: "Travel & Directions", text: "Ask politely where the nearest train station or restaurant is located." },
+                    { title: "Ordering Food", text: "Explain what you want to order for dinner at a local restaurant." }
+                ],
+                flashcards: [
+                    { term: "Airport", def: "A complex of runways and buildings for the take-off and landing of civil aircraft.", es: "Aeropuerto" },
+                    { term: "Restaurant", def: "A place where people pay to sit and eat meals.", es: "Restaurante" },
+                    { term: "Ticket", def: "A official pass that allows you to travel or enter a place.", es: "Boleto / Ticket" },
+                    { term: "Hotel", def: "An establishment providing accommodation, meals, and other services for travelers.", es: "Hotel" }
+                ],
+                quizzes: [
+                    { title: "Choose the correct travel expression:", desc: "When asking for help at a store, what should you say?", options: [{ text: "A) Where is the exit please?", correct: true }, { text: "B) I am a computer.", correct: false }, { text: "C) Run away fast.", correct: false }] }
+                ],
+                shadowTexts: [
+                    "\"Excuse me, can you help me find the nearest restaurant?\""
+                ]
+            },
             electronics: {
                 prompts: [
                     { title: "Diagnostic Explanation", text: "Explain to a client why a switch-mode power supply failed and what steps you took to fix it." },
-                    { title: "TL431 Voltage Modification", text: "Describe how you calculated and soldered parallel SMD resistor networks on the TL431 reference circuit." },
-                    { title: "Inverter Board Repair", text: "Explain how you tested MOS-FET transistors and replaced blown fuses on an inverter control board." }
+                    { title: "TL431 Voltage Modification", text: "Describe how you calculated and soldered parallel SMD resistor networks on the TL431 reference circuit." }
                 ],
                 flashcards: [
                     { term: "Switch-Mode Power Supply", def: "Electronic power supply that incorporates a switching regulator for high efficiency conversion.", es: "Fuente conmutada (SMPS)" },
                     { term: "DC Jack", def: "The power input connector soldered onto the laptop motherboard.", es: "Conector de corriente / Jack DC" },
                     { term: "Short to Ground", def: "An abnormal low-resistance connection to the chassis or ground plane.", es: "Cortocircuito a tierra" },
-                    { term: "Multimeter", def: "An electronic measuring instrument that combines several measurement functions.", es: "Multímetro" },
-                    { term: "MOS-FET Transistor", def: "A semiconductor device used for switching and amplifying electronic signals.", es: "Transistor MOS-FET" },
-                    { term: "SMD Resistor", def: "Surface-mount device resistor used in compact electronic circuitry.", es: "Resistencia SMD" }
+                    { term: "Multimeter", def: "An electronic measuring instrument that combines several measurement functions.", es: "Multímetro" }
                 ],
                 quizzes: [
-                    { title: "Choose the correct electronics expression:", desc: "When explaining a hardware diagnostic to a coworker, what is the best natural expression?", options: [{ text: "A) I am going to look at electricity very slowly.", correct: false }, { text: "B) Let me probe this real quick and check the rails.", correct: true }, { text: "C) I will touch the components with my eyes.", correct: false }] },
-                    { title: "Choose the correct voltage adjustment phrasing:", desc: "When modifying feedback loops, what is correct?", options: [{ text: "A) We changed the resistors to drop output to 15V.", correct: true }, { text: "B) The voltage jumped into another dimension.", correct: false }, { text: "C) I yelled at the power supply until it worked.", correct: false }] }
+                    { title: "Choose the correct electronics expression:", desc: "When explaining a hardware diagnostic, what is best?", options: [{ text: "A) Let me probe this real quick and check the rails.", correct: true }, { text: "B) I am going to look at electricity very slowly.", correct: false }] }
                 ],
                 shadowTexts: [
-                    "\"I checked the rails and found a short to ground near the DC jack.\"",
-                    "\"We calculated the SMD resistor network to adjust output voltage safely.\""
+                    "\"I checked the rails and found a short to ground near the DC jack.\""
                 ]
             },
             systems: {
                 prompts: [{ title: "System Architecture", text: "Describe how you deployed a web inventory service using Node.js, PostgreSQL, and Render." }],
                 flashcards: [
-                    { term: "Deployment", def: "The process of making a software application available for use on a server or cloud platform.", es: "Despliegue / Publicación" },
-                    { term: "Version Control", def: "A system that records changes to a file or set of files over time (e.g., Git).", es: "Control de versiones" },
-                    { term: "API Endpoint", def: "A specific URL where an API receives requests for a resource.", es: "Punto de acceso API" },
-                    { term: "Database Schema", def: "The structure or organization of data in a database management system.", es: "Esquema de base de datos" }
+                    { term: "Deployment", def: "Making a software application available for use on a server.", es: "Despliegue" },
+                    { term: "API Endpoint", def: "A specific URL where an API receives requests.", es: "Punto de acceso API" }
                 ],
-                quizzes: [
-                    { title: "Choose the correct systems expression:", desc: "When explaining a backend deployment to a team lead, what is the best phrasing?", options: [{ text: "A) The code ran away to another computer.", correct: false }, { text: "B) We successfully deployed the API endpoint to Render.", correct: true }, { text: "C) I deleted the internet connection for safety.", correct: false }] }
-                ],
+                quizzes: [{ title: "Choose systems expression:", desc: "Best phrasing for deployment?", options: [{ text: "A) We successfully deployed the API endpoint to Render.", correct: true }, { text: "B) The code ran away.", correct: false }] }],
                 shadowTexts: ["\"We pushed our code and deployed the Node.js application to Render.\""]
             },
-            accounting: {
-                prompts: [{ title: "Financial Statement Review", text: "Explain quarterly balance sheet discrepancies and audit procedures to corporate stakeholders." }],
-                flashcards: [
-                    { term: "Balance Sheet", def: "A financial statement that reports a company's assets, liabilities, and equity.", es: "Balance general" },
-                    { term: "Accounts Receivable", def: "Money owed to a company by its debtors for goods or services delivered.", es: "Cuentas por cobrar" },
-                    { term: "Ledger", def: "A book or collection of accounts in which account transactions are recorded.", es: "Libro mayor" },
-                    { term: "Audit", def: "An official inspection of an organization's accounts, typically by an independent body.", es: "Auditoría" }
-                ],
-                quizzes: [
-                    { title: "Choose the correct accounting expression:", desc: "When discussing financial reports, what is the best professional phrasing?", options: [{ text: "A) All the money disappeared into a magical hat.", correct: false }, { text: "B) We need to reconcile the ledger before the audit.", correct: true }, { text: "C) Let us ignore the numbers until next year.", correct: false }] }
-                ],
-                shadowTexts: ["\"We audited the ledger and reconciled accounts receivable for the quarter.\""]
-            },
-            law: {
-                prompts: [{ title: "Contract Clause Analysis", text: "Discuss liability terms and conditions in a commercial agreement with a corporate client." }],
-                flashcards: [
-                    { term: "Liability", def: "The state of being legally responsible for something.", es: "Responsabilidad legal" },
-                    { term: "Breach of Contract", def: "An act of breaking the terms set out in a contract.", es: "Incumplimiento" },
-                    { term: "Settlement", def: "An official agreement intended to resolve a dispute or conflict.", es: "Acuerdo / Conciliación" },
-                    { term: "Litigation", def: "The process of taking legal action in court.", es: "Litigio" }
-                ],
-                quizzes: [
-                    { title: "Choose the correct legal phrasing:", desc: "When advising a client regarding commercial terms, what is the best professional expression?", options: [{ text: "A) You can break any promise you want.", correct: false }, { text: "B) We must review liability clauses to avoid breach of contract.", correct: true }, { text: "C) Let us forget about the legal paperwork.", correct: false }] }
-                ],
-                shadowTexts: ["\"We analyzed the agreement to limit client liability and prevent contract breach.\""]
-            },
-            medicine: {
-                prompts: [{ title: "Patient Consultation", text: "Describe patient symptoms, diagnostic test results, and prescribed treatment plan." }],
-                flashcards: [
-                    { term: "Diagnosis", def: "The identification of the nature of an illness by examination.", es: "Diagnóstico médico" },
-                    { term: "Prescription", def: "An instruction written by a medical practitioner.", es: "Receta médica" },
-                    { term: "Symptoms", def: "A physical or mental feature indicating disease.", es: "Síntomas" },
-                    { term: "Vitals", def: "Essential body functions measured to assess health.", es: "Signos vitales" }
-                ],
-                quizzes: [
-                    { title: "Choose the correct medical expression:", desc: "When discussing patient evaluation, what is the best professional phrasing?", options: [{ text: "A) The patient is sleeping forever.", correct: false }, { text: "B) Let us check the patient's vitals and lab results.", correct: true }, { text: "C) We do not need to check anything.", correct: false }] }
-                ],
-                shadowTexts: ["\"We evaluated the patient's vitals and reviewed the symptoms.\""]
-            },
-            mechanics: {
-                prompts: [{ title: "Engine Troubleshooting", text: "Explain engine misfire diagnosis, fuel injector testing, and repair steps to a vehicle owner." }],
-                flashcards: [
-                    { term: "Fuel Injector", def: "A nozzle that injects fuel into engine cylinders.", es: "Inyector de combustible" },
-                    { term: "Alternator", def: "An electrical generator that converts mechanical energy.", es: "Alternador" },
-                    { term: "Timing Belt", def: "A belt that synchronizes crankshaft and camshaft.", es: "Correa de tiempo" },
-                    { term: "Misfire", def: "Failure of fuel-air mixture to ignite properly.", es: "Falla de encendido" }
-                ],
-                quizzes: [
-                    { title: "Choose the correct mechanics phrasing:", desc: "When explaining an engine issue, what is the best natural expression?", options: [{ text: "A) The car is just taking a relaxing nap.", correct: false }, { text: "B) We detected a cylinder misfire and need to test fuel injectors.", correct: true }, { text: "C) Let us paint the steering wheel red.", correct: false }] }
-                ],
-                shadowTexts: ["\"We diagnosed an engine misfire and tested the fuel injectors.\""]
-            },
             gamedev: {
-                prompts: [{ title: "Game Mechanics", text: "Explain the core mechanics of your 2D action-platformer project TrashCalypsis in Godot 4." }],
+                prompts: [{ title: "Game Mechanics", text: "Explain core mechanics of your 2D platformer TrashCalypsis in Godot 4." }],
                 flashcards: [
-                    { term: "Game Loop", def: "The core program structure running continuously during gameplay.", es: "Bucle principal" },
                     { term: "Sprite", def: "A two-dimensional bitmap integrated into a scene.", es: "Sprite / Gráfico 2D" },
-                    { term: "Collision Box", def: "An invisible boundary used for collision detection.", es: "Caja de colisión" },
-                    { term: "Frame Rate", def: "Frequency at which frames appear on a display.", es: "Tasa de cuadros (FPS)" }
+                    { term: "Collision Box", def: "An invisible boundary used for collision detection.", es: "Caja de colisión" }
                 ],
-                quizzes: [
-                    { title: "Choose the correct game development expression:", desc: "When discussing performance in Godot 4, what is the best phrasing?", options: [{ text: "A) The pixels are sleeping in the computer.", correct: false }, { text: "B) We need to optimize the game loop in Godot 4.", correct: true }, { text: "C) Let us turn off the monitor.", correct: false }] }
-                ],
-                shadowTexts: ["\"In Godot 4, we scripted player movement and optimized collision boxes for TrashCalypsis.\""]
+                quizzes: [{ title: "Choose gamedev expression:", desc: "Best phrasing for performance in Godot?", options: [{ text: "A) We need to optimize the game loop in Godot 4.", correct: true }, { text: "B) The pixels are sleeping.", correct: false }] }],
+                shadowTexts: ["\"In Godot 4, we scripted player movement for TrashCalypsis.\""]
             },
             music: {
-                prompts: [{ title: "Bass Performance", text: "Describe your favorite bass line to play live with your band and why it stands out." }],
+                prompts: [{ title: "Bass Performance", text: "Describe your favorite bass line to play live with your band." }],
                 flashcards: [
                     { term: "Bass Line", def: "A sequence of low-frequency notes supporting rhythm.", es: "Línea de bajo" },
-                    { term: "In-Ear Monitor", def: "Device worn by musicians for live performance monitoring.", es: "Monitoreo intraauricular" },
-                    { term: "Fretboard", def: "The wooden strip on the neck of a string instrument.", es: "Diapasón" },
-                    { term: "Tempo", def: "The speed or pace of a piece of music.", es: "Tempo / Ritmo" }
+                    { term: "In-Ear Monitor", def: "Device worn by musicians for live performance monitoring.", es: "Monitoreo intraauricular" }
                 ],
-                quizzes: [
-                    { title: "Choose the correct music expression:", desc: "When talking to band members before a show, what is the best natural phrasing?", options: [{ text: "A) We should play instruments very quietly without sound.", correct: false }, { text: "B) Let us check in-ear monitors and rehearse the bass line.", correct: true }, { text: "C) Let us sleep during the concert.", correct: false }] }
-                ],
-                shadowTexts: ["\"During live band rehearsals, I plug in my electric bass and adjust my in-ear monitor.\""]
+                quizzes: [{ title: "Choose music expression:", desc: "Best phrasing before a show?", options: [{ text: "A) Let us check in-ear monitors and rehearse the bass line.", correct: true }, { text: "B) Let us sleep during the concert.", correct: false }] }],
+                shadowTexts: ["\"During live band rehearsals, I plug in my electric bass.\""]
             }
         };
 
-        let currentCategory = appState.selectedFocus || 'electronics';
+        let currentCategory = appState.selectedFocus || 'beginner';
         let currentCard = 0;
 
         function setProfile(title, categoryKey) {
@@ -527,20 +492,19 @@
             loadDailyContent();
         }
 
-        // Check startup focus
         function checkInitialFocus() {
             if (!appState.selectedFocus) {
                 document.getElementById('profile-modal').classList.remove('hidden');
             } else {
                 document.getElementById('profile-modal').classList.add('hidden');
-                document.getElementById('header-badge').innerText = appState.focusTitle || 'Electronics';
+                document.getElementById('header-badge').innerText = appState.focusTitle || 'Beginner';
                 currentCategory = appState.selectedFocus;
                 loadDailyContent();
             }
         }
 
         function loadDailyContent() {
-            const data = profileData[currentCategory] || profileData['electronics'];
+            const data = profileData[currentCategory] || profileData['beginner'];
             
             const promptIdx = getDailyIndex(data.prompts.length);
             document.getElementById('prompt-title').innerText = data.prompts[promptIdx].title;
@@ -579,7 +543,7 @@
         }
 
         function updateCard() {
-            const data = profileData[currentCategory] || profileData['electronics'];
+            const data = profileData[currentCategory] || profileData['beginner'];
             const cards = data.flashcards;
             const card = cards[currentCard];
             document.getElementById('flash-badge').innerText = `Term #${currentCard + 1} of ${cards.length}`;
@@ -589,7 +553,7 @@
         }
 
         function nextCard() {
-            const data = profileData[currentCategory] || profileData['electronics'];
+            const data = profileData[currentCategory] || profileData['beginner'];
             currentCard++;
             if (currentCard >= data.flashcards.length) {
                 currentCard = 0;
@@ -599,7 +563,7 @@
         }
 
         function prevCard() {
-            const data = profileData[currentCategory] || profileData['electronics'];
+            const data = profileData[currentCategory] || profileData['beginner'];
             currentCard = (currentCard - 1 + data.flashcards.length) % data.flashcards.length;
             updateCard();
         }
@@ -676,7 +640,7 @@
                     <p class="text-emerald-400 font-semibold">✓ Speaking Analysis:</p>
                     <p><strong>Pronunciation Clarity:</strong> ${confidence}%</p>
                     <p><strong>Words Spoken:</strong> ${wordCount}</p>
-                    <p class="text-slate-300">Great native flow and technical structure! Step 1 completed.</p>
+                    <p class="text-slate-300">Great pronunciation flow! Step 1 completed.</p>
                 </div>
             `;
 
