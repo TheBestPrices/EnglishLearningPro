@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Learning Pro - Professional & Technical Edition</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f8fafc;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+        .tab-btn.active {
+            border-bottom: 2px solid #38bdf8;
+            color: #38bdf8;
+            background-color: rgba(56, 189, 248, 0.08);
+        }
+        .card-flip {
+            perspective: 1000px;
+        }
+        .card-inner {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .card-flip.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            backface-visibility: hidden;
+        }
+        .card-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-gradient-to-tr from-sky-500 to-emerald-500 p-2 rounded-xl text-slate-950 font-bold shadow-lg shadow-sky-500/20">
+                    <i data-lucide="cpu" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg text-slate-100 flex items-center gap-2">
+                        English Learning Pro
+                        <span class="text-xs font-medium bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2.5 py-0.5 rounded-full" id="header-badge">Electronics & Hardware</span>
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="hidden md:flex items-center space-x-4 text-sm">
+                <div class="flex items-center space-x-2 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700/60">
+                    <i data-lucide="award" class="w-4 h-4 text-purple-400"></i>
+                    <span class="text-slate-300">Rank: <strong class="text-white" id="user-rank">Beginner</strong></span>
+                </div>
+                <div class="flex items-center space-x-2 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700/60">
+                    <i data-lucide="flame" class="w-4 h-4 text-orange-400"></i>
+                    <span class="text-slate-300">Streak: <strong class="text-white" id="streak-count">0 Days</strong></span>
+                </div>
+                <div class="flex items-center space-x-2 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700/60">
+                    <i data-lucide="book-open" class="w-4 h-4 text-emerald-400"></i>
+                    <span class="text-slate-300">Mastered: <strong class="text-white" id="terms-count">0</strong></span>
+                </div>
+            </div>
+
+            <!-- Profile / Focus Badge -->
+            <button onclick="toggleModal()" class="flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-3.5 py-1.5 rounded-xl border border-slate-700 transition cursor-pointer">
+                <i data-lucide="briefcase" class="w-4 h-4 text-sky-400"></i>
+                <span class="text-xs font-semibold" id="profile-label">Electronics & Hardware</span>
+                <i data-lucide="chevron-down" class="w-3 h-3 text-slate-400"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow">
+        
+        <!-- Welcome Banner & Session Progress -->
+        <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-slate-700/60 rounded-2xl p-6 mb-8 shadow-xl relative overflow-hidden">
+            <div class="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Night Session Active</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mt-3" id="welcome-title">Technical English Lab</h2>
+                    <p class="text-slate-300 mt-2 max-w-xl text-sm" id="welcome-desc">
+                        Complete all 4 session modules to log your daily progress and rank up.
+                    </p>
+                </div>
+                <!-- Session Progress Bar -->
+                <div class="bg-slate-950/80 border border-slate-800 p-4 rounded-xl w-full md:w-72">
+                    <div class="flex justify-between text-xs mb-1.5">
+                        <span class="text-slate-400">Session Progress:</span>
+                        <span class="text-sky-400 font-bold" id="session-progress-text">0 / 4 Completed</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                        <div id="session-bar" class="bg-sky-500 h-full w-0 transition-all duration-500"></div>
+                    </div>
+                    <button onclick="claimSession()" id="claim-btn" class="mt-3 w-full bg-slate-800 text-slate-500 font-bold py-2 rounded-lg text-xs cursor-not-allowed transition" disabled>
+                        🔒 Complete 4 steps to log session
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="flex border-b border-slate-800 mb-8 space-x-8 overflow-x-auto">
+            <button onclick="switchTab('speaking')" id="tab-speaking" class="tab-btn active pb-4 text-sm font-semibold flex items-center gap-2 whitespace-nowrap cursor-pointer transition">
+                <i data-lucide="mic" class="w-4 h-4"></i> 1. Speaking Lab <span id="badge-speaking" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
+            </button>
+            <button onclick="switchTab('flashcards')" id="tab-flashcards" class="tab-btn pb-4 text-sm font-semibold flex items-center gap-2 whitespace-nowrap text-slate-400 cursor-pointer transition">
+                <i data-lucide="layers" class="w-4 h-4"></i> 2. Flashcards <span id="badge-flashcards" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
+            </button>
+            <button onclick="switchTab('grammar')" id="tab-grammar" class="tab-btn pb-4 text-sm font-semibold flex items-center gap-2 whitespace-nowrap text-slate-400 cursor-pointer transition">
+                <i data-lucide="check-square" class="w-4 h-4"></i> 3. Grammar Quiz <span id="badge-grammar" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
+            </button>
+            <button onclick="switchTab('shadowing')" id="tab-shadowing" class="tab-btn pb-4 text-sm font-semibold flex items-center gap-2 whitespace-nowrap text-slate-400 cursor-pointer transition">
+                <i data-lucide="headphones" class="w-4 h-4"></i> 4. Shadowing <span id="badge-shadowing" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
+            </button>
+        </div>
+
+        <!-- TAB 1: DAILY SPEAKING LAB -->
+        <div id="content-speaking" class="space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 flex items-center gap-1.5">
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Step 1: Speaking Challenge
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2" id="prompt-title">Diagnostic Explanation</h3>
+                        <p class="text-slate-300 text-base italic bg-slate-950/60 p-4 rounded-xl border border-slate-800/80" id="prompt-text">
+                            "Explain to a client why a switch-mode power supply failed and what steps you took to fix it."
+                        </p>
+                    </div>
+
+                    <div class="mt-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Your Response (Speak in English or Type):</label>
+                            <button onclick="toggleSpeechRecognition()" id="mic-btn" class="bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-3 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
+                                <i data-lucide="mic" class="w-3.5 h-3.5"></i> <span id="mic-status-text">Start Speaking (Mic)</span>
+                            </button>
+                        </div>
+                        <textarea id="user-response" rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-slate-200 focus:outline-none focus:border-sky-500 transition text-sm" placeholder="Use microphone or type your response in English..."></textarea>
+                        
+                        <div class="flex flex-wrap items-center justify-between mt-4 gap-3">
+                            <button onclick="evaluateResponse()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-sky-500/20 cursor-pointer">
+                                <i data-lucide="send" class="w-4 h-4"></i> Submit & Complete Step 1
+                            </button>
+                            <span class="text-xs text-slate-400" id="feedback-status">AI Tutor ready for corrections.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <i data-lucide="bot" class="w-4 h-4 text-sky-400"></i> Tutor Feedback
+                        </h3>
+                        <div id="feedback-box" class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-4 text-xs text-slate-300 space-y-3">
+                            <p class="text-slate-400">Submit your response to complete this module.</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
+                        <span>Listen Prompt:</span>
+                        <button onclick="speakText()" class="bg-slate-800 hover:bg-slate-700 text-sky-400 px-3 py-1.5 rounded-lg border border-slate-700 flex items-center gap-1.5 transition cursor-pointer">
+                            <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Audio
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: TECHNICAL FLASHCARDS -->
+        <div id="content-flashcards" class="hidden space-y-6">
+            <div class="max-w-md mx-auto text-center">
+                <h3 class="text-lg font-bold text-white mb-1">Step 2: Technical Flashcards</h3>
+                <p class="text-xs text-slate-400 mb-6">Review the cards and navigate through the set to complete the module.</p>
+                
+                <div class="card-flip h-64 w-full cursor-pointer mb-6" onclick="this.classList.toggle('flipped')">
+                    <div class="card-inner relative w-full h-full text-center">
+                        <div class="card-front absolute w-full h-full bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col items-center justify-center shadow-xl">
+                            <span class="text-xs font-semibold text-sky-400 mb-3 bg-sky-500/10 px-3 py-1 rounded-full" id="flash-badge">Term #1</span>
+                            <h4 class="text-2xl font-bold text-white mb-2" id="flash-term">Switch-Mode Power Supply</h4>
+                            <span class="text-xs text-slate-400">(Click to flip)</span>
+                        </div>
+                        <div class="card-back absolute w-full h-full bg-slate-900 border border-slate-700 rounded-2xl p-6 flex flex-col items-center justify-center shadow-xl">
+                            <span class="text-xs font-semibold text-emerald-400 mb-3 bg-emerald-500/10 px-3 py-1 rounded-full">Definition</span>
+                            <p class="text-slate-200 text-sm mb-3" id="flash-def">Electronic power supply that incorporates a switching regulator for high efficiency conversion.</p>
+                            <span class="text-xs font-mono text-sky-300 bg-slate-950 px-3 py-1 rounded-lg border border-slate-800" id="flash-es">Fuente de alimentación conmutada</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center gap-4">
+                    <button onclick="prevCard()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-xl text-sm border border-slate-700 transition cursor-pointer">Previous</button>
+                    <button onclick="nextCard()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-sm transition cursor-pointer">Next / Complete Step 2</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: GRAMMAR & SLANG TRAINER -->
+        <div id="content-grammar" class="hidden space-y-6">
+            <div class="max-w-2xl mx-auto bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-lg">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xs font-semibold text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">Step 3: Grammar Quiz</span>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-4" id="quiz-title">Choose the correct professional expression:</h3>
+                <p class="text-slate-300 text-sm mb-6 bg-slate-950/60 p-4 rounded-xl border border-slate-800" id="quiz-desc">
+                    Select the correct option to complete this step.
+                </p>
+                <div class="space-y-3 mb-6" id="quiz-options"></div>
+                <div id="quiz-result" class="text-xs font-medium text-slate-400"></div>
+            </div>
+        </div>
+
+        <!-- TAB 4: DIAGNOSTICS SHADOWING -->
+        <div id="content-shadowing" class="hidden space-y-6">
+            <div class="max-w-2xl mx-auto bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-lg">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xs font-semibold text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Step 4: Shadowing Lab</span>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">Listen & Repeat</h3>
+                <p class="text-slate-300 text-sm mb-6">Listen to the native audio sample and repeat out loud to complete the final step of your session.</p>
+                
+                <div class="bg-slate-950/80 p-5 rounded-xl border border-slate-800 mb-6 space-y-3">
+                    <p class="text-sm text-sky-300 font-mono" id="shadow-text">"I checked the rails and found a short to ground near the DC jack."</p>
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-800/80">
+                        <button onclick="speakShadowText()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition flex items-center gap-2 cursor-pointer">
+                            <i data-lucide="volume-2" class="w-4 h-4"></i> Play Native Audio
+                        </button>
+                        <button onclick="completeShadowing()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition cursor-pointer">
+                            ✓ Complete Step 4
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- PROFILE MODAL -->
+    <div id="profile-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-lg w-full mx-4 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold text-lg text-white flex items-center gap-2">
+                    <i data-lucide="briefcase" class="w-5 h-5 text-sky-400"></i> Select Professional Focus
+                </h3>
+                <button onclick="toggleModal()" class="text-slate-400 hover:text-white cursor-pointer"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div class="space-y-2 mb-6">
+                <button onclick="setProfile('Electronics & Hardware', 'Diagnostic Explanation', 'Explain to a client why a switch-mode power supply failed and what steps you took to fix it.', 'electronics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>💻 Electronics & Hardware Repair</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                </button>
+                <button onclick="setProfile('Systems Engineering & IT', 'System Architecture', 'Describe how you deployed a web inventory service using Node.js, PostgreSQL, and Render.', 'systems')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>🖥️ Systems Engineering & IT</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                </button>
+                <button onclick="setProfile('Accounting & Finance', 'Financial Statement Review', 'Explain quarterly balance sheet discrepancies and audit procedures to corporate stakeholders.', 'accounting')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>📊 Accounting & Finance</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                </button>
+                <button onclick="setProfile('Law & Legal Services', 'Contract Clause Analysis', 'Discuss liability terms and conditions in a commercial agreement with a corporate client.', 'law')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>⚖️ Law & Legal Services</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                </button>
+                <button onclick="setProfile('Medicine & Healthcare', 'Patient Consultation', 'Describe patient symptoms, diagnostic test results, and prescribed treatment plan.', 'medicine')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>🩺 Medicine & Healthcare</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                </button>
+                <button onclick="setProfile('Automotive Mechanics', 'Engine Troubleshooting', 'Explain engine misfire diagnosis, fuel injector testing, and repair steps to a vehicle owner.', 'mechanics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>🔧 Automotive Mechanics</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                </button>
+                <button onclick="setProfile('Game Dev (Godot / 2D)', 'Game Mechanics', 'Explain the core mechanics of your 2D action-platformer project TrashCalypsis in Godot 4.', 'gamedev')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>🎮 Game Dev (Godot / 2D)</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                </button>
+                <button onclick="setProfile('Music & Live Band', 'Bass Performance', 'Describe your favorite bass line to play live with your band and why it stands out.', 'music')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>🎸 Music & Live Band</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                </button>
+            </div>
+            <button onclick="toggleModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-medium py-2.5 rounded-xl text-sm transition cursor-pointer">Close</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800 bg-slate-900/50 py-4 text-center text-xs text-slate-500">
+        English Learning Pro &copy; 2026 &bull; Professional Edition
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        lucide.createIcons();
+
+        // State control with localStorage
+        let appState = JSON.parse(localStorage.getItem('english_pro_state')) || {
+            streak: 0,
+            termsMastered: 0,
+            lastCompletedDate: null
+        };
+
+        // 4 session steps status
+        let sessionSteps = { speaking: false, flashcards: false, grammar: false, shadowing: false };
+
+        function updateUIStats() {
+            document.getElementById('streak-count').innerText = appState.streak + ' Days';
+            document.getElementById('terms-count').innerText = appState.termsMastered;
+
+            // Compute Rank
+            let rank = "Beginner";
+            if (appState.termsMastered >= 31) rank = "👑 Master";
+            else if (appState.termsMastered >= 16) rank = "🔥 Advanced";
+            else if (appState.termsMastered >= 6) rank = "⚡ Amateur";
+            document.getElementById('user-rank').innerText = rank;
+        }
+
+        function checkSessionProgress() {
+            let completedCount = Object.values(sessionSteps).filter(Boolean).length;
+            document.getElementById('session-progress-text').innerText = `${completedCount} / 4 Completed`;
+            document.getElementById('session-bar').style.width = `${(completedCount / 4) * 100}%`;
+
+            const claimBtn = document.getElementById('claim-btn');
+            if (completedCount === 4) {
+                claimBtn.className = "mt-3 w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2 rounded-lg text-xs cursor-pointer transition shadow-lg";
+                claimBtn.innerText = "🚀 Log Session & Boost Streak";
+                claimBtn.disabled = false;
+            } else {
+                claimBtn.className = "mt-3 w-full bg-slate-800 text-slate-500 font-bold py-2 rounded-lg text-xs cursor-not-allowed transition";
+                claimBtn.innerText = `🔒 Missing ${4 - completedCount} steps`;
+                claimBtn.disabled = true;
+            }
+        }
+
+        function markStep(stepKey, badgeId) {
+            sessionSteps[stepKey] = true;
+            const badge = document.getElementById(badgeId);
+            badge.className = "text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full font-bold";
+            badge.innerText = "Completed ✓";
+            checkSessionProgress();
+        }
+
+        function claimSession() {
+            let today = new Date().toDateString();
+            if (appState.lastCompletedDate === today) {
+                alert("You have already logged your session today, bro! Come back tomorrow to maintain your streak.");
+                return;
+            }
+
+            appState.streak += 1;
+            appState.termsMastered += 4;
+            appState.lastCompletedDate = today;
+            localStorage.setItem('english_pro_state', JSON.stringify(appState));
+
+            updateUIStats();
+            alert("🎉 Night session successfully logged! Your streak and rank have increased.");
+            location.reload();
+        }
+
+        // Tab Switching
+        function switchTab(tabName) {
+            document.querySelectorAll('[id^="content-"]').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active', 'text-sky-400'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.add('text-slate-400'));
+
+            document.getElementById('content-' + tabName).classList.remove('hidden');
+            const activeBtn = document.getElementById('tab-' + tabName);
+            activeBtn.classList.add('active', 'text-sky-400');
+            activeBtn.classList.remove('text-slate-400');
+        }
+
+        function toggleModal() {
+            document.getElementById('profile-modal').classList.toggle('hidden');
+        }
+
+        // Profiles Data
+        const profileData = {
+            electronics: {
+                flashcards: [
+                    { term: "Switch-Mode Power Supply", def: "Electronic power supply that incorporates a switching regulator for high efficiency conversion.", es: "Fuente conmutada (SMPS)" },
+                    { term: "DC Jack", def: "The power input connector soldered onto the laptop motherboard.", es: "Conector de corriente / Jack DC" },
+                    { term: "Short to Ground", def: "An abnormal low-resistance connection to the chassis or ground plane.", es: "Cortocircuito a tierra" },
+                    { term: "Multimeter", def: "An electronic measuring instrument that combines several measurement functions.", es: "Multímetro" }
+                ],
+                quizTitle: "Choose the correct electronics expression:",
+                quizDesc: "When explaining a hardware diagnostic to a coworker, what is the best natural expression?",
+                options: [
+                    { text: "A) I am going to look at electricity very slowly.", correct: false },
+                    { text: "B) Let me probe this real quick and check the rails.", correct: true },
+                    { text: "C) I will touch the components with my eyes.", correct: false }
+                ],
+                shadowText: "\"I checked the rails and found a short to ground near the DC jack.\""
+            },
+            systems: {
+                flashcards: [
+                    { term: "Deployment", def: "The process of making a software application available for use on a server or cloud platform.", es: "Despliegue / Publicación" },
+                    { term: "Version Control", def: "A system that records changes to a file or set of files over time (e.g., Git).", es: "Control de versiones" },
+                    { term: "API Endpoint", def: "A specific URL where an API receives requests for a resource.", es: "Punto de acceso API" },
+                    { term: "Database Schema", def: "The structure or organization of data in a database management system.", es: "Esquema de base de datos" }
+                ],
+                quizTitle: "Choose the correct systems expression:",
+                quizDesc: "When explaining a backend deployment to a team lead, what is the best phrasing?",
+                options: [
+                    { text: "A) The code ran away to another computer.", correct: false },
+                    { text: "B) We successfully deployed the API endpoint to Render.", correct: true },
+                    { text: "C) I deleted the internet connection for safety.", correct: false }
+                ],
+                shadowText: "\"We pushed our code and deployed the Node.js application to Render.\""
+            },
+            accounting: {
+                flashcards: [
+                    { term: "Balance Sheet", def: "A financial statement that reports a company's assets, liabilities, and equity.", es: "Balance general" },
+                    { term: "Accounts Receivable", def: "Money owed to a company by its debtors for goods or services delivered.", es: "Cuentas por cobrar" },
+                    { term: "Ledger", def: "A book or collection of accounts in which account transactions are recorded.", es: "Libro mayor" },
+                    { term: "Audit", def: "An official inspection of an organization's accounts, typically by an independent body.", es: "Auditoría" }
+                ],
+                quizTitle: "Choose the correct accounting expression:",
+                quizDesc: "When discussing financial reports, what is the best professional phrasing?",
+                options: [
+                    { text: "A) All the money disappeared into a magical hat.", correct: false },
+                    { text: "B) We need to reconcile the ledger before the audit.", correct: true },
+                    { text: "C) Let us ignore the numbers until next year.", correct: false }
+                ],
+                shadowText: "\"We audited the ledger and reconciled accounts receivable for the quarter.\""
+            },
+            law: {
+                flashcards: [
+                    { term: "Liability", def: "The state of being legally responsible for something.", es: "Responsabilidad legal" },
+                    { term: "Breach of Contract", def: "An act of breaking the terms set out in a contract.", es: "Incumplimiento" },
+                    { term: "Settlement", def: "An official agreement intended to resolve a dispute or conflict.", es: "Acuerdo / Conciliación" },
+                    { term: "Litigation", def: "The process of taking legal action in court.", es: "Litigio" }
+                ],
+                quizTitle: "Choose the correct legal phrasing:",
+                quizDesc: "When advising a client regarding commercial terms, what is the best professional expression?",
+                options: [
+                    { text: "A) You can break any promise you want.", correct: false },
+                    { text: "B) We must review liability clauses to avoid breach of contract.", correct: true },
+                    { text: "C) Let us forget about the legal paperwork.", correct: false }
+                ],
+                shadowText: "\"We analyzed the agreement to limit client liability and prevent contract breach.\""
+            },
+            medicine: {
+                flashcards: [
+                    { term: "Diagnosis", def: "The identification of the nature of an illness by examination.", es: "Diagnóstico médico" },
+                    { term: "Prescription", def: "An instruction written by a medical practitioner.", es: "Receta médica" },
+                    { term: "Symptoms", def: "A physical or mental feature indicating disease.", es: "Síntomas" },
+                    { term: "Vitals", def: "Essential body functions measured to assess health.", es: "Signos vitales" }
+                ],
+                quizTitle: "Choose the correct medical expression:",
+                quizDesc: "When discussing patient evaluation, what is the best professional phrasing?",
+                options: [
+                    { text: "A) The patient is sleeping forever.", correct: false },
+                    { text: "B) Let us check the patient's vitals and lab results.", correct: true },
+                    { text: "C) We do not need to check anything.", correct: false }
+                ],
+                shadowText: "\"We evaluated the patient's vitals and reviewed the symptoms.\""
+            },
+            mechanics: {
+                flashcards: [
+                    { term: "Fuel Injector", def: "A nozzle that injects fuel into engine cylinders.", es: "Inyector de combustible" },
+                    { term: "Alternator", def: "An electrical generator that converts mechanical energy.", es: "Alternador" },
+                    { term: "Timing Belt", def: "A belt that synchronizes crankshaft and camshaft.", es: "Correa de tiempo" },
+                    { term: "Misfire", def: "Failure of fuel-air mixture to ignite properly.", es: "Falla de encendido" }
+                ],
+                quizTitle: "Choose the correct mechanics phrasing:",
+                quizDesc: "When explaining an engine issue, what is the best natural expression?",
+                options: [
+                    { text: "A) The car is just taking a relaxing nap.", correct: false },
+                    { text: "B) We detected a cylinder misfire and need to test fuel injectors.", correct: true },
+                    { text: "C) Let us paint the steering wheel red.", correct: false }
+                ],
+                shadowText: "\"We diagnosed an engine misfire and tested the fuel injectors.\""
+            },
+            gamedev: {
+                flashcards: [
+                    { term: "Game Loop", def: "The core program structure running continuously during gameplay.", es: "Bucle principal" },
+                    { term: "Sprite", def: "A two-dimensional bitmap integrated into a scene.", es: "Sprite / Gráfico 2D" },
+                    { term: "Collision Box", def: "An invisible boundary used for collision detection.", es: "Caja de colisión" },
+                    { term: "Frame Rate", def: "Frequency at which frames appear on a display.", es: "Tasa de cuadros (FPS)" }
+                ],
+                quizTitle: "Choose the correct game development expression:",
+                quizDesc: "When discussing performance in Godot 4, what is the best phrasing?",
+                options: [
+                    { text: "A) The pixels are sleeping in the computer.", correct: false },
+                    { text: "B) We need to optimize the game loop in Godot 4.", correct: true },
+                    { text: "C) Let us turn off the monitor.", correct: false }
+                ],
+                shadowText: "\"In Godot 4, we scripted player movement and optimized collision boxes for TrashCalypsis.\""
+            },
+            music: {
+                flashcards: [
+                    { term: "Bass Line", def: "A sequence of low-frequency notes supporting rhythm.", es: "Línea de bajo" },
+                    { term: "In-Ear Monitor", def: "Device worn by musicians for live performance monitoring.", es: "Monitoreo intraauricular" },
+                    { term: "Fretboard", def: "The wooden strip on the neck of a string instrument.", es: "Diapasón" },
+                    { term: "Tempo", def: "The speed or pace of a piece of music.", es: "Tempo / Ritmo" }
+                ],
+                quizTitle: "Choose the correct music expression:",
+                quizDesc: "When talking to band members before a show, what is the best natural phrasing?",
+                options: [
+                    { text: "A) We should play instruments very quietly without sound.", correct: false },
+                    { text: "B) Let us check in-ear monitors and rehearse the bass line.", correct: true },
+                    { text: "C) Let us sleep during the concert.", correct: false }
+                ],
+                shadowText: "\"During live band rehearsals, I plug in my electric bass and adjust my in-ear monitor.\""
+            }
+        };
+
+        let currentCategory = 'electronics';
+        let currentCard = 0;
+
+        function setProfile(title, promptTitle, promptText, categoryKey) {
+            document.getElementById('profile-label').innerText = title;
+            document.getElementById('header-badge').innerText = title;
+            document.getElementById('prompt-title').innerText = promptTitle;
+            document.getElementById('prompt-text').innerText = '"' + promptText + '"';
+            
+            currentCategory = categoryKey;
+            currentCard = 0;
+            updateCard();
+            updateQuiz();
+            updateShadowing();
+            toggleModal();
+        }
+
+        function updateCard() {
+            const data = profileData[currentCategory] || profileData['electronics'];
+            const cards = data.flashcards;
+            const card = cards[currentCard];
+            document.getElementById('flash-badge').innerText = `Term #${currentCard + 1} of ${cards.length}`;
+            document.getElementById('flash-term').innerText = card.term;
+            document.getElementById('flash-def').innerText = card.def;
+            document.getElementById('flash-es').innerText = card.es;
+        }
+
+        function nextCard() {
+            const data = profileData[currentCategory] || profileData['electronics'];
+            currentCard++;
+            if (currentCard >= data.flashcards.length) {
+                currentCard = 0;
+                markStep('flashcards', 'badge-flashcards');
+            }
+            updateCard();
+        }
+
+        function prevCard() {
+            const data = profileData[currentCategory] || profileData['electronics'];
+            currentCard = (currentCard - 1 + data.flashcards.length) % data.flashcards.length;
+            updateCard();
+        }
+
+        function updateQuiz() {
+            const data = profileData[currentCategory] || profileData['electronics'];
+            document.getElementById('quiz-title').innerText = data.quizTitle;
+            document.getElementById('quiz-desc').innerText = data.quizDesc;
+            
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+            document.getElementById('quiz-result').innerHTML = '';
+
+            data.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-4 rounded-xl text-sm text-slate-200 transition cursor-pointer";
+                btn.innerText = opt.text;
+                btn.onclick = () => {
+                    if (opt.correct) {
+                        document.getElementById('quiz-result').innerHTML = '<span class="text-emerald-400 font-semibold">Correct! Step 3 completed.</span>';
+                        btn.classList.add('border-emerald-500', 'bg-emerald-500/10');
+                        markStep('grammar', 'badge-grammar');
+                    } else {
+                        document.getElementById('quiz-result').innerHTML = '<span class="text-rose-400 font-semibold">Incorrect. Try again.</span>';
+                        btn.classList.add('border-rose-500', 'bg-rose-500/10');
+                    }
+                };
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function updateShadowing() {
+            const data = profileData[currentCategory] || profileData['electronics'];
+            document.getElementById('shadow-text').innerText = data.shadowText;
+        }
+
+        function completeShadowing() {
+            markStep('shadowing', 'badge-shadowing');
+            alert("✓ Step 4 Shadowing completed.");
+        }
+
+        // Speech Recognition
+        let recognition = null;
+        let isRecording = false;
+
+        function toggleSpeechRecognition() {
+            const micBtn = document.getElementById('mic-btn');
+            const statusText = document.getElementById('mic-status-text');
+            const textarea = document.getElementById('user-response');
+
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                alert('Your browser does not support native speech recognition.');
+                return;
+            }
+
+            if (isRecording) {
+                if (recognition) recognition.stop();
+                return;
+            }
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.interimResults = true;
+            recognition.continuous = true;
+
+            recognition.onstart = function() {
+                isRecording = true;
+                micBtn.className = 'bg-rose-500/20 border border-rose-500/40 text-rose-400 px-3 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 animate-pulse';
+                statusText.innerText = 'Listening...';
+            };
+
+            recognition.onresult = function(event) {
+                let transcript = '';
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    transcript += event.results[i][0].transcript;
+                }
+                textarea.value = transcript;
+            };
+
+            recognition.onend = function() {
+                isRecording = false;
+                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 px-3 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5';
+                statusText.innerText = 'Start Speaking (Mic)';
+            };
+
+            recognition.start();
+        }
+
+        function evaluateResponse() {
+            const text = document.getElementById('user-response').value.trim();
+            const box = document.getElementById('feedback-box');
+            if(!text) {
+                box.innerHTML = '<span class="text-rose-400">Type or speak a response first.</span>';
+                return;
+            }
+            box.innerHTML = `
+                <div class="space-y-2">
+                    <p class="text-emerald-400 font-semibold">✓ Tutor Feedback:</p>
+                    <p>Great technical writing! Step 1 successfully completed.</p>
+                </div>
+            `;
+            document.getElementById('feedback-status').innerText = 'Reviewed.';
+            markStep('speaking', 'badge-speaking');
+        }
+
+        function speakText() {
+            const text = document.getElementById('prompt-text').innerText;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function speakShadowText() {
+            const text = document.getElementById('shadow-text').innerText;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // Initialize app
+        updateUIStats();
+        updateCard();
+        updateQuiz();
+        updateShadowing();
+        checkSessionProgress();
+    </script>
+</body>
+</html>
