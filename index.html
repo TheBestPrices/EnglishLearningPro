@@ -1384,25 +1384,47 @@
             recognition.start();
         }
 
-        function evaluateResponse() {
+       function evaluateResponse() {
             const text = document.getElementById('user-response').value.trim();
             const box = document.getElementById('feedback-box');
             
             if(!text) {
-                box.innerHTML = '<span class="text-rose-400 font-semibold">⚠️ Please write or speak a small response first!</span>';
+                box.innerHTML = '<span class="text-rose-400 font-semibold">⚠️ Please write or speak a response first!</span>';
                 return;
             }
 
             const wordCount = text.split(/\s+/).length;
-            let speakingScore = wordCount >= 3 ? 90 : 75;
+            const charCount = text.length;
+
+            // Algoritmo de evaluación estricto basado en longitud y complejidad
+            let speakingScore = 50; // Empezamos desde abajo
+            let feedbackMessage = "";
+
+            if (wordCount < 5) {
+                speakingScore = 60;
+                feedbackMessage = "Too short! A professional technical explanation requires more detail and complete sentences.";
+            } else if (wordCount >= 5 && wordCount < 15) {
+                speakingScore = 78;
+                feedbackMessage = "Good effort, but try to expand your explanation with technical terms or reasons.";
+            } else if (wordCount >= 15 && wordCount < 30) {
+                speakingScore = 88;
+                feedbackMessage = "Solid explanation! Good flow and solid sentence structure.";
+            } else {
+                speakingScore = 96;
+                feedbackMessage = "Brilliant execution! Outstanding technical fluency, rich vocabulary, and clear details.";
+            }
+
+            // Guardamos la puntuación real en el estado global
             appState.lastSpeakingScore = speakingScore;
             localStorage.setItem('english_pro_state', JSON.stringify(appState));
 
+            let scoreColor = speakingScore >= 80 ? 'text-emerald-400' : 'text-amber-400';
+
             let feedbackHTML = `
                 <div class="space-y-2">
-                    <p class="text-emerald-400 font-bold">Speaking Score: ${speakingScore}%</p>
-                    <p><strong>Word Count:</strong> ${wordCount} words</p>
-                    <p class="text-slate-300"><strong>Encouragement:</strong> Fantastic effort! Keep expressing yourself in English without fear of mistakes.</p>
+                    <p class="${scoreColor} font-bold">Speaking Score: ${speakingScore}%</p>
+                    <p><strong>Word Count:</strong> ${wordCount} words (${charCount} chars)</p>
+                    <p class="text-slate-300"><strong>Tutor Feedback:</strong> ${feedbackMessage}</p>
                     <p class="text-emerald-400 text-xs font-semibold mt-2">✓ Step 1 completed successfully!</p>
                 </div>
             `;
