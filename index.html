@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Learning Pro - Error Correction & Merit Edition</title>
+    <title>English Learning Pro - 5-Step Master Edition</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -82,7 +82,7 @@
             <div class="flex items-center justify-center flex-wrap gap-2 text-xs sm:text-sm w-full md:w-auto">
                 <div class="flex items-center space-x-1.5 bg-slate-800/90 px-2.5 py-1 rounded-full border border-slate-700/60">
                     <i data-lucide="award" class="w-3.5 h-3.5 text-purple-400"></i>
-                    <span class="text-slate-300">Rank: <strong class="text-white" id="user-rank">Beginner</strong></span>
+                    <span class="text-slate-300">Rank: <strong class="text-white" id="user-rank">🌱 Foundation</strong></span>
                 </div>
                 <div class="flex items-center space-x-1.5 bg-slate-800/90 px-2.5 py-1 rounded-full border border-slate-700/60">
                     <i data-lucide="flame" class="w-3.5 h-3.5 text-orange-400"></i>
@@ -115,34 +115,34 @@
                     </div>
 
                     <div>
-                        <span id="level-badge" class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Level 1: Foundation</span>
+                        <span id="rank-badge" class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Rank: Foundation</span>
                         <h2 class="text-xl sm:text-2xl font-bold text-white mt-2" id="welcome-title">Welcome back!</h2>
                         <p class="text-slate-300 mt-1 text-xs sm:text-sm bg-slate-950/70 border border-slate-800/80 px-3 py-2 rounded-xl italic" id="mascot-bubble">
-                            "Fix grammar errors and pass your quizzes to earn level promotions!"
+                            "Listen carefully and type what you hear to sharpen your ear!"
                         </p>
                     </div>
                 </div>
 
-                <!-- Session Progress Bar & Merit Progression -->
+                <!-- Session Progress Bar & Rank Evaluation -->
                 <div class="bg-slate-950/80 border border-slate-800 p-4 rounded-xl w-full md:w-72">
                     <div class="flex justify-between text-xs mb-1.5">
                         <span class="text-slate-400">Session Progress:</span>
-                        <span class="text-sky-400 font-bold" id="session-progress-text">0 / 4 Completed</span>
+                        <span class="text-sky-400 font-bold" id="session-progress-text">0 / 5 Completed</span>
                     </div>
                     <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
                         <div id="session-bar" class="bg-sky-500 h-full w-0 transition-all duration-500"></div>
                     </div>
                     <button onclick="claimSession()" id="claim-btn" class="mt-3 w-full bg-slate-800 text-slate-500 font-bold py-2 rounded-lg text-xs cursor-not-allowed transition" disabled>
-                        🔒 Complete 4 steps to log session
+                        🔒 Complete 5 steps to log session
                     </button>
-                    <button onclick="tryAdvanceLevel()" class="mt-2 w-full bg-sky-500/20 hover:bg-sky-500/30 text-sky-400 border border-sky-500/40 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer flex items-center justify-center gap-1.5">
-                        <i data-lucide="award" class="w-3.5 h-3.5"></i> Evaluate & Request Promotion
+                    <button onclick="tryRankAdvancement()" class="mt-2 w-full bg-sky-500/20 hover:bg-sky-500/30 text-sky-400 border border-sky-500/40 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer flex items-center justify-center gap-1.5">
+                        <i data-lucide="award" class="w-3.5 h-3.5"></i> Evaluate for Rank Promotion
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Navigation Tabs -->
+        <!-- Navigation Tabs (5 Steps) -->
         <div class="flex border-b border-slate-800 mb-6 space-x-6 overflow-x-auto pb-1">
             <button onclick="switchTab('speaking')" id="tab-speaking" class="tab-btn active pb-3 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap cursor-pointer transition">
                 <i data-lucide="mic" class="w-4 h-4"></i> 1. Speaking Lab <span id="badge-speaking" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
@@ -151,10 +151,13 @@
                 <i data-lucide="layers" class="w-4 h-4"></i> 2. Flashcards <span id="badge-flashcards" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
             </button>
             <button onclick="switchTab('grammar')" id="tab-grammar" class="tab-btn pb-3 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap text-slate-400 cursor-pointer transition">
-                <i data-lucide="check-square" class="w-4 h-4"></i> 3. Grammar & Error Repair (10 Qs) <span id="badge-grammar" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
+                <i data-lucide="check-square" class="w-4 h-4"></i> 3. Grammar (10 Qs) <span id="badge-grammar" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
+            </button>
+            <button onclick="switchTab('listening')" id="tab-listening" class="tab-btn pb-3 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap text-slate-400 cursor-pointer transition">
+                <i data-lucide="headphones" class="w-4 h-4"></i> 4. Listen & Type <span id="badge-listening" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
             </button>
             <button onclick="switchTab('shadowing')" id="tab-shadowing" class="tab-btn pb-3 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap text-slate-400 cursor-pointer transition">
-                <i data-lucide="headphones" class="w-4 h-4"></i> 4. Shadowing <span id="badge-shadowing" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
+                <i data-lucide="mic-vocal" class="w-4 h-4"></i> 5. Shadowing <span id="badge-shadowing" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
             </button>
         </div>
 
@@ -165,7 +168,7 @@
                     <div>
                         <div class="flex items-center justify-between mb-4">
                             <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 flex items-center gap-1.5">
-                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Merit-Based Speaking Grader
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Speaking & Fluency Guide
                             </span>
                         </div>
                         <h3 class="text-base sm:text-lg font-bold text-white mb-2" id="prompt-title">Speaking Challenge</h3>
@@ -176,18 +179,18 @@
 
                     <div class="mt-6">
                         <div class="flex items-center justify-between mb-2 flex-wrap gap-2">
-                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider" id="requirement-label">Spoken Response:</label>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Spoken Response:</label>
                             <button onclick="toggleSpeechRecognition()" id="mic-btn" class="bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
                                 <i data-lucide="mic" class="w-3.5 h-3.5"></i> <span id="mic-status-text">Start Speaking (Mic)</span>
                             </button>
                         </div>
-                        <textarea id="user-response" rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-slate-200 focus:outline-none focus:border-sky-500 transition text-sm" placeholder="Speak clearly or write your response here..."></textarea>
+                        <textarea id="user-response" rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-slate-200 focus:outline-none focus:border-sky-500 transition text-sm" placeholder="Speak or write your response here..."></textarea>
                         
                         <div class="flex flex-wrap items-center justify-between mt-4 gap-3">
                             <button onclick="evaluateResponse()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm transition flex items-center gap-2 shadow-lg shadow-sky-500/20 cursor-pointer">
-                                <i data-lucide="send" class="w-4 h-4"></i> Submit for Evaluation
+                                <i data-lucide="send" class="w-4 h-4"></i> Submit Response
                             </button>
-                            <span class="text-xs text-slate-400" id="feedback-status">Evaluator ready.</span>
+                            <span class="text-xs text-slate-400" id="feedback-status">Ready.</span>
                         </div>
                     </div>
                 </div>
@@ -195,10 +198,10 @@
                 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg flex flex-col justify-between">
                     <div>
                         <h3 class="text-xs sm:text-sm font-bold text-slate-200 uppercase tracking-wider mb-3 flex items-center gap-2">
-                            <i data-lucide="bot" class="w-4 h-4 text-sky-400"></i> AI Evaluation Score
+                            <i data-lucide="bot" class="w-4 h-4 text-sky-400"></i> AI Encouragement
                         </h3>
                         <div id="feedback-box" class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-4 text-xs text-slate-300 space-y-3">
-                            <p class="text-slate-400">Submit your speech to earn your performance score.</p>
+                            <p class="text-slate-400">Write or speak your thoughts to get friendly feedback.</p>
                         </div>
                     </div>
                     <div class="mt-4 pt-4 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
@@ -214,8 +217,8 @@
         <!-- TAB 2: FLASHCARDS -->
         <div id="content-flashcards" class="hidden space-y-6">
             <div class="max-w-md mx-auto text-center">
-                <h3 class="text-lg font-bold text-white mb-1">Step 2: Technical Flashcards (5+ Cards)</h3>
-                <p class="text-xs text-slate-400 mb-6">Review rotating technical cards to expand your vocabulary.</p>
+                <h3 class="text-lg font-bold text-white mb-1">Step 2: Technical Flashcards</h3>
+                <p class="text-xs text-slate-400 mb-6">Review key vocabulary at your own pace.</p>
                 
                 <div class="card-flip h-72 w-full cursor-pointer mb-6" onclick="this.classList.toggle('flipped')">
                     <div class="card-inner relative w-full h-full text-center">
@@ -246,7 +249,7 @@
             </div>
         </div>
 
-        <!-- TAB 3: GRAMMAR & ERROR REPAIR QUIZ (10 Questions Mixed) -->
+        <!-- TAB 3: GRAMMAR & ERROR REPAIR QUIZ -->
         <div id="content-grammar" class="hidden space-y-6">
             <div class="max-w-2xl mx-auto bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg">
                 <div class="flex justify-between items-center mb-4">
@@ -258,41 +261,90 @@
                     ...
                 </p>
                 
-                <!-- Option container for multiple choice -->
                 <div class="space-y-3 mb-4" id="quiz-options"></div>
 
-                <!-- Input container for Error Correction mode -->
                 <div id="error-repair-container" class="hidden space-y-3 mb-4">
-                    <label class="block text-xs font-semibold text-rose-400 uppercase tracking-wider">Fix the grammar error and write the correct sentence:</label>
+                    <label class="block text-xs font-semibold text-rose-400 uppercase tracking-wider">Fix the grammar error (take your time):</label>
                     <input type="text" id="error-input" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500 transition" placeholder="Type correct sentence here...">
                     <button onclick="submitErrorCorrection()" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-2.5 rounded-xl text-xs transition cursor-pointer">
-                        Check Correction
+                        Next Challenge
                     </button>
+                </div>
+
+                <div id="quiz-report-container" class="hidden space-y-4">
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <h4 class="text-sm font-bold text-sky-400 mb-2">📋 Post-Quiz Review Report (Friendly Corrections)</h4>
+                        <div id="quiz-report-list" class="space-y-3 text-xs max-h-64 overflow-y-auto pr-2"></div>
+                    </div>
                 </div>
 
                 <div id="quiz-result" class="text-xs font-medium text-slate-400 mt-3"></div>
             </div>
         </div>
 
-        <!-- TAB 4: SHADOWING -->
+        <!-- TAB 4: LISTENING DICTATION (LISTEN & TYPE) -->
+        <div id="content-listening" class="hidden space-y-6">
+            <div class="max-w-2xl mx-auto bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">Step 4: Listening Dictation (Listen & Type)</span>
+                </div>
+                <h3 class="text-base sm:text-lg font-bold text-white mb-2">Train Your Ear</h3>
+                <p class="text-slate-300 text-xs sm:text-sm mb-6">Click play to listen to the native audio snippet as many times as you need, then type exactly what you hear in the box below.</p>
+                
+                <div class="bg-slate-950/80 p-5 rounded-xl border border-slate-800 mb-6 space-y-4 text-center">
+                    <button onclick="playListeningAudio()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition inline-flex items-center gap-2 cursor-pointer shadow-lg shadow-emerald-500/20">
+                        <i data-lucide="volume-2" class="w-5 h-5"></i> Play Audio Snippet 🔊
+                    </button>
+                    
+                    <div class="mt-4 text-left space-y-2">
+                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Type what you heard:</label>
+                        <input type="text" id="listening-input" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500 transition" placeholder="Type sentence here...">
+                    </div>
+
+                    <div class="flex justify-between items-center pt-2">
+                        <button onclick="checkListeningDictation()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs transition cursor-pointer">
+                            Check Answer ✓
+                        </button>
+                        <span class="text-xs text-slate-400" id="listening-hint-toggle">Need a hint? Click play again.</span>
+                    </div>
+
+                    <div id="listening-result" class="text-xs font-medium text-slate-400 mt-2"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 5: SHADOWING PRACTICE -->
         <div id="content-shadowing" class="hidden space-y-6">
             <div class="max-w-2xl mx-auto bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg">
                 <div class="flex justify-between items-center mb-4">
-                    <span class="text-xs font-semibold text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Step 4: Shadowing Lab</span>
+                    <span class="text-xs font-semibold text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Step 5: Shadowing Practice</span>
                 </div>
-                <h3 class="text-base sm:text-lg font-bold text-white mb-2">Listen & Repeat</h3>
-                <p class="text-slate-300 text-xs sm:text-sm mb-6">Listen to the native audio sample and repeat out loud to complete the final step.</p>
+                <h3 class="text-base sm:text-lg font-bold text-white mb-2">Listen & Practice Speaking</h3>
+                <p class="text-slate-300 text-xs sm:text-sm mb-6">Listen to the native audio sample. You can practice with the mic or simply click complete when you're ready!</p>
                 
-                <div class="bg-slate-950/80 p-4 sm:p-5 rounded-xl border border-slate-800 mb-6 space-y-3">
-                    <p class="text-xs sm:text-sm text-sky-300 font-mono" id="shadow-text">"Loading audio text..."</p>
-                    <div class="flex items-center justify-between pt-2 border-t border-slate-800/80 flex-wrap gap-2">
-                        <button onclick="speakShadowText()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition flex items-center gap-2 cursor-pointer">
-                            <i data-lucide="volume-2" class="w-4 h-4"></i> Play Native Audio
+                <div class="bg-slate-950/80 p-4 sm:p-5 rounded-xl border border-slate-800 mb-6 space-y-4">
+                    <p class="text-xs sm:text-sm text-sky-300 font-mono italic" id="shadow-text">"Loading audio text..."</p>
+                    
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-800/80 flex-wrap gap-3">
+                        <button onclick="speakShadowText()" class="bg-slate-800 hover:bg-slate-700 text-sky-400 px-4 py-2 rounded-xl text-xs transition flex items-center gap-2 cursor-pointer border border-slate-700">
+                            <i data-lucide="volume-2" class="w-4 h-4"></i> Play Audio
                         </button>
-                        <button onclick="completeShadowing()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition cursor-pointer">
-                            ✓ Complete Step 4
-                        </button>
+                        
+                        <div class="flex gap-2">
+                            <button onclick="toggleShadowingMic()" id="shadow-mic-btn" class="bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-3 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
+                                <i data-lucide="mic" class="w-3.5 h-3.5"></i> <span id="shadow-mic-status">Try Mic</span>
+                            </button>
+                            <button onclick="completeShadowingEasy()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition cursor-pointer">
+                                ✓ Mark Completed
+                            </button>
+                        </div>
                     </div>
+
+                    <div class="mt-3">
+                        <textarea id="shadow-user-input" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-200 text-xs" placeholder="Spoken speech preview..."></textarea>
+                    </div>
+
+                    <div id="shadow-result" class="text-xs font-medium text-slate-400"></div>
                 </div>
             </div>
         </div>
@@ -326,7 +378,7 @@
 
             <div class="mb-5">
                 <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Your Name:</label>
-                <input type="text" id="user-name-input" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500 transition" placeholder="e.g. Kevin">
+                <input type="text" id="user-name-input" value="Alex" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500 transition" placeholder="e.g. Alex">
             </div>
 
             <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Select Focus:</label>
@@ -378,7 +430,7 @@
 
     <!-- FOOTER -->
     <footer class="border-t border-slate-800 bg-slate-900/50 py-4 text-center text-xs text-slate-500">
-        English Learning Pro &copy; 2026 &bull; Professional Edition
+        English Learning Pro &copy; 2026 &bull; 5-Step Master Edition
     </footer>
 
     <!-- SCRIPTS -->
@@ -389,11 +441,11 @@
             userName: '',
             streak: 0,
             termsMastered: 0,
-            sessionLevel: 0,
+            rankTier: 0,
             lastQuizScore: 0,
             lastSpeakingScore: 0,
             lastCompletedDate: null,
-            sessionSteps: { speaking: false, flashcards: false, grammar: false, shadowing: false },
+            sessionSteps: { speaking: false, flashcards: false, grammar: false, listening: false, shadowing: false },
             selectedFocus: null,
             focusTitle: null
         };
@@ -422,16 +474,12 @@
 
         function closeModal() {
             document.getElementById('custom-modal').classList.add('hidden');
-            if (window.reloadOnClose) {
-                window.reloadOnClose = false;
-                location.reload();
-            }
         }
 
         const mascotTips = [
-            "💡 Slang: 'Piece of cake' = Very easy!",
-            "💡 Tip: Spotting and repairing grammar mistakes is the fastest way to fluency!",
-            "💡 Slang: 'Hit the nail on the head' = You got it exactly right!"
+            "💡 Slang: 'Ear to the ground' = ¡Mantente atento y escucha con atención!",
+            "💡 Tip: Listening dictation helps train your brain to catch fast native speech.",
+            "💡 Slang: 'Piece of cake' = ¡Muy fácil!"
         ];
 
         function interactWithMascot() {
@@ -445,50 +493,40 @@
             }, 2000);
         }
 
-        function setDynamicTimeBanner() {
-            const badge = document.getElementById('level-badge');
+        const rankNames = ["🌱 Foundation", "⚡ Amateur", "🔥 Advanced", "🛠️ Expert", "👑 Master"];
+
+        function getUserRank() {
+            const tier = appState.rankTier || 0;
+            return rankNames[tier] || "🌱 Foundation";
+        }
+
+        function setDynamicRankBanner() {
+            const badge = document.getElementById('rank-badge');
             const title = document.getElementById('welcome-title');
             const name = appState.userName ? `, ${appState.userName}` : '';
             const emoji = document.getElementById('mascot-emoji');
 
             if (appState.streak > 0) emoji.innerText = "🔥";
-
-            const lvl = (appState.sessionLevel || 0) + 1;
-            const levelNames = ["Foundation", "Intermediate", "Advanced Hardcore", "Expert Master"];
-            badge.innerText = `Level ${lvl}: ${levelNames[appState.sessionLevel % levelNames.length]}`;
+            badge.innerText = `Rank: ${getUserRank()}`;
             title.innerText = `Welcome back${name}!`;
-        }
-
-        function getUserRank() {
-            if (appState.termsMastered >= 31) return "Master";
-            if (appState.termsMastered >= 16) return "Advanced";
-            if (appState.termsMastered >= 6) return "Amateur";
-            return "Beginner";
         }
 
         function updateUIStats() {
             document.getElementById('streak-count').innerText = appState.streak + ' Days';
             document.getElementById('terms-count').innerText = appState.termsMastered;
-
-            let rank = getUserRank();
-            let rankDisplay = "Beginner";
-            if (rank === "Master") rankDisplay = "👑 Master";
-            else if (rank === "Advanced") rankDisplay = "🔥 Advanced";
-            else if (rank === "Amateur") rankDisplay = "⚡ Amateur";
-            document.getElementById('user-rank').innerText = rankDisplay;
-
+            document.getElementById('user-rank').innerText = getUserRank();
             checkSessionProgress();
         }
 
         function checkSessionProgress() {
             let completedCount = Object.values(appState.sessionSteps).filter(Boolean).length;
-            document.getElementById('session-progress-text').innerText = `${completedCount} / 4 Completed`;
-            document.getElementById('session-bar').style.width = `${(completedCount / 4) * 100}%`;
+            document.getElementById('session-progress-text').innerText = `${completedCount} / 5 Completed`;
+            document.getElementById('session-bar').style.width = `${(completedCount / 5) * 100}%`;
 
             const claimBtn = document.getElementById('claim-btn');
             let today = new Date().toDateString();
             
-            if (completedCount === 4) {
+            if (completedCount === 5) {
                 if (appState.lastCompletedDate === today) {
                     claimBtn.className = "mt-3 w-full bg-slate-800 text-emerald-400 font-bold py-2 rounded-lg text-xs cursor-default transition";
                     claimBtn.innerText = "✨ Daily Streak Claimed Today!";
@@ -500,32 +538,38 @@
                 }
             } else {
                 claimBtn.className = "mt-3 w-full bg-slate-800 text-slate-500 font-bold py-2 rounded-lg text-xs cursor-not-allowed transition";
-                claimBtn.innerText = `🔒 Complete all 4 steps first`;
+                claimBtn.innerText = `🔒 Complete all 5 steps first`;
                 claimBtn.disabled = true;
             }
         }
 
-        function tryAdvanceLevel() {
-            const speakingDone = appState.sessionSteps.speaking;
-            const grammarDone = appState.sessionSteps.grammar;
+        function tryRankAdvancement() {
+            const allDone = Object.values(appState.sessionSteps).every(Boolean);
 
-            if (!speakingDone || !grammarDone) {
-                showCustomModal("Evaluation Pending ⚠️", "You must successfully pass both Speaking Lab and Grammar & Error Repair before requesting a level promotion!", "🛡️");
+            if (!allDone) {
+                showCustomModal("Evaluation Pending ⚠️", "Complete all 5 steps before requesting a rank evaluation.", "🛡️");
                 return;
             }
 
             const avgScore = ((appState.lastSpeakingScore || 0) + (appState.lastQuizScore || 0)) / 2;
 
-            if (avgScore >= 80) {
-                appState.sessionLevel = (appState.sessionLevel || 0) + 1;
-                appState.sessionSteps = { speaking: false, flashcards: false, grammar: false, shadowing: false };
-                localStorage.setItem('english_pro_state', JSON.stringify(appState));
-                loadProgressiveLesson();
-                setDynamicTimeBanner();
-                updateUIStats();
-                showCustomModal("Promotion Granted! 👑", `Outstanding performance (Avg: ${Math.round(avgScore)}%). You have been promoted to Level ${(appState.sessionLevel % 4) + 1}!`, "🚀");
+            if (avgScore >= 75) {
+                if (appState.rankTier < rankNames.length - 1) {
+                    appState.rankTier += 1;
+                    appState.sessionSteps = { speaking: false, flashcards: false, grammar: false, listening: false, shadowing: false };
+                    localStorage.setItem('english_pro_state', JSON.stringify(appState));
+                    
+                    loadProgressiveLesson();
+                    setDynamicRankBanner();
+                    updateUIStats();
+                    resetStepBadgesUI();
+
+                    showCustomModal("Rank Promoted! 👑", `Great job (Avg: ${Math.round(avgScore)}%). You have advanced to rank: ${getUserRank()}!`, "🚀");
+                } else {
+                    showCustomModal("Maximum Rank Reached 👑", "You are at the top Master Rank!", "🔥");
+                }
             } else {
-                showCustomModal("Promotion Denied ❌", `Your performance average is ${Math.round(avgScore)}%. You need at least 80% accuracy to unlock the next level.`, "📚");
+                showCustomModal("Keep Practicing 📚", `Your average is ${Math.round(avgScore)}%. Aim for 75%+ to rank up. You're doing great!`, "💪");
             }
         }
 
@@ -536,6 +580,17 @@
                 badge.className = "text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full font-bold";
                 badge.innerText = "Completed ✓";
             }
+        }
+
+        function resetStepBadgesUI() {
+            const badges = ['badge-speaking', 'badge-flashcards', 'badge-grammar', 'badge-listening', 'badge-shadowing'];
+            badges.forEach(bId => {
+                const badge = document.getElementById(bId);
+                if(badge) {
+                    badge.className = "text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full";
+                    badge.innerText = "Pending";
+                }
+            });
         }
 
         function markStep(stepKey, badgeId) {
@@ -554,7 +609,6 @@
             localStorage.setItem('english_pro_state', JSON.stringify(appState));
 
             updateUIStats();
-            window.reloadOnClose = true;
             showCustomModal("Streak Boosted! 🎉", `Awesome job, ${appState.userName || 'Learner'}! Streak increased by 1 day.`, "🚀");
         }
 
@@ -569,7 +623,6 @@
             activeBtn.classList.remove('text-slate-400');
         }
 
-        // FULL DATA WITH MIXED MULTIPLE CHOICE AND ERROR REPAIR CHALLENGES FOR EVERY FOCUS
         const profileData = {
             beginner: {
                 prompts: [
@@ -595,7 +648,8 @@
                     { type: "mc", title: "Q9: Preposition", desc: "Complete: 'The book is ___ the table.'", options: [{ text: "A) on", correct: true }, { text: "B) in", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this incorrect sentence:", faulty: "She has 25 years old.", answer: "she is 25 years old" }
                 ],
-                shadowTexts: ["\"Hello, my name is Kevin and I am learning English.\""]
+                shadowTexts: ["Hello my name is Alex and I am learning English"],
+                listeningSnippets: ["Nice to meet you", "Open the door please", "Where is the water"]
             },
             general: {
                 prompts: [{ title: "Travel & Directions", text: "Ask politely where the nearest train station or restaurant is located." }],
@@ -618,7 +672,8 @@
                     { type: "mc", title: "Q9: Money", desc: "Complete: 'Do you accept ___ cards?'", options: [{ text: "A) credit", correct: true }, { text: "B) paper", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this incorrect sentence:", faulty: "I lose my passport.", answer: "i lost my passport" }
                 ],
-                shadowTexts: ["\"Excuse me, can you help me find the nearest restaurant?\""]
+                shadowTexts: ["Excuse me can you help me find the nearest restaurant"],
+                listeningSnippets: ["Can you help me please", "What time is check out", "Where is the airport"]
             },
             electronics: {
                 prompts: [{ title: "Diagnostic Explanation", text: "Explain to a client why a switch-mode power supply failed." }],
@@ -641,7 +696,8 @@
                     { type: "mc", title: "Q9: Relay", desc: "Complete: 'The coil in the ___ clicked.'", options: [{ text: "A) relay", correct: true }, { text: "B) shoe", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this technical sentence:", faulty: "Clean flux from PCB board.", answer: "clean the flux off the pcb" }
                 ],
-                shadowTexts: ["\"I checked the rails and found a short to ground.\""]
+                shadowTexts: ["I checked the rails and found a short to ground"],
+                listeningSnippets: ["The capacitor is shorted", "Measure the voltage with multimeter", "Replace the damaged fuse"]
             },
             systems: {
                 prompts: [{ title: "System Architecture", text: "Describe how you deployed a web inventory service." }],
@@ -664,7 +720,8 @@
                     { type: "mc", title: "Q9: JSON", desc: "Complete: 'Parse incoming ___ payload.'", options: [{ text: "A) JSON", correct: true }, { text: "B) soup", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this IT sentence:", faulty: "Node js is running async.", answer: "node.js is running asynchronously" }
                 ],
-                shadowTexts: ["\"We pushed our code to Render and verified server logs.\""]
+                shadowTexts: ["We pushed our code to Render and verified server logs"],
+                listeningSnippets: ["We pushed our code to GitHub", "The database connection is active", "Deploy the web app to Render"]
             },
             accounting: {
                 prompts: [{ title: "Financial Statement Review", text: "Explain quarterly balance sheet discrepancies and audit procedures." }],
@@ -687,7 +744,8 @@
                     { type: "mc", title: "Q9: Budget", desc: "Complete: 'Allocate funds in the annual ___.'", options: [{ text: "A) budget", correct: true }, { text: "B) jungle", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this financial sentence:", faulty: "Net profit margin are low.", answer: "net profit margin is low" }
                 ],
-                shadowTexts: ["\"We audited the ledger and reconciled accounts.\""]
+                shadowTexts: ["We audited the ledger and reconciled accounts"],
+                listeningSnippets: ["Reconcile the general ledger", "Quarterly revenue has increased", "Check the balance sheet"]
             },
             law: {
                 prompts: [{ title: "Contract Clause Analysis", text: "Discuss liability terms in a commercial agreement." }],
@@ -710,7 +768,8 @@
                     { type: "mc", title: "Q9: Appeal", desc: "Complete: 'File an ___ in higher court.'", options: [{ text: "A) appeal", correct: true }, { text: "B) banana", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this legal sentence:", faulty: "Liability are limited by clause.", answer: "liability is limited by the clause" }
                 ],
-                shadowTexts: ["\"We analyzed the agreement to limit liability.\""]
+                shadowTexts: ["We analyzed the agreement to limit liability"],
+                listeningSnippets: ["Review the contract clause", "The plaintiff filed a lawsuit", "Limit liability in the agreement"]
             },
             medicine: {
                 prompts: [{ title: "Patient Consultation", text: "Describe patient symptoms and treatment plan." }],
@@ -733,7 +792,8 @@
                     { type: "mc", title: "Q9: Clinic", desc: "Complete: 'Visit the local health ___.'", options: [{ text: "A) clinic", correct: true }, { text: "B) mountain", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this medical sentence:", faulty: "Patient need physical therapy.", answer: "the patient needs physical therapy" }
                 ],
-                shadowTexts: ["\"We evaluated the patient's vitals and prescribed treatment.\""]
+                shadowTexts: ["We evaluated the patient vitals and prescribed treatment"],
+                listeningSnippets: ["Check the patient vitals", "Doctor wrote a prescription", "The diagnosis indicates an infection"]
             },
             mechanics: {
                 prompts: [{ title: "Engine Troubleshooting", text: "Explain engine misfire diagnosis and repair steps." }],
@@ -756,7 +816,8 @@
                     { type: "mc", title: "Q9: Transmission", desc: "Complete: 'Replace worn transmission fluid.'", options: [{ text: "A) Transmission", correct: true }, { text: "B) Shoe", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this automotive sentence:", faulty: "Radiator leak coolant fluid.", answer: "the radiator is leaking coolant" }
                 ],
-                shadowTexts: ["\"We diagnosed an engine misfire and replaced spark plugs.\""]
+                shadowTexts: ["We diagnosed an engine misfire and replaced spark plugs"],
+                listeningSnippets: ["The engine has a misfire", "Replace the worn brake pads", "Check the alternator battery"]
             },
             gamedev: {
                 prompts: [{ title: "Game Mechanics", text: "Explain core mechanics of your 2D platformer." }],
@@ -779,7 +840,8 @@
                     { type: "mc", title: "Q9: Scene", desc: "Complete: 'Save level as main ___.'", options: [{ text: "A) scene", correct: true }, { text: "B) mountain", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this game dev sentence:", faulty: "Tilemap draw grid correctly.", answer: "the tilemap draws the grid correctly" }
                 ],
-                shadowTexts: ["\"In Godot 4, we scripted player movement and physics.\""]
+                shadowTexts: ["In Godot four we scripted player movement and physics"],
+                listeningSnippets: ["We scripted player movement", "Draw 2D characters in LibreSprite", "The collision shape is missing"]
             },
             music: {
                 prompts: [{ title: "Bass Performance", text: "Describe your favorite bass line to play live." }],
@@ -802,22 +864,24 @@
                     { type: "mc", title: "Q9: Tone", desc: "Complete: 'Dial in compressor ___.'", options: [{ text: "A) tone", correct: true }, { text: "B) water", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this music sentence:", faulty: "I plug in my bass guitar.", answer: "i plugged in my bass guitar" }
                 ],
-                shadowTexts: ["\"I plug in my electric bass and check my monitor levels.\""]
+                shadowTexts: ["I plug in my electric bass and check my monitor levels"],
+                listeningSnippets: ["Check in ear monitors", "The bass guitar needs new strings", "We played a live concert"]
             }
         };
 
         let currentCategory = appState.selectedFocus || 'beginner';
         let currentCard = 0;
         let currentQuizIndex = 0;
-        let quizCorrectCount = 0;
+        let quizResultsLog = [];
         let activeQuizItem = null;
+        let currentListeningTarget = "";
 
         function saveUserProfileAndStart(title, categoryKey) {
             const nameInput = document.getElementById('user-name-input').value.trim();
-            appState.userName = nameInput || 'Learner';
+            appState.userName = nameInput || 'Alex';
             appState.selectedFocus = categoryKey;
             appState.focusTitle = title;
-            appState.sessionLevel = 0;
+            appState.rankTier = 0;
             appState.lastQuizScore = 0;
             appState.lastSpeakingScore = 0;
             localStorage.setItem('english_pro_state', JSON.stringify(appState));
@@ -828,8 +892,9 @@
             currentCategory = categoryKey;
             currentCard = 0;
             currentQuizIndex = 0;
-            setDynamicTimeBanner();
+            setDynamicRankBanner();
             loadProgressiveLesson();
+            updateUIStats();
         }
 
         function checkInitialFocus() {
@@ -839,25 +904,39 @@
                 document.getElementById('profile-modal').classList.add('hidden');
                 document.getElementById('header-badge').innerText = appState.focusTitle || 'Beginner';
                 currentCategory = appState.selectedFocus;
-                setDynamicTimeBanner();
+                setDynamicRankBanner();
                 loadProgressiveLesson();
+                updateUIStats();
             }
         }
 
         function loadProgressiveLesson() {
             const data = profileData[currentCategory] || profileData['beginner'];
             
-            const promptIdx = (appState.sessionLevel || 0) % data.prompts.length;
+            const promptIdx = (appState.rankTier || 0) % data.prompts.length;
             const currentPrompt = data.prompts[promptIdx];
-            document.getElementById('prompt-title').innerText = `${currentPrompt.title} (Level ${(appState.sessionLevel || 0) + 1})`;
+            document.getElementById('prompt-title').innerText = `${currentPrompt.title} (Rank: ${getUserRank()})`;
             document.getElementById('prompt-text').innerText = '"' + currentPrompt.text + '"';
 
-            const shadowIdx = (appState.sessionLevel || 0) % data.shadowTexts.length;
-            document.getElementById('shadow-text').innerText = data.shadowTexts[shadowIdx];
+            const shadowIdx = (appState.rankTier || 0) % data.shadowTexts.length;
+            document.getElementById('shadow-text').innerText = `"${data.shadowTexts[shadowIdx]}"`;
+
+            const listenIdx = (appState.rankTier || 0) % data.listeningSnippets.length;
+            currentListeningTarget = data.listeningSnippets[listenIdx];
 
             currentCard = 0;
             currentQuizIndex = 0;
-            quizCorrectCount = 0;
+            quizResultsLog = [];
+            
+            document.getElementById('quiz-options').classList.remove('hidden');
+            document.getElementById('error-repair-container').classList.remove('hidden');
+            document.getElementById('quiz-report-container').classList.add('hidden');
+            document.getElementById('quiz-report-list').innerHTML = '';
+            document.getElementById('shadow-user-input').value = '';
+            document.getElementById('shadow-result').innerHTML = '';
+            document.getElementById('listening-input').value = '';
+            document.getElementById('listening-result').innerHTML = '';
+
             updateCard();
             loadQuizQuestion();
         }
@@ -865,7 +944,7 @@
         function loadQuizQuestion() {
             const data = profileData[currentCategory] || profileData['beginner'];
             const quizzes = data.quizzes;
-            if (currentQuizIndex >= quizzes.length) currentQuizIndex = 0;
+            if (currentQuizIndex >= quizzes.length) return;
 
             activeQuizItem = quizzes[currentQuizIndex];
             document.getElementById('quiz-counter').innerText = `Challenge ${currentQuizIndex + 1} of ${quizzes.length}`;
@@ -891,15 +970,15 @@
                     btn.className = "w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-4 rounded-xl text-xs sm:text-sm text-slate-200 transition cursor-pointer";
                     btn.innerText = opt.text;
                     btn.onclick = () => {
-                        if (opt.correct) {
-                            quizCorrectCount++;
-                            document.getElementById('quiz-result').innerHTML = '<span class="text-emerald-400 font-semibold">Correct! Moving on...</span>';
-                            btn.classList.add('border-emerald-500', 'bg-emerald-500/10');
-                        } else {
-                            document.getElementById('quiz-result').innerHTML = '<span class="text-rose-400 font-semibold">Incorrect. Moving on...</span>';
-                            btn.classList.add('border-rose-500', 'bg-rose-500/10');
-                        }
-                        advanceQuizTimer();
+                        quizResultsLog.push({
+                            title: activeQuizItem.title,
+                            type: 'mc',
+                            prompt: activeQuizItem.desc,
+                            selected: opt.text,
+                            correct: opt.correct,
+                            expected: activeQuizItem.options.find(o => o.correct).text
+                        });
+                        advanceQuizIndex();
                     };
                     optionsContainer.appendChild(btn);
                 });
@@ -907,43 +986,105 @@
         }
 
         function submitErrorCorrection() {
-            const userVal = document.getElementById('error-input').value.trim().toLowerCase();
+            const userVal = document.getElementById('error-input').value.trim();
             const expected = activeQuizItem.answer.toLowerCase();
+            const cleanUserVal = userVal.toLowerCase();
 
             if (!userVal) {
                 document.getElementById('quiz-result').innerHTML = '<span class="text-rose-400 font-semibold">Please type a correction first!</span>';
                 return;
             }
 
-            // Simple comparison or lenient inclusion check
-            if (userVal === expected || userVal.includes(expected) || expected.includes(userVal)) {
-                quizCorrectCount++;
-                document.getElementById('quiz-result').innerHTML = '<span class="text-emerald-400 font-semibold">🎯 Spot on! Excellent grammar repair.</span>';
-            } else {
-                document.getElementById('quiz-result').innerHTML = `<span class="text-rose-400 font-semibold">❌ Not quite. Expected: "${activeQuizItem.answer}"</span>`;
-            }
-            advanceQuizTimer();
+            const isCorrect = (cleanUserVal === expected || cleanUserVal.includes(expected) || expected.includes(cleanUserVal));
+
+            quizResultsLog.push({
+                title: activeQuizItem.title,
+                type: 'repair',
+                prompt: `Fix: "${activeQuizItem.faulty}"`,
+                userAnswer: userVal,
+                correct: isCorrect,
+                expected: activeQuizItem.answer
+            });
+
+            advanceQuizIndex();
         }
 
-        function advanceQuizTimer() {
-            setTimeout(() => {
-                currentQuizIndex++;
-                const data = profileData[currentCategory] || profileData['beginner'];
-                if (currentQuizIndex < data.quizzes.length) {
-                    loadQuizQuestion();
-                } else {
-                    const quizScore = Math.round((quizCorrectCount / data.quizzes.length) * 100);
-                    appState.lastQuizScore = quizScore;
-                    localStorage.setItem('english_pro_state', JSON.stringify(appState));
+        function advanceQuizIndex() {
+            currentQuizIndex++;
+            const data = profileData[currentCategory] || profileData['beginner'];
+            if (currentQuizIndex < data.quizzes.length) {
+                loadQuizQuestion();
+            } else {
+                generateQuizReport(data.quizzes.length);
+            }
+        }
 
-                    document.getElementById('quiz-options').classList.add('hidden');
-                    document.getElementById('error-repair-container').classList.add('hidden');
-                    document.getElementById('quiz-title').innerText = "Quiz & Error Repair Completed!";
-                    document.getElementById('quiz-desc').innerText = `You finished all 10 challenges with a score of ${quizScore}%.`;
-                    document.getElementById('quiz-result').innerHTML = `<span class="text-emerald-400 font-bold text-sm">🎉 Step 3 completed successfully!</span>`;
-                    markStep('grammar', 'badge-grammar');
+        function generateQuizReport(totalQuestions) {
+            let correctCount = quizResultsLog.filter(item => item.correct).length;
+            const quizScore = Math.round((correctCount / totalQuestions) * 100);
+            appState.lastQuizScore = quizScore;
+            localStorage.setItem('english_pro_state', JSON.stringify(appState));
+
+            document.getElementById('quiz-options').classList.add('hidden');
+            document.getElementById('error-repair-container').classList.add('hidden');
+            document.getElementById('quiz-title').innerText = "Grammar & Error Repair Report";
+            document.getElementById('quiz-desc').innerText = `You completed all ${totalQuestions} challenges with a score of ${quizScore}%. Review your performance below:`;
+
+            const reportList = document.getElementById('quiz-report-list');
+            reportList.innerHTML = '';
+
+            quizResultsLog.forEach((log, idx) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = `p-3 rounded-lg border ${log.correct ? 'bg-emerald-950/20 border-emerald-500/30 text-emerald-300' : 'bg-rose-950/20 border-rose-500/30 text-rose-300'}`;
+                
+                if (log.type === 'repair') {
+                    itemDiv.innerHTML = `
+                        <p class="font-bold">#${idx + 1} ${log.title} - ${log.correct ? '✓ Correct' : '❌ Incorrect'}</p>
+                        <p class="text-slate-400">Task: ${log.prompt}</p>
+                        <p class="text-slate-300">Your Answer: <strong class="text-white">${log.userAnswer}</strong></p>
+                        ${!log.correct ? `<p class="text-emerald-400 mt-1">Friendly Tip: Expected structure was <strong>${log.expected}</strong></p>` : ''}
+                    `;
+                } else {
+                    itemDiv.innerHTML = `
+                        <p class="font-bold">#${idx + 1} ${log.title} - ${log.correct ? '✓ Correct' : '❌ Incorrect'}</p>
+                        <p class="text-slate-400">${log.prompt}</p>
+                        <p class="text-slate-300">Your Choice: <strong class="text-white">${log.selected}</strong></p>
+                        ${!log.correct ? `<p class="text-emerald-400 mt-1">Friendly Tip: Correct option was <strong>${log.expected}</strong></p>` : ''}
+                    `;
                 }
-            }, 1500);
+                reportList.appendChild(itemDiv);
+            });
+
+            document.getElementById('quiz-report-container').classList.remove('hidden');
+            document.getElementById('quiz-result').innerHTML = `<span class="text-emerald-400 font-bold text-sm">🎉 Step 3 completed successfully! Report generated.</span>`;
+            markStep('grammar', 'badge-grammar');
+        }
+
+        function playListeningAudio() {
+            const utterance = new SpeechSynthesisUtterance(currentListeningTarget);
+            utterance.lang = 'en-US';
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function checkListeningDictation() {
+            const userText = document.getElementById('listening-input').value.trim().toLowerCase();
+            const targetText = currentListeningTarget.toLowerCase();
+            const resultBox = document.getElementById('listening-result');
+
+            if (!userText) {
+                resultBox.innerHTML = '<span class="text-rose-400 font-semibold">Please type what you heard first!</span>';
+                return;
+            }
+
+            const cleanUser = userText.replace(/[^a-z0-9]/g, '');
+            const cleanTarget = targetText.replace(/[^a-z0-9]/g, '');
+
+            if (cleanUser === cleanTarget || cleanUser.includes(cleanTarget) || cleanTarget.includes(cleanUser)) {
+                resultBox.innerHTML = '<span class="text-emerald-400 font-bold">🎯 Spot on! Excellent listening dictation. Step 4 completed!</span>';
+                markStep('listening', 'badge-listening');
+            } else {
+                resultBox.innerHTML = `<span class="text-rose-400 font-semibold">❌ Not quite. Expected sentence: "${currentListeningTarget}". Try listening again!</span>`;
+            }
         }
 
         function updateCard() {
@@ -973,11 +1114,6 @@
             updateCard();
         }
 
-        function completeShadowing() {
-            markStep('shadowing', 'badge-shadowing');
-            showCustomModal("Step Completed! ✓", "Step 4 Shadowing completed successfully.", "🎯");
-        }
-
         let recognition = null;
         let isRecording = false;
 
@@ -987,7 +1123,7 @@
             const textarea = document.getElementById('user-response');
 
             if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                showCustomModal("Browser Notice", "Your browser does not support speech recognition.", "⚠️");
+                showCustomModal("Browser Notice", "Speech recognition is not supported in this browser. You can type freely!", "⚠️");
                 return;
             }
 
@@ -1015,17 +1151,73 @@
 
             recognition.onerror = function() {
                 isRecording = false;
-                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5';
+                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5';
                 statusText.innerText = 'Start Speaking (Mic)';
             };
 
             recognition.onend = function() {
                 isRecording = false;
-                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5';
+                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5';
                 statusText.innerText = 'Start Speaking (Mic)';
             };
 
             recognition.start();
+        }
+
+        let isShadowingRecording = false;
+        function toggleShadowingMic() {
+            const micBtn = document.getElementById('shadow-mic-btn');
+            const statusText = document.getElementById('shadow-mic-status');
+            const textarea = document.getElementById('shadow-user-input');
+            const resultBox = document.getElementById('shadow-result');
+
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                showCustomModal("Browser Notice", "Speech recognition not supported. Click 'Mark Completed' to advance easily!", "⚠️");
+                return;
+            }
+
+            if (isShadowingRecording) {
+                if (recognition) recognition.stop();
+                return;
+            }
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            recognition.onstart = function() {
+                isShadowingRecording = true;
+                micBtn.className = 'bg-rose-500/20 border border-rose-500/40 text-rose-400 px-3 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 animate-pulse';
+                statusText.innerText = 'Listening...';
+            };
+
+            recognition.onresult = function(event) {
+                const spokenText = event.results[0][0].transcript.trim();
+                textarea.value = spokenText;
+                resultBox.innerHTML = '<span class="text-emerald-400 font-bold">🎯 Great effort! Shadowing practice verified.</span>';
+                markStep('shadowing', 'badge-shadowing');
+            };
+
+            recognition.onerror = function() {
+                isShadowingRecording = false;
+                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 px-3 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5';
+                statusText.innerText = 'Try Mic';
+            };
+
+            recognition.onend = function() {
+                isShadowingRecording = false;
+                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 px-3 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5';
+                statusText.innerText = 'Try Mic';
+            };
+
+            recognition.start();
+        }
+
+        function completeShadowingEasy() {
+            markStep('shadowing', 'badge-shadowing');
+            document.getElementById('shadow-result').innerHTML = '<span class="text-emerald-400 font-bold">✓ Shadowing completed successfully!</span>';
         }
 
         function evaluateResponse() {
@@ -1033,38 +1225,27 @@
             const box = document.getElementById('feedback-box');
             
             if(!text) {
-                box.innerHTML = '<span class="text-rose-400 font-semibold">⚠️ Error: Please write or speak a response!</span>';
+                box.innerHTML = '<span class="text-rose-400 font-semibold">⚠️ Please write or speak a small response first!</span>';
                 return;
             }
 
-            const words = text.split(/\s+/);
-            const wordCount = words.length;
-            const rank = getUserRank();
-
-            let minWordsForPass = 4 + (appState.sessionLevel || 0) * 3;
-            if (rank === "Master") minWordsForPass += 5;
-
-            let speakingScore = wordCount < minWordsForPass ? 50 : 90;
+            const wordCount = text.split(/\s+/).length;
+            let speakingScore = wordCount >= 3 ? 90 : 75;
             appState.lastSpeakingScore = speakingScore;
             localStorage.setItem('english_pro_state', JSON.stringify(appState));
 
-            let critique = wordCount < minWordsForPass ? `❌ Too short for Level ${(appState.sessionLevel||0)+1}! Score: ${speakingScore}%. Min required words: ${minWordsForPass}.` : `👑 Excellent professional articulation! Score: ${speakingScore}%.`;
-
             let feedbackHTML = `
                 <div class="space-y-2">
-                    <p class="${speakingScore >= 75 ? 'text-emerald-400' : 'text-amber-400'} font-bold">Speaking Score: ${speakingScore}%</p>
-                    <p><strong>Word Count:</strong> ${wordCount} words (Min: ${minWordsForPass})</p>
-                    <p class="text-slate-300"><strong>Critique:</strong> ${critique}</p>
-                    ${speakingScore >= 75 ? '<p class="text-emerald-400 text-xs font-semibold mt-2">✓ Step 1 completed successfully!</p>' : '<p class="text-rose-400 text-xs font-semibold mt-2">❌ Expand your response to pass.</p>'}
+                    <p class="text-emerald-400 font-bold">Speaking Score: ${speakingScore}%</p>
+                    <p><strong>Word Count:</strong> ${wordCount} words</p>
+                    <p class="text-slate-300"><strong>Encouragement:</strong> Fantastic effort! Keep expressing yourself in English without fear of mistakes.</p>
+                    <p class="text-emerald-400 text-xs font-semibold mt-2">✓ Step 1 completed successfully!</p>
                 </div>
             `;
 
             box.innerHTML = feedbackHTML;
             document.getElementById('feedback-status').innerText = `Evaluated (${speakingScore}%).`;
-
-            if (speakingScore >= 75) {
-                markStep('speaking', 'badge-speaking');
-            }
+            markStep('speaking', 'badge-speaking');
         }
 
         function speakText() {
@@ -1081,7 +1262,6 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        updateUIStats();
         checkInitialFocus();
     </script>
 </body>
