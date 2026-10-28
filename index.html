@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Learning Pro - Clean Modal Edition</title>
+    <title>English Learning Pro - Hardcore Streak Edition</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -136,6 +136,9 @@
                     <button onclick="claimSession()" id="claim-btn" class="mt-3 w-full bg-slate-800 text-slate-500 font-bold py-2 rounded-lg text-xs cursor-not-allowed transition" disabled>
                         🔒 Complete 4 steps to log session
                     </button>
+                    <button onclick="resetExtraSession()" class="mt-2 w-full bg-slate-800/80 hover:bg-slate-700 text-sky-400 border border-slate-700 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer">
+                        🔄 Start Extra Training Session
+                    </button>
                 </div>
             </div>
         </div>
@@ -156,14 +159,14 @@
             </button>
         </div>
 
-        <!-- TAB 1: STRICT SPEAKING LAB -->
+        <!-- TAB 1: ADAPTIVE STRICT SPEAKING LAB -->
         <div id="content-speaking" class="space-y-6">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div class="lg:col-span-2 bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-4">
                             <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 flex items-center gap-1.5">
-                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Step 1: Strict Speaking Evaluation
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Step 1: Adaptive Speaking Grader
                             </span>
                         </div>
                         <h3 class="text-base sm:text-lg font-bold text-white mb-2" id="prompt-title">Speaking Challenge</h3>
@@ -174,18 +177,18 @@
 
                     <div class="mt-6">
                         <div class="flex items-center justify-between mb-2 flex-wrap gap-2">
-                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Spoken Response (Strict AI Grader):</label>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider" id="requirement-label">Spoken Response (Strict AI Grader):</label>
                             <button onclick="toggleSpeechRecognition()" id="mic-btn" class="bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
                                 <i data-lucide="mic" class="w-3.5 h-3.5"></i> <span id="mic-status-text">Start Speaking (Mic)</span>
                             </button>
                         </div>
-                        <textarea id="user-response" rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-slate-200 focus:outline-none focus:border-sky-500 transition text-sm" placeholder="Speak clearly or write your complete response here..."></textarea>
+                        <textarea id="user-response" rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-slate-200 focus:outline-none focus:border-sky-500 transition text-sm" placeholder="Speak clearly or write your response here..."></textarea>
                         
                         <div class="flex flex-wrap items-center justify-between mt-4 gap-3">
                             <button onclick="evaluateResponse()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm transition flex items-center gap-2 shadow-lg shadow-sky-500/20 cursor-pointer">
-                                <i data-lucide="send" class="w-4 h-4"></i> Submit for Strict Evaluation
+                                <i data-lucide="send" class="w-4 h-4"></i> Submit for Evaluation
                             </button>
-                            <span class="text-xs text-slate-400" id="feedback-status">Evaluator ready (Min 4 words required).</span>
+                            <span class="text-xs text-slate-400" id="feedback-status">Evaluator ready.</span>
                         </div>
                     </div>
                 </div>
@@ -193,10 +196,10 @@
                 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg flex flex-col justify-between">
                     <div>
                         <h3 class="text-xs sm:text-sm font-bold text-slate-200 uppercase tracking-wider mb-3 flex items-center gap-2">
-                            <i data-lucide="bot" class="w-4 h-4 text-sky-400"></i> Critical AI Feedback
+                            <i data-lucide="bot" class="w-4 h-4 text-sky-400"></i> Rank-Based AI Feedback
                         </h3>
                         <div id="feedback-box" class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-4 text-xs text-slate-300 space-y-3">
-                            <p class="text-slate-400">Submit your speech to receive a rigorous critique on grammar, vocabulary length, and clarity.</p>
+                            <p class="text-slate-400">Submit your speech to receive an adaptive critique based on your current rank.</p>
                         </div>
                     </div>
                     <div class="mt-4 pt-4 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
@@ -284,7 +287,7 @@
 
     </main>
 
-    <!-- CUSTOM APP MODAL (Clean popup) -->
+    <!-- CUSTOM APP MODAL -->
     <div id="custom-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden">
         <div class="bg-slate-900 border border-slate-700 rounded-2xl p-6 max-w-sm w-full mx-4 shadow-2xl text-center space-y-4">
             <div class="w-14 h-14 bg-sky-500/10 border border-sky-500/30 rounded-full flex items-center justify-center mx-auto text-2xl" id="modal-icon">
@@ -380,6 +383,26 @@
             focusTitle: null
         };
 
+        // Check streak expiration (Loss if inactive for 2+ consecutive days)
+        function checkStreakExpiration() {
+            if (!appState.lastCompletedDate) return;
+            const lastDate = new Date(appState.lastCompletedDate);
+            const today = new Date();
+            
+            // Reset hours to compare pure calendar dates
+            lastDate.setHours(0,0,0,0);
+            today.setHours(0,0,0,0);
+
+            const diffTime = today - lastDate;
+            const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+
+            if (diffDays > 1) {
+                appState.streak = 0; // Streak lost due to 2+ days of inactivity
+                localStorage.setItem('english_pro_state', JSON.stringify(appState));
+            }
+        }
+        checkStreakExpiration();
+
         function showCustomModal(title, message, icon = "✨") {
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-message').innerText = message;
@@ -439,50 +462,65 @@
             }
         }
 
+        function getUserRank() {
+            if (appState.termsMastered >= 31) return "Master";
+            if (appState.termsMastered >= 16) return "Advanced";
+            if (appState.termsMastered >= 6) return "Amateur";
+            return "Beginner";
+        }
+
         function updateUIStats() {
             document.getElementById('streak-count').innerText = appState.streak + ' Days';
             document.getElementById('terms-count').innerText = appState.termsMastered;
 
-            let rank = "Beginner";
-            if (appState.termsMastered >= 31) rank = "👑 Master";
-            else if (appState.termsMastered >= 16) rank = "🔥 Advanced";
-            else if (appState.termsMastered >= 6) rank = "⚡ Amateur";
-            document.getElementById('user-rank').innerText = rank;
+            let rank = getUserRank();
+            let rankDisplay = "Beginner";
+            if (rank === "Master") rankDisplay = "👑 Master";
+            else if (rank === "Advanced") rankDisplay = "🔥 Advanced";
+            else if (rank === "Amateur") rankDisplay = "⚡ Amateur";
+            document.getElementById('user-rank').innerText = rankDisplay;
 
             let today = new Date().toDateString();
-            if (appState.lastCompletedDate === today) {
-                markStepUI('speaking', 'badge-speaking');
-                markStepUI('flashcards', 'badge-flashcards');
-                markStepUI('grammar', 'badge-grammar');
-                markStepUI('shadowing', 'badge-shadowing');
-                
-                const claimBtn = document.getElementById('claim-btn');
-                claimBtn.className = "mt-3 w-full bg-slate-800 text-emerald-400 font-bold py-2 rounded-lg text-xs cursor-default transition";
-                claimBtn.innerText = "✨ Session already completed today!";
-                claimBtn.disabled = true;
-            } else {
-                checkSessionProgress();
+            if (appState.lastActiveDay !== today) {
+                appState.lastActiveDay = today;
+                appState.sessionSteps = { speaking: false, flashcards: false, grammar: false, shadowing: false };
+                localStorage.setItem('english_pro_state', JSON.stringify(appState));
             }
+
+            checkSessionProgress();
         }
 
         function checkSessionProgress() {
-            let today = new Date().toDateString();
-            if (appState.lastCompletedDate === today) return;
-
             let completedCount = Object.values(appState.sessionSteps).filter(Boolean).length;
             document.getElementById('session-progress-text').innerText = `${completedCount} / 4 Completed`;
             document.getElementById('session-bar').style.width = `${(completedCount / 4) * 100}%`;
 
             const claimBtn = document.getElementById('claim-btn');
+            let today = new Date().toDateString();
+            
             if (completedCount === 4) {
-                claimBtn.className = "mt-3 w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2 rounded-lg text-xs cursor-pointer transition shadow-lg";
-                claimBtn.innerText = "🚀 Log Session & Boost Streak";
-                claimBtn.disabled = false;
+                if (appState.lastCompletedDate === today) {
+                    claimBtn.className = "mt-3 w-full bg-slate-800 text-emerald-400 font-bold py-2 rounded-lg text-xs cursor-default transition";
+                    claimBtn.innerText = "✨ Daily Streak Claimed Today!";
+                    claimBtn.disabled = true;
+                } else {
+                    claimBtn.className = "mt-3 w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2 rounded-lg text-xs cursor-pointer transition shadow-lg";
+                    claimBtn.innerText = "🚀 Claim Daily Streak Reward";
+                    claimBtn.disabled = false;
+                }
             } else {
                 claimBtn.className = "mt-3 w-full bg-slate-800 text-slate-500 font-bold py-2 rounded-lg text-xs cursor-not-allowed transition";
                 claimBtn.innerText = `🔒 Missing ${4 - completedCount} steps`;
                 claimBtn.disabled = true;
             }
+        }
+
+        function resetExtraSession() {
+            appState.sessionSteps = { speaking: false, flashcards: false, grammar: false, shadowing: false };
+            localStorage.setItem('english_pro_state', JSON.stringify(appState));
+            loadDailyContent();
+            updateUIStats();
+            showCustomModal("Extra Session Ready! 🚀", "Steps have been reset for your new study round. Let's keep learning!", "🔥");
         }
 
         function markStepUI(stepKey, badgeId) {
@@ -511,7 +549,7 @@
 
             updateUIStats();
             window.reloadOnClose = true;
-            showCustomModal("Session Completed! 🎉", `Great job today, ${appState.userName || 'Learner'}! You have successfully completed your training session. Keep up the amazing work and see you tomorrow!`, "🚀");
+            showCustomModal("Streak Boosted! 🎉", `Awesome job, ${appState.userName || 'Learner'}! Streak increased by 1 day. Keep practicing daily to protect your streak!`, "🚀");
         }
 
         function switchTab(tabName) {
@@ -535,7 +573,10 @@
 
         const profileData = {
             beginner: {
-                prompts: [{ title: "Personal Introduction", text: "Say your name, where you are from, and your age in simple English." }],
+                prompts: [
+                    { title: "Personal Introduction", text: "Say your name, where you are from, and your age in simple English." },
+                    { title: "Daily Routine", text: "Describe what you usually eat for breakfast and what time you wake up." }
+                ],
                 flashcards: [
                     { term: "Hello", def: "A greeting used when meeting someone.", es: "Hola", img: "👋" },
                     { term: "Thank you", def: "An expression of gratitude.", es: "Gracias", img: "🙏" },
@@ -688,6 +729,21 @@
             document.getElementById('shadow-text').innerText = data.shadowTexts[shadowIdx];
 
             updateCard();
+            updateRankRequirementsUI();
+        }
+
+        function updateRankRequirementsUI() {
+            let rank = getUserRank();
+            let label = document.getElementById('requirement-label');
+            if (rank === "Master") {
+                label.innerText = "Spoken Response (👑 Master Strict Mode: Min 15 words required)";
+            } else if (rank === "Advanced") {
+                label.innerText = "Spoken Response (🔥 Advanced Mode: Min 10 words required)";
+            } else if (rank === "Amateur") {
+                label.innerText = "Spoken Response (⚡ Amateur Mode: Min 6 words required)";
+            } else {
+                label.innerText = "Spoken Response (🌱 Beginner Mode: Min 4 words required)";
+            }
         }
 
         function updateCard() {
@@ -784,37 +840,43 @@
 
             const words = text.split(/\s+/);
             const wordCount = words.length;
+            const rank = getUserRank();
+
+            let minWordsForPass = 4;
+            if (rank === "Amateur") minWordsForPass = 6;
+            if (rank === "Advanced") minWordsForPass = 10;
+            if (rank === "Master") minWordsForPass = 15;
 
             let score = 50;
             let critique = "";
 
-            if (wordCount < 4) {
+            if (wordCount < minWordsForPass) {
                 score = 45;
-                critique = "❌ Too short! Your response is underdeveloped. You need to elaborate and form full, clear sentences.";
-            } else if (wordCount < 8) {
-                score = 70;
-                critique = "⚠️ Acceptable, but basic. Try to add more details, connectives, or technical context to sound more professional.";
-            } else if (wordCount < 15) {
-                score = 85;
-                critique = "✅ Good sentence structure and flow! Clear expression of ideas.";
+                critique = `❌ Too short for your current rank (${rank})! Minimum requirement is ${minWordsForPass} words. Elaborate further.`;
+            } else if (wordCount < minWordsForPass + 5) {
+                score = 72;
+                critique = `⚠️ Acceptable, but as a ${rank} you should add more descriptive connectors or technical vocabulary.`;
+            } else if (wordCount < minWordsForPass + 12) {
+                score = 86;
+                critique = `✅ Solid phrasing and good length for your rank! Clear and precise.`;
             } else {
-                score = 96;
-                critique = "👑 Excellent articulation! Rich vocabulary and great fluency depth.";
+                score = 98;
+                critique = `👑 Master-level fluency! Exceptional depth and sentence structure.`;
             }
 
             let feedbackHTML = `
                 <div class="space-y-2">
-                    <p class="${score >= 80 ? 'text-emerald-400' : 'text-amber-400'} font-bold">Evaluation Score: %${score}</p>
-                    <p><strong>Word Count:</strong> ${wordCount} words</p>
+                    <p class="${score >= 75 ? 'text-emerald-400' : 'text-amber-400'} font-bold">Score: ${score}% (${rank} Mode)</p>
+                    <p><strong>Word Count:</strong> ${wordCount} words (Min: ${minWordsForPass})</p>
                     <p class="text-slate-300"><strong>Critique:</strong> ${critique}</p>
-                    ${score >= 70 ? '<p class="text-emerald-400 text-xs font-semibold mt-2">✓ Step 1 completed successfully!</p>' : '<p class="text-rose-400 text-xs font-semibold mt-2">❌ Try to write a longer or clearer response to pass this step.</p>'}
+                    ${score >= 72 ? '<p class="text-emerald-400 text-xs font-semibold mt-2">✓ Step 1 completed successfully!</p>' : '<p class="text-rose-400 text-xs font-semibold mt-2">❌ Expand your response to pass.</p>'}
                 </div>
             `;
 
             box.innerHTML = feedbackHTML;
             document.getElementById('feedback-status').innerText = `Evaluated (${score}%).`;
 
-            if (score >= 70) {
+            if (score >= 72) {
                 markStep('speaking', 'badge-speaking');
             }
         }
