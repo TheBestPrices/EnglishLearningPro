@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>English Pro - Full Mass Content Edition</title>
+    <title>English Pro - Real Life Mass Edition</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -94,7 +94,7 @@
                     </div>
                     <h1 class="font-extrabold text-base text-white flex items-center gap-2 tracking-tight">
                         English Pro
-                        <span class="text-[9px] font-bold uppercase tracking-wider bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2 py-0.5 rounded-full" id="header-badge">Mobile</span>
+                        <span class="text-[9px] font-bold uppercase tracking-wider bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2 py-0.5 rounded-full" id="header-badge">Real Life</span>
                     </h1>
                 </div>
                 <button onclick="startTutorialOnly()" class="sm:hidden bg-sky-500/10 text-sky-400 border border-sky-500/30 px-2.5 py-1 rounded-full text-[11px] font-semibold flex items-center gap-1">
@@ -131,7 +131,7 @@
             <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 
                 <div class="flex items-center gap-4 w-full sm:w-auto">
-                    <!-- Mascota oculta hasta que el usuario elija su primer compañero -->
+                    <!-- Mascota oculta hasta elegir compañero -->
                     <div id="mascot-widget-box" onclick="openPetShop()" class="cursor-pointer group flex-shrink-0 mascot-float relative hidden" title="Open Pet Shop!">
                         <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-tr from-sky-400 via-emerald-400 to-purple-500 rounded-2xl p-0.5 shadow-lg flex items-center justify-center transition group-hover:scale-105">
                             <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center text-2xl sm:text-3xl shadow-inner select-none" id="mascot-emoji">
@@ -145,7 +145,7 @@
                         <span id="tier-badge" class="text-[10px] font-extrabold uppercase tracking-widest text-sky-400 bg-sky-500/10 px-2.5 py-0.5 rounded-full border border-sky-500/20">Tier: Beginner</span>
                         <h2 class="text-xl sm:text-2xl font-extrabold text-white mt-1.5 tracking-tight" id="welcome-title">Welcome back!</h2>
                         <p class="text-slate-300 mt-1 text-[11px] sm:text-xs bg-slate-950/60 border border-slate-800/80 px-3 py-2 rounded-xl italic shadow-inner line-clamp-2" id="mascot-bubble">
-                            "Fresh exercises generated automatically, excluding what you already mastered!"
+                            "Massive dynamic practice banks for real-life conversations, travel, and daily fluency!"
                         </p>
                     </div>
                 </div>
@@ -195,7 +195,7 @@
                     <div>
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 px-3 py-0.5 rounded-full border border-emerald-500/20 flex items-center gap-1.5">
-                                <i data-lucide="sparkles" class="w-3 h-3"></i> Speaking Lab
+                                <i data-lucide="sparkles" class="w-3 h-3"></i> Real-Life Speaking Lab
                             </span>
                         </div>
                         <h3 class="text-base sm:text-lg font-extrabold text-white mb-2" id="prompt-title">Speaking Challenge</h3>
@@ -244,8 +244,8 @@
         <!-- TAB 2: FLASHCARDS -->
         <div id="content-flashcards" class="hidden space-y-4">
             <div class="max-w-sm mx-auto text-center">
-                <h3 class="text-lg font-extrabold text-white mb-1 tracking-tight">Step 2: Universal Vocabulary</h3>
-                <p class="text-[11px] text-slate-400 mb-4 font-medium">Review key terms at your own pace.</p>
+                <h3 class="text-lg font-extrabold text-white mb-1 tracking-tight">Step 2: Massive Vocabulary Bank</h3>
+                <p class="text-[11px] text-slate-400 mb-4 font-medium" id="flashcard-counter-label">Reviewing words (1 of 20)...</p>
                 
                 <div class="card-flip h-64 w-full cursor-pointer mb-4 shadow-xl" onclick="this.classList.toggle('flipped')">
                     <div class="card-inner relative w-full h-full text-center">
@@ -280,8 +280,8 @@
         <div id="content-grammar" class="hidden space-y-4">
             <div class="glass-card max-w-xl mx-auto rounded-2xl sm:rounded-3xl p-4 sm:p-6">
                 <div class="flex justify-between items-center mb-3">
-                    <span class="text-[11px] font-bold text-purple-400 bg-purple-500/10 px-3 py-0.5 rounded-full border border-purple-500/20">Step 3: Grammar Quiz</span>
-                    <span class="text-[11px] text-slate-400 font-semibold" id="quiz-counter">Challenge 1 of 5</span>
+                    <span class="text-[11px] font-bold text-purple-400 bg-purple-500/10 px-3 py-0.5 rounded-full border border-purple-500/20">Step 3: Grammar & Daily Sentences</span>
+                    <span class="text-[11px] text-slate-400 font-semibold" id="quiz-counter">Challenge 1 of 10</span>
                 </div>
                 <h3 class="text-base sm:text-lg font-extrabold text-white mb-1.5" id="quiz-title">Loading...</h3>
                 <p class="text-slate-300 text-xs mb-4 bg-slate-950/70 p-3 rounded-xl border border-slate-800 leading-relaxed shadow-inner" id="quiz-desc">
@@ -291,7 +291,7 @@
                 <div class="space-y-2.5 mb-4" id="quiz-options"></div>
 
                 <div id="error-repair-container" class="hidden space-y-2.5 mb-4">
-                    <label class="block text-[11px] font-bold text-rose-400 uppercase tracking-wider">Fix the grammar error:</label>
+                    <label class="block text-[11px] font-bold text-rose-400 uppercase tracking-wider">Fix the conversation error:</label>
                     <input type="text" id="error-input" class="glass-input w-full rounded-xl px-3.5 py-3 text-xs sm:text-sm text-white focus:outline-none transition font-medium" placeholder="Type correct sentence here...">
                     <button onclick="submitErrorCorrection()" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-extrabold py-2.5 rounded-xl text-xs transition cursor-pointer shadow-md shadow-purple-600/20">
                         Next Challenge
@@ -313,10 +313,10 @@
         <div id="content-listening" class="hidden space-y-4">
             <div class="glass-card max-w-xl mx-auto rounded-2xl sm:rounded-3xl p-4 sm:p-6">
                 <div class="flex justify-between items-center mb-3">
-                    <span class="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 px-3 py-0.5 rounded-full border border-emerald-500/20">Step 4: Listening Dictation</span>
+                    <span class="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 px-3 py-0.5 rounded-full border border-emerald-500/20">Step 4: Real-Life Listening</span>
                 </div>
                 <h3 class="text-base sm:text-lg font-extrabold text-white mb-1">Train Your Ear</h3>
-                <p class="text-slate-300 text-xs mb-4 leading-relaxed">Tap play to listen to the native audio snippet, then type exactly what you hear below.</p>
+                <p class="text-slate-300 text-xs mb-4 leading-relaxed">Tap play to listen to a casual phrase, then type exactly what you hear below.</p>
                 
                 <div class="bg-slate-950/80 p-4 sm:p-5 rounded-2xl border border-slate-800/80 mb-4 space-y-4 text-center shadow-inner">
                     <button onclick="playListeningAudio()" class="bg-gradient-to-r from-emerald-400 to-sky-400 text-slate-950 font-extrabold px-5 py-3 rounded-xl text-xs sm:text-sm transition inline-flex items-center gap-2 cursor-pointer shadow-md shadow-emerald-500/20">
@@ -344,10 +344,10 @@
         <div id="content-shadowing" class="hidden space-y-4">
             <div class="glass-card max-w-xl mx-auto rounded-2xl sm:rounded-3xl p-4 sm:p-6">
                 <div class="flex justify-between items-center mb-3">
-                    <span class="text-[11px] font-bold text-sky-400 bg-sky-500/10 px-3 py-0.5 rounded-full border border-sky-500/20">Step 5: Shadowing Practice</span>
+                    <span class="text-[11px] font-bold text-sky-400 bg-sky-500/10 px-3 py-0.5 rounded-full border border-sky-500/20">Step 5: Casual Shadowing</span>
                 </div>
                 <h3 class="text-base sm:text-lg font-extrabold text-white mb-1">Listen & Practice Speaking</h3>
-                <p class="text-slate-300 text-xs mb-4 leading-relaxed">Listen to the target sentence, then practice saying it out loud.</p>
+                <p class="text-slate-300 text-xs mb-4 leading-relaxed">Listen to a natural conversational sentence, then practice saying it out loud.</p>
                 
                 <div class="bg-slate-950/80 p-4 sm:p-5 rounded-2xl border border-slate-800/80 mb-4 space-y-4 shadow-inner">
                     <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 text-center shadow-sm">
@@ -379,7 +379,7 @@
 
     </main>
 
-    <!-- INTERACTIVE TUTORIAL MODAL (SOLO GUÍA) -->
+    <!-- INTERACTIVE TUTORIAL MODAL -->
     <div id="tutorial-modal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 flex items-center justify-center hidden p-4">
         <div class="glass-card max-w-md w-full rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-2xl relative border border-sky-500/30">
             <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-tr from-sky-400 to-emerald-400 rounded-2xl p-1 shadow-lg flex items-center justify-center text-3xl">
@@ -457,7 +457,7 @@
         </div>
     </div>
 
-    <!-- INITIAL PROFILE & NAME MODAL (SOLO SALE LA PRIMERA VEZ) -->
+    <!-- INITIAL PROFILE & NAME MODAL -->
     <div id="profile-modal" class="fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-50 flex items-center justify-center hidden p-4">
         <div class="glass-card max-w-sm w-full rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-2xl border border-slate-700/80">
             <div class="text-center mb-4">
@@ -470,7 +470,7 @@
 
             <div class="mb-4">
                 <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Your Name:</label>
-                <input type="text" id="user-name-input" value="Kevin" class="glass-input w-full rounded-xl px-3.5 py-3 text-xs sm:text-sm text-white focus:outline-none transition font-medium" placeholder="e.g. Kevin">
+                <input type="text" id="user-name-input" value="" class="glass-input w-full rounded-xl px-3.5 py-3 text-xs sm:text-sm text-white focus:outline-none transition font-medium" placeholder="Enter your name...">
             </div>
 
             <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Select Tier:</label>
@@ -493,7 +493,7 @@
 
     <!-- FOOTER -->
     <footer class="border-t border-slate-800/80 bg-slate-950/50 py-3 text-center text-[11px] text-slate-500 relative z-10">
-        English Pro &copy; 2026 &bull; Mobile Optimized
+        English Pro &copy; 2026 &bull; Real Life Mass Edition
     </footer>
 
     <!-- SCRIPTS -->
@@ -547,19 +547,19 @@
         const tutorialSteps = [
             {
                 title: "Welcome to English Pro! 🦉",
-                text: "This quick tour will show you how to complete your daily sessions, use the microphone, and advance through levels effortlessly."
+                text: "This quick tour will show you how to complete your daily sessions, use the microphone, and practice real-life conversations."
             },
             {
                 title: "1. 5 Core Steps Daily 🚀",
-                text: "To log your streak, complete all 5 steps: Speaking Lab, Flashcards, Grammar Quizzes, Listening, and Shadowing."
+                text: "Complete all 5 daily steps: Speaking Lab, massive Vocabulary Flashcards, Grammar Quizzes, Real-Life Listening, and Shadowing."
             },
             {
                 title: "2. Microphone 🎙️",
-                text: "In Speaking and Shadowing, tap the mic button once to start speaking, and tap again when you are finished!"
+                text: "Tap the mic button once to start speaking naturally, and tap again when you finish your sentence!"
             },
             {
-                title: "3. Fresh Content 🧠",
-                text: "The app stores what you study and automatically excludes past exercises to bring you 100% fresh content."
+                title: "3. Massive Dynamic Banks 🧠",
+                text: "Flashcards and grammar challenges pull from large banks randomly so you never run out of fresh practice."
             }
         ];
 
@@ -645,7 +645,7 @@
             document.getElementById('user-tier').innerText = appState.tierTitle;
             document.getElementById('tier-badge').innerText = `Tier: ${appState.tierTitle}`;
             document.getElementById('header-badge').innerText = appState.tierTitle;
-            document.getElementById('welcome-title').innerText = `Welcome back, ${appState.userName || 'Kevin'}!`;
+            document.getElementById('welcome-title').innerText = `Welcome back, ${appState.userName || 'Friend'}!`;
 
             if (appState.petEmoji) {
                 const mascotBox = document.getElementById('mascot-widget-box');
@@ -692,7 +692,7 @@
             loadProgressiveLesson();
             updateUIStats();
             resetStepBadgesUI();
-            showCustomModal("New Batch Unlocked! 🚀", "Fresh content loaded successfully!", "👑");
+            showCustomModal("New Batch Unlocked! 🚀", "Fresh dynamic content loaded successfully!", "👑");
         }
 
         function markStepUI(stepKey, badgeId) {
@@ -724,7 +724,7 @@
             let today = new Date().toDateString();
             if (appState.lastCompletedDate === today) return;
             appState.streak += 1;
-            appState.termsMastered += 5;
+            appState.termsMastered += 20;
             appState.lastCompletedDate = today;
             localStorage.setItem('english_pro_nextgen_state', JSON.stringify(appState));
             updateUIStats();
@@ -742,117 +742,125 @@
             activeBtn.classList.remove('text-slate-400');
         }
 
-        // BANCO MASIVO COMPLETO DE CONTENIDO PARA TODO EL MES
+        // BANCO MASIVO EXTENDIDO Y PROFUNDO PARA TODO EL MES (VIAJES, COMIDA, VIDA REAL)
         const universalData = {
             beginner: {
                 prompts: [
-                    { id: 'b_p1', title: "Personal Background", text: "Say your name, where you live, and what you do every day." },
-                    { id: 'b_p2', title: "Daily Morning Habits", text: "Describe your morning routine from waking up to starting work." },
-                    { id: 'b_p3', title: "Family & Friends", text: "Talk about a close friend or family member and their daily occupation." },
-                    { id: 'b_p4', title: "Favorite Food & Cooking", text: "Describe your favorite meal and how ingredients are combined." },
-                    { id: 'b_p5', title: "Weekend Activities", text: "Explain what you usually do to relax on weekends." }
+                    { id: 'b_p1', title: "Ordering Food at a Restaurant", text: "Describe what you would order at a casual restaurant and how you talk to the waiter." },
+                    { id: 'b_p2', title: "Asking for Directions", text: "Explain how you would ask a stranger for directions to the nearest train station or supermarket." },
+                    { id: 'b_p3', title: "Weekend Plans with Friends", text: "Talk about what you and your friends want to do this coming weekend to relax." }
                 ],
                 shadowTexts: [
-                    "Hello my name is Kevin and I am learning advanced English",
-                    "Every morning I wake up early and drink a glass of water",
-                    "My family and I enjoy spending time together on weekends",
-                    "Practice makes perfect when you study every single day",
-                    "Always keep your goals high and work hard to achieve them"
+                    "Excuse me, could you tell me where the nearest coffee shop is?",
+                    "I would like to order a chicken sandwich and a glass of fresh lemonade please",
+                    "What are your plans for the upcoming weekend with your friends?"
                 ],
                 listeningSnippets: [
-                    "Nice to meet you today",
-                    "Open the front door please",
-                    "Where is the clean water",
-                    "How much does this cost",
-                    "Turn left at the street corner"
+                    "Table for two near the window please",
+                    "How much does this jacket cost",
+                    "Turn right at the traffic lights"
                 ],
                 quizzesPool: [
-                    { id: 'b_q1', type: "mc", title: "Pronoun", desc: "Which pronoun refers to yourself?", options: [{ text: "A) He", correct: false }, { text: "B) I", correct: true }] },
-                    { id: 'b_q2', type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "She don't like coffee.", answer: "she doesn't like coffee" },
-                    { id: 'b_q3', type: "mc", title: "Plural", desc: "What is the plural of 'child'?", options: [{ text: "A) childs", correct: false }, { text: "B) children", correct: true }] },
-                    { id: 'b_q4', type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "I am work in a workshop.", answer: "i am working in a workshop" },
-                    { id: 'b_q5', type: "mc", title: "Article", desc: "Choose the correct article: '___ apple a day.'", options: [{ text: "A) An", correct: true }, { text: "B) A", correct: false }] }
+                    { id: 'b_q1', type: "mc", title: "Restaurant Phrase", desc: "Which phrase is used to ask for the bill?", options: [{ text: "A) Check please", correct: true }, { text: "B) Hello table", correct: false }] },
+                    { id: 'b_q2', type: "repair", title: "Error Repair", desc: "Fix this daily sentence:", faulty: "Where is the bus stop located at?", answer: "where is the bus stop located" },
+                    { id: 'b_q3', type: "mc", title: "Shopping", desc: "Complete: 'Do you have this shirt ___ a larger size?'", options: [{ text: "A) in", correct: true }, { text: "B) on", correct: false }] },
+                    { id: 'b_q4', type: "repair", title: "Error Repair", desc: "Fix this daily sentence:", faulty: "I like eat pizza on Fridays.", answer: "i like eating pizza on fridays" },
+                    { id: 'b_q5', type: "mc", title: "Travel", desc: "Complete: 'I need to book a room ___ two nights.'", options: [{ text: "A) for", correct: true }, { text: "B) during", correct: false }] },
+                    { id: 'b_q6', type: "repair", title: "Error Repair", desc: "Fix this daily sentence:", faulty: "She go to school everyday.", answer: "she goes to school everyday" },
+                    { id: 'b_q7', type: "mc", title: "Time", desc: "Complete: 'What time is ___?'", options: [{ text: "A) it", correct: true }, { text: "B) this", correct: false }] },
+                    { id: 'b_q8', type: "repair", title: "Error Repair", desc: "Fix this daily sentence:", faulty: "They was playing soccer yesterday.", answer: "they were playing soccer yesterday" },
+                    { id: 'b_q9', type: "mc", title: "Directions", desc: "Complete: 'Turn left ___ the corner.'", options: [{ text: "A) at", correct: true }, { text: "B) in", correct: false }] },
+                    { id: 'b_q10', type: "repair", title: "Error Repair", desc: "Fix this daily sentence:", faulty: "He don't like drinking milk.", answer: "he doesn't like drinking milk" }
                 ],
                 flashcards: [
-                    { term: "Hello", def: "A greeting used when meeting someone.", es: "Hola", img: "👋" },
-                    { term: "Thank you", def: "An expression of gratitude.", es: "Gracias", img: "🙏" },
-                    { term: "Water", def: "Clear liquid essential for life.", es: "Agua", img: "💧" },
-                    { term: "Friend", def: "A person with whom one has a bond.", es: "Amigo", img: "🤝" },
-                    { term: "House", def: "A building for human habitation.", es: "Casa", img: "🏠" }
+                    { term: "Restaurant", def: "A place where people pay to sit and eat meals.", es: "Restaurante", img: "🍽️" },
+                    { term: "Airport", def: "Complex of runways and buildings for air transport.", es: "Aeropuerto", img: "✈️" },
+                    { term: "Supermarket", def: "A large self-service store selling foods.", es: "Supermercado", img: "🛒" },
+                    { term: "Ticket", def: "An official certificate permitting travel.", es: "Boleto", img: "🎫" },
+                    { term: "Coffee", def: "A hot drink made from roasted beans.", es: "Café", img: "☕" },
+                    { term: "Hospital", def: "An institution providing medical treatment.", es: "Hospital", img: "🏥" },
+                    { term: "Hotel", def: "An establishment providing accommodation.", es: "Hotel", img: "🏨" },
+                    { term: "Pharmacy", def: "A shop where medicines are sold.", es: "Farmacia", img: "💊" },
+                    { term: "Weather", def: "The state of the atmosphere at a place.", es: "Clima", img: "☀️" },
+                    { term: "Market", def: "A regular gathering of people for purchasing goods.", es: "Mercado", img: "🧺" },
+                    { term: "Breakfast", def: "The first meal of the day.", es: "Desayuno", img: "🥞" },
+                    { term: "Subway", def: "An underground electric railway.", es: "Metro / Subterráneo", img: "🚇" },
+                    { term: "Passport", def: "An official document issued for travel abroad.", es: "Pasaporte", img: "📘" },
+                    { term: "Luggage", def: "Suitcases or other bags for traveler's belongings.", es: "Equipaje", img: "🧳" },
+                    { term: "Money", def: "Current medium of exchange in coins and banknotes.", es: "Dinero / Efectivo", img: "💵" },
+                    { term: "Neighbor", def: "A person living next door or near.", es: "Vecino", img: "🏘️" },
+                    { term: "Kitchen", def: "Room where food is prepared and cooked.", es: "Cocina", img: "🍳" },
+                    { term: "Shower", def: "Facility for washing the body under a spray.", es: "Ducha / Baño", img: "🚿" },
+                    { term: "Jacket", def: "An outer garment extending to the waist or hips.", es: "Chaqueta / Saco", img: "🧥" },
+                    { term: "Umbrella", def: "A device used as protection against rain.", es: "Paraguas", img: "☂️" }
                 ]
             },
             intermediate: {
                 prompts: [
-                    { id: 'i_p1', title: "Problem Solving", text: "Describe a difficult problem you faced recently and how you resolved it." },
-                    { id: 'i_p2', title: "Future Ambitions", text: "Explain your professional plans and project goals for the next two years." },
-                    { id: 'i_p3', title: "Technology Impact", text: "Discuss how modern tools and automation influence daily productivity." },
-                    { id: 'i_p4', title: "Travel & Exploration", text: "Describe an ideal trip you would like to take to another country." },
-                    { id: 'i_p5', title: "Handling Stress", text: "Explain the methods you use to stay calm and focused when under high pressure." }
+                    { id: 'i_p1', title: "Resolving a Travel Delay", text: "Describe how you would talk to an airline agent when your flight is delayed or cancelled." },
+                    { id: 'i_p2', title: "Explaining a Medical Symptom", text: "Explain how you would describe a headache or stomach ache to a doctor or pharmacist." }
                 ],
                 shadowTexts: [
-                    "We successfully deployed the server application and tested all endpoints",
-                    "Make sure to check continuity across all circuit board traces",
-                    "Learning a second language requires consistent daily practice and patience",
-                    "The diagnostic report showed a short circuit in the power supply",
-                    "Asynchronous operations prevent blocking threads during heavy tasks"
+                    "My flight was unfortunately delayed by two hours so I need to rebook my connection",
+                    "I have had a mild fever and a sore throat since yesterday morning"
                 ],
                 listeningSnippets: [
-                    "Can you help me troubleshoot this issue",
-                    "The database connection was established successfully",
-                    "Check the output voltage with a multimeter",
-                    "We need to update our repository immediately",
-                    "The circuit board has a blown fuse"
+                    "My luggage seems to be missing from the carousel",
+                    "I need an appointment with the general practitioner"
                 ],
                 quizzesPool: [
-                    { id: 'i_q1', type: "mc", title: "Conditional", desc: "Complete: 'If I had time, I ___ travel.'", options: [{ text: "A) would", correct: true }, { text: "B) will", correct: false }] },
-                    { id: 'i_q2', type: "repair", title: "Error Repair", desc: "Fix this sentence:", faulty: "She has wrote a brilliant report.", answer: "she has written a brilliant report" },
-                    { id: 'i_q3', type: "mc", title: "Passive Voice", desc: "Complete: 'The software ___ updated yesterday.'", options: [{ text: "A) was", correct: true }, { text: "B) were", correct: false }] },
-                    { id: 'i_q4', type: "repair", title: "Error Repair", desc: "Fix this sentence:", faulty: "He don't know nothing about it.", answer: "he doesn't know anything about it" },
-                    { id: 'i_q5', type: "mc", title: "Relative Pronoun", desc: "Complete: 'The engineer ___ fixed the server.'", options: [{ text: "A) who", correct: true }, { text: "B) which", correct: false }] }
+                    { id: 'i_q1', type: "mc", title: "Travel Phrasal Verb", desc: "Complete: 'We need to ___ out of the hotel by noon.'", options: [{ text: "A) check", correct: true }, { text: "B) look", correct: false }] },
+                    { id: 'i_q2', type: "repair", title: "Error Repair", desc: "Fix this conversational sentence:", faulty: "I am looking forward to meet you.", answer: "i am looking forward to meeting you" },
+                    { id: 'i_q3', type: "mc", title: "Doctor Visit", desc: "Complete: 'My head ___ since yesterday afternoon.'", options: [{ text: "A) hurts", correct: true }, { text: "B) pain", correct: false }] },
+                    { id: 'i_q4', type: "repair", title: "Error Repair", desc: "Fix this conversational sentence:", faulty: "She suggested to go to the beach.", answer: "she suggested going to the beach" },
+                    { id: 'i_q5', type: "mc", title: "Polite Request", desc: "Complete: 'Would you mind ___ the window please?'", options: [{ text: "A) opening", correct: true }, { text: "B) open", correct: false }] },
+                    { id: 'i_q6', type: "repair", title: "Error Repair", desc: "Fix this conversational sentence:", faulty: "He is capable to do this job.", answer: "he is capable of doing this job" },
+                    { id: 'i_q7', type: "mc", title: "Conditional", desc: "Complete: 'If I knew the answer, I ___ tell you.'", options: [{ text: "A) would", correct: true }, { text: "B) will", correct: false }] },
+                    { id: 'i_q8', type: "repair", title: "Error Repair", desc: "Fix this conversational sentence:", faulty: "She has wrote a brilliant letter.", answer: "she has written a brilliant letter" }
                 ],
                 flashcards: [
-                    { term: "Deployment", def: "Making an application available for use.", es: "Despliegue", img: "🚀" },
-                    { term: "Multimeter", def: "An instrument designed to measure electrical values.", es: "Multímetro", img: "🔌" },
-                    { term: "Workflow", def: "The sequence of industrial or administrative processes.", es: "Flujo de trabajo", img: "⚙️" },
-                    { term: "Repository", def: "A central location in which data is stored.", es: "Repositorio", img: "📦" },
-                    { term: "Troubleshoot", def: "Discovering and fixing causes of problems.", es: "Solucionar problemas", img: "🔍" }
+                    { term: "Reservation", def: "An arrangement to keep something for your use.", es: "Reservación", img: "📅" },
+                    { term: "Receipt", def: "A printed acknowledgment of payment.", es: "Recibo", img: "🧾" },
+                    { term: "Schedule", def: "A plan for carrying out a procedure.", es: "Horario", img: "⏰" },
+                    { term: "Delay", def: "Make someone or something late.", es: "Retraso", img: "⏱️" },
+                    { term: "Complaint", def: "A statement that something is unsatisfactory.", es: "Reclamo", img: "📝" },
+                    { term: "Insurance", def: "Arrangement providing compensation for loss.", es: "Seguro", img: "🛡️" },
+                    { term: "Currency", def: "A system of money in general use in a country.", es: "Divisa / Moneda", img: "💱" },
+                    { term: "Embassy", def: "The official residence of an ambassador abroad.", es: "Embajada", img: "🏛️" },
+                    { term: "Appointment", def: "An arrangement to meet someone at a particular time.", es: "Cita", img: "🗓️" },
+                    { term: "Symptoms", def: "A physical feature indicating a condition of disease.", es: "Síntomas", img: "🌡️" },
+                    { term: "Prescription", def: "A medical instruction written by a doctor.", es: "Receta médica", img: "💊" },
+                    { term: "Convenient", def: "Suited to personal comfort or purpose.", es: "Conveniente", img: "👍" },
+                    { term: "Alternative", def: "Available as another possibility or choice.", es: "Alternativa", img: "🔀" },
+                    { term: "Environment", def: "The surroundings or conditions in which a person lives.", es: "Entorno / Ambiente", img: "🌳" }
                 ]
             },
             advanced: {
                 prompts: [
-                    { id: 'a_p1', title: "Advanced Architecture", text: "Explain component-level troubleshooting for complex inverter control boards and power rails." },
-                    { id: 'a_p2', title: "Software Engineering", text: "Describe asynchronous database queries, API middleware handling, and deployment pipelines." },
-                    { id: 'a_p3', title: "Professional Leadership", text: "Discuss how you manage live band performances, stage monitoring, and audio engineering setups." },
-                    { id: 'a_p4', title: "System Scalability", text: "Explain how you would scale a web application to handle thousands of concurrent requests." },
-                    { id: 'a_p5', title: "Hardware Diagnostics", text: "Describe diagnosing microchip-level faults using an oscilloscope and thermal imaging." }
+                    { id: 'a_p1', title: "Negotiating Service Fees", text: "Discuss how you negotiate prices or resolve a billing dispute with a customer service representative." }
                 ],
                 shadowTexts: [
-                    "We need to analyze the switch mode power supply schematic and locate the faulty capacitor",
-                    "Asynchronous backend operations prevent blocking threads during heavy database transactions",
-                    "The wireless in-ear monitoring system delivers a crystal clear mix for live musicians",
-                    "Hardly had we initialized the runtime environment when the primary memory buffer overflowed",
-                    "Optimizing pulse-width modulation signals requires precise oscilloscope measurements"
+                    "I was overcharged on my monthly bill and would like to request an immediate refund"
                 ],
                 listeningSnippets: [
-                    "Verify the environment variables before deploying to production",
-                    "The IGBT module shorted out due to an excessive thermal load",
-                    "Reconcile the general ledger and audit accounts payable",
-                    "The microcontroller is failing to receive clock pulses from the crystal oscillator",
-                    "Ensure all asynchronous database transactions handle rollbacks correctly"
+                    "I would like to speak with a supervisor regarding this unauthorized charge"
                 ],
                 quizzesPool: [
-                    { id: 'a_q1', type: "repair", title: "Advanced Repair", desc: "Fix this complex sentence:", faulty: "Hardly had I arrived when the server crash.", answer: "hardly had i arrived when the server crashed" },
-                    { id: 'a_q2', type: "mc", title: "Inversion", desc: "Complete: 'Never ___ such an efficient algorithm.'", options: [{ text: "A) have I seen", correct: true }, { text: "B) I have seen", correct: false }] },
-                    { id: 'a_q3', type: "repair", title: "Advanced Repair", desc: "Fix this complex sentence:", faulty: "Despite he worked hard, the bug remained.", answer: "despite working hard the bug remained" },
-                    { id: 'a_q4', type: "mc", title: "Subjunctive", desc: "Complete: 'It is vital that every component ___ tested.'", options: [{ text: "A) be", correct: true }, { text: "B) is", correct: false }] },
-                    { id: 'a_q5', type: "repair", title: "Advanced Repair", desc: "Fix this complex sentence:", faulty: "Seldom you see such accurate measurements.", answer: "seldom do you see such accurate measurements" }
+                    { id: 'a_q1', type: "repair", title: "Advanced Idiomatic Repair", desc: "Fix this complex sentence:", faulty: "Hardly I had arrived when it started raining.", answer: "hardly had i arrived when it started raining" },
+                    { id: 'a_q2', type: "mc", title: "Diplomatic Phrasing", desc: "Complete: 'I appreciate your perspective, ___ I feel differently.'", options: [{ text: "A) however", correct: true }, { text: "B) because", correct: false }] },
+                    { id: 'a_q3', type: "repair", title: "Advanced Idiomatic Repair", desc: "Fix this complex sentence:", faulty: "Seldom one sees such hospitality abroad.", answer: "seldom does one see such hospitality abroad" },
+                    { id: 'a_q4', type: "mc", title: "Nuanced Vocabulary", desc: "Complete: 'Her advice proved invaluable ___ our trip.'", options: [{ text: "A) throughout", correct: true }, { text: "B) through", correct: false }] },
+                    { id: 'a_q5', type: "repair", title: "Advanced Idiomatic Repair", desc: "Fix this complex sentence:", faulty: "No sooner we left the hotel than it rained.", answer: "no sooner had we left the hotel than it rained" }
                 ],
                 flashcards: [
-                    { term: "Inverter", def: "Power electronic device converting DC to AC.", es: "Inversor", img: "⚡" },
-                    { term: "Asynchronous", def: "Not occurring at the same time.", es: "Asíncrono", img: "⏳" },
-                    { term: "Oscilloscope", def: "Diagnostic instrument displaying waveforms.", es: "Osciloscopio", img: "📈" },
-                    { term: "Middleware", def: "Software connecting software components.", es: "Middleware", img: "🔗" },
-                    { term: "Subsystem", def: "A self-contained system within a larger system.", es: "Subsistema", img: "🧩" }
+                    { term: "Dispute", def: "A disagreement, argument, or debate.", es: "Disputa / Reclamo", img: "⚖️" },
+                    { term: "Etiquette", def: "The customary code of polite behavior in society.", es: "Etiqueta", img: "🎩" },
+                    { term: "Gastronomy", def: "The practice or art of choosing and cooking food.", es: "Gastronomía", img: "🍲" },
+                    { term: "Itinerary", def: "A planned route or journey description.", es: "Itinerario", img: "🗺️" },
+                    { term: "Hospitality", def: "The friendly and generous reception of guests.", es: "Hospitalidad", img: "🤝" },
+                    { term: "Ambiguity", def: "The quality of being open to more than one interpretation.", es: "Ambigüedad", img: "🔀" },
+                    { term: "Resolution", def: "A firm decision to do or not to do something.", es: "Resolución", img: "🎯" },
+                    { term: "Negotiation", def: "Discussion aimed at reaching an agreement.", es: "Negociación", img: "🤝" }
                 ]
             }
         };
@@ -863,10 +871,15 @@
         let activeQuizItem = null;
         let currentListeningTarget = "";
         let activeQuizzes = [];
+        let activeFlashcards = [];
 
         function saveUserProfileAndStart(title, tierKey) {
             const nameInput = document.getElementById('user-name-input').value.trim();
-            appState.userName = nameInput || 'Kevin';
+            if (!nameInput) {
+                showCustomModal("Name Required ⚠️", "Please enter your name to personalize your learning experience.", "👤");
+                return;
+            }
+            appState.userName = nameInput;
             appState.tierKey = tierKey;
             appState.tierTitle = title;
             appState.tutorialCompleted = true;
@@ -875,16 +888,27 @@
             document.getElementById('profile-modal').classList.add('hidden');
             loadProgressiveLesson();
             updateUIStats();
+
+            startTutorialOnly();
         }
 
         function checkInitialFocus() {
-            if (!appState.userName) {
+            if (!appState.userName || appState.userName.trim() === "") {
                 document.getElementById('profile-modal').classList.remove('hidden');
             } else {
                 document.getElementById('profile-modal').classList.add('hidden');
                 loadProgressiveLesson();
                 updateUIStats();
             }
+        }
+
+        function shuffleArray(array) {
+            let arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
         }
 
         function loadProgressiveLesson() {
@@ -894,7 +918,13 @@
             document.getElementById('prompt-text').innerText = '"' + p.text + '"';
             document.getElementById('shadow-text').innerText = `"${data.shadowTexts[0]}"`;
             currentListeningTarget = data.listeningSnippets[0];
-            activeQuizzes = data.quizzesPool;
+            
+            // Cargar TODOS los elementos del banco masivo de forma aleatoria
+            activeQuizzes = shuffleArray(data.quizzesPool);
+            activeFlashcards = shuffleArray(data.flashcards);
+
+            document.getElementById('quiz-counter').innerText = `Challenge 1 of ${activeQuizzes.length}`;
+            document.getElementById('flashcard-counter-label').innerText = `Reviewing words (1 of ${activeFlashcards.length})...`;
 
             currentCard = 0;
             currentQuizIndex = 0;
@@ -960,7 +990,7 @@
             } else {
                 document.getElementById('quiz-options').classList.add('hidden');
                 document.getElementById('error-repair-container').classList.add('hidden');
-                document.getElementById('quiz-title').innerText = "Grammar Completed! 🎉";
+                document.getElementById('quiz-title').innerText = "Grammar Bank Completed! 🎉";
                 document.getElementById('quiz-result').innerHTML = '<span class="text-emerald-400 font-extrabold text-xs">✓ Step 3 completed successfully!</span>';
                 markStep('grammar', 'badge-grammar');
             }
@@ -1022,14 +1052,12 @@
             markStep('shadowing', 'badge-shadowing');
         }
 
-        function getCurrentCards() {
-            return (universalData[appState.tierKey] || universalData['beginner']).flashcards;
-        }
-
         function updateCard() {
-            const cards = getCurrentCards();
+            const cards = activeFlashcards;
+            if (cards.length === 0) return;
             const card = cards[currentCard];
             document.getElementById('flash-badge').innerText = `Term #${currentCard + 1} of ${cards.length}`;
+            document.getElementById('flashcard-counter-label').innerText = `Reviewing words (${currentCard + 1} of ${cards.length})...`;
             document.getElementById('flash-term').innerText = card.term;
             document.getElementById('flash-def').innerText = card.def;
             document.getElementById('flash-es').innerText = card.es;
@@ -1037,7 +1065,7 @@
         }
 
         function nextCard() {
-            const cards = getCurrentCards();
+            const cards = activeFlashcards;
             currentCard++;
             if (currentCard >= cards.length) {
                 currentCard = 0;
@@ -1047,7 +1075,7 @@
         }
 
         function prevCard() {
-            const cards = getCurrentCards();
+            const cards = activeFlashcards;
             currentCard = (currentCard - 1 + cards.length) % cards.length;
             updateCard();
         }
@@ -1082,7 +1110,7 @@
                 box.innerHTML = '<span class="text-rose-400 font-semibold">⚠️ Type or speak first!</span>';
                 return;
             }
-            box.innerHTML = '<p class="text-emerald-400 font-extrabold">Speaking Score: 90%</p><p class="text-slate-300">Great job!</p>';
+            box.innerHTML = '<p class="text-emerald-400 font-extrabold">Speaking Score: 90%</p><p class="text-slate-300">Great conversational flow!</p>';
             markStep('speaking', 'badge-speaking');
         }
 
