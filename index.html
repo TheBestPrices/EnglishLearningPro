@@ -713,21 +713,36 @@
                     { id: 'b_p2', title: "Daily Morning Habits", text: "Describe your morning routine from waking up to starting work." },
                     { id: 'b_p3', title: "Family & Friends", text: "Talk about a close friend or family member and their daily occupation." },
                     { id: 'b_p4', title: "Favorite Food & Cooking", text: "Describe your favorite meal and how ingredients are combined." },
-                    { id: 'b_p5', title: "Weekend Activities", text: "Explain what you usually do to relax on weekends." }
+                    { id: 'b_p5', title: "Weekend Activities", text: "Explain what you usually do to relax on weekends." },
+                    { id: 'b_p6', title: "Hometown Description", text: "Describe your city, the weather, and your favorite places around town." },
+                    { id: 'b_p7', title: "Shopping Routine", text: "Explain how you usually buy groceries or clothes and how you pay." },
+                    { id: 'b_p8', title: "Hobbies and Free Time", text: "Talk about what you enjoy doing when you are not working or studying." },
+                    { id: 'b_p9', title: "Transportation", text: "Describe how you travel around your city every day." },
+                    { id: 'b_p10', title: "Future Plans", text: "Talk about what you want to achieve before the end of this year." }
                 ],
                 shadowTexts: [
                     "Hello my name is Kevin and I am learning advanced English",
                     "Every morning I wake up early and drink a glass of water",
                     "My family and I enjoy spending time together on weekends",
                     "Practice makes perfect when you study every single day",
-                    "Always keep your goals high and work hard to achieve them"
+                    "Always keep your goals high and work hard to achieve them",
+                    "The weather today is warm and sunny across the city",
+                    "I usually ride my motorcycle to work every single morning",
+                    "She loves cooking traditional meals for her friends",
+                    "We need to buy some fresh vegetables at the local market",
+                    "Learning a new language opens many doors for your career"
                 ],
                 listeningSnippets: [
                     "Nice to meet you today",
                     "Open the front door please",
                     "Where is the clean water",
                     "How much does this cost",
-                    "Turn left at the street corner"
+                    "Turn left at the street corner",
+                    "What time is it right now",
+                    "The keys are on the kitchen table",
+                    "Please call me when you arrive",
+                    "I want a cup of hot coffee",
+                    "She is studying English in her room"
                 ],
                 quizzesPool: [
                     { id: 'b_q1', type: "mc", title: "Pronoun", desc: "Which pronoun refers to yourself?", options: [{ text: "A) He", correct: false }, { text: "B) I", correct: true }] },
@@ -737,63 +752,118 @@
                     { id: 'b_q5', type: "mc", title: "Article", desc: "Choose the correct article: '___ apple a day.'", options: [{ text: "A) An", correct: true }, { text: "B) A", correct: false }] },
                     { id: 'b_q6', type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "He go to the gym yesterday.", answer: "he went to the gym yesterday" },
                     { id: 'b_q7', type: "mc", title: "Negation", desc: "Complete: 'I ___ like coffee.'", options: [{ text: "A) don't", correct: true }, { text: "B) doesn't", correct: false }] },
-                    { id: 'b_q8', type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "Where you live?", answer: "where do you live" }
+                    { id: 'b_q8', type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "Where you live?", answer: "where do you live" },
+                    { id: 'b_q9', type: "mc", title: "Preposition", desc: "Complete: 'The book is ___ the table.'", options: [{ text: "A) on", correct: true }, { text: "B) in", correct: false }] },
+                    { id: 'b_q10', type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "She has 25 years old.", answer: "she is 25 years old" },
+                    { id: 'b_q11', type: "mc", title: "Past Tense", desc: "What is the past tense of 'go'?", options: [{ text: "A) goed", correct: false }, { text: "B) went", correct: true }] },
+                    { id: 'b_q12', type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "They was playing football.", answer: "they were playing football" }
                 ],
                 flashcards: [
                     { term: "Hello", def: "A greeting used when meeting someone.", es: "Hola", img: "👋" },
                     { term: "Thank you", def: "An expression of gratitude.", es: "Gracias", img: "🙏" },
                     { term: "Water", def: "Clear liquid essential for life.", es: "Agua", img: "💧" },
-                    { term: "Friend", def: "A person with whom one has a bond.", es: "Amigo", img: "🤝" }
+                    { term: "Friend", def: "A person with whom one has a bond.", es: "Amigo", img: "🤝" },
+                    { term: "House", def: "A building for human habitation.", es: "Casa", img: "🏠" },
+                    { term: "Work", def: "Activity involving mental or physical effort.", es: "Trabajo", img: "💼" },
+                    { term: "Food", def: "Any nutritious substance that people eat.", es: "Comida", img: "🍲" }
                 ]
             },
             intermediate: {
                 prompts: [
                     { id: 'i_p1', title: "Problem Solving", text: "Describe a difficult problem you faced recently and how you resolved it." },
                     { id: 'i_p2', title: "Future Ambitions", text: "Explain your professional plans and project goals for the next two years." },
-                    { id: 'i_p3', title: "Technology Impact", text: "Discuss how modern tools and automation influence daily productivity." }
+                    { id: 'i_p3', title: "Technology Impact", text: "Discuss how modern tools and automation influence daily productivity." },
+                    { id: 'i_p4', title: "Travel & Exploration", text: "Describe an ideal trip you would like to take to another country." },
+                    { id: 'i_p5', title: "Handling Stress", text: "Explain the methods you use to stay calm and focused when under high pressure." },
+                    { id: 'i_p6', title: "Learning New Skills", text: "Describe a complex skill you taught yourself and the process you followed." },
+                    { id: 'i_p7', title: "Teamwork & Collaboration", text: "Discuss the advantages and challenges of working in a collaborative team." },
+                    { id: 'i_p8', title: "Financial Decisions", text: "Explain how you plan your monthly budget and invest in tools or equipment." },
+                    { id: 'i_p9', title: "Overcoming Failure", text: "Describe a time something didn't go as planned and what lesson you learned." },
+                    { id: 'i_p10', title: "Daily Productivity", text: "Share your top habits for maintaining high efficiency throughout the workday." }
                 ],
                 shadowTexts: [
                     "We successfully deployed the server application and tested all endpoints",
                     "Make sure to check continuity across all circuit board traces",
-                    "Learning a second language requires consistent daily practice and patience"
+                    "Learning a second language requires consistent daily practice and patience",
+                    "The diagnostic report showed a short circuit in the power supply",
+                    "Asynchronous operations prevent blocking threads during heavy tasks",
+                    "Effective communication is the key to successful project management",
+                    "We need to optimize the database queries to improve loading speeds",
+                    "Always verify component specifications before soldering them onto the PCB",
+                    "Practicing musical instruments builds finger dexterity and timing discipline",
+                    "Proper hydration and nutrition are essential for heavy strength training sessions"
                 ],
                 listeningSnippets: [
                     "Can you help me troubleshoot this issue",
                     "The database connection was established successfully",
-                    "Check the output voltage with a multimeter"
+                    "Check the output voltage with a multimeter",
+                    "We need to update our repository immediately",
+                    "The circuit board has a blown fuse",
+                    "Please review the error logs on the server",
+                    "We must finish this deployment before midnight",
+                    "Always discharge capacitors before handling electronics",
+                    "The guitar tone sounds crisp and clean",
+                    "Let us analyze the system requirements together"
                 ],
                 quizzesPool: [
                     { id: 'i_q1', type: "mc", title: "Conditional", desc: "Complete: 'If I had time, I ___ travel.'", options: [{ text: "A) would", correct: true }, { text: "B) will", correct: false }] },
                     { id: 'i_q2', type: "repair", title: "Error Repair", desc: "Fix this sentence:", faulty: "She has wrote a brilliant report.", answer: "she has written a brilliant report" },
                     { id: 'i_q3', type: "mc", title: "Passive Voice", desc: "Complete: 'The software ___ updated yesterday.'", options: [{ text: "A) was", correct: true }, { text: "B) were", correct: false }] },
-                    { id: 'i_q4', type: "repair", title: "Error Repair", desc: "Fix this sentence:", faulty: "He don't know nothing about it.", answer: "he doesn't know anything about it" }
+                    { id: 'i_q4', type: "repair", title: "Error Repair", desc: "Fix this sentence:", faulty: "He don't know nothing about it.", answer: "he doesn't know anything about it" },
+                    { id: 'i_q5', type: "mc", title: "Relative Pronoun", desc: "Complete: 'The engineer ___ fixed the server.'", options: [{ text: "A) who", correct: true }, { text: "B) which", correct: false }] },
+                    { id: 'i_q6', type: "repair", title: "Error Repair", desc: "Fix this sentence:", faulty: "This is much more better now.", answer: "this is much better now" },
+                    { id: 'i_q7', type: "mc", title: "Preposition", desc: "Complete: 'Arrived ___ the airport terminal.'", options: [{ text: "A) at", correct: true }, { text: "B) on", correct: false }] },
+                    { id: 'i_q8', type: "repair", title: "Error Repair", desc: "Fix this sentence:", faulty: "I am agree with your proposal.", answer: "i agree with your proposal" },
+                    { id: 'i_q9', type: "mc", title: "Modals", desc: "Complete: 'You ___ check the fuses first.'", options: [{ text: "A) should", correct: true }, { text: "B) shall", correct: false }] },
+                    { id: 'i_q10', type: "repair", title: "Error Repair", desc: "Fix this sentence:", faulty: "He is more taller than his brother.", answer: "he is taller than his brother" }
                 ],
                 flashcards: [
                     { term: "Deployment", def: "Making an application available for use.", es: "Despliegue", img: "🚀" },
                     { term: "Multimeter", def: "An instrument designed to measure electrical values.", es: "Multímetro", img: "🔌" },
-                    { term: "Workflow", def: "The sequence of industrial or administrative processes.", es: "Flujo de trabajo", img: "⚙️" }
+                    { term: "Workflow", def: "The sequence of industrial or administrative processes.", es: "Flujo de trabajo", img: "⚙️" },
+                    { term: "Repository", def: "A central location in which data is stored.", es: "Repositorio", img: "📦" },
+                    { term: "Troubleshoot", def: "Discovering and fixing causes of problems.", es: "Solucionar problemas", img: "🔍" },
+                    { term: "Oscilloscope", def: "Device displaying electrical signal waveforms.", es: "Osciloscopio", img: "📈" }
                 ]
             },
             advanced: {
                 prompts: [
                     { id: 'a_p1', title: "Advanced Architecture", text: "Explain component-level troubleshooting for complex inverter control boards and power rails." },
-                    { id: 'a_p2', title: "Software Engineering", text: "Describe asynchronous database queries, API middleware handling, and deployment pipelines." }
+                    { id: 'a_p2', title: "Software Engineering", text: "Describe asynchronous database queries, API middleware handling, and deployment pipelines." },
+                    { id: 'a_p3', title: "Professional Leadership", text: "Discuss how you manage live band performances, stage monitoring, and audio engineering setups." },
+                    { id: 'a_p4', title: "System Scalability", text: "Explain how you would scale a web application to handle thousands of concurrent requests." },
+                    { id: 'a_p5', title: "Hardware Diagnostics", text: "Describe diagnosing microchip-level faults using an oscilloscope and thermal imaging." },
+                    { id: 'a_p6', title: "Indie Game Development", text: "Discuss designing game loops, tilemaps, and character physics in Godot engine." },
+                    { id: 'a_p7', title: "Complex Problem Analysis", text: "Analyze a scenario where multiple subsystems fail simultaneously and outline your diagnostic triage." }
                 ],
                 shadowTexts: [
                     "We need to analyze the switch mode power supply schematic and locate the faulty capacitor",
-                    "Asynchronous backend operations prevent blocking threads during heavy database transactions"
+                    "Asynchronous backend operations prevent blocking threads during heavy database transactions",
+                    "The wireless in-ear monitoring system delivers a crystal clear mix for live musicians",
+                    "Hardly had we initialized the runtime environment when the primary memory buffer overflowed",
+                    "Optimizing pulse-width modulation signals requires precise oscilloscope measurements",
+                    "Never have I encountered such an intricate motherboard schematic layout"
                 ],
                 listeningSnippets: [
                     "Verify the environment variables before deploying to production",
-                    "The IGBT module shorted out due to an excessive thermal load"
+                    "The IGBT module shorted out due to an excessive thermal load",
+                    "Reconcile the general ledger and audit accounts payable",
+                    "The microcontroller is failing to receive clock pulses from the crystal oscillator",
+                    "Ensure all asynchronous database transactions handle rollbacks correctly"
                 ],
                 quizzesPool: [
                     { id: 'a_q1', type: "repair", title: "Advanced Repair", desc: "Fix this complex sentence:", faulty: "Hardly had I arrived when the server crash.", answer: "hardly had i arrived when the server crashed" },
-                    { id: 'a_q2', type: "mc", title: "Inversion", desc: "Complete: 'Never ___ such an efficient algorithm.'", options: [{ text: "A) have I seen", correct: true }, { text: "B) I have seen", correct: false }] }
+                    { id: 'a_q2', type: "mc", title: "Inversion", desc: "Complete: 'Never ___ such an efficient algorithm.'", options: [{ text: "A) have I seen", correct: true }, { text: "B) I have seen", correct: false }] },
+                    { id: 'a_q3', type: "repair", title: "Advanced Repair", desc: "Fix this complex sentence:", faulty: "Despite he worked hard, the bug remained.", answer: "despite working hard the bug remained" },
+                    { id: 'a_q4', type: "mc", title: "Subjunctive", desc: "Complete: 'It is vital that every component ___ tested.'", options: [{ text: "A) be", correct: true }, { text: "B) is", correct: false }] },
+                    { id: 'a_q5', type: "repair", title: "Advanced Repair", desc: "Fix this complex sentence:", faulty: "Seldom you see such accurate measurements.", answer: "seldom do you see such accurate measurements" }
                 ],
                 flashcards: [
                     { term: "Inverter", def: "Power electronic device converting DC to AC.", es: "Inversor", img: "⚡" },
-                    { term: "Asynchronous", def: "Not occurring at the same time.", es: "Asíncrono", img: "⏳" }
+                    { term: "Asynchronous", def: "Not occurring at the same time.", es: "Asíncrono", img: "⏳" },
+                    { term: "Oscilloscope", def: "Diagnostic instrument displaying waveforms.", es: "Osciloscopio", img: "📈" },
+                    { term: "Middleware", def: "Software connecting software components.", es: "Middleware", img: "🔗" },
+                    { term: "Subsystem", def: "A self-contained system within a larger system.", es: "Subsistema", img: "🧩" }
                 ]
             }
         };
