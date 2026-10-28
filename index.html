@@ -305,7 +305,7 @@
                         <button onclick="checkListeningDictation()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs transition cursor-pointer">
                             Check Answer ✓
                         </button>
-                        <span class="text-xs text-slate-400" id="listening-hint-toggle">Need a hint? Click play again.</span>
+                        <span class="text-xs text-slate-400" id="listening-hint">Listen carefully—no spoilers here!</span>
                     </div>
 
                     <div id="listening-result" class="text-xs font-medium text-slate-400 mt-2"></div>
@@ -320,31 +320,32 @@
                     <span class="text-xs font-semibold text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Step 5: Shadowing Practice</span>
                 </div>
                 <h3 class="text-base sm:text-lg font-bold text-white mb-2">Listen & Practice Speaking</h3>
-                <p class="text-slate-300 text-xs sm:text-sm mb-6">Listen to the native audio sample. You can practice with the mic or simply click complete when you're ready!</p>
+                <p class="text-slate-300 text-xs sm:text-sm mb-6">Listen to the target sentence, then practice saying it out loud to train your intonation and rhythm.</p>
                 
-                <div class="bg-slate-950/80 p-4 sm:p-5 rounded-xl border border-slate-800 mb-6 space-y-4">
-                    <p class="text-xs sm:text-sm text-sky-300 font-mono italic" id="shadow-text">"Loading audio text..."</p>
-                    
-                    <div class="flex items-center justify-between pt-2 border-t border-slate-800/80 flex-wrap gap-3">
-                        <button onclick="speakShadowText()" class="bg-slate-800 hover:bg-slate-700 text-sky-400 px-4 py-2 rounded-xl text-xs transition flex items-center gap-2 cursor-pointer border border-slate-700">
-                            <i data-lucide="volume-2" class="w-4 h-4"></i> Play Audio
+                <div class="bg-slate-950/80 p-5 rounded-xl border border-slate-800 mb-6 space-y-4">
+                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 text-center">
+                        <p class="text-xs text-slate-400 mb-1">Target Sentence:</p>
+                        <p class="text-base sm:text-lg text-sky-300 font-mono italic" id="shadow-text">"Loading audio text..."</p>
+                        <button onclick="speakShadowText()" class="mt-3 bg-slate-800 hover:bg-slate-700 text-sky-400 px-4 py-2 rounded-xl text-xs transition inline-flex items-center gap-2 cursor-pointer border border-slate-700">
+                            <i data-lucide="volume-2" class="w-4 h-4"></i> Listen First 🔊
                         </button>
-                        
-                        <div class="flex gap-2">
-                            <button onclick="toggleShadowingMic()" id="shadow-mic-btn" class="bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-3 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
-                                <i data-lucide="mic" class="w-3.5 h-3.5"></i> <span id="shadow-mic-status">Try Mic</span>
-                            </button>
-                            <button onclick="completeShadowingEasy()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition cursor-pointer">
-                                ✓ Mark Completed
-                            </button>
-                        </div>
                     </div>
 
-                    <div class="mt-3">
-                        <textarea id="shadow-user-input" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-200 text-xs" placeholder="Spoken speech preview..."></textarea>
+                    <div class="space-y-2 pt-2">
+                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Your Turn (Speak or type what you practiced):</label>
+                        <textarea id="shadow-user-input" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-200 text-xs focus:outline-none focus:border-sky-500 transition" placeholder="Type or use mic to practice saying the sentence..."></textarea>
                     </div>
 
-                    <div id="shadow-result" class="text-xs font-medium text-slate-400"></div>
+                    <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+                        <button onclick="toggleShadowingMic()" id="shadow-mic-btn" class="bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
+                            <i data-lucide="mic" class="w-4 h-4"></i> <span id="shadow-mic-status">Record Voice (Mic)</span>
+                        </button>
+                        <button onclick="verifyShadowingPractice()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs transition cursor-pointer">
+                            Verify & Complete Step 5 ✓
+                        </button>
+                    </div>
+
+                    <div id="shadow-result" class="text-xs font-medium text-slate-400 pt-1"></div>
                 </div>
             </div>
         </div>
@@ -609,7 +610,7 @@
             localStorage.setItem('english_pro_state', JSON.stringify(appState));
 
             updateUIStats();
-            showCustomModal("Streak Boosted! 🎉", `Awesome job, ${appState.userName || 'Learner'}! Streak increased by 1 day.`, "🚀");
+            showCustomModal("Streak Boosted! 🎉", `Awesome job, ${appState.userName || 'Alex'}! Streak increased by 1 day.`, "🚀");
         }
 
         function switchTab(tabName) {
@@ -1060,9 +1061,14 @@
             markStep('grammar', 'badge-grammar');
         }
 
+        // LISTENING DICTATION (SIN SPOILERS DE RESPUESTA)
         function playListeningAudio() {
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+            }
             const utterance = new SpeechSynthesisUtterance(currentListeningTarget);
             utterance.lang = 'en-US';
+            utterance.rate = 0.9; // Velocidad ligeramente más pausada para mejor práctica
             window.speechSynthesis.speak(utterance);
         }
 
@@ -1080,11 +1086,95 @@
             const cleanTarget = targetText.replace(/[^a-z0-9]/g, '');
 
             if (cleanUser === cleanTarget || cleanUser.includes(cleanTarget) || cleanTarget.includes(cleanUser)) {
-                resultBox.innerHTML = '<span class="text-emerald-400 font-bold">🎯 Spot on! Excellent listening dictation. Step 4 completed!</span>';
+                resultBox.innerHTML = '<span class="text-emerald-400 font-bold">🎯 Spot on! Excellent ear. Step 4 completed!</span>';
                 markStep('listening', 'badge-listening');
             } else {
-                resultBox.innerHTML = `<span class="text-rose-400 font-semibold">❌ Not quite. Expected sentence: "${currentListeningTarget}". Try listening again!</span>`;
+                // NO MUESTRA LA RESPUESTA - DA OPORTUNIDAD DE NUEVO CON PISTA SUTIL
+                const wordCount = currentListeningTarget.split(' ').length;
+                resultBox.innerHTML = `<span class="text-amber-400 font-semibold">⚠️ Not quite right. Keep trying! (Hint: It has ${wordCount} words. Listen to the audio again!)</span>`;
             }
+        }
+
+        // SHADOWING MEJORADO (SIN CRUCES DE AUDIO Y VERIFICACIÓN FLEXIBLE)
+        let recognition = null;
+        let isShadowingRecording = false;
+
+        function speakShadowText() {
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+            }
+            const text = document.getElementById('shadow-text').innerText;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function toggleShadowingMic() {
+            const micBtn = document.getElementById('shadow-mic-btn');
+            const statusText = document.getElementById('shadow-mic-status');
+            const textarea = document.getElementById('shadow-user-input');
+            const resultBox = document.getElementById('shadow-result');
+
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                showCustomModal("Browser Notice", "Speech recognition is not supported in this browser. You can type what you practiced!", "⚠️");
+                return;
+            }
+
+            if (isShadowingRecording) {
+                if (recognition) recognition.stop();
+                return;
+            }
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            recognition.onstart = function() {
+                isShadowingRecording = true;
+                micBtn.className = 'bg-rose-500/20 border border-rose-500/40 text-rose-400 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 animate-pulse';
+                statusText.innerText = 'Listening your voice...';
+            };
+
+            recognition.onresult = function(event) {
+                const spokenText = event.results[0][0].transcript.trim();
+                textarea.value = spokenText;
+                resultBox.innerHTML = '<span class="text-emerald-400 font-bold">🎯 Voice captured successfully! Click verify below.</span>';
+            };
+
+            recognition.onerror = function() {
+                isShadowingRecording = false;
+                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-1.5';
+                statusText.innerText = 'Record Voice (Mic)';
+            };
+
+            recognition.onend = function() {
+                isShadowingRecording = false;
+                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-1.5';
+                statusText.innerText = 'Record Voice (Mic)';
+            };
+
+            // Aseguramos que cualquier audio previo termine antes de abrir el micro
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+            }
+            setTimeout(() => {
+                recognition.start();
+            }, 300);
+        }
+
+        function verifyShadowingPractice() {
+            const userInput = document.getElementById('shadow-user-input').value.trim();
+            const resultBox = document.getElementById('shadow-result');
+
+            if (!userInput) {
+                resultBox.innerHTML = '<span class="text-rose-400 font-semibold">Please use the mic or type what you practiced first!</span>';
+                return;
+            }
+
+            resultBox.innerHTML = '<span class="text-emerald-400 font-bold">✓ Amazing shadowing practice! Step 5 completed successfully.</span>';
+            markStep('shadowing', 'badge-shadowing');
         }
 
         function updateCard() {
@@ -1114,7 +1204,6 @@
             updateCard();
         }
 
-        let recognition = null;
         let isRecording = false;
 
         function toggleSpeechRecognition() {
@@ -1164,62 +1253,6 @@
             recognition.start();
         }
 
-        let isShadowingRecording = false;
-        function toggleShadowingMic() {
-            const micBtn = document.getElementById('shadow-mic-btn');
-            const statusText = document.getElementById('shadow-mic-status');
-            const textarea = document.getElementById('shadow-user-input');
-            const resultBox = document.getElementById('shadow-result');
-
-            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                showCustomModal("Browser Notice", "Speech recognition not supported. Click 'Mark Completed' to advance easily!", "⚠️");
-                return;
-            }
-
-            if (isShadowingRecording) {
-                if (recognition) recognition.stop();
-                return;
-            }
-
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            recognition = new SpeechRecognition();
-            recognition.lang = 'en-US';
-            recognition.interimResults = false;
-            recognition.maxAlternatives = 1;
-
-            recognition.onstart = function() {
-                isShadowingRecording = true;
-                micBtn.className = 'bg-rose-500/20 border border-rose-500/40 text-rose-400 px-3 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 animate-pulse';
-                statusText.innerText = 'Listening...';
-            };
-
-            recognition.onresult = function(event) {
-                const spokenText = event.results[0][0].transcript.trim();
-                textarea.value = spokenText;
-                resultBox.innerHTML = '<span class="text-emerald-400 font-bold">🎯 Great effort! Shadowing practice verified.</span>';
-                markStep('shadowing', 'badge-shadowing');
-            };
-
-            recognition.onerror = function() {
-                isShadowingRecording = false;
-                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 px-3 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5';
-                statusText.innerText = 'Try Mic';
-            };
-
-            recognition.onend = function() {
-                isShadowingRecording = false;
-                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 px-3 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5';
-                statusText.innerText = 'Try Mic';
-            };
-
-            recognition.start();
-        }
-
-        function completeShadowingEasy() {
-            markStep('shadowing', 'badge-shadowing');
-            document.getElementById('shadow-result').innerHTML = '<span class="text-emerald-400 font-bold">✓ Shadowing completed successfully!</span>';
-        }
-
         function evaluateResponse() {
             const text = document.getElementById('user-response').value.trim();
             const box = document.getElementById('feedback-box');
@@ -1249,14 +1282,10 @@
         }
 
         function speakText() {
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+            }
             const text = document.getElementById('prompt-text').innerText;
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'en-US';
-            window.speechSynthesis.speak(utterance);
-        }
-
-        function speakShadowText() {
-            const text = document.getElementById('shadow-text').innerText;
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = 'en-US';
             window.speechSynthesis.speak(utterance);
