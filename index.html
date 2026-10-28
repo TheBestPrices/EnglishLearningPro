@@ -497,7 +497,7 @@
         const rankNames = ["🌱 Foundation", "⚡ Amateur", "🔥 Advanced", "🛠️ Expert", "👑 Master"];
 
         function getUserRank() {
-            const tier = appState.rankTier || 0;
+            const tier = Math.min(appState.rankTier || 0, rankNames.length - 1);
             return rankNames[tier] || "🌱 Foundation";
         }
 
@@ -544,6 +544,7 @@
             }
         }
 
+        // EVALUACIÓN DE RANGO CONTROLADA (Sube solo 1 nivel por evaluación exitosa)
         function tryRankAdvancement() {
             const allDone = Object.values(appState.sessionSteps).every(Boolean);
 
@@ -556,7 +557,7 @@
 
             if (avgScore >= 75) {
                 if (appState.rankTier < rankNames.length - 1) {
-                    appState.rankTier += 1;
+                    appState.rankTier += 1; // Sube de uno en uno de forma segura
                     appState.sessionSteps = { speaking: false, flashcards: false, grammar: false, listening: false, shadowing: false };
                     localStorage.setItem('english_pro_state', JSON.stringify(appState));
                     
@@ -628,7 +629,8 @@
             beginner: {
                 prompts: [
                     { title: "Personal Introduction", text: "Say your name, where you are from, and your age in simple English." },
-                    { title: "Daily Routine", text: "Describe what you usually eat for breakfast and what time you wake up." }
+                    { title: "Daily Routine", text: "Describe what you usually eat for breakfast and what time you wake up." },
+                    { title: "Family & Friends", text: "Talk about a family member, what they look like, and what they do." }
                 ],
                 flashcards: [
                     { term: "Hello", def: "A greeting used when meeting someone.", es: "Hola", img: "👋" },
@@ -649,11 +651,19 @@
                     { type: "mc", title: "Q9: Preposition", desc: "Complete: 'The book is ___ the table.'", options: [{ text: "A) on", correct: true }, { text: "B) in", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this incorrect sentence:", faulty: "She has 25 years old.", answer: "she is 25 years old" }
                 ],
-                shadowTexts: ["Hello my name is Alex and I am learning English"],
+                shadowTexts: [
+                    "Hello my name is Alex and I am learning English",
+                    "Every morning I wake up early and drink a glass of water",
+                    "My family and I enjoy spending time together on weekends"
+                ],
                 listeningSnippets: ["Nice to meet you", "Open the door please", "Where is the water"]
             },
             general: {
-                prompts: [{ title: "Travel & Directions", text: "Ask politely where the nearest train station or restaurant is located." }],
+                prompts: [
+                    { title: "Travel & Directions", text: "Ask politely where the nearest train station or restaurant is located." },
+                    { title: "Hotel Check-in", text: "Explain your reservation details and ask about breakfast times at a hotel." },
+                    { title: "Shopping Assistance", text: "Ask a store clerk if they have a specific item in a different size or color." }
+                ],
                 flashcards: [
                     { term: "Airport", def: "A complex of runways for aviation travel.", es: "Aeropuerto", img: "✈️" },
                     { term: "Restaurant", def: "A place where people sit and eat meals.", es: "Restaurante", img: "🍽️" },
@@ -673,11 +683,19 @@
                     { type: "mc", title: "Q9: Money", desc: "Complete: 'Do you accept ___ cards?'", options: [{ text: "A) credit", correct: true }, { text: "B) paper", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this incorrect sentence:", faulty: "I lose my passport.", answer: "i lost my passport" }
                 ],
-                shadowTexts: ["Excuse me can you help me find the nearest restaurant"],
+                shadowTexts: [
+                    "Excuse me can you help me find the nearest restaurant",
+                    "I would like to check in with my passport and reservation",
+                    "Do you accept credit cards or only cash payment"
+                ],
                 listeningSnippets: ["Can you help me please", "What time is check out", "Where is the airport"]
             },
             electronics: {
-                prompts: [{ title: "Diagnostic Explanation", text: "Explain to a client why a switch-mode power supply failed." }],
+                prompts: [
+                    { title: "Diagnostic Explanation", text: "Explain to a client why a switch-mode power supply failed." },
+                    { title: "Component Replacement", text: "Describe how you desoldered and replaced a faulty capacitor on a T-CON board." },
+                    { title: "Voltage Testing", text: "Explain how you measure AC voltage and check continuity on a circuit board." }
+                ],
                 flashcards: [
                     { term: "Power Supply", def: "Electronic power supply for high efficiency.", es: "Fuente conmutada", img: "⚡" },
                     { term: "Multimeter", def: "Measuring instrument for electrical values.", es: "Multímetro", img: "🔌" },
@@ -697,11 +715,19 @@
                     { type: "mc", title: "Q9: Relay", desc: "Complete: 'The coil in the ___ clicked.'", options: [{ text: "A) relay", correct: true }, { text: "B) shoe", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this technical sentence:", faulty: "Clean flux from PCB board.", answer: "clean the flux off the pcb" }
                 ],
-                shadowTexts: ["I checked the rails and found a short to ground"],
+                shadowTexts: [
+                    "I checked the rails and found a short to ground",
+                    "We need to desolder the faulty capacitor and replace it",
+                    "Measure the secondary voltage output with a digital multimeter"
+                ],
                 listeningSnippets: ["The capacitor is shorted", "Measure the voltage with multimeter", "Replace the damaged fuse"]
             },
             systems: {
-                prompts: [{ title: "System Architecture", text: "Describe how you deployed a web inventory service." }],
+                prompts: [
+                    { title: "System Architecture", text: "Describe how you deployed a web inventory service." },
+                    { title: "Database Query", text: "Explain how you connected PostgreSQL to Node.js and executed queries." },
+                    { title: "Bug Fixing", text: "Describe how you investigated and resolved a 500 server error." }
+                ],
                 flashcards: [
                     { term: "Deployment", def: "Making an app available on a server.", es: "Despliegue", img: "🚀" },
                     { term: "Repository", def: "Storage location for software packages.", es: "Repositorio", img: "📦" },
@@ -721,11 +747,19 @@
                     { type: "mc", title: "Q9: JSON", desc: "Complete: 'Parse incoming ___ payload.'", options: [{ text: "A) JSON", correct: true }, { text: "B) soup", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this IT sentence:", faulty: "Node js is running async.", answer: "node.js is running asynchronously" }
                 ],
-                shadowTexts: ["We pushed our code to Render and verified server logs"],
+                shadowTexts: [
+                    "We pushed our code to Render and verified server logs",
+                    "Connect to the PostgreSQL database using environment variables",
+                    "Debug the backend endpoint to fix the unhandled exception"
+                ],
                 listeningSnippets: ["We pushed our code to GitHub", "The database connection is active", "Deploy the web app to Render"]
             },
             accounting: {
-                prompts: [{ title: "Financial Statement Review", text: "Explain quarterly balance sheet discrepancies and audit procedures." }],
+                prompts: [
+                    { title: "Financial Statement Review", text: "Explain quarterly balance sheet discrepancies and audit procedures." },
+                    { title: "Ledger Reconciliation", text: "Describe how you reconcile accounts payable and receivable." },
+                    { title: "Tax Return", text: "Discuss annual corporate tax preparation and financial compliance." }
+                ],
                 flashcards: [
                     { term: "Balance Sheet", def: "Financial statement reporting assets.", es: "Balance general", img: "📊" },
                     { term: "Ledger", def: "A collection of financial accounts.", es: "Libro mayor", img: "📒" },
@@ -745,11 +779,19 @@
                     { type: "mc", title: "Q9: Budget", desc: "Complete: 'Allocate funds in the annual ___.'", options: [{ text: "A) budget", correct: true }, { text: "B) jungle", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this financial sentence:", faulty: "Net profit margin are low.", answer: "net profit margin is low" }
                 ],
-                shadowTexts: ["We audited the ledger and reconciled accounts"],
+                shadowTexts: [
+                    "We audited the ledger and reconciled accounts",
+                    "Review the balance sheet and quarterly revenue report",
+                    "Ensure all financial transactions comply with tax regulations"
+                ],
                 listeningSnippets: ["Reconcile the general ledger", "Quarterly revenue has increased", "Check the balance sheet"]
             },
             law: {
-                prompts: [{ title: "Contract Clause Analysis", text: "Discuss liability terms in a commercial agreement." }],
+                prompts: [
+                    { title: "Contract Clause Analysis", text: "Discuss liability terms in a commercial agreement." },
+                    { title: "Court Testimony", text: "Explain how you prepare a witness for trial." },
+                    { title: "Legal Counsel", text: "Provide advice to a client regarding intellectual property rights." }
+                ],
                 flashcards: [
                     { term: "Liability", def: "Being legally responsible.", es: "Responsabilidad legal", img: "⚖️" },
                     { term: "Plaintiff", def: "Person who brings a case to court.", es: "Demandante", img: "🏛️" },
@@ -769,11 +811,19 @@
                     { type: "mc", title: "Q9: Appeal", desc: "Complete: 'File an ___ in higher court.'", options: [{ text: "A) appeal", correct: true }, { text: "B) banana", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this legal sentence:", faulty: "Liability are limited by clause.", answer: "liability is limited by the clause" }
                 ],
-                shadowTexts: ["We analyzed the agreement to limit liability"],
+                shadowTexts: [
+                    "We analyzed the agreement to limit liability",
+                    "The plaintiff filed a lawsuit against the defendant",
+                    "Review all contract clauses before signing the agreement"
+                ],
                 listeningSnippets: ["Review the contract clause", "The plaintiff filed a lawsuit", "Limit liability in the agreement"]
             },
             medicine: {
-                prompts: [{ title: "Patient Consultation", text: "Describe patient symptoms and treatment plan." }],
+                prompts: [
+                    { title: "Patient Consultation", text: "Describe patient symptoms and treatment plan." },
+                    { title: "Emergency Response", text: "Explain vital signs monitoring during an emergency." },
+                    { title: "Surgical Prep", text: "Describe preparation steps for an operation." }
+                ],
                 flashcards: [
                     { term: "Diagnosis", def: "Identification of an illness.", es: "Diagnóstico", img: "🩺" },
                     { term: "Prescription", def: "Instruction written by practitioner.", es: "Receta médica", img: "💊" },
@@ -793,11 +843,19 @@
                     { type: "mc", title: "Q9: Clinic", desc: "Complete: 'Visit the local health ___.'", options: [{ text: "A) clinic", correct: true }, { text: "B) mountain", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this medical sentence:", faulty: "Patient need physical therapy.", answer: "the patient needs physical therapy" }
                 ],
-                shadowTexts: ["We evaluated the patient vitals and prescribed treatment"],
+                shadowTexts: [
+                    "We evaluated the patient vitals and prescribed treatment",
+                    "The doctor examined the symptoms and made a diagnosis",
+                    "Monitor the patient heart rate and blood pressure closely"
+                ],
                 listeningSnippets: ["Check the patient vitals", "Doctor wrote a prescription", "The diagnosis indicates an infection"]
             },
             mechanics: {
-                prompts: [{ title: "Engine Troubleshooting", text: "Explain engine misfire diagnosis and repair steps." }],
+                prompts: [
+                    { title: "Engine Troubleshooting", text: "Explain engine misfire diagnosis and repair steps." },
+                    { title: "Brake Service", text: "Describe replacing worn brake pads and rotor inspection." },
+                    { title: "Battery Testing", text: "Explain how you test alternator output and 12V battery health." }
+                ],
                 flashcards: [
                     { term: "Fuel Injector", def: "Nozzle injecting fuel into cylinders.", es: "Inyector", img: "🔧" },
                     { term: "Alternator", def: "Generator of electric power in car.", es: "Alternador", img: "⚡" },
@@ -817,11 +875,19 @@
                     { type: "mc", title: "Q9: Transmission", desc: "Complete: 'Replace worn transmission fluid.'", options: [{ text: "A) Transmission", correct: true }, { text: "B) Shoe", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this automotive sentence:", faulty: "Radiator leak coolant fluid.", answer: "the radiator is leaking coolant" }
                 ],
-                shadowTexts: ["We diagnosed an engine misfire and replaced spark plugs"],
+                shadowTexts: [
+                    "We diagnosed an engine misfire and replaced spark plugs",
+                    "Inspect the brake pads and check rotor thickness",
+                    "Test the alternator output to ensure proper battery charging"
+                ],
                 listeningSnippets: ["The engine has a misfire", "Replace the worn brake pads", "Check the alternator battery"]
             },
             gamedev: {
-                prompts: [{ title: "Game Mechanics", text: "Explain core mechanics of your 2D platformer." }],
+                prompts: [
+                    { title: "Game Mechanics", text: "Explain core mechanics of your 2D platformer." },
+                    { title: "Pixel Art Workflow", text: "Describe creating character sprites and tilemaps in LibreSprite." },
+                    { title: "Physics & Collision", text: "Explain how you handle gravity and collision shapes in Godot 4." }
+                ],
                 flashcards: [
                     { term: "Sprite", def: "Two-dimensional bitmap graphic.", es: "Sprite 2D", img: "👾" },
                     { term: "Tilemap", def: "Grid of tiles to create game worlds.", es: "Mapa de celdas", img: "🧱" },
@@ -841,11 +907,19 @@
                     { type: "mc", title: "Q9: Scene", desc: "Complete: 'Save level as main ___.'", options: [{ text: "A) scene", correct: true }, { text: "B) mountain", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this game dev sentence:", faulty: "Tilemap draw grid correctly.", answer: "the tilemap draws the grid correctly" }
                 ],
-                shadowTexts: ["In Godot four we scripted player movement and physics"],
+                shadowTexts: [
+                    "In Godot four we scripted player movement and physics",
+                    "Draw custom pixel art sprites and tilemaps for the indie game",
+                    "Configure collision layers and shapes for the platformer character"
+                ],
                 listeningSnippets: ["We scripted player movement", "Draw 2D characters in LibreSprite", "The collision shape is missing"]
             },
             music: {
-                prompts: [{ title: "Bass Performance", text: "Describe your favorite bass line to play live." }],
+                prompts: [
+                    { title: "Bass Performance", text: "Describe your favorite bass line to play live." },
+                    { title: "Stage Monitoring", text: "Explain how you check in-ear monitor levels before a concert." },
+                    { title: "Band Rehearsal", text: "Describe preparing a live setlist with your bandmates." }
+                ],
                 flashcards: [
                     { term: "Bass Line", def: "Sequence of low-frequency notes.", es: "Línea de bajo", img: "🎸" },
                     { term: "Monitor", def: "Speaker system for stage performers.", es: "Monitor de escenario", img: "🔊" },
@@ -865,7 +939,11 @@
                     { type: "mc", title: "Q9: Tone", desc: "Complete: 'Dial in compressor ___.'", options: [{ text: "A) tone", correct: true }, { text: "B) water", correct: false }] },
                     { type: "repair", title: "Q10: Error Repair", desc: "Fix this music sentence:", faulty: "I plug in my bass guitar.", answer: "i plugged in my bass guitar" }
                 ],
-                shadowTexts: ["I plug in my electric bass and check my monitor levels"],
+                shadowTexts: [
+                    "I plug in my electric bass and check my monitor levels",
+                    "We rehearsed the new setlist with the drummer before the show",
+                    "Adjust the amplifier EQ and compressor settings for a clean tone"
+                ],
                 listeningSnippets: ["Check in ear monitors", "The bass guitar needs new strings", "We played a live concert"]
             }
         };
@@ -911,6 +989,7 @@
             }
         }
 
+        // ROTACIÓN DE CLASES Y RETOS SEGÚN EL RANGO ACTUAL
         function loadProgressiveLesson() {
             const data = profileData[currentCategory] || profileData['beginner'];
             
@@ -1061,18 +1140,17 @@
             markStep('grammar', 'badge-grammar');
         }
 
-        // LISTENING DICTATION (SIN SPOILERS DE RESPUESTA)
         function playListeningAudio() {
             if (window.speechSynthesis.speaking) {
                 window.speechSynthesis.cancel();
             }
             const utterance = new SpeechSynthesisUtterance(currentListeningTarget);
             utterance.lang = 'en-US';
-            utterance.rate = 0.9; // Velocidad ligeramente más pausada para mejor práctica
+            utterance.rate = 0.9;
             window.speechSynthesis.speak(utterance);
         }
 
-       function checkListeningDictation() {
+        function checkListeningDictation() {
             const userText = document.getElementById('listening-input').value.trim().toLowerCase();
             const targetText = currentListeningTarget.toLowerCase();
             const resultBox = document.getElementById('listening-result');
@@ -1082,7 +1160,6 @@
                 return;
             }
 
-            // Normalizamos quitando puntuación y espacios extras para comparar palabra por palabra o limpieza estricta
             const cleanUser = userText.replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
             const cleanTarget = targetText.replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
 
@@ -1095,7 +1172,6 @@
             }
         }
 
-        // SHADOWING MEJORADO (SIN CRUCES DE AUDIO Y VERIFICACIÓN FLEXIBLE)
         let recognition = null;
         let isShadowingRecording = false;
 
@@ -1155,7 +1231,6 @@
                 statusText.innerText = 'Record Voice (Mic)';
             };
 
-            // Aseguramos que cualquier audio previo termine antes de abrir el micro
             if (window.speechSynthesis.speaking) {
                 window.speechSynthesis.cancel();
             }
