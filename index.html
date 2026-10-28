@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Learning Pro - 5-Step Master Edition</title>
+    <title>English Learning Pro - Dynamic Master Edition</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -379,7 +379,7 @@
 
             <div class="mb-5">
                 <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Your Name:</label>
-                <input type="text" id="user-name-input" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500 transition" placeholder="e.g. Alex">
+                <input type="text" id="user-name-input" value="Alex" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500 transition" placeholder="e.g. Alex">
             </div>
 
             <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Select Focus:</label>
@@ -431,7 +431,7 @@
 
     <!-- FOOTER -->
     <footer class="border-t border-slate-800 bg-slate-900/50 py-4 text-center text-xs text-slate-500">
-        English Learning Pro &copy; 2026 &bull; 5-Step Master Edition
+        English Learning Pro &copy; 2026 &bull; Dynamic Master Edition
     </footer>
 
     <!-- SCRIPTS -->
@@ -556,7 +556,7 @@
 
             if (avgScore >= 75) {
                 if (appState.rankTier < rankNames.length - 1) {
-                    appState.rankTier += 1; // Sube de 1 en 1 (Foundation -> Amateur -> Advanced...)
+                    appState.rankTier += 1; 
                     appState.sessionSteps = { speaking: false, flashcards: false, grammar: false, listening: false, shadowing: false };
                     localStorage.setItem('english_pro_state', JSON.stringify(appState));
                     
@@ -624,12 +624,15 @@
             activeBtn.classList.remove('text-slate-400');
         }
 
+        // BANCO MAESTRO AMPLIADO CON MÚLTIPLES SETS PARA EVITAR REPETICIÓN
         const profileData = {
             beginner: {
                 prompts: [
                     { title: "Personal Introduction", text: "Say your name, where you are from, and your age in simple English." },
                     { title: "Daily Routine", text: "Describe what you usually eat for breakfast and what time you wake up." },
-                    { title: "Family & Friends", text: "Talk about a family member, what they look like, and what they do." }
+                    { title: "Family & Friends", text: "Talk about a family member, what they look like, and what they do." },
+                    { title: "Hobbies & Free Time", text: "Explain what you like to do on weekends when you are not working." },
+                    { title: "Hometown Description", text: "Describe your city or town, its weather, and your favorite spot there." }
                 ],
                 flashcardsSets: [
                     [
@@ -645,32 +648,68 @@
                         { term: "Family", def: "A group consisting of parents and children.", es: "Familia", img: "👨‍👩‍👧" },
                         { term: "Work", def: "Activity involving mental or physical effort.", es: "Trabajo", img: "💼" },
                         { term: "Time", def: "The indefinite continued progress of existence.", es: "Tiempo", img: "⏰" }
+                    ],
+                    [
+                        { term: "Book", def: "A written or printed work consisting of pages.", es: "Libro", img: "📖" },
+                        { term: "School", def: "An institution for educating children.", es: "Escuela", img: "🏫" },
+                        { term: "Music", def: "Vocal or instrumental sounds combined.", es: "Música", img: "🎵" },
+                        { term: "City", def: "A large town or urban area.", es: "Ciudad", img: "🌆" },
+                        { term: "Money", def: "A current medium of exchange.", es: "Dinero", img: "💵" }
                     ]
                 ],
-                quizzes: [
-                    { type: "mc", title: "Q1: Pronoun", desc: "Which pronoun refers to yourself?", options: [{ text: "A) He", correct: false }, { text: "B) I", correct: true }] },
-                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this incorrect sentence:", faulty: "She don't like coffee.", answer: "she doesn't like coffee" },
-                    { type: "mc", title: "Q3: Plural", desc: "What is the plural of 'child'?", options: [{ text: "A) childs", correct: false }, { text: "B) children", correct: true }] },
-                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this incorrect sentence:", faulty: "I am work in a workshop.", answer: "i am working in a workshop" },
-                    { type: "mc", title: "Q5: Article", desc: "Choose the correct article: '___ apple a day.'", options: [{ text: "A) An", correct: true }, { text: "B) A", correct: false }] },
-                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this incorrect sentence:", faulty: "He go to the gym yesterday.", answer: "he went to the gym yesterday" },
-                    { type: "mc", title: "Q7: Negation", desc: "Complete: 'I ___ like coffee.'", options: [{ text: "A) don't", correct: true }, { text: "B) doesn't", correct: false }] },
-                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this incorrect sentence:", faulty: "Where you live?", answer: "where do you live" },
-                    { type: "mc", title: "Q9: Preposition", desc: "Complete: 'The book is ___ the table.'", options: [{ text: "A) on", correct: true }, { text: "B) in", correct: false }] },
-                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this incorrect sentence:", faulty: "She has 25 years old.", answer: "she is 25 years old" }
+                quizzesSets: [
+                    [
+                        { type: "mc", title: "Q1: Pronoun", desc: "Which pronoun refers to yourself?", options: [{ text: "A) He", correct: false }, { text: "B) I", correct: true }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this incorrect sentence:", faulty: "She don't like coffee.", answer: "she doesn't like coffee" },
+                        { type: "mc", title: "Q3: Plural", desc: "What is the plural of 'child'?", options: [{ text: "A) childs", correct: false }, { text: "B) children", correct: true }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this incorrect sentence:", faulty: "I am work in a workshop.", answer: "i am working in a workshop" },
+                        { type: "mc", title: "Q5: Article", desc: "Choose the correct article: '___ apple a day.'", options: [{ text: "A) An", correct: true }, { text: "B) A", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this incorrect sentence:", faulty: "He go to the gym yesterday.", answer: "he went to the gym yesterday" },
+                        { type: "mc", title: "Q7: Negation", desc: "Complete: 'I ___ like coffee.'", options: [{ text: "A) don't", correct: true }, { text: "B) doesn't", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this incorrect sentence:", faulty: "Where you live?", answer: "where do you live" },
+                        { type: "mc", title: "Q9: Preposition", desc: "Complete: 'The book is ___ the table.'", options: [{ text: "A) on", correct: true }, { text: "B) in", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this incorrect sentence:", faulty: "She has 25 years old.", answer: "she is 25 years old" }
+                    ],
+                    [
+                        { type: "mc", title: "Q1: Past Tense", desc: "What is the past tense of 'go'?", options: [{ text: "A) goed", correct: false }, { text: "B) went", correct: true }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this incorrect sentence:", faulty: "They was playing football.", answer: "they were playing football" },
+                        { type: "mc", title: "Q3: Future", desc: "Complete: 'Tomorrow I ___ travel.'", options: [{ text: "A) will", correct: true }, { text: "B) did", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this incorrect sentence:", faulty: "She has wrote a letter.", answer: "she has written a letter" },
+                        { type: "mc", title: "Q5: Modal", desc: "Complete: 'You ___ wear a helmet.'", options: [{ text: "A) should", correct: true }, { text: "B) shall to", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this incorrect sentence:", faulty: "He don't know nothing.", answer: "he doesn't know anything" },
+                        { type: "mc", title: "Q7: Comparative", desc: "What is the comparative of 'fast'?", options: [{ text: "A) more fast", correct: false }, { text: "B) faster", correct: true }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this incorrect sentence:", faulty: "This is more better.", answer: "this is much better" },
+                        { type: "mc", title: "Q9: Preposition", desc: "Complete: 'Arrived ___ the airport.'", options: [{ text: "A) at", correct: true }, { text: "B) on", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this incorrect sentence:", faulty: "I am agree with you.", answer: "i agree with you" }
+                    ],
+                    [
+                        { type: "mc", title: "Q1: Question", desc: "Complete: '___ old are you?'", options: [{ text: "A) How", correct: true }, { text: "B) What", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this incorrect sentence:", faulty: "I have hungry.", answer: "i am hungry" },
+                        { type: "mc", title: "Q3: Adjective", desc: "Complete: 'She is a ___ girl.'", options: [{ text: "A) smart", correct: true }, { text: "B) smartly", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this incorrect sentence:", faulty: "He can plays guitar.", answer: "he can play guitar" },
+                        { type: "mc", title: "Q5: Time", desc: "Complete: 'What time is ___?'", options: [{ text: "A) it", correct: true }, { text: "B) this", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this incorrect sentence:", faulty: "They goes to school.", answer: "they go to school" },
+                        { type: "mc", title: "Q7: Pronoun", desc: "Complete: 'This book is ___.'", options: [{ text: "A) mine", correct: true }, { text: "B) my", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this incorrect sentence:", faulty: "She speak English fluent.", answer: "she speaks english fluently" },
+                        { type: "mc", title: "Q9: Plural", desc: "What is the plural of 'man'?", options: [{ text: "A) mans", correct: false }, { text: "B) men", correct: true }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this incorrect sentence:", faulty: "There is many people here.", answer: "there are many people here" }
+                    ]
                 ],
                 shadowTexts: [
                     "Hello my name is Alex and I am learning English",
                     "Every morning I wake up early and drink a glass of water",
-                    "My family and I enjoy spending time together on weekends"
+                    "My family and I enjoy spending time together on weekends",
+                    "Practice makes perfect when you study every single day",
+                    "Always keep your goals high and work hard to achieve them"
                 ],
-                listeningSnippets: ["Nice to meet you", "Open the door please", "Where is the water"]
+                listeningSnippets: ["Nice to meet you", "Open the door please", "Where is the water", "How much does this cost", "Turn left at the corner"]
             },
             general: {
                 prompts: [
                     { title: "Travel & Directions", text: "Ask politely where the nearest train station or restaurant is located." },
                     { title: "Hotel Check-in", text: "Explain your reservation details and ask about breakfast times at a hotel." },
-                    { title: "Shopping Assistance", text: "Ask a store clerk if they have a specific item in a different size or color." }
+                    { title: "Shopping Assistance", text: "Ask a store clerk if they have a specific item in a different size or color." },
+                    { title: "Airport Customs", text: "Answer officer questions about the purpose of your trip and duration." }
                 ],
                 flashcardsSets: [
                     [
@@ -688,30 +727,47 @@
                         { term: "Map", def: "A diagrammatic representation of an area.", es: "Mapa", img: "🗺️" }
                     ]
                 ],
-                quizzes: [
-                    { type: "mc", title: "Q1: Travel", desc: "When asking for help politely:", options: [{ text: "A) Where is the exit please?", correct: true }, { text: "B) Give me ticket.", correct: false }] },
-                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this incorrect sentence:", faulty: "Where is nearest station?", answer: "where is the nearest station" },
-                    { type: "mc", title: "Q3: Directions", desc: "Complete: 'Turn left ___ the corner.'", options: [{ text: "A) at", correct: true }, { text: "B) on", correct: false }] },
-                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this incorrect sentence:", faulty: "I need two ticket to London.", answer: "i need two tickets to london" },
-                    { type: "mc", title: "Q5: Transport", desc: "Complete: 'I am waiting ___ the bus.'", options: [{ text: "A) for", correct: true }, { text: "B) to", correct: false }] },
-                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this incorrect sentence:", faulty: "Can you helps me please?", answer: "can you help me please" },
-                    { type: "mc", title: "Q7: Hotel", desc: "Complete: 'What time is ___?'", options: [{ text: "A) check-out", correct: true }, { text: "B) door", correct: false }] },
-                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this incorrect sentence:", faulty: "How much this cost?", answer: "how much does this cost" },
-                    { type: "mc", title: "Q9: Money", desc: "Complete: 'Do you accept ___ cards?'", options: [{ text: "A) credit", correct: true }, { text: "B) paper", correct: false }] },
-                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this incorrect sentence:", faulty: "I lose my passport.", answer: "i lost my passport" }
+                quizzesSets: [
+                    [
+                        { type: "mc", title: "Q1: Travel", desc: "When asking for help politely:", options: [{ text: "A) Where is the exit please?", correct: true }, { text: "B) Give me ticket.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this incorrect sentence:", faulty: "Where is nearest station?", answer: "where is the nearest station" },
+                        { type: "mc", title: "Q3: Directions", desc: "Complete: 'Turn left ___ the corner.'", options: [{ text: "A) at", correct: true }, { text: "B) on", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this incorrect sentence:", faulty: "I need two ticket to London.", answer: "i need two tickets to london" },
+                        { type: "mc", title: "Q5: Transport", desc: "Complete: 'I am waiting ___ the bus.'", options: [{ text: "A) for", correct: true }, { text: "B) to", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this incorrect sentence:", faulty: "Can you helps me please?", answer: "can you help me please" },
+                        { type: "mc", title: "Q7: Hotel", desc: "Complete: 'What time is ___?'", options: [{ text: "A) check-out", correct: true }, { text: "B) door", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this incorrect sentence:", faulty: "How much this cost?", answer: "how much does this cost" },
+                        { type: "mc", title: "Q9: Money", desc: "Complete: 'Do you accept ___ cards?'", options: [{ text: "A) credit", correct: true }, { text: "B) paper", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this incorrect sentence:", faulty: "I lose my passport.", answer: "i lost my passport" }
+                    ],
+                    [
+                        { type: "mc", title: "Q1: Flight", desc: "Complete: 'Boarding pass for seat ___.'", options: [{ text: "A) 12B", correct: true }, { text: "B) table", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this incorrect sentence:", faulty: "Flight is delay for two hours.", answer: "the flight is delayed for two hours" },
+                        { type: "mc", title: "Q3: Customs", desc: "Complete: 'Declare goods at ___.'", options: [{ text: "A) customs", correct: true }, { text: "B) kitchen", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this incorrect sentence:", faulty: "Where I can find a taxi?", answer: "where can i find a taxi" },
+                        { type: "mc", title: "Q5: Booking", desc: "Complete: 'Confirm room ___ online.'", options: [{ text: "A) reservation", correct: true }, { text: "B) shoe", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this incorrect sentence:", faulty: "Room key not working properly.", answer: "the room key is not working properly" },
+                        { type: "mc", title: "Q7: Currency", desc: "Complete: 'Exchange dollars for local ___.'", options: [{ text: "A) currency", correct: true }, { text: "B) plastic", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this incorrect sentence:", faulty: "How long the trip take?", answer: "how long does the trip take" },
+                        { type: "mc", title: "Q9: Safety", desc: "Complete: 'Fasten your seat ___.'", options: [{ text: "A) belt", correct: true }, { text: "B) string", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this incorrect sentence:", faulty: "I need call emergency service.", answer: "i need to call emergency services" }
+                    ]
                 ],
                 shadowTexts: [
                     "Excuse me can you help me find the nearest restaurant",
                     "I would like to check in with my passport and reservation",
-                    "Do you accept credit cards or only cash payment"
+                    "Do you accept credit cards or only cash payment",
+                    "Where is the boarding gate for international flight 402",
+                    "Please call a taxi and take me to downtown hotel"
                 ],
-                listeningSnippets: ["Can you help me please", "What time is check out", "Where is the airport"]
+                listeningSnippets: ["Can you help me please", "What time is check out", "Where is the airport", "My luggage is missing", "Is breakfast included in the rate"]
             },
             electronics: {
                 prompts: [
                     { title: "Diagnostic Explanation", text: "Explain to a client why a switch-mode power supply failed." },
                     { title: "Component Replacement", text: "Describe how you desoldered and replaced a faulty capacitor on a T-CON board." },
-                    { title: "Voltage Testing", text: "Explain how you measure AC voltage and check continuity on a circuit board." }
+                    { title: "Voltage Testing", text: "Explain how you measure AC voltage and check continuity on a circuit board." },
+                    { title: "Inverter Repair", text: "Describe troubleshooting an inverter refrigeration control board." }
                 ],
                 flashcardsSets: [
                     [
@@ -729,30 +785,47 @@
                         { term: "Relay", def: "Electrically operated switch.", es: "Relé", img: "🔀" }
                     ]
                 ],
-                quizzes: [
-                    { type: "mc", title: "Q1: Hardware", desc: "When diagnosing hardware:", options: [{ text: "A) Let me probe this real quick.", correct: true }, { text: "B) The electricity sleeps.", correct: false }] },
-                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this technical sentence:", faulty: "The capacitor are damaged.", answer: "the capacitor is damaged" },
-                    { type: "mc", title: "Q3: Voltage", desc: "Complete: 'Measuring AC ___ with probes.'", options: [{ text: "A) voltage", correct: true }, { text: "B) weight", correct: false }] },
-                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this technical sentence:", faulty: "I found a short to the ground.", answer: "i found a short to ground" },
-                    { type: "mc", title: "Q5: Resistance", desc: "Complete: 'Check continuity and ___.'", options: [{ text: "A) resistance", correct: true }, { text: "B) speed", correct: false }] },
-                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this technical sentence:", faulty: "He replace the power supply yesterday.", answer: "he replaced the power supply yesterday" },
-                    { type: "mc", title: "Q7: Transformer", desc: "Complete: 'Testing step-down ___ winding.'", options: [{ text: "A) transformer", correct: true }, { text: "B) paper", correct: false }] },
-                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this technical sentence:", faulty: "The fuse blow up because overload.", answer: "the fuse blew up because of an overload" },
-                    { type: "mc", title: "Q9: Relay", desc: "Complete: 'The coil in the ___ clicked.'", options: [{ text: "A) relay", correct: true }, { text: "B) shoe", correct: false }] },
-                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this technical sentence:", faulty: "Clean flux from PCB board.", answer: "clean the flux off the pcb" }
+                quizzesSets: [
+                    [
+                        { type: "mc", title: "Q1: Hardware", desc: "When diagnosing hardware:", options: [{ text: "A) Let me probe this real quick.", correct: true }, { text: "B) The electricity sleeps.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this technical sentence:", faulty: "The capacitor are damaged.", answer: "the capacitor is damaged" },
+                        { type: "mc", title: "Q3: Voltage", desc: "Complete: 'Measuring AC ___ with probes.'", options: [{ text: "A) voltage", correct: true }, { text: "B) weight", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this technical sentence:", faulty: "I found a short to the ground.", answer: "i found a short to ground" },
+                        { type: "mc", title: "Q5: Resistance", desc: "Complete: 'Check continuity and ___.'", options: [{ text: "A) resistance", correct: true }, { text: "B) speed", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this technical sentence:", faulty: "He replace the power supply yesterday.", answer: "he replaced the power supply yesterday" },
+                        { type: "mc", title: "Q7: Transformer", desc: "Complete: 'Testing step-down ___ winding.'", options: [{ text: "A) transformer", correct: true }, { text: "B) paper", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this technical sentence:", faulty: "The fuse blow up because overload.", answer: "the fuse blew up because of an overload" },
+                        { type: "mc", title: "Q9: Relay", desc: "Complete: 'The coil in the ___ clicked.'", options: [{ text: "A) relay", correct: true }, { text: "B) shoe", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this technical sentence:", faulty: "Clean flux from PCB board.", answer: "clean the flux off the pcb" }
+                    ],
+                    [
+                        { type: "mc", title: "Q1: Soldering", desc: "When soldering components:", options: [{ text: "A) Apply flux for clean joints.", correct: true }, { text: "B) Melt the plastic housing.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this technical sentence:", faulty: "The solder joint is cold.", answer: "this is a cold solder joint" },
+                        { type: "mc", title: "Q3: Inverter", desc: "Complete: 'Check IGBT module in ___ board.'", options: [{ text: "A) inverter", correct: true }, { text: "B) kitchen", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this technical sentence:", faulty: "Diode is short circuit.", answer: "the diode is shorted" },
+                        { type: "mc", title: "Q5: Oscilloscope", desc: "Complete: 'Observe square wave on ___ screen.'", options: [{ text: "A) oscilloscope", correct: true }, { text: "B) television", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this technical sentence:", faulty: "Multimeter measure ohms correctly.", answer: "the multimeter measures resistance correctly" },
+                        { type: "mc", title: "Q7: Microcontroller", desc: "Complete: 'Flash firmware to ___ chip.'", options: [{ text: "A) microcontroller", correct: true }, { text: "B) potato", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this technical sentence:", faulty: "Voltage drop across resistor.", answer: "there is a voltage drop across the resistor" },
+                        { type: "mc", title: "Q9: Schematic", desc: "Complete: 'Trace circuit on ___ diagram.'", options: [{ text: "A) schematic", correct: true }, { text: "B) painting", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this technical sentence:", faulty: "Appliance draw too much current.", answer: "the appliance is drawing too much current" }
+                    ]
                 ],
                 shadowTexts: [
                     "I checked the rails and found a short to ground",
                     "We need to desolder the faulty capacitor and replace it",
-                    "Measure the secondary voltage output with a digital multimeter"
+                    "Measure the secondary voltage output with a digital multimeter",
+                    "The switch mode power supply failed due to a blown fuse",
+                    "Test the inverter compressor board with an oscilloscope"
                 ],
-                listeningSnippets: ["The capacitor is shorted", "Measure the voltage with multimeter", "Replace the damaged fuse"]
+                listeningSnippets: ["The capacitor is shorted", "Measure the voltage with multimeter", "Replace the damaged fuse", "Check the power supply rails", "The IGBT transistor is blown"]
             },
             systems: {
                 prompts: [
                     { title: "System Architecture", text: "Describe how you deployed a web inventory service." },
                     { title: "Database Query", text: "Explain how you connected PostgreSQL to Node.js and executed queries." },
-                    { title: "Bug Fixing", text: "Describe how you investigated and resolved a 500 server error." }
+                    { title: "Bug Fixing", text: "Describe how you investigated and resolved a 500 server error." },
+                    { title: "Git Workflow", text: "Explain how you manage branches, commits, and push updates to GitHub." }
                 ],
                 flashcardsSets: [
                     [
@@ -770,24 +843,40 @@
                         { term: "Debugging", def: "Identifying and removing errors from computer hardware or software code.", es: "Depuración", img: "🐛" }
                     ]
                 ],
-                quizzes: [
-                    { type: "mc", title: "Q1: Deployment", desc: "Best phrasing for server release:", options: [{ text: "A) We successfully deployed the API.", correct: true }, { text: "B) We cooked the server.", correct: false }] },
-                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this IT sentence:", faulty: "We push the code to git yesterday.", answer: "we pushed the code to git yesterday" },
-                    { type: "mc", title: "Q3: Git", desc: "Complete: 'Commit and ___ changes.'", options: [{ text: "A) push", correct: true }, { text: "B) run", correct: false }] },
-                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this IT sentence:", faulty: "The database have a connection error.", answer: "the database has a connection error" },
-                    { type: "mc", title: "Q5: SQL", desc: "Complete: 'Query the database using ___.'", options: [{ text: "A) SQL", correct: true }, { text: "B) HTML", correct: false }] },
-                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this IT sentence:", faulty: "API endpoint returning 500 error.", answer: "the api endpoint is returning a 500 error" },
-                    { type: "mc", title: "Q7: Render", desc: "Complete: 'Deploy web app on ___ platform.'", options: [{ text: "A) Render", correct: true }, { text: "B) Oven", correct: false }] },
-                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this IT sentence:", faulty: "I fix the bug in server.", answer: "i fixed the bug on the server" },
-                    { type: "mc", title: "Q9: JSON", desc: "Complete: 'Parse incoming ___ payload.'", options: [{ text: "A) JSON", correct: true }, { text: "B) soup", correct: false }] },
-                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this IT sentence:", faulty: "Node js is running async.", answer: "node.js is running asynchronously" }
+                quizzesSets: [
+                    [
+                        { type: "mc", title: "Q1: Deployment", desc: "Best phrasing for server release:", options: [{ text: "A) We successfully deployed the API.", correct: true }, { text: "B) We cooked the server.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this IT sentence:", faulty: "We push the code to git yesterday.", answer: "we pushed the code to git yesterday" },
+                        { type: "mc", title: "Q3: Git", desc: "Complete: 'Commit and ___ changes.'", options: [{ text: "A) push", correct: true }, { text: "B) run", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this IT sentence:", faulty: "The database have a connection error.", answer: "the database has a connection error" },
+                        { type: "mc", title: "Q5: SQL", desc: "Complete: 'Query the database using ___.'", options: [{ text: "A) SQL", correct: true }, { text: "B) HTML", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this IT sentence:", faulty: "API endpoint returning 500 error.", answer: "the api endpoint is returning a 500 error" },
+                        { type: "mc", title: "Q7: Render", desc: "Complete: 'Deploy web app on ___ platform.'", options: [{ text: "A) Render", correct: true }, { text: "B) Oven", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this IT sentence:", faulty: "I fix the bug in server.", answer: "i fixed the bug on the server" },
+                        { type: "mc", title: "Q9: JSON", desc: "Complete: 'Parse incoming ___ payload.'", options: [{ text: "A) JSON", correct: true }, { text: "B) soup", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this IT sentence:", faulty: "Node js is running async.", answer: "node.js is running asynchronously" }
+                    ],
+                    [
+                        { type: "mc", title: "Q1: Backend", desc: "When managing backend services:", options: [{ text: "A) Start the Node.js server.", correct: true }, { text: "B) Turn on the microwave.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this IT sentence:", faulty: "Server throw unhandled exception.", answer: "the server threw an unhandled exception" },
+                        { type: "mc", title: "Q3: REST API", desc: "Complete: 'Fetch data via ___ endpoint.'", options: [{ text: "A) REST", correct: true }, { text: "B) PDF", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this IT sentence:", faulty: "Environment variables is missing.", answer: "the environment variables are missing" },
+                        { type: "mc", title: "Q5: Docker", desc: "Complete: 'Containerize app using ___.'", options: [{ text: "A) Docker", correct: true }, { text: "B) Hammer", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this IT sentence:", faulty: "Frontend not connecting to backend.", answer: "the frontend is not connecting to the backend" },
+                        { type: "mc", title: "Q7: Async", desc: "Complete: 'Await asynchronous database ___.'", options: [{ text: "A) query", correct: true }, { text: "B) sandwich", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this IT sentence:", faulty: "We need scale server capacity.", answer: "we need to scale server capacity" },
+                        { type: "mc", title: "Q9: Logs", desc: "Complete: 'Inspect terminal ___ for errors.'", options: [{ text: "A) logs", correct: true }, { text: "B) trees", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this IT sentence:", faulty: "SSL certificate expired today.", answer: "the ssl certificate expired today" }
+                    ]
                 ],
                 shadowTexts: [
                     "We pushed our code to Render and verified server logs",
                     "Connect to the PostgreSQL database using environment variables",
-                    "Debug the backend endpoint to fix the unhandled exception"
+                    "Debug the backend endpoint to fix the unhandled exception",
+                    "Run npm install to download all required project dependencies",
+                    "Configure CORS middleware to allow cross origin resource sharing"
                 ],
-                listeningSnippets: ["We pushed our code to GitHub", "The database connection is active", "Deploy the web app to Render"]
+                listeningSnippets: ["We pushed our code to GitHub", "The database connection is active", "Deploy the web app to Render", "Check the server console logs", "API response status is two hundred"]
             },
             accounting: {
                 prompts: [
@@ -811,24 +900,40 @@
                         { term: "Equity", def: "The value of the shares issued by a company.", es: "Patrimonio neto", img: "🏢" }
                     ]
                 ],
-                quizzes: [
-                    { type: "mc", title: "Q1: Ledger", desc: "When discussing financial reports:", options: [{ text: "A) We need to reconcile the ledger.", correct: true }, { text: "B) Paint the ledger.", correct: false }] },
-                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this financial sentence:", faulty: "The balance sheet show a discrepancy.", answer: "the balance sheet shows a discrepancy" },
-                    { type: "mc", title: "Q3: Revenue", desc: "Complete: 'Quarterly ___ increased by 10%.'", options: [{ text: "A) revenue", correct: true }, { text: "B) shadow", correct: false }] },
-                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this financial sentence:", faulty: "We audited accounts payable yesterday.", answer: "we audited accounts payable yesterday" },
-                    { type: "mc", title: "Q5: Tax", desc: "Complete: 'File annual corporate ___ return.'", options: [{ text: "A) tax", correct: true }, { text: "B) rain", correct: false }] },
-                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this financial sentence:", faulty: "Assets is greater than liabilities.", answer: "assets are greater than liabilities" },
-                    { type: "mc", title: "Q7: Cash Flow", desc: "Complete: 'Monitor positive ___ flow.'", options: [{ text: "A) cash", correct: true }, { text: "B) wind", correct: false }] },
-                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this financial sentence:", faulty: "The ledger need reconciliation.", answer: "the ledger needs reconciliation" },
-                    { type: "mc", title: "Q9: Budget", desc: "Complete: 'Allocate funds in the annual ___.'", options: [{ text: "A) budget", correct: true }, { text: "B) jungle", correct: false }] },
-                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this financial sentence:", faulty: "Net profit margin are low.", answer: "net profit margin is low" }
+                quizzesSets: [
+                    [
+                        { type: "mc", title: "Q1: Ledger", desc: "When discussing financial reports:", options: [{ text: "A) We need to reconcile the ledger.", correct: true }, { text: "B) Paint the ledger.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this financial sentence:", faulty: "The balance sheet show a discrepancy.", answer: "the balance sheet shows a discrepancy" },
+                        { type: "mc", title: "Q3: Revenue", desc: "Complete: 'Quarterly ___ increased by 10%.'", options: [{ text: "A) revenue", correct: true }, { text: "B) shadow", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this financial sentence:", faulty: "We audited accounts payable yesterday.", answer: "we audited accounts payable yesterday" },
+                        { type: "mc", title: "Q5: Tax", desc: "Complete: 'File annual corporate ___ return.'", options: [{ text: "A) tax", correct: true }, { text: "B) rain", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this financial sentence:", faulty: "Assets is greater than liabilities.", answer: "assets are greater than liabilities" },
+                        { type: "mc", title: "Q7: Cash Flow", desc: "Complete: 'Monitor positive ___ flow.'", options: [{ text: "A) cash", correct: true }, { text: "B) wind", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this financial sentence:", faulty: "The ledger need reconciliation.", answer: "the ledger needs reconciliation" },
+                        { type: "mc", title: "Q9: Budget", desc: "Complete: 'Allocate funds in the annual ___.'", options: [{ text: "A) budget", correct: true }, { text: "B) jungle", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this financial sentence:", faulty: "Net profit margin are low.", answer: "net profit margin is low" }
+                    ],
+                    [
+                        { type: "mc", title: "Q1: Audit", desc: "During financial audit:", options: [{ text: "A) Verify all invoices and receipts.", correct: true }, { text: "B) Hide the calculator.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this financial sentence:", faulty: "Accounts receivable is overdue.", answer: "accounts receivable are overdue" },
+                        { type: "mc", title: "Q3: Depreciation", desc: "Complete: 'Calculate asset ___ annually.'", options: [{ text: "A) depreciation", correct: true }, { text: "B) swimming", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this financial sentence:", faulty: "Fiscal year end in December.", answer: "the fiscal year ends in december" },
+                        { type: "mc", title: "Q5: Payroll", desc: "Complete: 'Process employee ___ on Friday.'", options: [{ text: "A) payroll", correct: true }, { text: "B) shoes", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this financial sentence:", faulty: "Tax deduction was calculated wrong.", answer: "the tax deduction was calculated incorrectly" },
+                        { type: "mc", title: "Q7: Statement", desc: "Complete: 'Review income ___ report.'", options: [{ text: "A) statement", correct: true }, { text: "B) painting", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this financial sentence:", faulty: "Operating expense increased this month.", answer: "operating expenses increased this month" },
+                        { type: "mc", title: "Q9: Capital", desc: "Complete: 'Raise working ___ for expansion.'", options: [{ text: "A) capital", correct: true }, { text: "B) water", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this financial sentence:", faulty: "Financial records needs updating.", answer: "financial records need updating" }
+                    ]
                 ],
                 shadowTexts: [
                     "We audited the ledger and reconciled accounts",
                     "Review the balance sheet and quarterly revenue report",
-                    "Ensure all financial transactions comply with tax regulations"
+                    "Ensure all financial transactions comply with tax regulations",
+                    "Calculate net profit margin and operating expenses for the fiscal year",
+                    "Prepare the monthly payroll and accounts payable summary"
                 ],
-                listeningSnippets: ["Reconcile the general ledger", "Quarterly revenue has increased", "Check the balance sheet"]
+                listeningSnippets: ["Reconcile the general ledger", "Quarterly revenue has increased", "Check the balance sheet", "Audit the accounts payable", "Approve the corporate budget"]
             },
             law: {
                 prompts: [
@@ -852,24 +957,40 @@
                         { term: "Settlement", def: "An official or legal agreement that has been reached.", es: "Acuerdo / Conciliación", img: "✍️" }
                     ]
                 ],
-                quizzes: [
-                    { type: "mc", title: "Q1: Liability", desc: "When advising a client:", options: [{ text: "A) We must review liability clauses.", correct: true }, { text: "B) Bake a liability cake.", correct: false }] },
-                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this legal sentence:", faulty: "The contract have a breach clause.", answer: "the contract has a breach clause" },
-                    { type: "mc", title: "Q3: Contract", desc: "Complete: 'Sign the employment ___.'", options: [{ text: "A) contract", correct: true }, { text: "B) shoe", correct: false }] },
-                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this legal sentence:", faulty: "Plaintiff sue defendant for damages.", answer: "the plaintiff sued the defendant for damages" },
-                    { type: "mc", title: "Q5: Witness", desc: "Complete: 'Call the first ___ to testify.'", options: [{ text: "A) witness", correct: true }, { text: "B) tree", correct: false }] },
-                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this legal sentence:", faulty: "Evidence were presented in court.", answer: "evidence was presented in court" },
-                    { type: "mc", title: "Q7: Counsel", desc: "Complete: 'Speak with legal ___.'", options: [{ text: "A) counsel", correct: true }, { text: "B) pencil", correct: false }] },
-                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this legal sentence:", faulty: "We sign agreement yesterday.", answer: "we signed the agreement yesterday" },
-                    { type: "mc", title: "Q9: Appeal", desc: "Complete: 'File an ___ in higher court.'", options: [{ text: "A) appeal", correct: true }, { text: "B) banana", correct: false }] },
-                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this legal sentence:", faulty: "Liability are limited by clause.", answer: "liability is limited by the clause" }
+                quizzesSets: [
+                    [
+                        { type: "mc", title: "Q1: Liability", desc: "When advising a client:", options: [{ text: "A) We must review liability clauses.", correct: true }, { text: "B) Bake a liability cake.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this legal sentence:", faulty: "The contract have a breach clause.", answer: "the contract has a breach clause" },
+                        { type: "mc", title: "Q3: Contract", desc: "Complete: 'Sign the employment ___.'", options: [{ text: "A) contract", correct: true }, { text: "B) shoe", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this legal sentence:", faulty: "Plaintiff sue defendant for damages.", answer: "the plaintiff sued the defendant for damages" },
+                        { type: "mc", title: "Q5: Witness", desc: "Complete: 'Call the first ___ to testify.'", options: [{ text: "A) witness", correct: true }, { text: "B) tree", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this legal sentence:", faulty: "Evidence were presented in court.", answer: "evidence was presented in court" },
+                        { type: "mc", title: "Q7: Counsel", desc: "Complete: 'Speak with legal ___.'", options: [{ text: "A) counsel", correct: true }, { text: "B) pencil", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this legal sentence:", faulty: "We sign agreement yesterday.", answer: "we signed the agreement yesterday" },
+                        { type: "mc", title: "Q9: Appeal", desc: "Complete: 'File an ___ in higher court.'", options: [{ text: "A) appeal", correct: true }, { text: "B) banana", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this legal sentence:", faulty: "Liability are limited by clause.", answer: "liability is limited by the clause" }
+                    ],
+                    [
+                        { type: "mc", title: "Q1: Court", desc: "During trial proceedings:", options: [{ text: "A) Obey judge instructions.", correct: true }, { text: "B) Sleep on the bench.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this legal sentence:", faulty: "Judge dismiss the case today.", answer: "the judge dismissed the case today" },
+                        { type: "mc", title: "Q3: Settlement", desc: "Complete: 'Reach out-of-court ___.'", options: [{ text: "A) settlement", correct: true }, { text: "B) painting", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this legal sentence:", faulty: "Defendant plead not guilty.", answer: "the defendant pleaded not guilty" },
+                        { type: "mc", title: "Q5: Copyright", desc: "Complete: 'Protect intellectual property ___.'", options: [{ text: "A) rights", correct: true }, { text: "B) clouds", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this legal sentence:", faulty: "Testimony was recorded on tape.", answer: "the testimony was recorded on audio tape" },
+                        { type: "mc", title: "Q7: Warrant", desc: "Complete: 'Police obtained search ___.'", options: [{ text: "A) warrant", correct: true }, { text: "B) sandwich", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this legal sentence:", faulty: "Legal document need signature.", answer: "the legal document needs a signature" },
+                        { type: "mc", title: "Q9: Statute", desc: "Complete: 'Statute of ___ applies here.'", options: [{ text: "A) limitations", correct: true }, { text: "B) happiness", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this legal sentence:", faulty: "Attorney represent client in court.", answer: "the attorney represents the client in court" }
+                    ]
                 ],
                 shadowTexts: [
                     "We analyzed the agreement to limit liability",
                     "The plaintiff filed a lawsuit against the defendant",
-                    "Review all contract clauses before signing the agreement"
+                    "Review all contract clauses before signing the agreement",
+                    "The judge delivered the final verdict after hearing testimony",
+                    "Our legal counsel protects intellectual property rights"
                 ],
-                listeningSnippets: ["Review the contract clause", "The plaintiff filed a lawsuit", "Limit liability in the agreement"]
+                listeningSnippets: ["Review the contract clause", "The plaintiff filed a lawsuit", "Limit liability in the agreement", "The jury reached a verdict", "Sign the legal settlement today"]
             },
             medicine: {
                 prompts: [
@@ -893,24 +1014,40 @@
                         { term: "Infection", def: "The invasion and multiplication of microorganisms in body tissues.", es: "Infección", img: "🦠" }
                     ]
                 ],
-                quizzes: [
-                    { type: "mc", title: "Q1: Vitals", desc: "When evaluating patient:", options: [{ text: "A) Let us check the patient's vitals.", correct: true }, { text: "B) Check shoes.", correct: false }] },
-                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this medical sentence:", faulty: "Patient have high fever.", answer: "the patient has a high fever" },
-                    { type: "mc", title: "Q3: Surgery", desc: "Complete: 'Prepare room for ___.'", options: [{ text: "A) surgery", correct: true }, { text: "B) dancing", correct: false }] },
-                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this medical sentence:", faulty: "Doctor write a prescription yesterday.", answer: "the doctor wrote a prescription yesterday" },
-                    { type: "mc", title: "Q5: Patient", desc: "Complete: 'Admit the ___ to room 4.'", options: [{ text: "A) patient", correct: true }, { text: "B) rock", correct: false }] },
-                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this medical sentence:", faulty: "Nurse check vitals signs.", answer: "the nurse checked the vital signs" },
-                    { type: "mc", title: "Q7: X-Ray", desc: "Complete: 'Take an ___ of the chest.'", options: [{ text: "A) X-ray", correct: true }, { text: "B) sandwich", correct: false }] },
-                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this medical sentence:", faulty: "Diagnosis indicate infection.", answer: "the diagnosis indicates an infection" },
-                    { type: "mc", title: "Q9: Clinic", desc: "Complete: 'Visit the local health ___.'", options: [{ text: "A) clinic", correct: true }, { text: "B) mountain", correct: false }] },
-                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this medical sentence:", faulty: "Patient need physical therapy.", answer: "the patient needs physical therapy" }
+                quizzesSets: [
+                    [
+                        { type: "mc", title: "Q1: Vitals", desc: "When evaluating patient:", options: [{ text: "A) Let us check the patient's vitals.", correct: true }, { text: "B) Check shoes.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this medical sentence:", faulty: "Patient have high fever.", answer: "the patient has a high fever" },
+                        { type: "mc", title: "Q3: Surgery", desc: "Complete: 'Prepare room for ___.'", options: [{ text: "A) surgery", correct: true }, { text: "B) dancing", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this medical sentence:", faulty: "Doctor write a prescription yesterday.", answer: "the doctor wrote a prescription yesterday" },
+                        { type: "mc", title: "Q5: Patient", desc: "Complete: 'Admit the ___ to room 4.'", options: [{ text: "A) patient", correct: true }, { text: "B) rock", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this medical sentence:", faulty: "Nurse check vitals signs.", answer: "the nurse checked the vital signs" },
+                        { type: "mc", title: "Q7: X-Ray", desc: "Complete: 'Take an ___ of the chest.'", options: [{ text: "A) X-ray", correct: true }, { text: "B) sandwich", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this medical sentence:", faulty: "Diagnosis indicate infection.", answer: "the diagnosis indicates an infection" },
+                        { type: "mc", title: "Q9: Clinic", desc: "Complete: 'Visit the local health ___.'", options: [{ text: "A) clinic", correct: true }, { text: "B) mountain", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this medical sentence:", faulty: "Patient need physical therapy.", answer: "the patient needs physical therapy" }
+                    ],
+                    [
+                        { type: "mc", title: "Q1: Emergency", desc: "In emergency triage:", options: [{ text: "A) Assess breathing and pulse.", correct: true }, { text: "B) Offer coffee.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this medical sentence:", faulty: "Blood pressure is normal now.", answer: "the blood pressure is normal now" },
+                        { type: "mc", title: "Q3: Antibiotic", desc: "Complete: 'Administer course of ___.'", options: [{ text: "A) antibiotics", correct: true }, { text: "B) candy", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this medical sentence:", faulty: "Allergy to penicillin was noted.", answer: "a penicillin allergy was noted" },
+                        { type: "mc", title: "Q5: Vaccine", desc: "Complete: 'Receive seasonal flu ___.'", options: [{ text: "A) vaccine", correct: true }, { text: "B) song", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this medical sentence:", faulty: "Wound need stitches immediately.", answer: "the wound needs stitches immediately" },
+                        { type: "mc", title: "Q7: Symptom", desc: "Complete: 'Patient reports severe headache ___.'", options: [{ text: "A) symptoms", correct: true }, { text: "B) shoes", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this medical sentence:", faulty: "Heart rate is elevating fast.", answer: "the heart rate is elevating rapidly" },
+                        { type: "mc", title: "Q9: Dose", desc: "Complete: 'Take prescribed medication ___ daily.'", options: [{ text: "A) twice", correct: true }, { text: "B) loudly", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this medical sentence:", faulty: "Medical history show diabetes.", answer: "the medical history shows diabetes" }
+                    ]
                 ],
                 shadowTexts: [
                     "We evaluated the patient vitals and prescribed treatment",
                     "The doctor examined the symptoms and made a diagnosis",
-                    "Monitor the patient heart rate and blood pressure closely"
+                    "Monitor the patient heart rate and blood pressure closely",
+                    "Administer antibiotics intravenously to prevent bacterial infection",
+                    "Prepare the operating room for emergency abdominal surgery"
                 ],
-                listeningSnippets: ["Check the patient vitals", "Doctor wrote a prescription", "The diagnosis indicates an infection"]
+                listeningSnippets: ["Check the patient vitals", "Doctor wrote a prescription", "The diagnosis indicates an infection", "Measure blood pressure and pulse", "Allergy to penicillin reported"]
             },
             mechanics: {
                 prompts: [
@@ -934,24 +1071,40 @@
                         { term: "Exhaust", def: "The waste gas from an engine.", es: "Escape", img: "💨" }
                     ]
                 ],
-                quizzes: [
-                    { type: "mc", title: "Q1: Engine", desc: "When explaining engine issue:", options: [{ text: "A) We detected a cylinder misfire.", correct: true }, { text: "B) Engine is sleeping.", correct: false }] },
-                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this automotive sentence:", faulty: "The engine have a misfire.", answer: "the engine has a misfire" },
-                    { type: "mc", title: "Q3: Oil", desc: "Complete: 'Change engine ___ and filter.'", options: [{ text: "A) oil", correct: true }, { text: "B) juice", correct: false }] },
-                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this automotive sentence:", faulty: "Mechanic replace brake pads yesterday.", answer: "the mechanic replaced the brake pads yesterday" },
-                    { type: "mc", title: "Q5: Battery", desc: "Complete: 'Test 12V car ___ terminals.'", options: [{ text: "A) battery", correct: true }, { text: "B) banana", correct: false }] },
-                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this automotive sentence:", faulty: "Alternator not charging battery.", answer: "the alternator is not charging the battery" },
-                    { type: "mc", title: "Q7: Spark Plug", desc: "Complete: 'Gap the new spark ___.'", options: [{ text: "A) plugs", correct: true }, { text: "B) shoes", correct: false }] },
-                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this automotive sentence:", faulty: "Tire pressure is low in front tire.", answer: "the tire pressure is low in the front tire" },
-                    { type: "mc", title: "Q9: Transmission", desc: "Complete: 'Replace worn transmission fluid.'", options: [{ text: "A) Transmission", correct: true }, { text: "B) Shoe", correct: false }] },
-                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this automotive sentence:", faulty: "Radiator leak coolant fluid.", answer: "the radiator is leaking coolant" }
+                quizzesSets: [
+                    [
+                        { type: "mc", title: "Q1: Engine", desc: "When explaining engine issue:", options: [{ text: "A) We detected a cylinder misfire.", correct: true }, { text: "B) Engine is sleeping.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this automotive sentence:", faulty: "The engine have a misfire.", answer: "the engine has a misfire" },
+                        { type: "mc", title: "Q3: Oil", desc: "Complete: 'Change engine ___ and filter.'", options: [{ text: "A) oil", correct: true }, { text: "B) juice", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this automotive sentence:", faulty: "Mechanic replace brake pads yesterday.", answer: "the mechanic replaced the brake pads yesterday" },
+                        { type: "mc", title: "Q5: Battery", desc: "Complete: 'Test 12V car ___ terminals.'", options: [{ text: "A) battery", correct: true }, { text: "B) banana", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this automotive sentence:", faulty: "Alternator not charging battery.", answer: "the alternator is not charging the battery" },
+                        { type: "mc", title: "Q7: Spark Plug", desc: "Complete: 'Gap the new spark ___.'", options: [{ text: "A) plugs", correct: true }, { text: "B) shoes", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this automotive sentence:", faulty: "Tire pressure is low in front tire.", answer: "the tire pressure is low in the front tire" },
+                        { type: "mc", title: "Q9: Transmission", desc: "Complete: 'Replace worn transmission fluid.'", options: [{ text: "A) Transmission", correct: true }, { text: "B) Shoe", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this automotive sentence:", faulty: "Radiator leak coolant fluid.", answer: "the radiator is leaking coolant" }
+                    ],
+                    [
+                        { type: "mc", title: "Q1: Suspension", desc: "When checking suspension:", options: [{ text: "A) Inspect shock absorbers for leaks.", correct: true }, { text: "B) Paint the steering wheel.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this automotive sentence:", faulty: "Car make strange noise when braking.", answer: "the car makes a strange noise when braking" },
+                        { type: "mc", title: "Q3: Alignment", desc: "Complete: 'Perform wheel ___ service.'", options: [{ text: "A) alignment", correct: true }, { text: "B) dancing", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this automotive sentence:", faulty: "Timing belt snap while driving.", answer: "the timing belt snapped while driving" },
+                        { type: "mc", title: "Q5: Coolant", desc: "Complete: 'Flush radiator ___ system.'", options: [{ text: "A) coolant", correct: true }, { text: "B) coffee", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this automotive sentence:", faulty: "Check engine light is turn on.", answer: "the check engine light is turned on" },
+                        { type: "mc", title: "Q7: Clutch", desc: "Complete: 'Replace slipping manual ___ disc.'", options: [{ text: "A) clutch", correct: true }, { text: "B) paper", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this automotive sentence:", faulty: "Starter motor click but won't crank.", answer: "the starter motor clicks but won't crank" },
+                        { type: "mc", title: "Q9: Fuel Pump", desc: "Complete: 'Test electric fuel ___ pressure.'", options: [{ text: "A) pump", correct: true }, { text: "B) tree", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this automotive sentence:", faulty: "Air filter is full of dust.", answer: "the air filter is full of dust" }
+                    ]
                 ],
                 shadowTexts: [
                     "We diagnosed an engine misfire and replaced spark plugs",
                     "Inspect the brake pads and check rotor thickness",
-                    "Test the alternator output to ensure proper battery charging"
+                    "Test the alternator output to ensure proper battery charging",
+                    "The radiator is leaking coolant so we need to pressure test it",
+                    "Replace the worn serpentine belt and check pulley alignment"
                 ],
-                listeningSnippets: ["The engine has a misfire", "Replace the worn brake pads", "Check the alternator battery"]
+                listeningSnippets: ["The engine has a misfire", "Replace the worn brake pads", "Check the alternator battery", "Flush the coolant system", "The starter motor is clicking"]
             },
             gamedev: {
                 prompts: [
@@ -975,24 +1128,40 @@
                         { term: "Node", def: "A fundamental building block in Godot engine.", es: "Nodo", img: "🔗" }
                     ]
                 ],
-                quizzes: [
-                    { type: "mc", title: "Q1: Godot", desc: "Performance in Godot:", options: [{ text: "A) Optimize game loop.", correct: true }, { text: "B) Eat game loop.", correct: false }] },
-                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this game dev sentence:", faulty: "The player node have a physics script.", answer: "the player node has a physics script" },
-                    { type: "mc", title: "Q3: Pixel Art", desc: "Complete: 'Draw 2D characters in ___.'", options: [{ text: "A) LibreSprite", correct: true }, { text: "B) Excel", correct: false }] },
-                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this game dev sentence:", faulty: "I code player movement yesterday.", answer: "i coded player movement yesterday" },
-                    { type: "mc", title: "Q5: Physics", desc: "Complete: 'Apply gravity in 2D ___.'", options: [{ text: "A) physics", correct: true }, { text: "B) music", correct: false }] },
-                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this game dev sentence:", faulty: "Collision shape are missing.", answer: "the collision shape is missing" },
-                    { type: "mc", title: "Q7: Vector", desc: "Complete: 'Calculate velocity ___ 2.'", options: [{ text: "A) vector", correct: true }, { text: "B) spoon", correct: false }] },
-                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this game dev sentence:", faulty: "Export game to mobile store.", answer: "we exported the game to the mobile store" },
-                    { type: "mc", title: "Q9: Scene", desc: "Complete: 'Save level as main ___.'", options: [{ text: "A) scene", correct: true }, { text: "B) mountain", correct: false }] },
-                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this game dev sentence:", faulty: "Tilemap draw grid correctly.", answer: "the tilemap draws the grid correctly" }
+                quizzesSets: [
+                    [
+                        { type: "mc", title: "Q1: Godot", desc: "Performance in Godot:", options: [{ text: "A) Optimize game loop.", correct: true }, { text: "B) Eat game loop.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this game dev sentence:", faulty: "The player node have a physics script.", answer: "the player node has a physics script" },
+                        { type: "mc", title: "Q3: Pixel Art", desc: "Complete: 'Draw 2D characters in ___.'", options: [{ text: "A) LibreSprite", correct: true }, { text: "B) Excel", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this game dev sentence:", faulty: "I code player movement yesterday.", answer: "i coded player movement yesterday" },
+                        { type: "mc", title: "Q5: Physics", desc: "Complete: 'Apply gravity in 2D ___.'", options: [{ text: "A) physics", correct: true }, { text: "B) music", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this game dev sentence:", faulty: "Collision shape are missing.", answer: "the collision shape is missing" },
+                        { type: "mc", title: "Q7: Vector", desc: "Complete: 'Calculate velocity ___ 2.'", options: [{ text: "A) vector", correct: true }, { text: "B) spoon", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this game dev sentence:", faulty: "Export game to mobile store.", answer: "we exported the game to the mobile store" },
+                        { type: "mc", title: "Q9: Scene", desc: "Complete: 'Save level as main ___.'", options: [{ text: "A) scene", correct: true }, { text: "B) mountain", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this game dev sentence:", faulty: "Tilemap draw grid correctly.", answer: "the tilemap draws the grid correctly" }
+                    ],
+                    [
+                        { type: "mc", title: "Q1: Scripting", desc: "When writing GDScript:", options: [{ text: "A) Extend CharacterBody2D.", correct: true }, { text: "B) Extend sandwich.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this game dev sentence:", faulty: "Signal is not connected properly.", answer: "the signal is not connected properly" },
+                        { type: "mc", title: "Q3: Export", desc: "Complete: 'Export build for ___ platform.'", options: [{ text: "A) Android", correct: true }, { text: "B) toaster", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this game dev sentence:", faulty: "Animation player frame lag.", answer: "the animation player frame is lagging" },
+                        { type: "mc", title: "Q5: Input", desc: "Complete: 'Map jump action in ___ settings.'", options: [{ text: "A) project", correct: true }, { text: "B) kitchen", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this game dev sentence:", faulty: "Camera follow player smoothly.", answer: "the camera follows the player smoothly" },
+                        { type: "mc", title: "Q7: Audio", desc: "Complete: 'Play sound effect stream ___.'", options: [{ text: "A) player", correct: true }, { text: "B) singer", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this game dev sentence:", faulty: "UI menu button not clickable.", answer: "the ui menu button is not clickable" },
+                        { type: "mc", title: "Q9: Save", desc: "Complete: 'Store game data in ___ file.'", options: [{ text: "A) JSON", correct: true }, { text: "B) soup", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this game dev sentence:", faulty: "Level designer place obstacle.", answer: "the level designer placed obstacles" }
+                    ]
                 ],
                 shadowTexts: [
                     "In Godot four we scripted player movement and physics",
                     "Draw custom pixel art sprites and tilemaps for the indie game",
-                    "Configure collision layers and shapes for the platformer character"
+                    "Configure collision layers and shapes for the platformer character",
+                    "Connect signals between game nodes to handle player health events",
+                    "Export the final indie game build for Android mobile devices"
                 ],
-                listeningSnippets: ["We scripted player movement", "Draw 2D characters in LibreSprite", "The collision shape is missing"]
+                listeningSnippets: ["We scripted player movement", "Draw 2D characters in LibreSprite", "The collision shape is missing", "Godot engine runs smoothly", "Export game to Google Play Store"]
             },
             music: {
                 prompts: [
@@ -1016,24 +1185,40 @@
                         { term: "Microphone", def: "An instrument for converting sound waves into electrical energy.", es: "Micrófono", img: "🎙️" }
                     ]
                 ],
-                quizzes: [
-                    { type: "mc", title: "Q1: Band", desc: "Before a show:", options: [{ text: "A) Check in-ear monitors.", correct: true }, { text: "B) Check shoes.", correct: false }] },
-                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this music sentence:", faulty: "The bass guitar need new strings.", answer: "the bass guitar needs new strings" },
-                    { type: "mc", title: "Q3: Rehearsal", desc: "Complete: 'Practice band setlist in ___.'", options: [{ text: "A) rehearsal", correct: true }, { text: "B) kitchen", correct: false }] },
-                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this music sentence:", faulty: "We play live concert yesterday.", answer: "we played a live concert yesterday" },
-                    { type: "mc", title: "Q5: Volume", desc: "Complete: 'Adjust master stage ___.'", options: [{ text: "A) volume", correct: true }, { text: "B) wind", correct: false }] },
-                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this music sentence:", faulty: "Monitor level is too low for me.", answer: "the monitor level is too low for me" },
-                    { type: "mc", title: "Q7: Tempo", desc: "Complete: 'Keep steady beat ___.'", options: [{ text: "A) tempo", correct: true }, { text: "B) shoe", correct: false }] },
-                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this music sentence:", faulty: "Drummer keep the rhythm steady.", answer: "the drummer keeps the rhythm steady" },
-                    { type: "mc", title: "Q9: Tone", desc: "Complete: 'Dial in compressor ___.'", options: [{ text: "A) tone", correct: true }, { text: "B) water", correct: false }] },
-                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this music sentence:", faulty: "I plug in my bass guitar.", answer: "i plugged in my bass guitar" }
+                quizzesSets: [
+                    [
+                        { type: "mc", title: "Q1: Band", desc: "Before a show:", options: [{ text: "A) Check in-ear monitors.", correct: true }, { text: "B) Check shoes.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this music sentence:", faulty: "The bass guitar need new strings.", answer: "the bass guitar needs new strings" },
+                        { type: "mc", title: "Q3: Rehearsal", desc: "Complete: 'Practice band setlist in ___.'", options: [{ text: "A) rehearsal", correct: true }, { text: "B) kitchen", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this music sentence:", faulty: "We play live concert yesterday.", answer: "we played a live concert yesterday" },
+                        { type: "mc", title: "Q5: Volume", desc: "Complete: 'Adjust master stage ___.'", options: [{ text: "A) volume", correct: true }, { text: "B) wind", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this music sentence:", faulty: "Monitor level is too low for me.", answer: "the monitor level is too low for me" },
+                        { type: "mc", title: "Q7: Tempo", desc: "Complete: 'Keep steady beat ___.'", options: [{ text: "A) tempo", correct: true }, { text: "B) shoe", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this music sentence:", faulty: "Drummer keep the rhythm steady.", answer: "the drummer keeps the rhythm steady" },
+                        { type: "mc", title: "Q9: Tone", desc: "Complete: 'Dial in compressor ___.'", options: [{ text: "A) tone", correct: true }, { text: "B) water", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this music sentence:", faulty: "I plug in my bass guitar.", answer: "i plugged in my bass guitar" }
+                    ],
+                    [
+                        { type: "mc", title: "Q1: Live Show", desc: "During soundcheck:", options: [{ text: "A) Check wireless in-ear mix.", correct: true }, { text: "B) Eat a guitar pick.", correct: false }] },
+                        { type: "repair", title: "Q2: Error Repair", desc: "Fix this music sentence:", faulty: "Wireless transmitter battery is dead.", answer: "the wireless transmitter battery is dead" },
+                        { type: "mc", title: "Q3: Equalizer", desc: "Complete: 'Boost low frequencies on ___.'", options: [{ text: "A) amplifier", correct: true }, { text: "B) refrigerator", correct: false }] },
+                        { type: "repair", title: "Q4: Error Repair", desc: "Fix this music sentence:", faulty: "Drummer play with great rhythm.", answer: "the drummer plays with great rhythm" },
+                        { type: "mc", title: "Q5: Setlist", desc: "Complete: 'Review live concert ___ order.'", options: [{ text: "A) setlist", correct: true }, { text: "B) sandwich", correct: false }] },
+                        { type: "repair", title: "Q6: Error Repair", desc: "Fix this music sentence:", faulty: "Microphone feedback during soundcheck.", answer: "there was microphone feedback during soundcheck" },
+                        { type: "mc", title: "Q7: Compressor", desc: "Complete: 'Add sustain using bass ___.'", options: [{ text: "A) compressor", correct: true }, { text: "B) hammer", correct: false }] },
+                        { type: "repair", title: "Q8: Error Repair", desc: "Fix this music sentence:", faulty: "Electric bass sound amazing tonight.", answer: "the electric bass sounds amazing tonight" },
+                        { type: "mc", title: "Q9: Pitch", desc: "Complete: 'Tune instrument using digital ___.'", options: [{ text: "A) tuner", correct: true }, { text: "B) spoon", correct: false }] },
+                        { type: "repair", title: "Q10: Error Repair", desc: "Fix this music sentence:", faulty: "Band practice every Tuesday night.", answer: "the band practices every tuesday night" }
+                    ]
                 ],
                 shadowTexts: [
                     "I plug in my electric bass and check my monitor levels",
                     "We rehearsed the new setlist with the drummer before the show",
-                    "Adjust the amplifier EQ and compressor settings for a clean tone"
+                    "Adjust the amplifier EQ and compressor settings for a clean tone",
+                    "The wireless in ear monitors provide crystal clear mix on stage",
+                    "Tune your instrument carefully with a digital clip on tuner"
                 ],
-                listeningSnippets: ["Check in ear monitors", "The bass guitar needs new strings", "We played a live concert"]
+                listeningSnippets: ["Check in ear monitors", "The bass guitar needs new strings", "We played a live concert", "Turn up the volume on stage", "The drummer keeps the tempo steady"]
             }
         };
 
@@ -1078,7 +1263,7 @@
             }
         }
 
-        // ROTACIÓN DE CLASES, RETOS Y FLASHCARDS SEGÚN EL RANGO ACTUAL
+        // ROTACIÓN DINÁMICA DE CONTENIDO POR RANGO
         function loadProgressiveLesson() {
             const data = profileData[currentCategory] || profileData['beginner'];
             
@@ -1110,9 +1295,18 @@
             loadQuizQuestion();
         }
 
-        function loadQuizQuestion() {
+        // OBTENCIÓN DINÁMICA DE QUIZZES
+        function getCurrentQuizzes() {
             const data = profileData[currentCategory] || profileData['beginner'];
-            const quizzes = data.quizzes;
+            if (data.quizzesSets && data.quizzesSets.length > 0) {
+                const setIdx = (appState.rankTier || 0) % data.quizzesSets.length;
+                return data.quizzesSets[setIdx];
+            }
+            return data.quizzes || [];
+        }
+
+        function loadQuizQuestion() {
+            const quizzes = getCurrentQuizzes();
             if (currentQuizIndex >= quizzes.length) return;
 
             activeQuizItem = quizzes[currentQuizIndex];
@@ -1180,11 +1374,11 @@
 
         function advanceQuizIndex() {
             currentQuizIndex++;
-            const data = profileData[currentCategory] || profileData['beginner'];
-            if (currentQuizIndex < data.quizzes.length) {
+            const quizzes = getCurrentQuizzes();
+            if (currentQuizIndex < quizzes.length) {
                 loadQuizQuestion();
             } else {
-                generateQuizReport(data.quizzes.length);
+                generateQuizReport(quizzes.length);
             }
         }
 
@@ -1341,15 +1535,19 @@
             markStep('shadowing', 'badge-shadowing');
         }
 
-        // FLASHCARDS ROTATION BY RANK TIER
+        // OBTENCIÓN DINÁMICA DE FLASHCARDS
         function getCurrentCards() {
             const data = profileData[currentCategory] || profileData['beginner'];
-            const setIdx = (appState.rankTier || 0) % data.flashcardsSets.length;
-            return data.flashcardsSets[setIdx];
+            if (data.flashcardsSets && data.flashcardsSets.length > 0) {
+                const setIdx = (appState.rankTier || 0) % data.flashcardsSets.length;
+                return data.flashcardsSets[setIdx];
+            }
+            return data.flashcards || [];
         }
 
         function updateCard() {
             const cards = getCurrentCards();
+            if (cards.length === 0) return;
             if (currentCard >= cards.length) currentCard = 0;
             const card = cards[currentCard];
             document.getElementById('flash-badge').innerText = `Term #${currentCard + 1} of ${cards.length}`;
