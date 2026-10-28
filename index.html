@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Learning Pro - Hardcore Streak Edition</title>
+    <title>English Learning Pro - Error Correction & Merit Edition</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -99,14 +99,13 @@
     <!-- MAIN CONTENT -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow">
         
-        <!-- Welcome Banner with Interactive Mascot (Owl) -->
+        <!-- Welcome Banner with Interactive Mascot -->
         <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-slate-700/60 rounded-2xl p-5 sm:p-6 mb-6 shadow-xl relative overflow-hidden">
             <div class="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 
-                <!-- Mascot & Welcome Message Section -->
                 <div class="flex items-center gap-4">
-                    <div onclick="interactWithMascot()" class="cursor-pointer group flex-shrink-0 mascot-float relative" title="Click me for a daily Slang or Tip!">
+                    <div onclick="interactWithMascot()" class="cursor-pointer group flex-shrink-0 mascot-float relative" title="Click for slang!">
                         <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-tr from-sky-500 to-emerald-400 rounded-3xl p-1 shadow-lg shadow-sky-500/30 flex items-center justify-center transition group-hover:scale-105">
                             <div class="w-full h-full bg-slate-950 rounded-[22px] flex items-center justify-center text-3xl sm:text-4xl shadow-inner select-none" id="mascot-emoji">
                                 🦉
@@ -116,15 +115,15 @@
                     </div>
 
                     <div>
-                        <span id="time-badge" class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Session Active</span>
+                        <span id="level-badge" class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Level 1: Foundation</span>
                         <h2 class="text-xl sm:text-2xl font-bold text-white mt-2" id="welcome-title">Welcome back!</h2>
                         <p class="text-slate-300 mt-1 text-xs sm:text-sm bg-slate-950/70 border border-slate-800/80 px-3 py-2 rounded-xl italic" id="mascot-bubble">
-                            "Click on me anytime to learn a native slang or study tip!"
+                            "Fix grammar errors and pass your quizzes to earn level promotions!"
                         </p>
                     </div>
                 </div>
 
-                <!-- Session Progress Bar -->
+                <!-- Session Progress Bar & Merit Progression -->
                 <div class="bg-slate-950/80 border border-slate-800 p-4 rounded-xl w-full md:w-72">
                     <div class="flex justify-between text-xs mb-1.5">
                         <span class="text-slate-400">Session Progress:</span>
@@ -136,8 +135,8 @@
                     <button onclick="claimSession()" id="claim-btn" class="mt-3 w-full bg-slate-800 text-slate-500 font-bold py-2 rounded-lg text-xs cursor-not-allowed transition" disabled>
                         🔒 Complete 4 steps to log session
                     </button>
-                    <button onclick="resetExtraSession()" class="mt-2 w-full bg-slate-800/80 hover:bg-slate-700 text-sky-400 border border-slate-700 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer">
-                        🔄 Start Extra Training Session
+                    <button onclick="tryAdvanceLevel()" class="mt-2 w-full bg-sky-500/20 hover:bg-sky-500/30 text-sky-400 border border-sky-500/40 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer flex items-center justify-center gap-1.5">
+                        <i data-lucide="award" class="w-3.5 h-3.5"></i> Evaluate & Request Promotion
                     </button>
                 </div>
             </div>
@@ -152,32 +151,32 @@
                 <i data-lucide="layers" class="w-4 h-4"></i> 2. Flashcards <span id="badge-flashcards" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
             </button>
             <button onclick="switchTab('grammar')" id="tab-grammar" class="tab-btn pb-3 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap text-slate-400 cursor-pointer transition">
-                <i data-lucide="check-square" class="w-4 h-4"></i> 3. Grammar Quiz <span id="badge-grammar" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
+                <i data-lucide="check-square" class="w-4 h-4"></i> 3. Grammar & Error Repair (10 Qs) <span id="badge-grammar" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
             </button>
             <button onclick="switchTab('shadowing')" id="tab-shadowing" class="tab-btn pb-3 text-xs sm:text-sm font-semibold flex items-center gap-2 whitespace-nowrap text-slate-400 cursor-pointer transition">
                 <i data-lucide="headphones" class="w-4 h-4"></i> 4. Shadowing <span id="badge-shadowing" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">Pending</span>
             </button>
         </div>
 
-        <!-- TAB 1: ADAPTIVE STRICT SPEAKING LAB -->
+        <!-- TAB 1: SPEAKING LAB -->
         <div id="content-speaking" class="space-y-6">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div class="lg:col-span-2 bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-4">
                             <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 flex items-center gap-1.5">
-                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Step 1: Adaptive Speaking Grader
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Merit-Based Speaking Grader
                             </span>
                         </div>
                         <h3 class="text-base sm:text-lg font-bold text-white mb-2" id="prompt-title">Speaking Challenge</h3>
                         <p class="text-slate-300 text-sm sm:text-base italic bg-slate-950/60 p-4 rounded-xl border border-slate-800/80" id="prompt-text">
-                            "Introduce yourself, tell where you live, and what you like to do."
+                            Loading challenge...
                         </p>
                     </div>
 
                     <div class="mt-6">
                         <div class="flex items-center justify-between mb-2 flex-wrap gap-2">
-                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider" id="requirement-label">Spoken Response (Strict AI Grader):</label>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider" id="requirement-label">Spoken Response:</label>
                             <button onclick="toggleSpeechRecognition()" id="mic-btn" class="bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
                                 <i data-lucide="mic" class="w-3.5 h-3.5"></i> <span id="mic-status-text">Start Speaking (Mic)</span>
                             </button>
@@ -196,10 +195,10 @@
                 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg flex flex-col justify-between">
                     <div>
                         <h3 class="text-xs sm:text-sm font-bold text-slate-200 uppercase tracking-wider mb-3 flex items-center gap-2">
-                            <i data-lucide="bot" class="w-4 h-4 text-sky-400"></i> Rank-Based AI Feedback
+                            <i data-lucide="bot" class="w-4 h-4 text-sky-400"></i> AI Evaluation Score
                         </h3>
                         <div id="feedback-box" class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-4 text-xs text-slate-300 space-y-3">
-                            <p class="text-slate-400">Submit your speech to receive an adaptive critique based on your current rank.</p>
+                            <p class="text-slate-400">Submit your speech to earn your performance score.</p>
                         </div>
                     </div>
                     <div class="mt-4 pt-4 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
@@ -215,8 +214,8 @@
         <!-- TAB 2: FLASHCARDS -->
         <div id="content-flashcards" class="hidden space-y-6">
             <div class="max-w-md mx-auto text-center">
-                <h3 class="text-lg font-bold text-white mb-1">Step 2: Visual Flashcards</h3>
-                <p class="text-xs text-slate-400 mb-6">Review rotating cards with visual illustrations to expand your memory.</p>
+                <h3 class="text-lg font-bold text-white mb-1">Step 2: Technical Flashcards (5+ Cards)</h3>
+                <p class="text-xs text-slate-400 mb-6">Review rotating technical cards to expand your vocabulary.</p>
                 
                 <div class="card-flip h-72 w-full cursor-pointer mb-6" onclick="this.classList.toggle('flipped')">
                     <div class="card-inner relative w-full h-full text-center">
@@ -224,18 +223,18 @@
                             <span class="text-xs font-semibold text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full" id="flash-badge">Term #1</span>
                             
                             <div class="w-24 h-24 bg-slate-950 rounded-2xl border border-slate-800 flex items-center justify-center text-4xl shadow-inner my-2" id="flash-img">
-                                👋
+                                📚
                             </div>
 
                             <div>
-                                <h4 class="text-lg sm:text-xl font-bold text-white mb-1" id="flash-term">Hello</h4>
+                                <h4 class="text-lg sm:text-xl font-bold text-white mb-1" id="flash-term">Loading...</h4>
                                 <span class="text-xs text-slate-400">(Click card to flip)</span>
                             </div>
                         </div>
                         <div class="card-back absolute w-full h-full bg-slate-900 border border-slate-700 rounded-2xl p-6 flex flex-col items-center justify-center shadow-xl">
                             <span class="text-xs font-semibold text-emerald-400 mb-3 bg-emerald-500/10 px-3 py-1 rounded-full">Definition & Translation</span>
-                            <p class="text-slate-200 text-xs sm:text-sm mb-3" id="flash-def">Used to greet someone.</p>
-                            <span class="text-xs font-mono text-sky-300 bg-slate-950 px-3 py-2 rounded-lg border border-slate-800" id="flash-es">Hola</span>
+                            <p class="text-slate-200 text-xs sm:text-sm mb-3" id="flash-def">...</p>
+                            <span class="text-xs font-mono text-sky-300 bg-slate-950 px-3 py-2 rounded-lg border border-slate-800" id="flash-es">...</span>
                         </div>
                     </div>
                 </div>
@@ -247,18 +246,31 @@
             </div>
         </div>
 
-        <!-- TAB 3: GRAMMAR QUIZ -->
+        <!-- TAB 3: GRAMMAR & ERROR REPAIR QUIZ (10 Questions Mixed) -->
         <div id="content-grammar" class="hidden space-y-6">
             <div class="max-w-2xl mx-auto bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg">
                 <div class="flex justify-between items-center mb-4">
-                    <span class="text-xs font-semibold text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">Step 3: Daily Rotating Grammar Quiz</span>
+                    <span class="text-xs font-semibold text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">Step 3: Grammar & Error Repair (10 Challenges)</span>
+                    <span class="text-xs text-slate-400" id="quiz-counter">Challenge 1 of 10</span>
                 </div>
-                <h3 class="text-base sm:text-lg font-bold text-white mb-4" id="quiz-title">Choose the correct option:</h3>
-                <p class="text-slate-300 text-xs sm:text-sm mb-6 bg-slate-950/60 p-4 rounded-xl border border-slate-800" id="quiz-desc">
-                    Select the correct option to complete this step.
+                <h3 class="text-base sm:text-lg font-bold text-white mb-2" id="quiz-title">Loading...</h3>
+                <p class="text-slate-300 text-xs sm:text-sm mb-4 bg-slate-950/60 p-4 rounded-xl border border-slate-800" id="quiz-desc">
+                    ...
                 </p>
-                <div class="space-y-3 mb-6" id="quiz-options"></div>
-                <div id="quiz-result" class="text-xs font-medium text-slate-400"></div>
+                
+                <!-- Option container for multiple choice -->
+                <div class="space-y-3 mb-4" id="quiz-options"></div>
+
+                <!-- Input container for Error Correction mode -->
+                <div id="error-repair-container" class="hidden space-y-3 mb-4">
+                    <label class="block text-xs font-semibold text-rose-400 uppercase tracking-wider">Fix the grammar error and write the correct sentence:</label>
+                    <input type="text" id="error-input" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500 transition" placeholder="Type correct sentence here...">
+                    <button onclick="submitErrorCorrection()" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-2.5 rounded-xl text-xs transition cursor-pointer">
+                        Check Correction
+                    </button>
+                </div>
+
+                <div id="quiz-result" class="text-xs font-medium text-slate-400 mt-3"></div>
             </div>
         </div>
 
@@ -269,10 +281,10 @@
                     <span class="text-xs font-semibold text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Step 4: Shadowing Lab</span>
                 </div>
                 <h3 class="text-base sm:text-lg font-bold text-white mb-2">Listen & Repeat</h3>
-                <p class="text-slate-300 text-xs sm:text-sm mb-6">Listen to the native audio sample and repeat out loud to complete the final step of your session.</p>
+                <p class="text-slate-300 text-xs sm:text-sm mb-6">Listen to the native audio sample and repeat out loud to complete the final step.</p>
                 
                 <div class="bg-slate-950/80 p-4 sm:p-5 rounded-xl border border-slate-800 mb-6 space-y-3">
-                    <p class="text-xs sm:text-sm text-sky-300 font-mono" id="shadow-text">"Hello, nice to meet you."</p>
+                    <p class="text-xs sm:text-sm text-sky-300 font-mono" id="shadow-text">"Loading audio text..."</p>
                     <div class="flex items-center justify-between pt-2 border-t border-slate-800/80 flex-wrap gap-2">
                         <button onclick="speakShadowText()" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition flex items-center gap-2 cursor-pointer">
                             <i data-lucide="volume-2" class="w-4 h-4"></i> Play Native Audio
@@ -377,27 +389,25 @@
             userName: '',
             streak: 0,
             termsMastered: 0,
+            sessionLevel: 0,
+            lastQuizScore: 0,
+            lastSpeakingScore: 0,
             lastCompletedDate: null,
             sessionSteps: { speaking: false, flashcards: false, grammar: false, shadowing: false },
             selectedFocus: null,
             focusTitle: null
         };
 
-        // Check streak expiration (Loss if inactive for 2+ consecutive days)
         function checkStreakExpiration() {
             if (!appState.lastCompletedDate) return;
             const lastDate = new Date(appState.lastCompletedDate);
             const today = new Date();
-            
-            // Reset hours to compare pure calendar dates
             lastDate.setHours(0,0,0,0);
             today.setHours(0,0,0,0);
-
             const diffTime = today - lastDate;
             const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
-
             if (diffDays > 1) {
-                appState.streak = 0; // Streak lost due to 2+ days of inactivity
+                appState.streak = 0;
                 localStorage.setItem('english_pro_state', JSON.stringify(appState));
             }
         }
@@ -420,19 +430,15 @@
 
         const mascotTips = [
             "💡 Slang: 'Piece of cake' = Very easy!",
-            "💡 Slang: 'Hit the books' = Study hard!",
-            "💡 Tip: Consistency beats natural talent every single time!",
-            "💡 Slang: 'Break a leg' = Good luck!",
-            "💡 Tip: Always speak out loud during your training sessions."
+            "💡 Tip: Spotting and repairing grammar mistakes is the fastest way to fluency!",
+            "💡 Slang: 'Hit the nail on the head' = You got it exactly right!"
         ];
 
         function interactWithMascot() {
             const bubble = document.getElementById('mascot-bubble');
             const emoji = document.getElementById('mascot-emoji');
-            
             const randomTip = mascotTips[Math.floor(Math.random() * mascotTips.length)];
             bubble.innerText = `"${randomTip}"`;
-
             emoji.innerText = "🤩";
             setTimeout(() => {
                 emoji.innerText = appState.streak > 0 ? "🔥" : "🦉";
@@ -440,26 +446,17 @@
         }
 
         function setDynamicTimeBanner() {
-            const hour = new Date().getHours();
-            const badge = document.getElementById('time-badge');
+            const badge = document.getElementById('level-badge');
             const title = document.getElementById('welcome-title');
             const name = appState.userName ? `, ${appState.userName}` : '';
             const emoji = document.getElementById('mascot-emoji');
 
-            if (appState.streak > 0) {
-                emoji.innerText = "🔥";
-            }
+            if (appState.streak > 0) emoji.innerText = "🔥";
 
-            if (hour >= 5 && hour < 12) {
-                badge.innerText = "☀️ Morning Session Active";
-                title.innerText = `Good morning${name}! Let's start strong`;
-            } else if (hour >= 12 && hour < 18) {
-                badge.innerText = "🌤️ Afternoon Session Active";
-                title.innerText = `Good afternoon${name}! Keep up the momentum`;
-            } else {
-                badge.innerText = "🌙 Night Session Active";
-                title.innerText = `Good evening${name}! Night training session`;
-            }
+            const lvl = (appState.sessionLevel || 0) + 1;
+            const levelNames = ["Foundation", "Intermediate", "Advanced Hardcore", "Expert Master"];
+            badge.innerText = `Level ${lvl}: ${levelNames[appState.sessionLevel % levelNames.length]}`;
+            title.innerText = `Welcome back${name}!`;
         }
 
         function getUserRank() {
@@ -479,13 +476,6 @@
             else if (rank === "Advanced") rankDisplay = "🔥 Advanced";
             else if (rank === "Amateur") rankDisplay = "⚡ Amateur";
             document.getElementById('user-rank').innerText = rankDisplay;
-
-            let today = new Date().toDateString();
-            if (appState.lastActiveDay !== today) {
-                appState.lastActiveDay = today;
-                appState.sessionSteps = { speaking: false, flashcards: false, grammar: false, shadowing: false };
-                localStorage.setItem('english_pro_state', JSON.stringify(appState));
-            }
 
             checkSessionProgress();
         }
@@ -510,17 +500,33 @@
                 }
             } else {
                 claimBtn.className = "mt-3 w-full bg-slate-800 text-slate-500 font-bold py-2 rounded-lg text-xs cursor-not-allowed transition";
-                claimBtn.innerText = `🔒 Missing ${4 - completedCount} steps`;
+                claimBtn.innerText = `🔒 Complete all 4 steps first`;
                 claimBtn.disabled = true;
             }
         }
 
-        function resetExtraSession() {
-            appState.sessionSteps = { speaking: false, flashcards: false, grammar: false, shadowing: false };
-            localStorage.setItem('english_pro_state', JSON.stringify(appState));
-            loadDailyContent();
-            updateUIStats();
-            showCustomModal("Extra Session Ready! 🚀", "Steps have been reset for your new study round. Let's keep learning!", "🔥");
+        function tryAdvanceLevel() {
+            const speakingDone = appState.sessionSteps.speaking;
+            const grammarDone = appState.sessionSteps.grammar;
+
+            if (!speakingDone || !grammarDone) {
+                showCustomModal("Evaluation Pending ⚠️", "You must successfully pass both Speaking Lab and Grammar & Error Repair before requesting a level promotion!", "🛡️");
+                return;
+            }
+
+            const avgScore = ((appState.lastSpeakingScore || 0) + (appState.lastQuizScore || 0)) / 2;
+
+            if (avgScore >= 80) {
+                appState.sessionLevel = (appState.sessionLevel || 0) + 1;
+                appState.sessionSteps = { speaking: false, flashcards: false, grammar: false, shadowing: false };
+                localStorage.setItem('english_pro_state', JSON.stringify(appState));
+                loadProgressiveLesson();
+                setDynamicTimeBanner();
+                updateUIStats();
+                showCustomModal("Promotion Granted! 👑", `Outstanding performance (Avg: ${Math.round(avgScore)}%). You have been promoted to Level ${(appState.sessionLevel % 4) + 1}!`, "🚀");
+            } else {
+                showCustomModal("Promotion Denied ❌", `Your performance average is ${Math.round(avgScore)}%. You need at least 80% accuracy to unlock the next level.`, "📚");
+            }
         }
 
         function markStepUI(stepKey, badgeId) {
@@ -543,13 +549,13 @@
             if (appState.lastCompletedDate === today) return;
 
             appState.streak += 1;
-            appState.termsMastered += 4;
+            appState.termsMastered += 5;
             appState.lastCompletedDate = today;
             localStorage.setItem('english_pro_state', JSON.stringify(appState));
 
             updateUIStats();
             window.reloadOnClose = true;
-            showCustomModal("Streak Boosted! 🎉", `Awesome job, ${appState.userName || 'Learner'}! Streak increased by 1 day. Keep practicing daily to protect your streak!`, "🚀");
+            showCustomModal("Streak Boosted! 🎉", `Awesome job, ${appState.userName || 'Learner'}! Streak increased by 1 day.`, "🚀");
         }
 
         function switchTab(tabName) {
@@ -563,14 +569,7 @@
             activeBtn.classList.remove('text-slate-400');
         }
 
-        function getDailyIndex(max) {
-            const now = new Date();
-            const start = new Date(now.getFullYear(), 0, 0);
-            const diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
-            const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
-            return dayOfYear % max;
-        }
-
+        // FULL DATA WITH MIXED MULTIPLE CHOICE AND ERROR REPAIR CHALLENGES FOR EVERY FOCUS
         const profileData = {
             beginner: {
                 prompts: [
@@ -580,95 +579,247 @@
                 flashcards: [
                     { term: "Hello", def: "A greeting used when meeting someone.", es: "Hola", img: "👋" },
                     { term: "Thank you", def: "An expression of gratitude.", es: "Gracias", img: "🙏" },
-                    { term: "Water", def: "Clear liquid essential for life.", es: "Agua", img: "💧" }
+                    { term: "Water", def: "Clear liquid essential for life.", es: "Agua", img: "💧" },
+                    { term: "Friend", def: "A person with whom one has a bond.", es: "Amigo", img: "🤝" },
+                    { term: "House", def: "A building for human habitation.", es: "Casa", img: "🏠" }
                 ],
-                quizzes: [{ title: "Choose pronoun:", desc: "Which pronoun refers to yourself?", options: [{ text: "A) He", correct: false }, { text: "B) I", correct: true }] }],
+                quizzes: [
+                    { type: "mc", title: "Q1: Pronoun", desc: "Which pronoun refers to yourself?", options: [{ text: "A) He", correct: false }, { text: "B) I", correct: true }] },
+                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this incorrect sentence:", faulty: "She don't like coffee.", answer: "she doesn't like coffee" },
+                    { type: "mc", title: "Q3: Plural", desc: "What is the plural of 'child'?", options: [{ text: "A) childs", correct: false }, { text: "B) children", correct: true }] },
+                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this incorrect sentence:", faulty: "I am work in a workshop.", answer: "i am working in a workshop" },
+                    { type: "mc", title: "Q5: Article", desc: "Choose the correct article: '___ apple a day.'", options: [{ text: "A) An", correct: true }, { text: "B) A", correct: false }] },
+                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this incorrect sentence:", faulty: "He go to the gym yesterday.", answer: "he went to the gym yesterday" },
+                    { type: "mc", title: "Q7: Negation", desc: "Complete: 'I ___ like coffee.'", options: [{ text: "A) don't", correct: true }, { text: "B) doesn't", correct: false }] },
+                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this incorrect sentence:", faulty: "Where you live?", answer: "where do you live" },
+                    { type: "mc", title: "Q9: Preposition", desc: "Complete: 'The book is ___ the table.'", options: [{ text: "A) on", correct: true }, { text: "B) in", correct: false }] },
+                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this incorrect sentence:", faulty: "She has 25 years old.", answer: "she is 25 years old" }
+                ],
                 shadowTexts: ["\"Hello, my name is Kevin and I am learning English.\""]
             },
             general: {
                 prompts: [{ title: "Travel & Directions", text: "Ask politely where the nearest train station or restaurant is located." }],
                 flashcards: [
-                    { term: "Airport", def: "A complex of runways and buildings for aviation travel.", es: "Aeropuerto", img: "✈️" },
-                    { term: "Restaurant", def: "A place where people sit and eat meals.", es: "Restaurante", img: "🍽️" }
+                    { term: "Airport", def: "A complex of runways for aviation travel.", es: "Aeropuerto", img: "✈️" },
+                    { term: "Restaurant", def: "A place where people sit and eat meals.", es: "Restaurante", img: "🍽️" },
+                    { term: "Passport", def: "Official document certifying identity.", es: "Pasaporte", img: "🛂" },
+                    { term: "Reservation", def: "Arrangement to hold something for you.", es: "Reservación", img: "📅" },
+                    { term: "Luggage", def: "Suitcases or bags for traveler.", es: "Equipaje", img: "🧳" }
                 ],
-                quizzes: [{ title: "Choose travel expression:", desc: "When asking for help:", options: [{ text: "A) Where is the exit please?", correct: true }] }],
+                quizzes: [
+                    { type: "mc", title: "Q1: Travel", desc: "When asking for help politely:", options: [{ text: "A) Where is the exit please?", correct: true }, { text: "B) Give me ticket.", correct: false }] },
+                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this incorrect sentence:", faulty: "Where is nearest station?", answer: "where is the nearest station" },
+                    { type: "mc", title: "Q3: Directions", desc: "Complete: 'Turn left ___ the corner.'", options: [{ text: "A) at", correct: true }, { text: "B) on", correct: false }] },
+                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this incorrect sentence:", faulty: "I need two ticket to London.", answer: "i need two tickets to london" },
+                    { type: "mc", title: "Q5: Transport", desc: "Complete: 'I am waiting ___ the bus.'", options: [{ text: "A) for", correct: true }, { text: "B) to", correct: false }] },
+                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this incorrect sentence:", faulty: "Can you helps me please?", answer: "can you help me please" },
+                    { type: "mc", title: "Q7: Hotel", desc: "Complete: 'What time is ___?'", options: [{ text: "A) check-out", correct: true }, { text: "B) door", correct: false }] },
+                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this incorrect sentence:", faulty: "How much this cost?", answer: "how much does this cost" },
+                    { type: "mc", title: "Q9: Money", desc: "Complete: 'Do you accept ___ cards?'", options: [{ text: "A) credit", correct: true }, { text: "B) paper", correct: false }] },
+                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this incorrect sentence:", faulty: "I lose my passport.", answer: "i lost my passport" }
+                ],
                 shadowTexts: ["\"Excuse me, can you help me find the nearest restaurant?\""]
             },
             electronics: {
                 prompts: [{ title: "Diagnostic Explanation", text: "Explain to a client why a switch-mode power supply failed." }],
                 flashcards: [
                     { term: "Power Supply", def: "Electronic power supply for high efficiency.", es: "Fuente conmutada", img: "⚡" },
-                    { term: "Multimeter", def: "Measuring instrument for electrical values.", es: "Multímetro", img: "🔌" }
+                    { term: "Multimeter", def: "Measuring instrument for electrical values.", es: "Multímetro", img: "🔌" },
+                    { term: "Capacitor", def: "Electronic component storing energy.", es: "Condensador", img: "🔋" },
+                    { term: "Soldering Iron", def: "Tool used to melt solder for joints.", es: "Cautín / Soldador", img: "🛠️" },
+                    { term: "Oscilloscope", def: "Device for viewing electrical signals.", es: "Osciloscopio", img: "📈" }
                 ],
-                quizzes: [{ title: "Choose electronics expression:", desc: "When diagnosing hardware:", options: [{ text: "A) Let me probe this real quick.", correct: true }] }],
+                quizzes: [
+                    { type: "mc", title: "Q1: Hardware", desc: "When diagnosing hardware:", options: [{ text: "A) Let me probe this real quick.", correct: true }, { text: "B) The electricity sleeps.", correct: false }] },
+                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this technical sentence:", faulty: "The capacitor are damaged.", answer: "the capacitor is damaged" },
+                    { type: "mc", title: "Q3: Voltage", desc: "Complete: 'Measuring AC ___ with probes.'", options: [{ text: "A) voltage", correct: true }, { text: "B) weight", correct: false }] },
+                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this technical sentence:", faulty: "I found a short to the ground.", answer: "i found a short to ground" },
+                    { type: "mc", title: "Q5: Resistance", desc: "Complete: 'Check continuity and ___.'", options: [{ text: "A) resistance", correct: true }, { text: "B) speed", correct: false }] },
+                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this technical sentence:", faulty: "He replace the power supply yesterday.", answer: "he replaced the power supply yesterday" },
+                    { type: "mc", title: "Q7: Transformer", desc: "Complete: 'Testing step-down ___ winding.'", options: [{ text: "A) transformer", correct: true }, { text: "B) paper", correct: false }] },
+                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this technical sentence:", faulty: "The fuse blow up because overload.", answer: "the fuse blew up because of an overload" },
+                    { type: "mc", title: "Q9: Relay", desc: "Complete: 'The coil in the ___ clicked.'", options: [{ text: "A) relay", correct: true }, { text: "B) shoe", correct: false }] },
+                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this technical sentence:", faulty: "Clean flux from PCB board.", answer: "clean the flux off the pcb" }
+                ],
                 shadowTexts: ["\"I checked the rails and found a short to ground.\""]
             },
             systems: {
                 prompts: [{ title: "System Architecture", text: "Describe how you deployed a web inventory service." }],
                 flashcards: [
-                    { term: "Deployment", def: "Making an app available on a server.", es: "Despliegue", img: "🚀" }
+                    { term: "Deployment", def: "Making an app available on a server.", es: "Despliegue", img: "🚀" },
+                    { term: "Repository", def: "Storage location for software packages.", es: "Repositorio", img: "📦" },
+                    { term: "Database", def: "Organized collection of structured info.", es: "Base de datos", img: "🗄️" },
+                    { term: "Endpoint", def: "URL where an API accesses resources.", es: "Punto de acceso API", img: "🌐" },
+                    { term: "Middleware", def: "Software that provides common services.", es: "Middleware", img: "⚙️" }
                 ],
-                quizzes: [{ title: "Choose systems expression:", desc: "Best phrasing:", options: [{ text: "A) We successfully deployed the API.", correct: true }] }],
-                shadowTexts: ["\"We pushed our code to Render.\""]
+                quizzes: [
+                    { type: "mc", title: "Q1: Deployment", desc: "Best phrasing for server release:", options: [{ text: "A) We successfully deployed the API.", correct: true }, { text: "B) We cooked the server.", correct: false }] },
+                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this IT sentence:", faulty: "We push the code to git yesterday.", answer: "we pushed the code to git yesterday" },
+                    { type: "mc", title: "Q3: Git", desc: "Complete: 'Commit and ___ changes.'", options: [{ text: "A) push", correct: true }, { text: "B) run", correct: false }] },
+                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this IT sentence:", faulty: "The database have a connection error.", answer: "the database has a connection error" },
+                    { type: "mc", title: "Q5: SQL", desc: "Complete: 'Query the database using ___.'", options: [{ text: "A) SQL", correct: true }, { text: "B) HTML", correct: false }] },
+                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this IT sentence:", faulty: "API endpoint returning 500 error.", answer: "the api endpoint is returning a 500 error" },
+                    { type: "mc", title: "Q7: Render", desc: "Complete: 'Deploy web app on ___ platform.'", options: [{ text: "A) Render", correct: true }, { text: "B) Oven", correct: false }] },
+                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this IT sentence:", faulty: "I fix the bug in server.", answer: "i fixed the bug on the server" },
+                    { type: "mc", title: "Q9: JSON", desc: "Complete: 'Parse incoming ___ payload.'", options: [{ text: "A) JSON", correct: true }, { text: "B) soup", correct: false }] },
+                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this IT sentence:", faulty: "Node js is running async.", answer: "node.js is running asynchronously" }
+                ],
+                shadowTexts: ["\"We pushed our code to Render and verified server logs.\""]
             },
             accounting: {
                 prompts: [{ title: "Financial Statement Review", text: "Explain quarterly balance sheet discrepancies and audit procedures." }],
                 flashcards: [
-                    { term: "Balance Sheet", def: "Financial statement reporting assets and liabilities.", es: "Balance general", img: "📊" }
+                    { term: "Balance Sheet", def: "Financial statement reporting assets.", es: "Balance general", img: "📊" },
+                    { term: "Ledger", def: "A collection of financial accounts.", es: "Libro mayor", img: "📒" },
+                    { term: "Asset", def: "Economic resource owned by company.", es: "Activo", img: "💎" },
+                    { term: "Liability", def: "Company's legal financial debts.", es: "Pasivo / Deuda", img: "📉" },
+                    { term: "Audit", def: "Official inspection of accounts.", es: "Auditoría", img: "🔍" }
                 ],
-                quizzes: [{ title: "Choose accounting expression:", desc: "When discussing financial reports:", options: [{ text: "A) We need to reconcile the ledger.", correct: true }] }],
+                quizzes: [
+                    { type: "mc", title: "Q1: Ledger", desc: "When discussing financial reports:", options: [{ text: "A) We need to reconcile the ledger.", correct: true }, { text: "B) Paint the ledger.", correct: false }] },
+                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this financial sentence:", faulty: "The balance sheet show a discrepancy.", answer: "the balance sheet shows a discrepancy" },
+                    { type: "mc", title: "Q3: Revenue", desc: "Complete: 'Quarterly ___ increased by 10%.'", options: [{ text: "A) revenue", correct: true }, { text: "B) shadow", correct: false }] },
+                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this financial sentence:", faulty: "We audited accounts payable yesterday.", answer: "we audited accounts payable yesterday" },
+                    { type: "mc", title: "Q5: Tax", desc: "Complete: 'File annual corporate ___ return.'", options: [{ text: "A) tax", correct: true }, { text: "B) rain", correct: false }] },
+                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this financial sentence:", faulty: "Assets is greater than liabilities.", answer: "assets are greater than liabilities" },
+                    { type: "mc", title: "Q7: Cash Flow", desc: "Complete: 'Monitor positive ___ flow.'", options: [{ text: "A) cash", correct: true }, { text: "B) wind", correct: false }] },
+                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this financial sentence:", faulty: "The ledger need reconciliation.", answer: "the ledger needs reconciliation" },
+                    { type: "mc", title: "Q9: Budget", desc: "Complete: 'Allocate funds in the annual ___.'", options: [{ text: "A) budget", correct: true }, { text: "B) jungle", correct: false }] },
+                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this financial sentence:", faulty: "Net profit margin are low.", answer: "net profit margin is low" }
+                ],
                 shadowTexts: ["\"We audited the ledger and reconciled accounts.\""]
             },
             law: {
                 prompts: [{ title: "Contract Clause Analysis", text: "Discuss liability terms in a commercial agreement." }],
                 flashcards: [
-                    { term: "Liability", def: "Being legally responsible for something.", es: "Responsabilidad legal", img: "⚖️" }
+                    { term: "Liability", def: "Being legally responsible.", es: "Responsabilidad legal", img: "⚖️" },
+                    { term: "Plaintiff", def: "Person who brings a case to court.", es: "Demandante", img: "🏛️" },
+                    { term: "Clause", def: "Section of a legal document.", es: "Cláusula", img: "📜" },
+                    { term: "Agreement", def: "Legally binding arrangement.", es: "Acuerdo / Contrato", img: "🤝" },
+                    { term: "Defendant", def: "Person sued in a court of law.", es: "Demandado", img: "⚖️" }
                 ],
-                quizzes: [{ title: "Choose legal expression:", desc: "When advising a client:", options: [{ text: "A) We must review liability clauses.", correct: true }] }],
+                quizzes: [
+                    { type: "mc", title: "Q1: Liability", desc: "When advising a client:", options: [{ text: "A) We must review liability clauses.", correct: true }, { text: "B) Bake a liability cake.", correct: false }] },
+                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this legal sentence:", faulty: "The contract have a breach clause.", answer: "the contract has a breach clause" },
+                    { type: "mc", title: "Q3: Contract", desc: "Complete: 'Sign the employment ___.'", options: [{ text: "A) contract", correct: true }, { text: "B) shoe", correct: false }] },
+                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this legal sentence:", faulty: "Plaintiff sue defendant for damages.", answer: "the plaintiff sued the defendant for damages" },
+                    { type: "mc", title: "Q5: Witness", desc: "Complete: 'Call the first ___ to testify.'", options: [{ text: "A) witness", correct: true }, { text: "B) tree", correct: false }] },
+                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this legal sentence:", faulty: "Evidence were presented in court.", answer: "evidence was presented in court" },
+                    { type: "mc", title: "Q7: Counsel", desc: "Complete: 'Speak with legal ___.'", options: [{ text: "A) counsel", correct: true }, { text: "B) pencil", correct: false }] },
+                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this legal sentence:", faulty: "We sign agreement yesterday.", answer: "we signed the agreement yesterday" },
+                    { type: "mc", title: "Q9: Appeal", desc: "Complete: 'File an ___ in higher court.'", options: [{ text: "A) appeal", correct: true }, { text: "B) banana", correct: false }] },
+                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this legal sentence:", faulty: "Liability are limited by clause.", answer: "liability is limited by the clause" }
+                ],
                 shadowTexts: ["\"We analyzed the agreement to limit liability.\""]
             },
             medicine: {
                 prompts: [{ title: "Patient Consultation", text: "Describe patient symptoms and treatment plan." }],
                 flashcards: [
-                    { term: "Diagnosis", def: "Identification of an illness.", es: "Diagnóstico", img: "🩺" }
+                    { term: "Diagnosis", def: "Identification of an illness.", es: "Diagnóstico", img: "🩺" },
+                    { term: "Prescription", def: "Instruction written by practitioner.", es: "Receta médica", img: "💊" },
+                    { term: "Vitals", def: "Measurements of basic body functions.", es: "Signos vitales", img: "💓" },
+                    { term: "Symptoms", def: "Physical feature indicating condition.", es: "Síntomas", img: "🤒" },
+                    { term: "Surgery", def: "Medical treatment involving cutting.", es: "Cirugía", img: "🏥" }
                 ],
-                quizzes: [{ title: "Choose medical expression:", desc: "When evaluating patient:", options: [{ text: "A) Let us check the patient's vitals.", correct: true }] }],
-                shadowTexts: ["\"We evaluated the patient's vitals.\""]
+                quizzes: [
+                    { type: "mc", title: "Q1: Vitals", desc: "When evaluating patient:", options: [{ text: "A) Let us check the patient's vitals.", correct: true }, { text: "B) Check shoes.", correct: false }] },
+                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this medical sentence:", faulty: "Patient have high fever.", answer: "the patient has a high fever" },
+                    { type: "mc", title: "Q3: Surgery", desc: "Complete: 'Prepare room for ___.'", options: [{ text: "A) surgery", correct: true }, { text: "B) dancing", correct: false }] },
+                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this medical sentence:", faulty: "Doctor write a prescription yesterday.", answer: "the doctor wrote a prescription yesterday" },
+                    { type: "mc", title: "Q5: Patient", desc: "Complete: 'Admit the ___ to room 4.'", options: [{ text: "A) patient", correct: true }, { text: "B) rock", correct: false }] },
+                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this medical sentence:", faulty: "Nurse check vitals signs.", answer: "the nurse checked the vital signs" },
+                    { type: "mc", title: "Q7: X-Ray", desc: "Complete: 'Take an ___ of the chest.'", options: [{ text: "A) X-ray", correct: true }, { text: "B) sandwich", correct: false }] },
+                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this medical sentence:", faulty: "Diagnosis indicate infection.", answer: "the diagnosis indicates an infection" },
+                    { type: "mc", title: "Q9: Clinic", desc: "Complete: 'Visit the local health ___.'", options: [{ text: "A) clinic", correct: true }, { text: "B) mountain", correct: false }] },
+                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this medical sentence:", faulty: "Patient need physical therapy.", answer: "the patient needs physical therapy" }
+                ],
+                shadowTexts: ["\"We evaluated the patient's vitals and prescribed treatment.\""]
             },
             mechanics: {
                 prompts: [{ title: "Engine Troubleshooting", text: "Explain engine misfire diagnosis and repair steps." }],
                 flashcards: [
-                    { term: "Fuel Injector", def: "Nozzle that injects fuel into cylinders.", es: "Inyector", img: "🔧" }
+                    { term: "Fuel Injector", def: "Nozzle injecting fuel into cylinders.", es: "Inyector", img: "🔧" },
+                    { term: "Alternator", def: "Generator of electric power in car.", es: "Alternador", img: "⚡" },
+                    { term: "Transmission", def: "Mechanism transmitting power.", es: "Transmisión", img: "⚙️" },
+                    { term: "Brake Pads", def: "Friction material in disc brakes.", es: "Pastillas de freno", img: "🛑" },
+                    { term: "Radiator", def: "Device for cooling engine coolant.", es: "Radiador", img: "🌡️" }
                 ],
-                quizzes: [{ title: "Choose mechanics expression:", desc: "When explaining engine issue:", options: [{ text: "A) We detected a cylinder misfire.", correct: true }] }],
-                shadowTexts: ["\"We diagnosed an engine misfire.\""]
+                quizzes: [
+                    { type: "mc", title: "Q1: Engine", desc: "When explaining engine issue:", options: [{ text: "A) We detected a cylinder misfire.", correct: true }, { text: "B) Engine is sleeping.", correct: false }] },
+                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this automotive sentence:", faulty: "The engine have a misfire.", answer: "the engine has a misfire" },
+                    { type: "mc", title: "Q3: Oil", desc: "Complete: 'Change engine ___ and filter.'", options: [{ text: "A) oil", correct: true }, { text: "B) juice", correct: false }] },
+                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this automotive sentence:", faulty: "Mechanic replace brake pads yesterday.", answer: "the mechanic replaced the brake pads yesterday" },
+                    { type: "mc", title: "Q5: Battery", desc: "Complete: 'Test 12V car ___ terminals.'", options: [{ text: "A) battery", correct: true }, { text: "B) banana", correct: false }] },
+                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this automotive sentence:", faulty: "Alternator not charging battery.", answer: "the alternator is not charging the battery" },
+                    { type: "mc", title: "Q7: Spark Plug", desc: "Complete: 'Gap the new spark ___.'", options: [{ text: "A) plugs", correct: true }, { text: "B) shoes", correct: false }] },
+                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this automotive sentence:", faulty: "Tire pressure is low in front tire.", answer: "the tire pressure is low in the front tire" },
+                    { type: "mc", title: "Q9: Transmission", desc: "Complete: 'Replace worn transmission fluid.'", options: [{ text: "A) Transmission", correct: true }, { text: "B) Shoe", correct: false }] },
+                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this automotive sentence:", faulty: "Radiator leak coolant fluid.", answer: "the radiator is leaking coolant" }
+                ],
+                shadowTexts: ["\"We diagnosed an engine misfire and replaced spark plugs.\""]
             },
             gamedev: {
                 prompts: [{ title: "Game Mechanics", text: "Explain core mechanics of your 2D platformer." }],
                 flashcards: [
-                    { term: "Sprite", def: "A two-dimensional bitmap graphic.", es: "Sprite 2D", img: "👾" }
+                    { term: "Sprite", def: "Two-dimensional bitmap graphic.", es: "Sprite 2D", img: "👾" },
+                    { term: "Tilemap", def: "Grid of tiles to create game worlds.", es: "Mapa de celdas", img: "🧱" },
+                    { term: "Game Loop", def: "Core process running simulation.", es: "Bucle de juego", img: "🔄" },
+                    { term: "Collision", def: "Interaction preventing overlap.", es: "Colisión", img: "💥" },
+                    { term: "Shader", def: "Program running on GPU for effects.", es: "Shader / Efecto visual", img: "✨" }
                 ],
-                quizzes: [{ title: "Choose gamedev expression:", desc: "Performance in Godot:", options: [{ text: "A) Optimize game loop.", correct: true }] }],
-                shadowTexts: ["\"In Godot 4, we scripted player movement.\""]
+                quizzes: [
+                    { type: "mc", title: "Q1: Godot", desc: "Performance in Godot:", options: [{ text: "A) Optimize game loop.", correct: true }, { text: "B) Eat game loop.", correct: false }] },
+                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this game dev sentence:", faulty: "The player node have a physics script.", answer: "the player node has a physics script" },
+                    { type: "mc", title: "Q3: Pixel Art", desc: "Complete: 'Draw 2D characters in ___.'", options: [{ text: "A) LibreSprite", correct: true }, { text: "B) Excel", correct: false }] },
+                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this game dev sentence:", faulty: "I code player movement yesterday.", answer: "i coded player movement yesterday" },
+                    { type: "mc", title: "Q5: Physics", desc: "Complete: 'Apply gravity in 2D ___.'", options: [{ text: "A) physics", correct: true }, { text: "B) music", correct: false }] },
+                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this game dev sentence:", faulty: "Collision shape are missing.", answer: "the collision shape is missing" },
+                    { type: "mc", title: "Q7: Vector", desc: "Complete: 'Calculate velocity ___ 2.'", options: [{ text: "A) vector", correct: true }, { text: "B) spoon", correct: false }] },
+                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this game dev sentence:", faulty: "Export game to mobile store.", answer: "we exported the game to the mobile store" },
+                    { type: "mc", title: "Q9: Scene", desc: "Complete: 'Save level as main ___.'", options: [{ text: "A) scene", correct: true }, { text: "B) mountain", correct: false }] },
+                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this game dev sentence:", faulty: "Tilemap draw grid correctly.", answer: "the tilemap draws the grid correctly" }
+                ],
+                shadowTexts: ["\"In Godot 4, we scripted player movement and physics.\""]
             },
             music: {
                 prompts: [{ title: "Bass Performance", text: "Describe your favorite bass line to play live." }],
                 flashcards: [
-                    { term: "Bass Line", def: "Sequence of low-frequency notes.", es: "Línea de bajo", img: "🎸" }
+                    { term: "Bass Line", def: "Sequence of low-frequency notes.", es: "Línea de bajo", img: "🎸" },
+                    { term: "Monitor", def: "Speaker system for stage performers.", es: "Monitor de escenario", img: "🔊" },
+                    { term: "Tuner", def: "Device to detect and display pitch.", es: "Afinador", img: "🎛️" },
+                    { term: "Rhythm", def: "Repeated pattern of sound.", es: "Ritmo", img: "🎵" },
+                    { term: "Amplifier", def: "Electronic device increasing audio power.", es: "Amplificador", img: "📻" }
                 ],
-                quizzes: [{ title: "Choose music expression:", desc: "Before a show:", options: [{ text: "A) Check in-ear monitors.", correct: true }] }],
-                shadowTexts: ["\"I plug in my electric bass.\""]
+                quizzes: [
+                    { type: "mc", title: "Q1: Band", desc: "Before a show:", options: [{ text: "A) Check in-ear monitors.", correct: true }, { text: "B) Check shoes.", correct: false }] },
+                    { type: "repair", title: "Q2: Error Repair", desc: "Fix this music sentence:", faulty: "The bass guitar need new strings.", answer: "the bass guitar needs new strings" },
+                    { type: "mc", title: "Q3: Rehearsal", desc: "Complete: 'Practice band setlist in ___.'", options: [{ text: "A) rehearsal", correct: true }, { text: "B) kitchen", correct: false }] },
+                    { type: "repair", title: "Q4: Error Repair", desc: "Fix this music sentence:", faulty: "We play live concert yesterday.", answer: "we played a live concert yesterday" },
+                    { type: "mc", title: "Q5: Volume", desc: "Complete: 'Adjust master stage ___.'", options: [{ text: "A) volume", correct: true }, { text: "B) wind", correct: false }] },
+                    { type: "repair", title: "Q6: Error Repair", desc: "Fix this music sentence:", faulty: "Monitor level is too low for me.", answer: "the monitor level is too low for me" },
+                    { type: "mc", title: "Q7: Tempo", desc: "Complete: 'Keep steady beat ___.'", options: [{ text: "A) tempo", correct: true }, { text: "B) shoe", correct: false }] },
+                    { type: "repair", title: "Q8: Error Repair", desc: "Fix this music sentence:", faulty: "Drummer keep the rhythm steady.", answer: "the drummer keeps the rhythm steady" },
+                    { type: "mc", title: "Q9: Tone", desc: "Complete: 'Dial in compressor ___.'", options: [{ text: "A) tone", correct: true }, { text: "B) water", correct: false }] },
+                    { type: "repair", title: "Q10: Error Repair", desc: "Fix this music sentence:", faulty: "I plug in my bass guitar.", answer: "i plugged in my bass guitar" }
+                ],
+                shadowTexts: ["\"I plug in my electric bass and check my monitor levels.\""]
             }
         };
 
         let currentCategory = appState.selectedFocus || 'beginner';
         let currentCard = 0;
+        let currentQuizIndex = 0;
+        let quizCorrectCount = 0;
+        let activeQuizItem = null;
 
         function saveUserProfileAndStart(title, categoryKey) {
             const nameInput = document.getElementById('user-name-input').value.trim();
             appState.userName = nameInput || 'Learner';
             appState.selectedFocus = categoryKey;
             appState.focusTitle = title;
+            appState.sessionLevel = 0;
+            appState.lastQuizScore = 0;
+            appState.lastSpeakingScore = 0;
             localStorage.setItem('english_pro_state', JSON.stringify(appState));
 
             document.getElementById('header-badge').innerText = title;
@@ -676,8 +827,9 @@
             
             currentCategory = categoryKey;
             currentCard = 0;
+            currentQuizIndex = 0;
             setDynamicTimeBanner();
-            loadDailyContent();
+            loadProgressiveLesson();
         }
 
         function checkInitialFocus() {
@@ -688,62 +840,110 @@
                 document.getElementById('header-badge').innerText = appState.focusTitle || 'Beginner';
                 currentCategory = appState.selectedFocus;
                 setDynamicTimeBanner();
-                loadDailyContent();
+                loadProgressiveLesson();
             }
         }
 
-        function loadDailyContent() {
+        function loadProgressiveLesson() {
             const data = profileData[currentCategory] || profileData['beginner'];
             
-            const promptIdx = getDailyIndex(data.prompts.length);
-            document.getElementById('prompt-title').innerText = data.prompts[promptIdx].title;
-            document.getElementById('prompt-text').innerText = '"' + data.prompts[promptIdx].text + '"';
+            const promptIdx = (appState.sessionLevel || 0) % data.prompts.length;
+            const currentPrompt = data.prompts[promptIdx];
+            document.getElementById('prompt-title').innerText = `${currentPrompt.title} (Level ${(appState.sessionLevel || 0) + 1})`;
+            document.getElementById('prompt-text').innerText = '"' + currentPrompt.text + '"';
 
-            const quizIdx = getDailyIndex(data.quizzes.length);
-            const q = data.quizzes[quizIdx];
-            document.getElementById('quiz-title').innerText = q.title;
-            document.getElementById('quiz-desc').innerText = q.desc;
-            
-            const optionsContainer = document.getElementById('quiz-options');
-            optionsContainer.innerHTML = '';
-            document.getElementById('quiz-result').innerHTML = '';
-
-            q.options.forEach(opt => {
-                const btn = document.createElement('button');
-                btn.className = "w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-4 rounded-xl text-xs sm:text-sm text-slate-200 transition cursor-pointer";
-                btn.innerText = opt.text;
-                btn.onclick = () => {
-                    if (opt.correct) {
-                        document.getElementById('quiz-result').innerHTML = '<span class="text-emerald-400 font-semibold">Correct! Step 3 completed.</span>';
-                        btn.classList.add('border-emerald-500', 'bg-emerald-500/10');
-                        markStep('grammar', 'badge-grammar');
-                    } else {
-                        document.getElementById('quiz-result').innerHTML = '<span class="text-rose-400 font-semibold">Incorrect. Try again.</span>';
-                        btn.classList.add('border-rose-500', 'bg-rose-500/10');
-                    }
-                };
-                optionsContainer.appendChild(btn);
-            });
-
-            const shadowIdx = getDailyIndex(data.shadowTexts.length);
+            const shadowIdx = (appState.sessionLevel || 0) % data.shadowTexts.length;
             document.getElementById('shadow-text').innerText = data.shadowTexts[shadowIdx];
 
+            currentCard = 0;
+            currentQuizIndex = 0;
+            quizCorrectCount = 0;
             updateCard();
-            updateRankRequirementsUI();
+            loadQuizQuestion();
         }
 
-        function updateRankRequirementsUI() {
-            let rank = getUserRank();
-            let label = document.getElementById('requirement-label');
-            if (rank === "Master") {
-                label.innerText = "Spoken Response (👑 Master Strict Mode: Min 15 words required)";
-            } else if (rank === "Advanced") {
-                label.innerText = "Spoken Response (🔥 Advanced Mode: Min 10 words required)";
-            } else if (rank === "Amateur") {
-                label.innerText = "Spoken Response (⚡ Amateur Mode: Min 6 words required)";
+        function loadQuizQuestion() {
+            const data = profileData[currentCategory] || profileData['beginner'];
+            const quizzes = data.quizzes;
+            if (currentQuizIndex >= quizzes.length) currentQuizIndex = 0;
+
+            activeQuizItem = quizzes[currentQuizIndex];
+            document.getElementById('quiz-counter').innerText = `Challenge ${currentQuizIndex + 1} of ${quizzes.length}`;
+            document.getElementById('quiz-title').innerText = activeQuizItem.title;
+            document.getElementById('quiz-desc').innerText = activeQuizItem.desc;
+            
+            const optionsContainer = document.getElementById('quiz-options');
+            const errorContainer = document.getElementById('error-repair-container');
+            optionsContainer.innerHTML = '';
+            document.getElementById('quiz-result').innerHTML = '';
+            document.getElementById('error-input').value = '';
+
+            if (activeQuizItem.type === "repair") {
+                optionsContainer.classList.add('hidden');
+                errorContainer.classList.remove('hidden');
+                document.getElementById('quiz-desc').innerText = `Fix this erroneous sentence:\n"${activeQuizItem.faulty}"`;
             } else {
-                label.innerText = "Spoken Response (🌱 Beginner Mode: Min 4 words required)";
+                errorContainer.classList.add('hidden');
+                optionsContainer.classList.remove('hidden');
+
+                activeQuizItem.options.forEach(opt => {
+                    const btn = document.createElement('button');
+                    btn.className = "w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-4 rounded-xl text-xs sm:text-sm text-slate-200 transition cursor-pointer";
+                    btn.innerText = opt.text;
+                    btn.onclick = () => {
+                        if (opt.correct) {
+                            quizCorrectCount++;
+                            document.getElementById('quiz-result').innerHTML = '<span class="text-emerald-400 font-semibold">Correct! Moving on...</span>';
+                            btn.classList.add('border-emerald-500', 'bg-emerald-500/10');
+                        } else {
+                            document.getElementById('quiz-result').innerHTML = '<span class="text-rose-400 font-semibold">Incorrect. Moving on...</span>';
+                            btn.classList.add('border-rose-500', 'bg-rose-500/10');
+                        }
+                        advanceQuizTimer();
+                    };
+                    optionsContainer.appendChild(btn);
+                });
             }
+        }
+
+        function submitErrorCorrection() {
+            const userVal = document.getElementById('error-input').value.trim().toLowerCase();
+            const expected = activeQuizItem.answer.toLowerCase();
+
+            if (!userVal) {
+                document.getElementById('quiz-result').innerHTML = '<span class="text-rose-400 font-semibold">Please type a correction first!</span>';
+                return;
+            }
+
+            // Simple comparison or lenient inclusion check
+            if (userVal === expected || userVal.includes(expected) || expected.includes(userVal)) {
+                quizCorrectCount++;
+                document.getElementById('quiz-result').innerHTML = '<span class="text-emerald-400 font-semibold">🎯 Spot on! Excellent grammar repair.</span>';
+            } else {
+                document.getElementById('quiz-result').innerHTML = `<span class="text-rose-400 font-semibold">❌ Not quite. Expected: "${activeQuizItem.answer}"</span>`;
+            }
+            advanceQuizTimer();
+        }
+
+        function advanceQuizTimer() {
+            setTimeout(() => {
+                currentQuizIndex++;
+                const data = profileData[currentCategory] || profileData['beginner'];
+                if (currentQuizIndex < data.quizzes.length) {
+                    loadQuizQuestion();
+                } else {
+                    const quizScore = Math.round((quizCorrectCount / data.quizzes.length) * 100);
+                    appState.lastQuizScore = quizScore;
+                    localStorage.setItem('english_pro_state', JSON.stringify(appState));
+
+                    document.getElementById('quiz-options').classList.add('hidden');
+                    document.getElementById('error-repair-container').classList.add('hidden');
+                    document.getElementById('quiz-title').innerText = "Quiz & Error Repair Completed!";
+                    document.getElementById('quiz-desc').innerText = `You finished all 10 challenges with a score of ${quizScore}%.`;
+                    document.getElementById('quiz-result').innerHTML = `<span class="text-emerald-400 font-bold text-sm">🎉 Step 3 completed successfully!</span>`;
+                    markStep('grammar', 'badge-grammar');
+                }
+            }, 1500);
         }
 
         function updateCard() {
@@ -787,7 +987,7 @@
             const textarea = document.getElementById('user-response');
 
             if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                showCustomModal("Browser Notice", "Your browser does not support native speech recognition.", "⚠️");
+                showCustomModal("Browser Notice", "Your browser does not support speech recognition.", "⚠️");
                 return;
             }
 
@@ -811,7 +1011,6 @@
             recognition.onresult = function(event) {
                 const result = event.results[0][0];
                 textarea.value = result.transcript;
-                window.lastSpeechConfidence = result.confidence;
             };
 
             recognition.onerror = function() {
@@ -834,7 +1033,7 @@
             const box = document.getElementById('feedback-box');
             
             if(!text) {
-                box.innerHTML = '<span class="text-rose-400 font-semibold">⚠️ Error: Please speak or type a response first!</span>';
+                box.innerHTML = '<span class="text-rose-400 font-semibold">⚠️ Error: Please write or speak a response!</span>';
                 return;
             }
 
@@ -842,41 +1041,28 @@
             const wordCount = words.length;
             const rank = getUserRank();
 
-            let minWordsForPass = 4;
-            if (rank === "Amateur") minWordsForPass = 6;
-            if (rank === "Advanced") minWordsForPass = 10;
-            if (rank === "Master") minWordsForPass = 15;
+            let minWordsForPass = 4 + (appState.sessionLevel || 0) * 3;
+            if (rank === "Master") minWordsForPass += 5;
 
-            let score = 50;
-            let critique = "";
+            let speakingScore = wordCount < minWordsForPass ? 50 : 90;
+            appState.lastSpeakingScore = speakingScore;
+            localStorage.setItem('english_pro_state', JSON.stringify(appState));
 
-            if (wordCount < minWordsForPass) {
-                score = 45;
-                critique = `❌ Too short for your current rank (${rank})! Minimum requirement is ${minWordsForPass} words. Elaborate further.`;
-            } else if (wordCount < minWordsForPass + 5) {
-                score = 72;
-                critique = `⚠️ Acceptable, but as a ${rank} you should add more descriptive connectors or technical vocabulary.`;
-            } else if (wordCount < minWordsForPass + 12) {
-                score = 86;
-                critique = `✅ Solid phrasing and good length for your rank! Clear and precise.`;
-            } else {
-                score = 98;
-                critique = `👑 Master-level fluency! Exceptional depth and sentence structure.`;
-            }
+            let critique = wordCount < minWordsForPass ? `❌ Too short for Level ${(appState.sessionLevel||0)+1}! Score: ${speakingScore}%. Min required words: ${minWordsForPass}.` : `👑 Excellent professional articulation! Score: ${speakingScore}%.`;
 
             let feedbackHTML = `
                 <div class="space-y-2">
-                    <p class="${score >= 75 ? 'text-emerald-400' : 'text-amber-400'} font-bold">Score: ${score}% (${rank} Mode)</p>
+                    <p class="${speakingScore >= 75 ? 'text-emerald-400' : 'text-amber-400'} font-bold">Speaking Score: ${speakingScore}%</p>
                     <p><strong>Word Count:</strong> ${wordCount} words (Min: ${minWordsForPass})</p>
                     <p class="text-slate-300"><strong>Critique:</strong> ${critique}</p>
-                    ${score >= 72 ? '<p class="text-emerald-400 text-xs font-semibold mt-2">✓ Step 1 completed successfully!</p>' : '<p class="text-rose-400 text-xs font-semibold mt-2">❌ Expand your response to pass.</p>'}
+                    ${speakingScore >= 75 ? '<p class="text-emerald-400 text-xs font-semibold mt-2">✓ Step 1 completed successfully!</p>' : '<p class="text-rose-400 text-xs font-semibold mt-2">❌ Expand your response to pass.</p>'}
                 </div>
             `;
 
             box.innerHTML = feedbackHTML;
-            document.getElementById('feedback-status').innerText = `Evaluated (${score}%).`;
+            document.getElementById('feedback-status').innerText = `Evaluated (${speakingScore}%).`;
 
-            if (score >= 72) {
+            if (speakingScore >= 75) {
                 markStep('speaking', 'badge-speaking');
             }
         }
