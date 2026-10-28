@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Learning Pro - Infinite Hardcore Edition</title>
+    <title>English Pro - Universal Infinite Edition</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -64,25 +64,23 @@
     <!-- HEADER / NAVBAR -->
     <header class="border-b border-slate-800 bg-slate-900/95 sticky top-0 z-50 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
-            <div class="flex items-center justify-between w-full md:w-auto">
-                <div class="flex items-center space-x-3">
-                    <div class="bg-gradient-to-tr from-sky-500 to-emerald-500 p-2 rounded-xl text-slate-950 font-bold shadow-lg shadow-sky-500/20">
-                        <i data-lucide="book-open" class="w-5 h-5"></i>
-                    </div>
-                    <div>
-                        <h1 class="font-bold text-base sm:text-lg text-slate-100 flex items-center gap-2">
-                            English Pro
-                            <span class="text-xs font-medium bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2 py-0.5 rounded-full" id="header-badge">Focus</span>
-                        </h1>
-                    </div>
+            <div class="flex items-center space-x-3">
+                <div class="bg-gradient-to-tr from-sky-500 to-emerald-500 p-2 rounded-xl text-slate-950 font-bold shadow-lg shadow-sky-500/20">
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-base sm:text-lg text-slate-100 flex items-center gap-2">
+                        English Pro
+                        <span class="text-xs font-medium bg-sky-500/10 text-sky-400 border border-sky-500/20 px-2 py-0.5 rounded-full" id="header-badge">Universal</span>
+                    </h1>
                 </div>
             </div>
 
             <!-- Stats Bar -->
-            <div class="flex items-center justify-center flex-wrap gap-2 text-xs sm:text-sm w-full md:w-auto">
+            <div class="flex items-center justify-center flex-wrap gap-2 text-xs sm:text-sm">
                 <div class="flex items-center space-x-1.5 bg-slate-800/90 px-2.5 py-1 rounded-full border border-slate-700/60">
                     <i data-lucide="award" class="w-3.5 h-3.5 text-purple-400"></i>
-                    <span class="text-slate-300">Level: <strong class="text-white" id="user-rank">Level 1</strong></span>
+                    <span class="text-slate-300">Tier: <strong class="text-white" id="user-tier">Beginner</strong></span>
                 </div>
                 <div class="flex items-center space-x-1.5 bg-slate-800/90 px-2.5 py-1 rounded-full border border-slate-700/60">
                     <i data-lucide="flame" class="w-3.5 h-3.5 text-orange-400"></i>
@@ -99,7 +97,7 @@
     <!-- MAIN CONTENT -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow">
         
-        <!-- Welcome Banner with Interactive Mascot -->
+        <!-- Welcome Banner -->
         <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-slate-700/60 rounded-2xl p-5 sm:p-6 mb-6 shadow-xl relative overflow-hidden">
             <div class="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
             <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
@@ -115,15 +113,15 @@
                     </div>
 
                     <div>
-                        <span id="rank-badge" class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Infinite Hardcore Mode</span>
+                        <span id="tier-badge" class="text-xs font-bold uppercase tracking-wider text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Tier: Beginner</span>
                         <h2 class="text-xl sm:text-2xl font-bold text-white mt-2" id="welcome-title">Welcome back!</h2>
                         <p class="text-slate-300 mt-1 text-xs sm:text-sm bg-slate-950/70 border border-slate-800/80 px-3 py-2 rounded-xl italic" id="mascot-bubble">
-                            "No easy mode here, bro! Every session generates fresh randomized challenges."
+                            "Fresh exercises generated automatically, leaving behind what you already mastered!"
                         </p>
                     </div>
                 </div>
 
-                <!-- Session Progress Bar & Level Promotion -->
+                <!-- Session Progress & Promotion -->
                 <div class="bg-slate-950/80 border border-slate-800 p-4 rounded-xl w-full md:w-72">
                     <div class="flex justify-between text-xs mb-1.5">
                         <span class="text-slate-400">Session Progress:</span>
@@ -135,8 +133,8 @@
                     <button onclick="claimSession()" id="claim-btn" class="mt-3 w-full bg-slate-800 text-slate-500 font-bold py-2 rounded-lg text-xs cursor-not-allowed transition" disabled>
                         🔒 Complete 5 steps to log session
                     </button>
-                    <button onclick="tryRankAdvancement()" class="mt-2 w-full bg-sky-500/20 hover:bg-sky-500/30 text-sky-400 border border-sky-500/40 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer flex items-center justify-center gap-1.5">
-                        <i data-lucide="award" class="w-3.5 h-3.5"></i> Advance to Next Level 🚀
+                    <button onclick="tryTierAdvancement()" class="mt-2 w-full bg-sky-500/20 hover:bg-sky-500/30 text-sky-400 border border-sky-500/40 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer flex items-center justify-center gap-1.5">
+                        <i data-lucide="award" class="w-3.5 h-3.5"></i> Advance Tier / Next Batch 🚀
                     </button>
                 </div>
             </div>
@@ -179,7 +177,7 @@
 
                     <div class="mt-6">
                         <div class="flex items-center justify-between mb-2 flex-wrap gap-2">
-                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Spoken Response:</label>
+                            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Spoken Response (Continuous Mic):</label>
                             <button onclick="toggleSpeechRecognition()" id="mic-btn" class="bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
                                 <i data-lucide="mic" class="w-3.5 h-3.5"></i> <span id="mic-status-text">Start Speaking (Mic)</span>
                             </button>
@@ -198,10 +196,10 @@
                 <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg flex flex-col justify-between">
                     <div>
                         <h3 class="text-xs sm:text-sm font-bold text-slate-200 uppercase tracking-wider mb-3 flex items-center gap-2">
-                            <i data-lucide="bot" class="w-4 h-4 text-sky-400"></i> AI Encouragement
+                            <i data-lucide="bot" class="w-4 h-4 text-sky-400"></i> AI Strict Evaluation
                         </h3>
                         <div id="feedback-box" class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-4 text-xs text-slate-300 space-y-3">
-                            <p class="text-slate-400">Write or speak your thoughts to get friendly feedback.</p>
+                            <p class="text-slate-400">Write or speak your thoughts to get detailed feedback.</p>
                         </div>
                     </div>
                     <div class="mt-4 pt-4 border-t border-slate-800 text-xs text-slate-400 flex items-center justify-between">
@@ -217,8 +215,8 @@
         <!-- TAB 2: FLASHCARDS -->
         <div id="content-flashcards" class="hidden space-y-6">
             <div class="max-w-md mx-auto text-center">
-                <h3 class="text-lg font-bold text-white mb-1">Step 2: Technical Flashcards</h3>
-                <p class="text-xs text-slate-400 mb-6">Review key vocabulary at your own pace.</p>
+                <h3 class="text-lg font-bold text-white mb-1">Step 2: Universal Vocabulary Flashcards</h3>
+                <p class="text-xs text-slate-400 mb-6">Review key terms at your own pace.</p>
                 
                 <div class="card-flip h-72 w-full cursor-pointer mb-6" onclick="this.classList.toggle('flipped')">
                     <div class="card-inner relative w-full h-full text-center">
@@ -264,7 +262,7 @@
                 <div class="space-y-3 mb-4" id="quiz-options"></div>
 
                 <div id="error-repair-container" class="hidden space-y-3 mb-4">
-                    <label class="block text-xs font-semibold text-rose-400 uppercase tracking-wider">Fix the grammar error (take your time):</label>
+                    <label class="block text-xs font-semibold text-rose-400 uppercase tracking-wider">Fix the grammar error:</label>
                     <input type="text" id="error-input" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500 transition" placeholder="Type correct sentence here...">
                     <button onclick="submitErrorCorrection()" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-2.5 rounded-xl text-xs transition cursor-pointer">
                         Next Challenge
@@ -273,7 +271,7 @@
 
                 <div id="quiz-report-container" class="hidden space-y-4">
                     <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
-                        <h4 class="text-sm font-bold text-sky-400 mb-2">📋 Post-Quiz Review Report (Friendly Corrections)</h4>
+                        <h4 class="text-sm font-bold text-sky-400 mb-2">📋 Post-Quiz Review Report</h4>
                         <div id="quiz-report-list" class="space-y-3 text-xs max-h-64 overflow-y-auto pr-2"></div>
                     </div>
                 </div>
@@ -282,14 +280,14 @@
             </div>
         </div>
 
-        <!-- TAB 4: LISTENING DICTATION (LISTEN & TYPE) -->
+        <!-- TAB 4: LISTENING DICTATION -->
         <div id="content-listening" class="hidden space-y-6">
             <div class="max-w-2xl mx-auto bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 shadow-lg">
                 <div class="flex justify-between items-center mb-4">
                     <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">Step 4: Listening Dictation (Listen & Type)</span>
                 </div>
                 <h3 class="text-base sm:text-lg font-bold text-white mb-2">Train Your Ear</h3>
-                <p class="text-slate-300 text-xs sm:text-sm mb-6">Click play to listen to the native audio snippet as many times as you need, then type exactly what you hear in the box below.</p>
+                <p class="text-slate-300 text-xs sm:text-sm mb-6">Click play to listen to the native audio snippet, then type exactly what you hear below.</p>
                 
                 <div class="bg-slate-950/80 p-5 rounded-xl border border-slate-800 mb-6 space-y-4 text-center">
                     <button onclick="playListeningAudio()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition inline-flex items-center gap-2 cursor-pointer shadow-lg shadow-emerald-500/20">
@@ -320,7 +318,7 @@
                     <span class="text-xs font-semibold text-sky-400 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-500/20">Step 5: Shadowing Practice</span>
                 </div>
                 <h3 class="text-base sm:text-lg font-bold text-white mb-2">Listen & Practice Speaking</h3>
-                <p class="text-slate-300 text-xs sm:text-sm mb-6">Listen to the target sentence, then practice saying it out loud to train your intonation and rhythm.</p>
+                <p class="text-slate-300 text-xs sm:text-sm mb-6">Listen to the target sentence, then practice saying it out loud.</p>
                 
                 <div class="bg-slate-950/80 p-5 rounded-xl border border-slate-800 mb-6 space-y-4">
                     <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 text-center">
@@ -332,8 +330,8 @@
                     </div>
 
                     <div class="space-y-2 pt-2">
-                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Your Turn (Speak or type what you practiced):</label>
-                        <textarea id="shadow-user-input" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-200 text-xs focus:outline-none focus:border-sky-500 transition" placeholder="Type or use mic to practice saying the sentence..."></textarea>
+                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Your Turn (Continuous Mic):</label>
+                        <textarea id="shadow-user-input" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-slate-200 text-xs focus:outline-none focus:border-sky-500 transition" placeholder="Type or use mic to practice..."></textarea>
                     </div>
 
                     <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
@@ -366,64 +364,35 @@
         </div>
     </div>
 
-    <!-- INITIAL PROFILE MODAL -->
+    <!-- INITIAL PROFILE MODAL (SOLO 3 NIVELES UNIVERSALES) -->
     <div id="profile-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center hidden">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 max-w-lg w-full mx-4 shadow-2xl max-h-[90vh] overflow-y-auto">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 max-w-md w-full mx-4 shadow-2xl">
             <div class="text-center mb-6">
                 <div class="bg-gradient-to-tr from-sky-500 to-emerald-500 p-3 rounded-2xl text-slate-950 inline-block font-bold shadow-lg mb-3">
                     <i data-lucide="book-open" class="w-8 h-8"></i>
                 </div>
-                <h3 class="font-bold text-xl text-white">Welcome to English Pro</h3>
-                <p class="text-xs sm:text-sm text-slate-400 mt-1">Enter your name and select your learning focus:</p>
+                <h3 class="font-bold text-xl text-white">English Pro - Universal</h3>
+                <p class="text-xs sm:text-sm text-slate-400 mt-1">Enter your name and select your learning tier:</p>
             </div>
 
             <div class="mb-5">
                 <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Your Name:</label>
-                <input type="text" id="user-name-input" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500 transition" placeholder="e.g. Alex">
+                <input type="text" id="user-name-input" value="Kevin" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-500 transition" placeholder="e.g. Kevin">
             </div>
 
-            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Select Focus:</label>
-            <div class="space-y-2.5 mb-4">
-                <button onclick="saveUserProfileAndStart('Absolute Beginner', 'beginner')" class="w-full text-left bg-emerald-950/40 hover:bg-emerald-900/40 border border-emerald-500/30 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>🌱 Absolute Beginner (Desde Cero)</span>
+            <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Select Tier:</label>
+            <div class="space-y-3 mb-4">
+                <button onclick="saveUserProfileAndStart('Beginner', 'beginner')" class="w-full text-left bg-emerald-950/40 hover:bg-emerald-900/40 border border-emerald-500/30 p-4 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>🌱 Beginner (Fundamentos)</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-400"></i>
                 </button>
-                <button onclick="saveUserProfileAndStart('General & Travel', 'general')" class="w-full text-left bg-sky-950/40 hover:bg-sky-900/40 border border-sky-500/30 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>✈️ General & Travel English (Supervivencia)</span>
+                <button onclick="saveUserProfileAndStart('Intermediate', 'intermediate')" class="w-full text-left bg-sky-950/40 hover:bg-sky-900/40 border border-sky-500/30 p-4 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>⚡ Intermediate (Fluidez y Estructura)</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-sky-400"></i>
                 </button>
-                <hr class="border-slate-800 my-2">
-                <button onclick="saveUserProfileAndStart('Electronics', 'electronics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>💻 Electronics & Hardware Repair</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
-                </button>
-                <button onclick="saveUserProfileAndStart('Systems & IT', 'systems')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>🖥️ Systems Engineering & IT</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
-                </button>
-                <button onclick="saveUserProfileAndStart('Accounting', 'accounting')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>📊 Accounting & Finance</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
-                </button>
-                <button onclick="saveUserProfileAndStart('Law & Legal', 'law')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>⚖️ Law & Legal Services</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
-                </button>
-                <button onclick="saveUserProfileAndStart('Healthcare', 'medicine')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>🩺 Medicine & Healthcare</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
-                </button>
-                <button onclick="saveUserProfileAndStart('Automotive', 'mechanics')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>🔧 Automotive Mechanics</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
-                </button>
-                <button onclick="saveUserProfileAndStart('Game Dev', 'gamedev')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>🎮 Game Dev (Godot / 2D)</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
-                </button>
-                <button onclick="saveUserProfileAndStart('Music', 'music')" class="w-full text-left bg-slate-950 hover:bg-slate-800 border border-slate-800 p-3.5 rounded-xl text-xs sm:text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
-                    <span>🎸 Music & Live Band</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-500"></i>
+                <button onclick="saveUserProfileAndStart('Advanced', 'advanced')" class="w-full text-left bg-purple-950/40 hover:bg-purple-900/40 border border-purple-500/30 p-4 rounded-xl text-sm text-slate-200 transition flex items-center justify-between cursor-pointer">
+                    <span>🔥 Advanced / Hardcore (Fluidez Nativa y Técnica)</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-purple-400"></i>
                 </button>
             </div>
         </div>
@@ -431,24 +400,24 @@
 
     <!-- FOOTER -->
     <footer class="border-t border-slate-800 bg-slate-900/50 py-4 text-center text-xs text-slate-500">
-        English Learning Pro &copy; 2026 &bull; Infinite Hardcore Edition
+        English Pro &copy; 2026 &bull; Universal Infinite Edition
     </footer>
 
     <!-- SCRIPTS -->
     <script>
         lucide.createIcons();
 
-        let appState = JSON.parse(localStorage.getItem('english_pro_state')) || {
+        let appState = JSON.parse(localStorage.getItem('english_pro_universal_state')) || {
             userName: '',
             streak: 0,
             termsMastered: 0,
-            level: 1,
+            tierKey: 'beginner',
+            tierTitle: 'Beginner',
             lastQuizScore: 0,
             lastSpeakingScore: 0,
             lastCompletedDate: null,
             sessionSteps: { speaking: false, flashcards: false, grammar: false, listening: false, shadowing: false },
-            selectedFocus: null,
-            focusTitle: null
+            studiedHistory: { prompts: [], shadow: [], listening: [], quizzes: [] }
         };
 
         function checkStreakExpiration() {
@@ -461,7 +430,7 @@
             const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
             if (diffDays > 1) {
                 appState.streak = 0;
-                localStorage.setItem('english_pro_state', JSON.stringify(appState));
+                localStorage.setItem('english_pro_universal_state', JSON.stringify(appState));
             }
         }
         checkStreakExpiration();
@@ -479,8 +448,8 @@
 
         const mascotTips = [
             "💡 Slang: 'On point' = ¡Impecable y exacto!",
-            "💡 Tip: Hardcore mode shuffles questions randomly so you never get the same test twice.",
-            "💡 Slang: 'No pain, no gain' = ¡Sin esfuerzo no hay progreso!"
+            "💡 Tip: The app stores your history and excludes past exercises to bring you 100% fresh content every time.",
+            "💡 Slang: 'Piece of cake' = ¡Muy fácil!"
         ];
 
         function interactWithMascot() {
@@ -494,25 +463,12 @@
             }, 2000);
         }
 
-        function getUserRank() {
-            return `Level ${appState.level || 1}`;
-        }
-
-        function setDynamicRankBanner() {
-            const badge = document.getElementById('rank-badge');
-            const title = document.getElementById('welcome-title');
-            const name = appState.userName ? `, ${appState.userName}` : '';
-            const emoji = document.getElementById('mascot-emoji');
-
-            if (appState.streak > 0) emoji.innerText = "🔥";
-            badge.innerText = `Mode: Infinite Hardcore (${getUserRank()})`;
-            title.innerText = `Welcome back${name}!`;
-        }
-
         function updateUIStats() {
             document.getElementById('streak-count').innerText = appState.streak + ' Days';
             document.getElementById('terms-count').innerText = appState.termsMastered;
-            document.getElementById('user-rank').innerText = getUserRank();
+            document.getElementById('user-tier').innerText = appState.tierTitle;
+            document.getElementById('tier-badge').innerText = `Tier: ${appState.tierTitle}`;
+            document.getElementById('header-badge').innerText = appState.tierTitle;
             checkSessionProgress();
         }
 
@@ -541,31 +497,27 @@
             }
         }
 
-        // SISTEMA DE PROGRESIÓN INFINITA Y HARDCORE (Sube de nivel infinitamente generando retos nuevos)
-        function tryRankAdvancement() {
+        function tryTierAdvancement() {
             const allDone = Object.values(appState.sessionSteps).every(Boolean);
 
             if (!allDone) {
-                showCustomModal("Evaluation Pending ⚠️", "Complete all 5 steps before advancing to the next level.", "🛡️");
+                showCustomModal("Evaluation Pending ⚠️", "Complete all 5 steps before advancing to the next batch of fresh exercises.", "🛡️");
                 return;
             }
 
             const avgScore = ((appState.lastSpeakingScore || 0) + (appState.lastQuizScore || 0)) / 2;
 
-            // Exigencia hardcore: Mínimo 80% para subir de nivel
-            if (avgScore >= 80) {
-                appState.level = (appState.level || 1) + 1;
+            if (avgScore >= 75) {
                 appState.sessionSteps = { speaking: false, flashcards: false, grammar: false, listening: false, shadowing: false };
-                localStorage.setItem('english_pro_state', JSON.stringify(appState));
+                localStorage.setItem('english_pro_universal_state', JSON.stringify(appState));
                 
                 loadProgressiveLesson();
-                setDynamicRankBanner();
                 updateUIStats();
                 resetStepBadgesUI();
 
-                showCustomModal("Level Up! 🚀", `Outstanding performance (Avg: ${Math.round(avgScore)}%). Welcome to Level ${appState.level}! Fresh randomized challenges unlocked.`, "👑");
+                showCustomModal("New Batch Unlocked! 🚀", `Great performance (Avg: ${Math.round(avgScore)}%). Fresh content loaded, leaving past exercises behind!`, "👑");
             } else {
-                showCustomModal("Hardcore Standard 📚", `Your average score is ${Math.round(avgScore)}%. You need 80%+ to unlock the next level. Review your grammar report and try again!`, "💪");
+                showCustomModal("Keep Pushing 📚", `Your average score is ${Math.round(avgScore)}%. Aim for 75%+ to clear this batch!`, "💪");
             }
         }
 
@@ -579,8 +531,7 @@
         }
 
         function resetStepBadgesUI() {
-            const badges = ['badge-speaking', 'badge-flashcards', 'badge-grammar', 'badge-listening', 'badge-shadowing'];
-            badges.forEach(bId => {
+            ['badge-speaking', 'badge-flashcards', 'badge-grammar', 'badge-listening', 'badge-shadowing'].forEach(bId => {
                 const badge = document.getElementById(bId);
                 if(badge) {
                     badge.className = "text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full";
@@ -591,7 +542,7 @@
 
         function markStep(stepKey, badgeId) {
             markStepUI(stepKey, badgeId);
-            localStorage.setItem('english_pro_state', JSON.stringify(appState));
+            localStorage.setItem('english_pro_universal_state', JSON.stringify(appState));
             checkSessionProgress();
         }
 
@@ -602,10 +553,10 @@
             appState.streak += 1;
             appState.termsMastered += 5;
             appState.lastCompletedDate = today;
-            localStorage.setItem('english_pro_state', JSON.stringify(appState));
+            localStorage.setItem('english_pro_universal_state', JSON.stringify(appState));
 
             updateUIStats();
-            showCustomModal("Streak Boosted! 🎉", `Awesome job, ${appState.userName || 'Alex'}! Streak increased by 1 day.`, "🚀");
+            showCustomModal("Streak Boosted! 🎉", `Awesome job, ${appState.userName || 'Kevin'}! Streak increased by 1 day.`, "🚀");
         }
 
         function switchTab(tabName) {
@@ -619,412 +570,152 @@
             activeBtn.classList.remove('text-slate-400');
         }
 
-        // BANCO MAESTRO EXPANDIDO CON MÚLTIPLES BANCOS DE PREGUNTAS
-        const profileData = {
+        // BANCO MAESTRO UNIVERSAL AMPLIADO (Organizado por 3 Tiers limpios)
+        const universalData = {
             beginner: {
                 prompts: [
-                    { title: "Personal Introduction", text: "Say your name, where you are from, and your age in simple English." },
-                    { title: "Daily Routine", text: "Describe what you usually eat for breakfast and what time you wake up." },
-                    { title: "Family & Friends", text: "Talk about a family member, what they look like, and what they do." },
-                    { title: "Hobbies & Free Time", text: "Explain what you like to do on weekends when you are not working." },
-                    { title: "Hometown Description", text: "Describe your city or town, its weather, and your favorite spot there." }
-                ],
-                flashcardsSets: [
-                    [
-                        { term: "Hello", def: "A greeting used when meeting someone.", es: "Hola", img: "👋" },
-                        { term: "Thank you", def: "An expression of gratitude.", es: "Gracias", img: "🙏" },
-                        { term: "Water", def: "Clear liquid essential for life.", es: "Agua", img: "💧" },
-                        { term: "Friend", def: "A person with whom one has a bond.", es: "Amigo", img: "🤝" },
-                        { term: "House", def: "A building for human habitation.", es: "Casa", img: "🏠" }
-                    ],
-                    [
-                        { term: "Morning", def: "The early part of the day.", es: "Mañana", img: "🌅" },
-                        { term: "Food", def: "Any nutritious substance that people eat.", es: "Comida", img: "🍲" },
-                        { term: "Family", def: "A group consisting of parents and children.", es: "Familia", img: "👨‍👩‍👧" },
-                        { term: "Work", def: "Activity involving mental or physical effort.", es: "Trabajo", img: "💼" },
-                        { term: "Time", def: "The indefinite continued progress of existence.", es: "Tiempo", img: "⏰" }
-                    ]
-                ],
-                quizzesPool: [
-                    { type: "mc", title: "Pronoun", desc: "Which pronoun refers to yourself?", options: [{ text: "A) He", correct: false }, { text: "B) I", correct: true }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "She don't like coffee.", answer: "she doesn't like coffee" },
-                    { type: "mc", title: "Plural", desc: "What is the plural of 'child'?", options: [{ text: "A) childs", correct: false }, { text: "B) children", correct: true }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "I am work in a workshop.", answer: "i am working in a workshop" },
-                    { type: "mc", title: "Article", desc: "Choose the correct article: '___ apple a day.'", options: [{ text: "A) An", correct: true }, { text: "B) A", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "He go to the gym yesterday.", answer: "he went to the gym yesterday" },
-                    { type: "mc", title: "Negation", desc: "Complete: 'I ___ like coffee.'", options: [{ text: "A) don't", correct: true }, { text: "B) doesn't", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "Where you live?", answer: "where do you live" },
-                    { type: "mc", title: "Preposition", desc: "Complete: 'The book is ___ the table.'", options: [{ text: "A) on", correct: true }, { text: "B) in", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "She has 25 years old.", answer: "she is 25 years old" },
-                    { type: "mc", title: "Past Tense", desc: "What is the past tense of 'go'?", options: [{ text: "A) goed", correct: false }, { text: "B) went", correct: true }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "They was playing football.", answer: "they were playing football" }
+                    { id: 'b_p1', title: "Personal Background", text: "Say your name, where you live, and what you do every day." },
+                    { id: 'b_p2', title: "Daily Morning Habits", text: "Describe your morning routine from waking up to starting work." },
+                    { id: 'b_p3', title: "Family & Friends", text: "Talk about a close friend or family member and their daily occupation." },
+                    { id: 'b_p4', title: "Favorite Food & Cooking", text: "Describe your favorite meal and how ingredients are combined." },
+                    { id: 'b_p5', title: "Weekend Activities", text: "Explain what you usually do to relax on weekends." }
                 ],
                 shadowTexts: [
-                    "Hello my name is Alex and I am learning English",
+                    "Hello my name is Kevin and I am learning advanced English",
                     "Every morning I wake up early and drink a glass of water",
                     "My family and I enjoy spending time together on weekends",
                     "Practice makes perfect when you study every single day",
                     "Always keep your goals high and work hard to achieve them"
                 ],
-                listeningSnippets: ["Nice to meet you", "Open the door please", "Where is the water", "How much does this cost", "Turn left at the corner"]
-            },
-            general: {
-                prompts: [
-                    { title: "Travel & Directions", text: "Ask politely where the nearest train station or restaurant is located." },
-                    { title: "Hotel Check-in", text: "Explain your reservation details and ask about breakfast times at a hotel." },
-                    { title: "Shopping Assistance", text: "Ask a store clerk if they have a specific item in a different size or color." },
-                    { title: "Airport Customs", text: "Answer officer questions about the purpose of your trip and duration." }
-                ],
-                flashcardsSets: [
-                    [
-                        { term: "Airport", def: "A complex of runways for aviation travel.", es: "Aeropuerto", img: "✈️" },
-                        { term: "Restaurant", def: "A place where people sit and eat meals.", es: "Restaurante", img: "🍽️" },
-                        { term: "Passport", def: "Official document certifying identity.", es: "Pasaporte", img: "🛂" },
-                        { term: "Reservation", def: "Arrangement to hold something for you.", es: "Reservación", img: "📅" },
-                        { term: "Luggage", def: "Suitcases or bags for traveler.", es: "Equipaje", img: "🧳" }
-                    ]
+                listeningSnippets: [
+                    "Nice to meet you today",
+                    "Open the front door please",
+                    "Where is the clean water",
+                    "How much does this cost",
+                    "Turn left at the street corner"
                 ],
                 quizzesPool: [
-                    { type: "mc", title: "Travel", desc: "When asking for help politely:", options: [{ text: "A) Where is the exit please?", correct: true }, { text: "B) Give me ticket.", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "Where is nearest station?", answer: "where is the nearest station" },
-                    { type: "mc", title: "Directions", desc: "Complete: 'Turn left ___ the corner.'", options: [{ text: "A) at", correct: true }, { text: "B) on", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "I need two ticket to London.", answer: "i need two tickets to london" },
-                    { type: "mc", title: "Transport", desc: "Complete: 'I am waiting ___ the bus.'", options: [{ text: "A) for", correct: true }, { text: "B) to", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "Can you helps me please?", answer: "can you help me please" },
-                    { type: "mc", title: "Hotel", desc: "Complete: 'What time is ___?'", options: [{ text: "A) check-out", correct: true }, { text: "B) door", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "How much this cost?", answer: "how much does this cost" },
-                    { type: "mc", title: "Money", desc: "Complete: 'Do you accept ___ cards?'", options: [{ text: "A) credit", correct: true }, { text: "B) paper", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "I lose my passport.", answer: "i lost my passport" }
+                    { id: 'b_q1', type: "mc", title: "Pronoun", desc: "Which pronoun refers to yourself?", options: [{ text: "A) He", correct: false }, { text: "B) I", correct: true }] },
+                    { id: 'b_q2', type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "She don't like coffee.", answer: "she doesn't like coffee" },
+                    { id: 'b_q3', type: "mc", title: "Plural", desc: "What is the plural of 'child'?", options: [{ text: "A) childs", correct: false }, { text: "B) children", correct: true }] },
+                    { id: 'b_q4', type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "I am work in a workshop.", answer: "i am working in a workshop" },
+                    { id: 'b_q5', type: "mc", title: "Article", desc: "Choose the correct article: '___ apple a day.'", options: [{ text: "A) An", correct: true }, { text: "B) A", correct: false }] },
+                    { id: 'b_q6', type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "He go to the gym yesterday.", answer: "he went to the gym yesterday" },
+                    { id: 'b_q7', type: "mc", title: "Negation", desc: "Complete: 'I ___ like coffee.'", options: [{ text: "A) don't", correct: true }, { text: "B) doesn't", correct: false }] },
+                    { id: 'b_q8', type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "Where you live?", answer: "where do you live" },
+                    { id: 'b_q9', type: "mc", title: "Preposition", desc: "Complete: 'The book is ___ the table.'", options: [{ text: "A) on", correct: true }, { text: "B) in", correct: false }] },
+                    { id: 'b_q10', type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "She has 25 years old.", answer: "she is 25 years old" },
+                    { id: 'b_q11', type: "mc", title: "Past Tense", desc: "What is the past tense of 'go'?", options: [{ text: "A) goed", correct: false }, { text: "B) went", correct: true }] },
+                    { id: 'b_q12', type: "repair", title: "Error Repair", desc: "Fix this incorrect sentence:", faulty: "They was playing football.", answer: "they were playing football" }
+                ],
+                flashcards: [
+                    { term: "Hello", def: "A greeting used when meeting someone.", es: "Hola", img: "👋" },
+                    { term: "Thank you", def: "An expression of gratitude.", es: "Gracias", img: "🙏" },
+                    { term: "Water", def: "Clear liquid essential for life.", es: "Agua", img: "💧" },
+                    { term: "Friend", def: "A person with whom one has a bond.", es: "Amigo", img: "🤝" },
+                    { term: "House", def: "A building for human habitation.", es: "Casa", img: "🏠" }
+                ]
+            },
+            intermediate: {
+                prompts: [
+                    { id: 'i_p1', title: "Problem Solving", text: "Describe a difficult problem you faced recently and how you resolved it." },
+                    { id: 'i_p2', title: "Future Ambitions", text: "Explain your professional plans and project goals for the next two years." },
+                    { id: 'i_p3', title: "Technology Impact", text: "Discuss how modern tools and automation influence daily productivity." },
+                    { id: 'i_p4', title: "Travel & Exploration", text: "Describe an ideal trip you would like to take to another country." }
                 ],
                 shadowTexts: [
-                    "Excuse me can you help me find the nearest restaurant",
-                    "I would like to check in with my passport and reservation",
-                    "Do you accept credit cards or only cash payment",
-                    "Where is the boarding gate for international flight 402"
+                    "We successfully deployed the server application and tested all endpoints",
+                    "Make sure to check continuity across all circuit board traces",
+                    "Learning a second language requires consistent daily practice and patience",
+                    "The diagnostic report showed a short circuit in the power supply"
                 ],
-                listeningSnippets: ["Can you help me please", "What time is check out", "Where is the airport", "My luggage is missing"]
-            },
-            electronics: {
-                prompts: [
-                    { title: "Diagnostic Explanation", text: "Explain to a client why a switch-mode power supply failed." },
-                    { title: "Component Replacement", text: "Describe how you desoldered and replaced a faulty capacitor on a T-CON board." },
-                    { title: "Voltage Testing", text: "Explain how you measure AC voltage and check continuity on a circuit board." },
-                    { title: "Inverter Repair", text: "Describe troubleshooting an inverter refrigeration control board." }
-                ],
-                flashcardsSets: [
-                    [
-                        { term: "Power Supply", def: "Electronic power supply for high efficiency.", es: "Fuente conmutada", img: "⚡" },
-                        { term: "Multimeter", def: "Measuring instrument for electrical values.", es: "Multímetro", img: "🔌" },
-                        { term: "Capacitor", def: "Electronic component storing energy.", es: "Condensador", img: "🔋" },
-                        { term: "Soldering Iron", def: "Tool used to melt solder for joints.", es: "Cautín / Soldador", img: "🛠️" },
-                        { term: "Oscilloscope", def: "Device for viewing electrical signals.", es: "Osciloscopio", img: "📈" }
-                    ]
+                listeningSnippets: [
+                    "Can you help me troubleshoot this issue",
+                    "The database connection was established successfully",
+                    "Check the output voltage with a multimeter",
+                    "We need to update our repository immediately"
                 ],
                 quizzesPool: [
-                    { type: "mc", title: "Hardware", desc: "When diagnosing hardware:", options: [{ text: "A) Let me probe this real quick.", correct: true }, { text: "B) The electricity sleeps.", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this technical sentence:", faulty: "The capacitor are damaged.", answer: "the capacitor is damaged" },
-                    { type: "mc", title: "Voltage", desc: "Complete: 'Measuring AC ___ with probes.'", options: [{ text: "A) voltage", correct: true }, { text: "B) weight", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this technical sentence:", faulty: "I found a short to the ground.", answer: "i found a short to ground" },
-                    { type: "mc", title: "Resistance", desc: "Complete: 'Check continuity and ___.'", options: [{ text: "A) resistance", correct: true }, { text: "B) speed", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this technical sentence:", faulty: "He replace the power supply yesterday.", answer: "he replaced the power supply yesterday" },
-                    { type: "mc", title: "Transformer", desc: "Complete: 'Testing step-down ___ winding.'", options: [{ text: "A) transformer", correct: true }, { text: "B) paper", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this technical sentence:", faulty: "The fuse blow up because overload.", answer: "the fuse blew up because of an overload" },
-                    { type: "mc", title: "Relay", desc: "Complete: 'The coil in the ___ clicked.'", options: [{ text: "A) relay", correct: true }, { text: "B) shoe", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this technical sentence:", faulty: "Clean flux from PCB board.", answer: "clean the flux off the pcb" }
+                    { id: 'i_q1', type: "mc", title: "Conditional", desc: "Complete: 'If I had time, I ___ travel.'", options: [{ text: "A) would", correct: true }, { text: "B) will", correct: false }] },
+                    { id: 'i_q2', type: "repair", title: "Error Repair", desc: "Fix this sentence:", faulty: "She has wrote a brilliant report.", answer: "she has written a brilliant report" },
+                    { id: 'i_q3', type: "mc", title: "Passive Voice", desc: "Complete: 'The software ___ updated yesterday.'", options: [{ text: "A) was", correct: true }, { text: "B) were", correct: false }] },
+                    { id: 'i_q4', type: "repair", title: "Error Repair", desc: "Fix this sentence:", faulty: "He don't know nothing about it.", answer: "he doesn't know anything about it" },
+                    { id: 'i_q5', type: "relative', title: "Relative Pronoun", desc: "Complete: 'The engineer ___ fixed the server.'", options: [{ text: "A) who", correct: true }, { text: "B) which", correct: false }] },
+                    { id: 'i_q6', type: "repair", title: "Error Repair", desc: "Fix this sentence:", faulty: "This is much more better now.", answer: "this is much better now" },
+                    { id: 'i_q7', type: "mc", title: "Preposition", desc: "Complete: 'Arrived ___ the airport terminal.'", options: [{ text: "A) at", correct: true }, { text: "B) on", correct: false }] },
+                    { id: 'i_q8', type: "repair", title: "Error Repair", desc: "Fix this sentence:", faulty: "I am agree with your proposal.", answer: "i agree with your proposal" }
+                ],
+                flashcards: [
+                    { term: "Deployment", def: "Making an application available for use.", es: "Despliegue", img: "🚀" },
+                    { term: "Multimeter", def: "An instrument designed to measure electrical values.", es: "Multímetro", img: "🔌" },
+                    { term: "Workflow", def: "The sequence of industrial, administrative, or other processes.", es: "Flujo de trabajo", img: "⚙️" },
+                    { term: "Repository", def: "A central location in which data is stored and managed.", es: "Repositorio", img: "📦" }
+                ]
+            },
+            advanced: {
+                prompts: [
+                    { id: 'a_p1', title: "Advanced Architecture", text: "Explain component-level troubleshooting for complex inverter control boards and power rails." },
+                    { id: 'a_p2', title: "Software Engineering", text: "Describe asynchronous database queries, API middleware handling, and deployment pipelines." },
+                    { id: 'a_p3', title: "Professional Leadership", text: "Discuss how you manage live band performances, stage monitoring, and audio engineering setups." }
                 ],
                 shadowTexts: [
-                    "I checked the rails and found a short to ground",
-                    "We need to desolder the faulty capacitor and replace it",
-                    "Measure the secondary voltage output with a digital multimeter",
-                    "The switch mode power supply failed due to a blown fuse"
+                    "We need to analyze the switch mode power supply schematic and locate the faulty capacitor",
+                    "Asynchronous backend operations prevent blocking threads during heavy database transactions",
+                    "The wireless in-ear monitoring system delivers a crystal clear mix for live musicians"
                 ],
-                listeningSnippets: ["The capacitor is shorted", "Measure the voltage with multimeter", "Replace the damaged fuse", "Check the power supply rails"]
-            },
-            systems: {
-                prompts: [
-                    { title: "System Architecture", text: "Describe how you deployed a web inventory service." },
-                    { title: "Database Query", text: "Explain how you connected PostgreSQL to Node.js and executed queries." },
-                    { title: "Bug Fixing", text: "Describe how you investigated and resolved a 500 server error." },
-                    { title: "Git Workflow", text: "Explain how you manage branches, commits, and push updates to GitHub." }
-                ],
-                flashcardsSets: [
-                    [
-                        { term: "Deployment", def: "Making an app available on a server.", es: "Despliegue", img: "🚀" },
-                        { term: "Repository", def: "Storage location for software packages.", es: "Repositorio", img: "📦" },
-                        { term: "Database", def: "Organized collection of structured info.", es: "Base de datos", img: "🗄️" },
-                        { term: "Endpoint", def: "URL where an API accesses resources.", es: "Punto de acceso API", img: "🌐" },
-                        { term: "Middleware", def: "Software that provides common services.", es: "Middleware", img: "⚙️" }
-                    ]
+                listeningSnippets: [
+                    "Verify the environment variables before deploying to production",
+                    "The IGBT module shorted out due to an excessive thermal load",
+                    "Reconcile the general ledger and audit accounts payable"
                 ],
                 quizzesPool: [
-                    { type: "mc", title: "Deployment", desc: "Best phrasing for server release:", options: [{ text: "A) We successfully deployed the API.", correct: true }, { text: "B) We cooked the server.", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this IT sentence:", faulty: "We push the code to git yesterday.", answer: "we pushed the code to git yesterday" },
-                    { type: "mc", title: "Git", desc: "Complete: 'Commit and ___ changes.'", options: [{ text: "A) push", correct: true }, { text: "B) run", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this IT sentence:", faulty: "The database have a connection error.", answer: "the database has a connection error" },
-                    { type: "mc", title: "SQL", desc: "Complete: 'Query the database using ___.'", options: [{ text: "A) SQL", correct: true }, { text: "B) HTML", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this IT sentence:", faulty: "API endpoint returning 500 error.", answer: "the api endpoint is returning a 500 error" },
-                    { type: "mc", title: "Render", desc: "Complete: 'Deploy web app on ___ platform.'", options: [{ text: "A) Render", correct: true }, { text: "B) Oven", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this IT sentence:", faulty: "I fix the bug in server.", answer: "i fixed the bug on the server" },
-                    { type: "mc", title: "JSON", desc: "Complete: 'Parse incoming ___ payload.'", options: [{ text: "A) JSON", correct: true }, { text: "B) soup", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this IT sentence:", faulty: "Node js is running async.", answer: "node.js is running asynchronously" }
+                    { id: 'a_q1', type: "repair", title: "Advanced Repair", desc: "Fix this complex sentence:", faulty: "Hardly had I arrived when the server crash.", answer: "hardly had i arrived when the server crashed" },
+                    { id: 'a_q2', type: "mc", title: "Inversion", desc: "Complete: 'Never ___ such an efficient algorithm.'", options: [{ text: "A) have I seen", correct: true }, { text: "B) I have seen", correct: false }] },
+                    { id: 'a_q3', type: "repair", title: "Advanced Repair", desc: "Fix this complex sentence:", faulty: "Despite he worked hard, the bug remained.", answer: "despite working hard the bug remained" },
+                    { id: 'a_q4', type: "mc", title: "Subjunctive", desc: "Complete: 'It is vital that every component ___ tested.'", options: [{ text: "A) be", correct: true }, { text: "B) is", correct: false }] }
                 ],
-                shadowTexts: [
-                    "We pushed our code to Render and verified server logs",
-                    "Connect to the PostgreSQL database using environment variables",
-                    "Debug the backend endpoint to fix the unhandled exception",
-                    "Run npm install to download all required project dependencies"
-                ],
-                listeningSnippets: ["We pushed our code to GitHub", "The database connection is active", "Deploy the web app to Render", "Check the server console logs"]
-            },
-            accounting: {
-                prompts: [
-                    { title: "Financial Statement Review", text: "Explain quarterly balance sheet discrepancies and audit procedures." },
-                    { title: "Ledger Reconciliation", text: "Describe how you reconcile accounts payable and receivable." },
-                    { title: "Tax Return", text: "Discuss annual corporate tax preparation and financial compliance." }
-                ],
-                flashcardsSets: [
-                    [
-                        { term: "Balance Sheet", def: "Financial statement reporting assets.", es: "Balance general", img: "📊" },
-                        { term: "Ledger", def: "A collection of financial accounts.", es: "Libro mayor", img: "📒" },
-                        { term: "Asset", def: "Economic resource owned by company.", es: "Activo", img: "💎" },
-                        { term: "Liability", def: "Company's legal financial debts.", es: "Pasivo / Deuda", img: "📉" },
-                        { term: "Audit", def: "Official inspection of accounts.", es: "Auditoría", img: "🔍" }
-                    ]
-                ],
-                quizzesPool: [
-                    { type: "mc", title: "Ledger", desc: "When discussing financial reports:", options: [{ text: "A) We need to reconcile the ledger.", correct: true }, { text: "B) Paint the ledger.", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this financial sentence:", faulty: "The balance sheet show a discrepancy.", answer: "the balance sheet shows a discrepancy" },
-                    { type: "mc", title: "Revenue", desc: "Complete: 'Quarterly ___ increased by 10%.'", options: [{ text: "A) revenue", correct: true }, { text: "B) shadow", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this financial sentence:", faulty: "We audited accounts payable yesterday.", answer: "we audited accounts payable yesterday" },
-                    { type: "mc", title: "Tax", desc: "Complete: 'File annual corporate ___ return.'", options: [{ text: "A) tax", correct: true }, { text: "B) rain", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this financial sentence:", faulty: "Assets is greater than liabilities.", answer: "assets are greater than liabilities" },
-                    { type: "mc", title: "Cash Flow", desc: "Complete: 'Monitor positive ___ flow.'", options: [{ text: "A) cash", correct: true }, { text: "B) wind", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this financial sentence:", faulty: "The ledger need reconciliation.", answer: "the ledger needs reconciliation" },
-                    { type: "mc", title: "Budget", desc: "Complete: 'Allocate funds in the annual ___.'", options: [{ text: "A) budget", correct: true }, { text: "B) jungle", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this financial sentence:", faulty: "Net profit margin are low.", answer: "net profit margin is low" }
-                ],
-                shadowTexts: [
-                    "We audited the ledger and reconciled accounts",
-                    "Review the balance sheet and quarterly revenue report",
-                    "Ensure all financial transactions comply with tax regulations"
-                ],
-                listeningSnippets: ["Reconcile the general ledger", "Quarterly revenue has increased", "Check the balance sheet"]
-            },
-            law: {
-                prompts: [
-                    { title: "Contract Clause Analysis", text: "Discuss liability terms in a commercial agreement." },
-                    { title: "Court Testimony", text: "Explain how you prepare a witness for trial." },
-                    { title: "Legal Counsel", text: "Provide advice to a client regarding intellectual property rights." }
-                ],
-                flashcardsSets: [
-                    [
-                        { term: "Liability", def: "Being legally responsible.", es: "Responsabilidad legal", img: "⚖️" },
-                        { term: "Plaintiff", def: "Person who brings a case to court.", es: "Demandante", img: "🏛️" },
-                        { term: "Clause", def: "Section of a legal document.", es: "Cláusula", img: "📜" },
-                        { term: "Agreement", def: "Legally binding arrangement.", es: "Acuerdo / Contrato", img: "🤝" },
-                        { term: "Defendant", def: "Person sued in a court of law.", es: "Demandado", img: "⚖️" }
-                    ]
-                ],
-                quizzesPool: [
-                    { type: "mc", title: "Liability", desc: "When advising a client:", options: [{ text: "A) We must review liability clauses.", correct: true }, { text: "B) Bake a liability cake.", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this legal sentence:", faulty: "The contract have a breach clause.", answer: "the contract has a breach clause" },
-                    { type: "mc", title: "Contract", desc: "Complete: 'Sign the employment ___.'", options: [{ text: "A) contract", correct: true }, { text: "B) shoe", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this legal sentence:", faulty: "Plaintiff sue defendant for damages.", answer: "the plaintiff sued the defendant for damages" },
-                    { type: "mc", title: "Witness", desc: "Complete: 'Call the first ___ to testify.'", options: [{ text: "A) witness", correct: true }, { text: "B) tree", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this legal sentence:", faulty: "Evidence were presented in court.", answer: "evidence was presented in court" },
-                    { type: "mc", title: "Counsel", desc: "Complete: 'Speak with legal ___.'", options: [{ text: "A) counsel", correct: true }, { text: "B) pencil", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this legal sentence:", faulty: "We sign agreement yesterday.", answer: "we signed the agreement yesterday" },
-                    { type: "mc", title: "Appeal", desc: "Complete: 'File an ___ in higher court.'", options: [{ text: "A) appeal", correct: true }, { text: "B) banana", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this legal sentence:", faulty: "Liability are limited by clause.", answer: "liability is limited by the clause" }
-                ],
-                shadowTexts: [
-                    "We analyzed the agreement to limit liability",
-                    "The plaintiff filed a lawsuit against the defendant",
-                    "Review all contract clauses before signing the agreement"
-                ],
-                listeningSnippets: ["Review the contract clause", "The plaintiff filed a lawsuit", "Limit liability in the agreement"]
-            },
-            medicine: {
-                prompts: [
-                    { title: "Patient Consultation", text: "Describe patient symptoms and treatment plan." },
-                    { title: "Emergency Response", text: "Explain vital signs monitoring during an emergency." },
-                    { title: "Surgical Prep", text: "Describe preparation steps for an operation." }
-                ],
-                flashcardsSets: [
-                    [
-                        { term: "Diagnosis", def: "Identification of an illness.", es: "Diagnóstico", img: "🩺" },
-                        { term: "Prescription", def: "Instruction written by practitioner.", es: "Receta médica", img: "💊" },
-                        { term: "Vitals", def: "Measurements of basic body functions.", es: "Signos vitales", img: "💓" },
-                        { term: "Symptoms", def: "Physical feature indicating condition.", es: "Síntomas", img: "🤒" },
-                        { term: "Surgery", def: "Medical treatment involving cutting.", es: "Cirugía", img: "🏥" }
-                    ]
-                ],
-                quizzesPool: [
-                    { type: "mc", title: "Vitals", desc: "When evaluating patient:", options: [{ text: "A) Let us check the patient's vitals.", correct: true }, { text: "B) Check shoes.", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this medical sentence:", faulty: "Patient have high fever.", answer: "the patient has a high fever" },
-                    { type: "mc", title: "Surgery", desc: "Complete: 'Prepare room for ___.'", options: [{ text: "A) surgery", correct: true }, { text: "B) dancing", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this medical sentence:", faulty: "Doctor write a prescription yesterday.", answer: "the doctor wrote a prescription yesterday" },
-                    { type: "mc", title: "Patient", desc: "Complete: 'Admit the ___ to room 4.'", options: [{ text: "A) patient", correct: true }, { text: "B) rock", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this medical sentence:", faulty: "Nurse check vitals signs.", answer: "the nurse checked the vital signs" },
-                    { type: "mc", title: "X-Ray", desc: "Complete: 'Take an ___ of the chest.'", options: [{ text: "A) X-ray", correct: true }, { text: "B) sandwich", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this medical sentence:", faulty: "Diagnosis indicate infection.", answer: "the diagnosis indicates an infection" },
-                    { type: "mc", title: "Clinic", desc: "Complete: 'Visit the local health ___.'", options: [{ text: "A) clinic", correct: true }, { text: "B) mountain", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this medical sentence:", faulty: "Patient need physical therapy.", answer: "the patient needs physical therapy" }
-                ],
-                shadowTexts: [
-                    "We evaluated the patient vitals and prescribed treatment",
-                    "The doctor examined the symptoms and made a diagnosis",
-                    "Monitor the patient heart rate and blood pressure closely"
-                ],
-                listeningSnippets: ["Check the patient vitals", "Doctor wrote a prescription", "The diagnosis indicates an infection"]
-            },
-            mechanics: {
-                prompts: [
-                    { title: "Engine Troubleshooting", text: "Explain engine misfire diagnosis and repair steps." },
-                    { title: "Brake Service", text: "Describe replacing worn brake pads and rotor inspection." },
-                    { title: "Battery Testing", text: "Explain how you test alternator output and 12V battery health." }
-                ],
-                flashcardsSets: [
-                    [
-                        { term: "Fuel Injector", def: "Nozzle injecting fuel into cylinders.", es: "Inyector", img: "🔧" },
-                        { term: "Alternator", def: "Generator of electric power in car.", es: "Alternador", img: "⚡" },
-                        { term: "Transmission", def: "Mechanism transmitting power.", es: "Transmisión", img: "⚙️" },
-                        { term: "Brake Pads", def: "Friction material in disc brakes.", es: "Pastillas de freno", img: "🛑" },
-                        { term: "Radiator", def: "Device for cooling engine coolant.", es: "Radiador", img: "🌡️" }
-                    ]
-                ],
-                quizzesPool: [
-                    { type: "mc", title: "Engine", desc: "When explaining engine issue:", options: [{ text: "A) We detected a cylinder misfire.", correct: true }, { text: "B) Engine is sleeping.", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this automotive sentence:", faulty: "The engine have a misfire.", answer: "the engine has a misfire" },
-                    { type: "mc", title: "Oil", desc: "Complete: 'Change engine ___ and filter.'", options: [{ text: "A) oil", correct: true }, { text: "B) juice", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this automotive sentence:", faulty: "Mechanic replace brake pads yesterday.", answer: "the mechanic replaced the brake pads yesterday" },
-                    { type: "mc", title: "Battery", desc: "Complete: 'Test 12V car ___ terminals.'", options: [{ text: "A) battery", correct: true }, { text: "B) banana", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this automotive sentence:", faulty: "Alternator not charging battery.", answer: "the alternator is not charging the battery" },
-                    { type: "mc", title: "Spark Plug", desc: "Complete: 'Gap the new spark ___.'", options: [{ text: "A) plugs", correct: true }, { text: "B) shoes", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this automotive sentence:", faulty: "Tire pressure is low in front tire.", answer: "the tire pressure is low in the front tire" },
-                    { type: "mc", title: "Transmission", desc: "Complete: 'Replace worn transmission fluid.'", options: [{ text: "A) Transmission", correct: true }, { text: "B) Shoe", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this automotive sentence:", faulty: "Radiator leak coolant fluid.", answer: "the radiator is leaking coolant" }
-                ],
-                shadowTexts: [
-                    "We diagnosed an engine misfire and replaced spark plugs",
-                    "Inspect the brake pads and check rotor thickness",
-                    "Test the alternator output to ensure proper battery charging"
-                ],
-                listeningSnippets: ["The engine has a misfire", "Replace the worn brake pads", "Check the alternator battery"]
-            },
-            gamedev: {
-                prompts: [
-                    { title: "Game Mechanics", text: "Explain core mechanics of your 2D platformer." },
-                    { title: "Pixel Art Workflow", text: "Describe creating character sprites and tilemaps in LibreSprite." },
-                    { title: "Physics & Collision", text: "Explain how you handle gravity and collision shapes in Godot 4." }
-                ],
-                flashcardsSets: [
-                    [
-                        { term: "Sprite", def: "Two-dimensional bitmap graphic.", es: "Sprite 2D", img: "👾" },
-                        { term: "Tilemap", def: "Grid of tiles to create game worlds.", es: "Mapa de celdas", img: "🧱" },
-                        { term: "Game Loop", def: "Core process running simulation.", es: "Bucle de juego", img: "🔄" },
-                        { term: "Collision", def: "Interaction preventing overlap.", es: "Colisión", img: "💥" },
-                        { term: "Shader", def: "Program running on GPU for effects.", es: "Shader / Efecto visual", img: "✨" }
-                    ]
-                ],
-                quizzesPool: [
-                    { type: "mc", title: "Godot", desc: "Performance in Godot:", options: [{ text: "A) Optimize game loop.", correct: true }, { text: "B) Eat game loop.", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this game dev sentence:", faulty: "The player node have a physics script.", answer: "the player node has a physics script" },
-                    { type: "mc", title: "Pixel Art", desc: "Complete: 'Draw 2D characters in ___.'", options: [{ text: "A) LibreSprite", correct: true }, { text: "B) Excel", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this game dev sentence:", faulty: "I code player movement yesterday.", answer: "i coded player movement yesterday" },
-                    { type: "mc", title: "Physics", desc: "Complete: 'Apply gravity in 2D ___.'", options: [{ text: "A) physics", correct: true }, { text: "B) music", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this game dev sentence:", faulty: "Collision shape are missing.", answer: "the collision shape is missing" },
-                    { type: "mc", title: "Vector", desc: "Complete: 'Calculate velocity ___ 2.'", options: [{ text: "A) vector", correct: true }, { text: "B) spoon", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this game dev sentence:", faulty: "Export game to mobile store.", answer: "we exported the game to the mobile store" },
-                    { type: "mc", title: "Scene", desc: "Complete: 'Save level as main ___.'", options: [{ text: "A) scene", correct: true }, { text: "B) mountain", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this game dev sentence:", faulty: "Tilemap draw grid correctly.", answer: "the tilemap draws the grid correctly" }
-                ],
-                shadowTexts: [
-                    "In Godot four we scripted player movement and physics",
-                    "Draw custom pixel art sprites and tilemaps for the indie game",
-                    "Configure collision layers and shapes for the platformer character"
-                ],
-                listeningSnippets: ["We scripted player movement", "Draw 2D characters in LibreSprite", "The collision shape is missing"]
-            },
-            music: {
-                prompts: [
-                    { title: "Bass Performance", text: "Describe your favorite bass line to play live." },
-                    { title: "Stage Monitoring", text: "Explain how you check in-ear monitor levels before a concert." },
-                    { title: "Band Rehearsal", text: "Describe preparing a live setlist with your bandmates." }
-                ],
-                flashcardsSets: [
-                    [
-                        { term: "Bass Line", def: "Sequence of low-frequency notes.", es: "Línea de bajo", img: "🎸" },
-                        { term: "Monitor", def: "Speaker system for stage performers.", es: "Monitor de escenario", img: "🔊" },
-                        { term: "Tuner", def: "Device to detect and display pitch.", es: "Afinador", img: "🎛️" },
-                        { term: "Rhythm", def: "Repeated pattern of sound.", es: "Ritmo", img: "🎵" },
-                        { term: "Amplifier", def: "Electronic device increasing audio power.", es: "Amplificador", img: "📻" }
-                    ]
-                ],
-                quizzesPool: [
-                    { type: "mc", title: "Band", desc: "Before a show:", options: [{ text: "A) Check in-ear monitors.", correct: true }, { text: "B) Check shoes.", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this music sentence:", faulty: "The bass guitar need new strings.", answer: "the bass guitar needs new strings" },
-                    { type: "mc", title: "Rehearsal", desc: "Complete: 'Practice band setlist in ___.'", options: [{ text: "A) rehearsal", correct: true }, { text: "B) kitchen", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this music sentence:", faulty: "We play live concert yesterday.", answer: "we played a live concert yesterday" },
-                    { type: "mc", title: "Volume", desc: "Complete: 'Adjust master stage ___.'", options: [{ text: "A) volume", correct: true }, { text: "B) wind", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this music sentence:", faulty: "Monitor level is too low for me.", answer: "the monitor level is too low for me" },
-                    { type: "mc", title: "Tempo", desc: "Complete: 'Keep steady beat ___.'", options: [{ text: "A) tempo", correct: true }, { text: "B) shoe", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this music sentence:", faulty: "Drummer keep the rhythm steady.", answer: "the drummer keeps the rhythm steady" },
-                    { type: "mc", title: "Tone", desc: "Complete: 'Dial in compressor ___.'", options: [{ text: "A) tone", correct: true }, { text: "B) water", correct: false }] },
-                    { type: "repair", title: "Error Repair", desc: "Fix this music sentence:", faulty: "I plug in my bass guitar.", answer: "i plugged in my bass guitar" }
-                ],
-                shadowTexts: [
-                    "I plug in my electric bass and check my monitor levels",
-                    "We rehearsed the new setlist with the drummer before the show",
-                    "Adjust the amplifier EQ and compressor settings for a clean tone"
-                ],
-                listeningSnippets: ["Check in ear monitors", "The bass guitar needs new strings", "We played a live concert"]
+                flashcards: [
+                    { term: "Inverter", def: "Power electronic device converting DC to AC.", es: "Inversor", img: "⚡" },
+                    { term: "Asynchronous", def: "Not occurring at the same time.", es: "Asíncrono", img: "⏳" },
+                    { term: "Oscilloscope", def: "Diagnostic instrument displaying waveforms.", es: "Osciloscopio", img: "📈" },
+                    { term: "Middleware", def: "Software connecting software components.", es: "Middleware", img: "🔗" }
+                ]
             }
         };
 
-        let currentCategory = appState.selectedFocus || 'beginner';
         let currentCard = 0;
         let currentQuizIndex = 0;
         let quizResultsLog = [];
         let activeQuizItem = null;
         let currentListeningTarget = "";
-        let activeQuizzes = []; // Almacena el set aleatorio actual
+        let activeQuizzes = [];
 
-        function saveUserProfileAndStart(title, categoryKey) {
+        function saveUserProfileAndStart(title, tierKey) {
             const nameInput = document.getElementById('user-name-input').value.trim();
-            appState.userName = nameInput || 'Alex';
-            appState.selectedFocus = categoryKey;
-            appState.focusTitle = title;
-            appState.level = 1;
+            appState.userName = nameInput || 'Kevin';
+            appState.tierKey = tierKey;
+            appState.tierTitle = title;
             appState.lastQuizScore = 0;
             appState.lastSpeakingScore = 0;
-            localStorage.setItem('english_pro_state', JSON.stringify(appState));
+            // Reiniciar historial al cambiar de tier principal
+            appState.studiedHistory = { prompts: [], shadow: [], listening: [], quizzes: [] };
+            localStorage.setItem('english_pro_universal_state', JSON.stringify(appState));
 
-            document.getElementById('header-badge').innerText = title;
             document.getElementById('profile-modal').classList.add('hidden');
-            
-            currentCategory = categoryKey;
-            currentCard = 0;
-            currentQuizIndex = 0;
-            setDynamicRankBanner();
             loadProgressiveLesson();
             updateUIStats();
         }
 
         function checkInitialFocus() {
-            if (!appState.selectedFocus || !appState.userName) {
+            if (!appState.tierKey || !appState.userName) {
                 document.getElementById('profile-modal').classList.remove('hidden');
             } else {
                 document.getElementById('profile-modal').classList.add('hidden');
-                document.getElementById('header-badge').innerText = appState.focusTitle || 'Beginner';
-                currentCategory = appState.selectedFocus;
-                setDynamicRankBanner();
                 loadProgressiveLesson();
                 updateUIStats();
             }
         }
 
-        // FUNCIÓN DE BARAJA ALEATORIA (SHUFFLE) PARA EVITAR REPETICIÓN
         function shuffleArray(array) {
             let arr = [...array];
             for (let i = arr.length - 1; i > 0; i--) {
@@ -1034,37 +725,79 @@
             return arr;
         }
 
-        // CARGA LECCIÓN CON SELECCIÓN ALEATORIA DE 10 PREGUNTAS DEL POOL
+        // MOTOR DE CARGA INTELIGENTE CON EXCLUSIÓN DE HISTORIAL
         function loadProgressiveLesson() {
-            const data = profileData[currentCategory] || profileData['beginner'];
+            const data = universalData[appState.tierKey] || universalData['beginner'];
             
-            const promptIdx = Math.floor(Math.random() * data.prompts.length);
-            const currentPrompt = data.prompts[promptIdx];
-            document.getElementById('prompt-title').innerText = `${currentPrompt.title} (Level ${appState.level})`;
+            if (!appState.studiedHistory) {
+                appState.studiedHistory = { prompts: [], shadow: [], listening: [], quizzes: [] };
+            }
+
+            // 1. PROMPT DE SPEAKING (Excluye vistos)
+            let availPrompts = (data.prompts || []).filter(p => !appState.studiedHistory.prompts.includes(p.id));
+            if (availPrompts.length === 0) {
+                appState.studiedHistory.prompts = [];
+                availPrompts = data.prompts || [];
+            }
+            const currentPrompt = availPrompts[Math.floor(Math.random() * availPrompts.length)];
+            appState.studiedHistory.prompts.push(currentPrompt.id);
+            document.getElementById('prompt-title').innerText = `${currentPrompt.title} (${appState.tierTitle})`;
             document.getElementById('prompt-text').innerText = '"' + currentPrompt.text + '"';
 
-            const shadowIdx = Math.floor(Math.random() * data.shadowTexts.length);
-            document.getElementById('shadow-text').innerText = `"${data.shadowTexts[shadowIdx]}"`;
+            // 2. SHADOWING (Excluye vistos)
+            let availShadows = (data.shadowTexts || []).filter(s => !appState.studiedHistory.shadow.includes(s));
+            if (availShadows.length === 0) {
+                appState.studiedHistory.shadow = [];
+                availShadows = data.shadowTexts || [];
+            }
+            const currentShadow = availShadows[Math.floor(Math.random() * availShadows.length)];
+            appState.studiedHistory.shadow.push(currentShadow);
+            document.getElementById('shadow-text').innerText = `"${currentShadow}"`;
 
-            const listenIdx = Math.floor(Math.random() * data.listeningSnippets.length);
-            currentListeningTarget = data.listeningSnippets[listenIdx];
+            // 3. LISTENING (Excluye vistos)
+            let availListening = (data.listeningSnippets || []).filter(l => !appState.studiedHistory.listening.includes(l));
+            if (availListening.length === 0) {
+                appState.studiedHistory.listening = [];
+                availListening = data.listeningSnippets || [];
+            }
+            currentListeningTarget = availListening[Math.floor(Math.random() * availListening.length)];
+            appState.studiedHistory.listening.push(currentListeningTarget);
 
-            // Genera un set aleatorio de 10 preguntas del pool cada vez que inicia o sube de nivel
-            const pool = data.quizzesPool || [];
-            activeQuizzes = shuffleArray(pool).slice(0, 10);
+            // 4. QUIZZES POOL (Excluye vistos y toma hasta 10)
+            let availQuizzes = (data.quizzesPool || []).filter(q => !appState.studiedHistory.quizzes.includes(q.id));
+            if (availQuizzes.length < 4) {
+                appState.studiedHistory.quizzes = [];
+                availQuizzes = data.quizzesPool || [];
+            }
+            activeQuizzes = shuffleArray(availQuizzes).slice(0, 10);
+            activeQuizzes.forEach(q => {
+                if (!appState.studiedHistory.quizzes.includes(q.id)) {
+                    appState.studiedHistory.quizzes.push(q.id);
+                }
+            });
+
+            localStorage.setItem('english_pro_universal_state', JSON.stringify(appState));
 
             currentCard = 0;
             currentQuizIndex = 0;
             quizResultsLog = [];
             
+            // LIMPIEZA TOTAL DE CAMPOS
+            document.getElementById('user-response').value = '';
+            document.getElementById('feedback-box').innerHTML = '<p class="text-slate-400">Write or speak your thoughts to get detailed feedback.</p>';
+            document.getElementById('feedback-status').innerText = 'Ready.';
+            
             document.getElementById('quiz-options').classList.remove('hidden');
             document.getElementById('error-repair-container').classList.remove('hidden');
             document.getElementById('quiz-report-container').classList.add('hidden');
             document.getElementById('quiz-report-list').innerHTML = '';
+            
             document.getElementById('shadow-user-input').value = '';
             document.getElementById('shadow-result').innerHTML = '';
+            
             document.getElementById('listening-input').value = '';
             document.getElementById('listening-result').innerHTML = '';
+            document.getElementById('listening-hint').innerText = "Listen carefully—no spoilers here!";
 
             updateCard();
             loadQuizQuestion();
@@ -1149,7 +882,7 @@
             let correctCount = quizResultsLog.filter(item => item.correct).length;
             const quizScore = Math.round((correctCount / totalQuestions) * 100);
             appState.lastQuizScore = quizScore;
-            localStorage.setItem('english_pro_state', JSON.stringify(appState));
+            localStorage.setItem('english_pro_universal_state', JSON.stringify(appState));
 
             document.getElementById('quiz-options').classList.add('hidden');
             document.getElementById('error-repair-container').classList.add('hidden');
@@ -1168,14 +901,14 @@
                         <p class="font-bold">#${idx + 1} ${log.title} - ${log.correct ? '✓ Correct' : '❌ Incorrect'}</p>
                         <p class="text-slate-400">Task: ${log.prompt}</p>
                         <p class="text-slate-300">Your Answer: <strong class="text-white">${log.userAnswer}</strong></p>
-                        ${!log.correct ? `<p class="text-emerald-400 mt-1">Friendly Tip: Expected structure was <strong>${log.expected}</strong></p>` : ''}
+                        ${!log.correct ? `<p class="text-emerald-400 mt-1">Expected structure: <strong>${log.expected}</strong></p>` : ''}
                     `;
                 } else {
                     itemDiv.innerHTML = `
                         <p class="font-bold">#${idx + 1} ${log.title} - ${log.correct ? '✓ Correct' : '❌ Incorrect'}</p>
                         <p class="text-slate-400">${log.prompt}</p>
                         <p class="text-slate-300">Your Choice: <strong class="text-white">${log.selected}</strong></p>
-                        ${!log.correct ? `<p class="text-emerald-400 mt-1">Friendly Tip: Correct option was <strong>${log.expected}</strong></p>` : ''}
+                        ${!log.correct ? `<p class="text-emerald-400 mt-1">Correct option: <strong>${log.expected}</strong></p>` : ''}
                     `;
                 }
                 reportList.appendChild(itemDiv);
@@ -1187,9 +920,7 @@
         }
 
         function playListeningAudio() {
-            if (window.speechSynthesis.speaking) {
-                window.speechSynthesis.cancel();
-            }
+            if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
             const utterance = new SpeechSynthesisUtterance(currentListeningTarget);
             utterance.lang = 'en-US';
             utterance.rate = 0.9;
@@ -1214,7 +945,7 @@
                 markStep('listening', 'badge-listening');
             } else {
                 const wordCount = currentListeningTarget.split(' ').length;
-                resultBox.innerHTML = `<span class="text-amber-400 font-semibold">⚠️ Not quite right. There's a typo or wrong word! (Hint: ${wordCount} words. Listen again!)</span>`;
+                resultBox.innerHTML = `<span class="text-amber-400 font-semibold">⚠️ Not quite right (Hint: ${wordCount} words. Listen again!)</span>`;
             }
         }
 
@@ -1222,9 +953,7 @@
         let isShadowingRecording = false;
 
         function speakShadowText() {
-            if (window.speechSynthesis.speaking) {
-                window.speechSynthesis.cancel();
-            }
+            if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
             const text = document.getElementById('shadow-text').innerText;
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = 'en-US';
@@ -1238,7 +967,7 @@
             const resultBox = document.getElementById('shadow-result');
 
             if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                showCustomModal("Browser Notice", "Speech recognition is not supported in this browser. You can type what you practiced!", "⚠️");
+                showCustomModal("Browser Notice", "Speech recognition is not supported in this browser.", "⚠️");
                 return;
             }
 
@@ -1250,25 +979,27 @@
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             recognition = new SpeechRecognition();
             recognition.lang = 'en-US';
-            recognition.interimResults = false;
-            recognition.maxAlternatives = 1;
+            recognition.interimResults = true;
+            recognition.continuous = true;
+
+            let finalTranscript = textarea.value ? textarea.value + " " : "";
 
             recognition.onstart = function() {
                 isShadowingRecording = true;
                 micBtn.className = 'bg-rose-500/20 border border-rose-500/40 text-rose-400 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 animate-pulse';
-                statusText.innerText = 'Listening your voice...';
+                statusText.innerText = 'Listening (Click to Stop)...';
             };
 
             recognition.onresult = function(event) {
-                const spokenText = event.results[0][0].transcript.trim();
-                textarea.value = spokenText;
-                resultBox.innerHTML = '<span class="text-emerald-400 font-bold">🎯 Voice captured successfully! Click verify below.</span>';
-            };
-
-            recognition.onerror = function() {
-                isShadowingRecording = false;
-                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-1.5';
-                statusText.innerText = 'Record Voice (Mic)';
+                let interimTranscript = '';
+                for (let i = event.resultIndex; i < event.results.length; ++i) {
+                    if (event.results[i].isFinal) {
+                        finalTranscript += event.results[i][0].transcript + ' ';
+                    } else {
+                        interimTranscript += event.results[i][0].transcript;
+                    }
+                }
+                textarea.value = finalTranscript + interimTranscript;
             };
 
             recognition.onend = function() {
@@ -1277,12 +1008,7 @@
                 statusText.innerText = 'Record Voice (Mic)';
             };
 
-            if (window.speechSynthesis.speaking) {
-                window.speechSynthesis.cancel();
-            }
-            setTimeout(() => {
-                recognition.start();
-            }, 300);
+            recognition.start();
         }
 
         function verifyShadowingPractice() {
@@ -1299,11 +1025,7 @@
         }
 
         function getCurrentCards() {
-            const data = profileData[currentCategory] || profileData['beginner'];
-            if (data.flashcardsSets && data.flashcardsSets.length > 0) {
-                const setIdx = (appState.level || 1) % data.flashcardsSets.length;
-                return data.flashcardsSets[setIdx];
-            }
+            const data = universalData[appState.tierKey] || universalData['beginner'];
             return data.flashcards || [];
         }
 
@@ -1343,7 +1065,7 @@
             const textarea = document.getElementById('user-response');
 
             if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                showCustomModal("Browser Notice", "Speech recognition is not supported in this browser. You can type freely!", "⚠️");
+                showCustomModal("Browser Notice", "Speech recognition is not supported in this browser.", "⚠️");
                 return;
             }
 
@@ -1355,24 +1077,27 @@
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             recognition = new SpeechRecognition();
             recognition.lang = 'en-US';
-            recognition.interimResults = false;
-            recognition.maxAlternatives = 1;
+            recognition.interimResults = true;
+            recognition.continuous = true;
+
+            let finalTranscript = textarea.value ? textarea.value + " " : "";
 
             recognition.onstart = function() {
                 isRecording = true;
                 micBtn.className = 'bg-rose-500/20 border border-rose-500/40 text-rose-400 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 animate-pulse';
-                statusText.innerText = 'Listening...';
+                statusText.innerText = 'Listening (Click to Stop)...';
             };
 
             recognition.onresult = function(event) {
-                const result = event.results[0][0];
-                textarea.value = result.transcript;
-            };
-
-            recognition.onerror = function() {
-                isRecording = false;
-                micBtn.className = 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/30 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5';
-                statusText.innerText = 'Start Speaking (Mic)';
+                let interimTranscript = '';
+                for (let i = event.resultIndex; i < event.results.length; ++i) {
+                    if (event.results[i].isFinal) {
+                        finalTranscript += event.results[i][0].transcript + ' ';
+                    } else {
+                        interimTranscript += event.results[i][0].transcript;
+                    }
+                }
+                textarea.value = finalTranscript + interimTranscript;
             };
 
             recognition.onend = function() {
@@ -1384,7 +1109,7 @@
             recognition.start();
         }
 
-       function evaluateResponse() {
+        function evaluateResponse() {
             const text = document.getElementById('user-response').value.trim();
             const box = document.getElementById('feedback-box');
             
@@ -1394,52 +1119,43 @@
             }
 
             const wordCount = text.split(/\s+/).length;
-            const charCount = text.length;
-
-            // Algoritmo de evaluación estricto basado en longitud y complejidad
-            let speakingScore = 50; // Empezamos desde abajo
+            let speakingScore = 50;
             let feedbackMessage = "";
 
             if (wordCount < 5) {
                 speakingScore = 60;
-                feedbackMessage = "Too short! A professional technical explanation requires more detail and complete sentences.";
+                feedbackMessage = "Too short! Expand your explanation with more details.";
             } else if (wordCount >= 5 && wordCount < 15) {
                 speakingScore = 78;
-                feedbackMessage = "Good effort, but try to expand your explanation with technical terms or reasons.";
+                feedbackMessage = "Good effort, but try to elaborate further.";
             } else if (wordCount >= 15 && wordCount < 30) {
                 speakingScore = 88;
-                feedbackMessage = "Solid explanation! Good flow and solid sentence structure.";
+                feedbackMessage = "Solid explanation! Great sentence flow.";
             } else {
                 speakingScore = 96;
-                feedbackMessage = "Brilliant execution! Outstanding technical fluency, rich vocabulary, and clear details.";
+                feedbackMessage = "Brilliant fluency and vocabulary execution!";
             }
 
-            // Guardamos la puntuación real en el estado global
             appState.lastSpeakingScore = speakingScore;
-            localStorage.setItem('english_pro_state', JSON.stringify(appState));
+            localStorage.setItem('english_pro_universal_state', JSON.stringify(appState));
 
             let scoreColor = speakingScore >= 80 ? 'text-emerald-400' : 'text-amber-400';
 
-            let feedbackHTML = `
+            box.innerHTML = `
                 <div class="space-y-2">
                     <p class="${scoreColor} font-bold">Speaking Score: ${speakingScore}%</p>
-                    <p><strong>Word Count:</strong> ${wordCount} words (${charCount} chars)</p>
+                    <p><strong>Word Count:</strong> ${wordCount} words</p>
                     <p class="text-slate-300"><strong>Tutor Feedback:</strong> ${feedbackMessage}</p>
                     <p class="text-emerald-400 text-xs font-semibold mt-2">✓ Step 1 completed successfully!</p>
                 </div>
             `;
-
-            box.innerHTML = feedbackHTML;
             document.getElementById('feedback-status').innerText = `Evaluated (${speakingScore}%).`;
             markStep('speaking', 'badge-speaking');
         }
 
         function speakText() {
-            if (window.speechSynthesis.speaking) {
-                window.speechSynthesis.cancel();
-            }
-            const text = document.getElementById('prompt-text').innerText;
-            const utterance = new SpeechSynthesisUtterance(text);
+            if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(document.getElementById('prompt-text').innerText);
             utterance.lang = 'en-US';
             window.speechSynthesis.speak(utterance);
         }
