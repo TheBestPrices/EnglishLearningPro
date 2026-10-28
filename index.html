@@ -1072,7 +1072,7 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        function checkListeningDictation() {
+       function checkListeningDictation() {
             const userText = document.getElementById('listening-input').value.trim().toLowerCase();
             const targetText = currentListeningTarget.toLowerCase();
             const resultBox = document.getElementById('listening-result');
@@ -1082,16 +1082,16 @@
                 return;
             }
 
-            const cleanUser = userText.replace(/[^a-z0-9]/g, '');
-            const cleanTarget = targetText.replace(/[^a-z0-9]/g, '');
+            // Normalizamos quitando puntuación y espacios extras para comparar palabra por palabra o limpieza estricta
+            const cleanUser = userText.replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
+            const cleanTarget = targetText.replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
 
-            if (cleanUser === cleanTarget || cleanUser.includes(cleanTarget) || cleanTarget.includes(cleanUser)) {
+            if (cleanUser === cleanTarget) {
                 resultBox.innerHTML = '<span class="text-emerald-400 font-bold">🎯 Spot on! Excellent ear. Step 4 completed!</span>';
                 markStep('listening', 'badge-listening');
             } else {
-                // NO MUESTRA LA RESPUESTA - DA OPORTUNIDAD DE NUEVO CON PISTA SUTIL
                 const wordCount = currentListeningTarget.split(' ').length;
-                resultBox.innerHTML = `<span class="text-amber-400 font-semibold">⚠️ Not quite right. Keep trying! (Hint: It has ${wordCount} words. Listen to the audio again!)</span>`;
+                resultBox.innerHTML = `<span class="text-amber-400 font-semibold">⚠️ Not quite right. There's a typo or wrong word! (Hint: ${wordCount} words. Listen again!)</span>`;
             }
         }
 
