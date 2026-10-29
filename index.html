@@ -99,7 +99,7 @@
                     </h1>
                 </div>
                 <button onclick="startTutorialOnly()" class="sm:hidden bg-sky-100 text-sky-700 border border-sky-200 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1 shadow-sm">
-                    <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Help
+                    <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Tutorial
                 </button>
             </div>
 
@@ -142,7 +142,7 @@
                     </div>
 
                     <div class="flex-grow">
-                        <span id="tier-badge" class="text-[10px] font-extrabold uppercase tracking-widest text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">Tier: Beginner (Español de Apoyo)</span>
+                        <span id="tier-badge" class="text-[10px] font-extrabold uppercase tracking-widest text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">Tier: Beginner (Bilingüe)</span>
                         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 tracking-tight" id="welcome-title">Welcome back!</h2>
                         <p class="text-slate-600 mt-1.5 text-xs sm:text-sm bg-white/80 border border-slate-200 px-4 py-2.5 rounded-2xl italic shadow-sm" id="mascot-bubble">
                             "¡Lecciones bilingües diseñadas para entender desde cero absoluto! Al completar 30 lecciones pasaremos a full inglés."
@@ -198,9 +198,9 @@
                                 <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Step 1: Lesson & Social Context (Bilingual)
                             </span>
                         </div>
-                        <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mb-2.5" id="prompt-title">Lesson Title</h3>
+                        <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mb-2.5" id="prompt-title">Cargando lección...</h3>
                         <p class="text-slate-700 text-xs sm:text-sm bg-slate-50 p-4.5 rounded-2xl border border-slate-200 leading-relaxed shadow-inner mb-4 font-medium" id="prompt-text">
-                            Loading lesson...
+                            Espere un momento...
                         </p>
 
                         <!-- Guía de Respuestas Formales vs Informales -->
@@ -466,7 +466,7 @@
         </div>
     </div>
 
-    <!-- INITIAL PROFILE & NAME MODAL -->
+    <!-- INITIAL PROFILE & NAME MODAL (OBLIGATORIO AL INICIO) -->
     <div id="profile-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xl z-50 flex items-center justify-center hidden p-4">
         <div class="vibrant-card max-w-sm w-full rounded-3xl p-6 shadow-2xl border border-slate-200">
             <div class="text-center mb-5">
@@ -474,18 +474,18 @@
                     <i data-lucide="zap" class="w-6 h-6"></i>
                 </div>
                 <h3 class="font-extrabold text-xl text-slate-900 tracking-tight">Personalize Profile</h3>
-                <p class="text-xs text-slate-500 mt-1 font-medium">Enter your name and select your learning tier:</p>
+                <p class="text-xs text-slate-500 mt-1 font-medium">Ingresa tu nombre y selecciona tu nivel (¡Una vez elegido no se podrá cambiar!):</p>
             </div>
 
             <div class="mb-4.5">
-                <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-1.5">Your Name:</label>
-                <input type="text" id="user-name-input" value="" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Enter your name...">
+                <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-1.5">Tu Nombre:</label>
+                <input type="text" id="user-name-input" value="" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Ej. Kevin...">
             </div>
 
-            <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">Select Tier:</label>
+            <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">Selecciona tu Nivel:</label>
             <div class="space-y-2.5 mb-2">
                 <button onclick="saveUserProfileAndStart('Beginner', 'beginner')" class="w-full text-left bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 p-3.5 rounded-2xl text-xs text-slate-800 transition flex items-center justify-between cursor-pointer font-bold shadow-sm">
-                    <span>🌱 Beginner (Absolute Zero - Bilingual)</span>
+                    <span>🌱 Beginner (Bilingüe / Desde Cero)</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-600"></i>
                 </button>
                 <button onclick="saveUserProfileAndStart('Intermediate', 'intermediate')" class="w-full text-left bg-sky-50 hover:bg-sky-100 border border-sky-200 p-3.5 rounded-2xl text-xs text-slate-800 transition flex items-center justify-between cursor-pointer font-bold shadow-sm">
@@ -523,243 +523,6 @@
             petEmoji: null,
             unlockedPets: ['owl']
         };
-
-        function checkStreakExpiration() {
-            if (!appState.lastCompletedDate) return;
-            const lastDate = new Date(appState.lastCompletedDate);
-            const today = new Date();
-            lastDate.setHours(0,0,0,0);
-            today.setHours(0,0,0,0);
-            const diffTime = today - lastDate;
-            const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
-            if (diffDays > 1) {
-                appState.streak = 0;
-                localStorage.setItem('english_pro_nextgen_state', JSON.stringify(appState));
-            }
-        }
-        checkStreakExpiration();
-
-        function showCustomModal(title, message, icon = "✨") {
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-message').innerText = message;
-            document.getElementById('modal-icon').innerText = icon;
-            document.getElementById('custom-modal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('custom-modal').classList.add('hidden');
-        }
-
-        let currentTutorialStep = 0;
-        const tutorialSteps = [
-            {
-                title: "Welcome to English Pro! 🦉",
-                text: "Esta guía rápida te mostrará cómo completar tus sesiones diarias, usar el micrófono y practicar situaciones reales."
-            },
-            {
-                title: "1. 5 Core Steps Daily 🚀",
-                text: "Completa los 5 pasos diarios: Lección y Contexto, Tarjetas de vocabulario, Gramática básica, Listening y Frases cortas."
-            },
-            {
-                title: "2. Microphone 🎙️",
-                text: "¡Toca el botón de micrófono para hablar y practicar tu pronunciación en inglés!"
-            },
-            {
-                title: "3. Cambio Automático tras 30 Lecciones 🔥",
-                text: "Al completar 30 lecciones en Beginner con ayuda en español, la app subirá de nivel automáticamente a Full Inglés."
-            }
-        ];
-
-        function startTutorialOnly() {
-            currentTutorialStep = 0;
-            renderTutorialStep();
-            document.getElementById('tutorial-modal').classList.remove('hidden');
-        }
-
-        function renderTutorialStep() {
-            const step = tutorialSteps[currentTutorialStep];
-            document.getElementById('tutorial-step-indicator').innerText = `Step ${currentTutorialStep + 1} of ${tutorialSteps.length}`;
-            document.getElementById('tutorial-title').innerText = step.title;
-            document.getElementById('tutorial-text').innerText = step.text;
-
-            const prevBtn = document.getElementById('tutorial-prev-btn');
-            const nextBtn = document.getElementById('tutorial-next-btn');
-
-            if (currentTutorialStep === 0) {
-                prevBtn.classList.add('hidden');
-            } else {
-                prevBtn.classList.remove('hidden');
-            }
-
-            if (currentTutorialStep === tutorialSteps.length - 1) {
-                nextBtn.innerText = "¡Configurar mi perfil! ✨";
-            } else {
-                nextBtn.innerText = "Next Step ➔";
-            }
-        }
-
-        function nextTutorialStep() {
-            currentTutorialStep++;
-            if (currentTutorialStep >= tutorialSteps.length) {
-                document.getElementById('tutorial-modal').classList.add('hidden');
-                document.getElementById('profile-modal').classList.remove('hidden');
-            } else {
-                renderTutorialStep();
-            }
-        }
-
-        function prevTutorialStep() {
-            if (currentTutorialStep > 0) {
-                currentTutorialStep--;
-                renderTutorialStep();
-            }
-        }
-
-        function openPetShop() {
-            const canUnlock = appState.streak >= 5 || appState.unlockedPets.length > 1;
-            document.getElementById('status-penguin').innerText = appState.unlockedPets.includes('penguin') ? "Unlocked ✓" : (canUnlock ? "Unlocked!" : "🔒 5d");
-            document.getElementById('status-cat').innerText = appState.unlockedPets.includes('cat') ? "Unlocked ✓" : (canUnlock ? "Unlocked!" : "🔒 5d");
-            document.getElementById('pet-shop-modal').classList.remove('hidden');
-        }
-
-        function selectPet(petKey, emoji) {
-            if (petKey !== 'owl' && appState.streak < 5 && !appState.unlockedPets.includes(petKey)) {
-                showCustomModal("Pet Locked 🔒", "Necesitas una racha de 5 días para desbloquear esta mascota.", "🐾");
-                return;
-            }
-            if (!appState.unlockedPets.includes(petKey)) appState.unlockedPets.push(petKey);
-            appState.selectedPet = petKey;
-            appState.petEmoji = emoji;
-            localStorage.setItem('english_pro_nextgen_state', JSON.stringify(appState));
-            
-            const mascotBox = document.getElementById('mascot-widget-box');
-            mascotBox.classList.remove('hidden');
-            document.getElementById('mascot-emoji').innerText = emoji;
-
-            document.getElementById('pet-shop-modal').classList.add('hidden');
-            showCustomModal("Companion Selected! ✨", `¡Tu compañero ${emoji} está activo!`, "🐾");
-        }
-
-        function bypassUnlockForTesting() {
-            appState.unlockedPets = ['owl', 'penguin', 'cat'];
-            localStorage.setItem('english_pro_nextgen_state', JSON.stringify(appState));
-            openPetShop();
-            showCustomModal("Dev Mode", "¡Todas las mascotas desbloqueadas!", "⚡");
-        }
-
-        function updateUIStats() {
-            document.getElementById('streak-count').innerText = appState.streak + 'd';
-            document.getElementById('terms-count').innerText = appState.lessonsCompleted || 0;
-            document.getElementById('user-tier').innerText = appState.tierTitle;
-            document.getElementById('tier-badge').innerText = `Tier: ${appState.tierTitle} ${appState.tierKey === 'beginner' ? '(Bilingüe)' : ''}`;
-            document.getElementById('header-badge').innerText = appState.tierTitle;
-            document.getElementById('welcome-title').innerText = `Welcome back, ${appState.userName || 'Friend'}!`;
-
-            if (appState.petEmoji) {
-                const mascotBox = document.getElementById('mascot-widget-box');
-                mascotBox.classList.remove('hidden');
-                document.getElementById('mascot-emoji').innerText = appState.petEmoji;
-            }
-
-            checkSessionProgress();
-        }
-
-        function checkSessionProgress() {
-            let completedCount = Object.values(appState.sessionSteps).filter(Boolean).length;
-            document.getElementById('session-progress-text').innerText = `${completedCount} / 5 Completed`;
-            document.getElementById('session-bar').style.width = `${(completedCount / 5) * 100}%`;
-
-            const claimBtn = document.getElementById('claim-btn');
-            let today = new Date().toDateString();
-            
-            if (completedCount === 5) {
-                if (appState.lastCompletedDate === today) {
-                    claimBtn.className = "mt-3.5 w-full bg-slate-100 text-emerald-700 font-extrabold py-2.5 rounded-xl text-xs cursor-default transition border border-emerald-200 shadow-sm";
-                    claimBtn.innerText = "✨ ¡Sesión registrada hoy!";
-                    claimBtn.disabled = true;
-                } else {
-                    claimBtn.className = "mt-3.5 w-full bg-gradient-to-r from-emerald-500 to-sky-500 text-white font-extrabold py-2.5 rounded-xl text-xs cursor-pointer transition shadow-lg shadow-emerald-500/25";
-                    claimBtn.innerText = "🚀 Reclamar Progreso y Lección";
-                    claimBtn.disabled = false;
-                }
-            } else {
-                claimBtn.className = "mt-3.5 w-full bg-slate-100 text-slate-400 font-bold py-2.5 rounded-xl text-xs cursor-not-allowed transition border border-slate-200 shadow-sm";
-                claimBtn.innerText = `🔒 Completa los 5 pasos primero`;
-                claimBtn.disabled = true;
-            }
-        }
-
-        function loadNewRandomBatch() {
-            loadProgressiveLesson();
-            resetStepBadgesUI();
-            showCustomModal("Fresh Lesson Loaded! 🔄", "¡Nueva lección cargada con éxito!", "✨");
-        }
-
-        function markStepUI(stepKey, badgeId) {
-            appState.sessionSteps[stepKey] = true;
-            const badge = document.getElementById(badgeId);
-            if(badge) {
-                badge.className = "text-[9px] bg-emerald-500 text-white px-2 py-0.5 rounded-full font-extrabold shadow-sm";
-                badge.innerText = "Done ✓";
-            }
-        }
-
-        function resetStepBadgesUI() {
-            appState.sessionSteps = { speaking: false, flashcards: false, grammar: false, listening: false, shadowing: false };
-            ['badge-speaking', 'badge-flashcards', 'badge-grammar', 'badge-listening', 'badge-shadowing'].forEach(bId => {
-                const badge = document.getElementById(bId);
-                if(badge) {
-                    badge.className = "text-[9px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full font-bold";
-                    badge.innerText = "Pending";
-                }
-            });
-            checkSessionProgress();
-        }
-
-        function markStep(stepKey, badgeId) {
-            markStepUI(stepKey, badgeId);
-            localStorage.setItem('english_pro_nextgen_state', JSON.stringify(appState));
-            checkSessionProgress();
-        }
-
-        function claimSession() {
-            let today = new Date().toDateString();
-            if (appState.lastCompletedDate === today) return;
-            appState.streak += 1;
-            appState.lessonsCompleted = (appState.lessonsCompleted || 0) + 1;
-            appState.termsMastered += 10;
-            appState.lastCompletedDate = today;
-
-            // REVISAR SI LLEGÓ A 30 LECCIONES PARA SUBIR AUTOMÁTICAMENTE DE NIVEL
-            if (appState.tierKey === 'beginner' && appState.lessonsCompleted >= 30) {
-                appState.tierKey = 'intermediate';
-                appState.tierTitle = 'Intermediate';
-                localStorage.setItem('english_pro_nextgen_state', JSON.stringify(appState));
-                updateUIStats();
-                showCustomModal("¡Felicidades! 🎉🔥", "¡Increíble! Has completado tus 30 lecciones de base. ¡Has subido automáticamente al nivel INTERMEDIATE de pura inmersión en inglés!", "👑");
-                loadProgressiveLesson();
-                return;
-            }
-
-            localStorage.setItem('english_pro_nextgen_state', JSON.stringify(appState));
-            updateUIStats();
-            showCustomModal("¡Lección Registrada! 🎉", `Llevas ${appState.lessonsCompleted}/30 lecciones en Beginner. ¡Vas con todo!`, "🚀");
-            loadProgressiveLesson();
-            resetStepBadgesUI();
-        }
-
-        function switchTab(tabName) {
-            document.querySelectorAll('[id^="content-"]').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(el => {
-                el.classList.remove('active', 'bg-gradient-to-r', 'from-sky-500', 'to-emerald-500', 'text-white', 'shadow-sm');
-                el.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
-            });
-
-            document.getElementById('content-' + tabName).classList.remove('hidden');
-            const activeBtn = document.getElementById('tab-' + tabName);
-            activeBtn.classList.add('active');
-            activeBtn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
-        }
 
         const universalData = {
             beginner: {
@@ -852,6 +615,241 @@
         let activeQuizzes = [];
         let activeFlashcards = [];
 
+        function checkStreakExpiration() {
+            if (!appState.lastCompletedDate) return;
+            const lastDate = new Date(appState.lastCompletedDate);
+            const today = new Date();
+            lastDate.setHours(0,0,0,0);
+            today.setHours(0,0,0,0);
+            const diffTime = today - lastDate;
+            const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+            if (diffDays > 1) {
+                appState.streak = 0;
+                localStorage.setItem('english_pro_nextgen_state', JSON.stringify(appState));
+            }
+        }
+        checkStreakExpiration();
+
+        function showCustomModal(title, message, icon = "✨") {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-message').innerText = message;
+            document.getElementById('modal-icon').innerText = icon;
+            document.getElementById('custom-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
+        }
+
+        let currentTutorialStep = 0;
+        const tutorialSteps = [
+            {
+                title: "Welcome to English Pro! 🦉",
+                text: "Esta guía rápida te mostrará cómo completar tus sesiones diarias, usar el micrófono y practicar situaciones reales."
+            },
+            {
+                title: "1. 5 Core Steps Daily 🚀",
+                text: "Completa los 5 pasos diarios: Lección y Contexto, Tarjetas de vocabulario, Gramática básica, Listening y Frases cortas."
+            },
+            {
+                title: "2. Microphone 🎙️",
+                text: "¡Toca el botón de micrófono para hablar y practicar tu pronunciación en inglés!"
+            },
+            {
+                title: "3. Camino al Nivel Superior 🔥",
+                text: "Al completar 30 lecciones en Beginner con ayuda en español, la app subirá de nivel automáticamente a Full Inglés."
+            }
+        ];
+
+        function startTutorialOnly() {
+            currentTutorialStep = 0;
+            renderTutorialStep();
+            document.getElementById('tutorial-modal').classList.remove('hidden');
+        }
+
+        function renderTutorialStep() {
+            const step = tutorialSteps[currentTutorialStep];
+            document.getElementById('tutorial-step-indicator').innerText = `Step ${currentTutorialStep + 1} of ${tutorialSteps.length}`;
+            document.getElementById('tutorial-title').innerText = step.title;
+            document.getElementById('tutorial-text').innerText = step.text;
+
+            const prevBtn = document.getElementById('tutorial-prev-btn');
+            const nextBtn = document.getElementById('tutorial-next-btn');
+
+            if (currentTutorialStep === 0) {
+                prevBtn.classList.add('hidden');
+            } else {
+                prevBtn.classList.remove('hidden');
+            }
+
+            if (currentTutorialStep === tutorialSteps.length - 1) {
+                nextBtn.innerText = "¡Comenzar a estudiar! 🚀";
+            } else {
+                nextBtn.innerText = "Next Step ➔";
+            }
+        }
+
+        function nextTutorialStep() {
+            currentTutorialStep++;
+            if (currentTutorialStep >= tutorialSteps.length) {
+                document.getElementById('tutorial-modal').classList.add('hidden');
+            } else {
+                renderTutorialStep();
+            }
+        }
+
+        function prevTutorialStep() {
+            if (currentTutorialStep > 0) {
+                currentTutorialStep--;
+                renderTutorialStep();
+            }
+        }
+
+        function openPetShop() {
+            const canUnlock = appState.streak >= 5 || appState.unlockedPets.length > 1;
+            document.getElementById('status-penguin').innerText = appState.unlockedPets.includes('penguin') ? "Unlocked ✓" : (canUnlock ? "Unlocked!" : "🔒 5d");
+            document.getElementById('status-cat').innerText = appState.unlockedPets.includes('cat') ? "Unlocked ✓" : (canUnlock ? "Unlocked!" : "🔒 5d");
+            document.getElementById('pet-shop-modal').classList.remove('hidden');
+        }
+
+        function selectPet(petKey, emoji) {
+            if (petKey !== 'owl' && appState.streak < 5 && !appState.unlockedPets.includes(petKey)) {
+                showCustomModal("Pet Locked 🔒", "Necesitas una racha de 5 días para desbloquear esta mascota.", "🐾");
+                return;
+            }
+            if (!appState.unlockedPets.includes(petKey)) appState.unlockedPets.push(petKey);
+            appState.selectedPet = petKey;
+            appState.petEmoji = emoji;
+            localStorage.setItem('english_pro_nextgen_state', JSON.stringify(appState));
+            
+            const mascotBox = document.getElementById('mascot-widget-box');
+            mascotBox.classList.remove('hidden');
+            document.getElementById('mascot-emoji').innerText = emoji;
+
+            document.getElementById('pet-shop-modal').classList.add('hidden');
+            showCustomModal("Companion Selected! ✨", `¡Tu compañero ${emoji} está activo!`, "🐾");
+        }
+
+        function bypassUnlockForTesting() {
+            appState.unlockedPets = ['owl', 'penguin', 'cat'];
+            localStorage.setItem('english_pro_nextgen_state', JSON.stringify(appState));
+            openPetShop();
+            showCustomModal("Dev Mode", "¡Todas las mascotas desbloqueadas!", "⚡");
+        }
+
+        function updateUIStats() {
+            document.getElementById('streak-count').innerText = appState.streak + 'd';
+            document.getElementById('lessons-count').innerText = appState.lessonsCompleted || 0;
+            document.getElementById('user-tier').innerText = appState.tierTitle;
+            document.getElementById('tier-badge').innerText = `Tier: ${appState.tierTitle} ${appState.tierKey === 'beginner' ? '(Bilingüe)' : ''}`;
+            document.getElementById('header-badge').innerText = appState.tierTitle;
+            document.getElementById('welcome-title').innerText = `Welcome back, ${appState.userName || 'Friend'}!`;
+
+            if (appState.petEmoji) {
+                const mascotBox = document.getElementById('mascot-widget-box');
+                mascotBox.classList.remove('hidden');
+                document.getElementById('mascot-emoji').innerText = appState.petEmoji;
+            }
+
+            checkSessionProgress();
+        }
+
+        function checkSessionProgress() {
+            let completedCount = Object.values(appState.sessionSteps).filter(Boolean).length;
+            document.getElementById('session-progress-text').innerText = `${completedCount} / 5 Completed`;
+            document.getElementById('session-bar').style.width = `${(completedCount / 5) * 100}%`;
+
+            const claimBtn = document.getElementById('claim-btn');
+            let today = new Date().toDateString();
+            
+            if (completedCount === 5) {
+                if (appState.lastCompletedDate === today) {
+                    claimBtn.className = "mt-3.5 w-full bg-slate-100 text-emerald-700 font-extrabold py-2.5 rounded-xl text-xs cursor-default transition border border-emerald-200 shadow-sm";
+                    claimBtn.innerText = "✨ ¡Sesión registrada hoy!";
+                    claimBtn.disabled = true;
+                } else {
+                    claimBtn.className = "mt-3.5 w-full bg-gradient-to-r from-emerald-500 to-sky-500 text-white font-extrabold py-2.5 rounded-xl text-xs cursor-pointer transition shadow-lg shadow-emerald-500/25";
+                    claimBtn.innerText = "🚀 Reclamar Progreso y Lección";
+                    claimBtn.disabled = false;
+                }
+            } else {
+                claimBtn.className = "mt-3.5 w-full bg-slate-100 text-slate-400 font-bold py-2.5 rounded-xl text-xs cursor-not-allowed transition border border-slate-200 shadow-sm";
+                claimBtn.innerText = `🔒 Completa los 5 pasos primero`;
+                claimBtn.disabled = true;
+            }
+        }
+
+        function loadNewRandomBatch() {
+            loadProgressiveLesson();
+            resetStepBadgesUI();
+            showCustomModal("Fresh Lesson Loaded! 🔄", "¡Nueva lección cargada con éxito!", "✨");
+        }
+
+        function markStepUI(stepKey, badgeId) {
+            appState.sessionSteps[stepKey] = true;
+            const badge = document.getElementById(badgeId);
+            if(badge) {
+                badge.className = "text-[9px] bg-emerald-500 text-white px-2 py-0.5 rounded-full font-extrabold shadow-sm";
+                badge.innerText = "Done ✓";
+            }
+        }
+
+        function resetStepBadgesUI() {
+            appState.sessionSteps = { speaking: false, flashcards: false, grammar: false, listening: false, shadowing: false };
+            ['badge-speaking', 'badge-flashcards', 'badge-grammar', 'badge-listening', 'badge-shadowing'].forEach(bId => {
+                const badge = document.getElementById(bId);
+                if(badge) {
+                    badge.className = "text-[9px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full font-bold";
+                    badge.innerText = "Pending";
+                }
+            });
+            checkSessionProgress();
+        }
+
+        function markStep(stepKey, badgeId) {
+            markStepUI(stepKey, badgeId);
+            localStorage.setItem('english_pro_nextgen_state', JSON.stringify(appState));
+            checkSessionProgress();
+        }
+
+        function claimSession() {
+            let today = new Date().toDateString();
+            if (appState.lastCompletedDate === today) return;
+            appState.streak += 1;
+            appState.lessonsCompleted = (appState.lessonsCompleted || 0) + 1;
+            appState.termsMastered += 10;
+            appState.lastCompletedDate = today;
+
+            if (appState.tierKey === 'beginner' && appState.lessonsCompleted >= 30) {
+                appState.tierKey = 'intermediate';
+                appState.tierTitle = 'Intermediate';
+                localStorage.setItem('english_pro_nextgen_state', JSON.stringify(appState));
+                updateUIStats();
+                showCustomModal("¡Felicidades! 🎉🔥", "¡Increíble! Has completado tus 30 lecciones de base. ¡Has subido automáticamente al nivel INTERMEDIATE de pura inmersión en inglés!", "👑");
+                loadProgressiveLesson();
+                return;
+            }
+
+            localStorage.setItem('english_pro_nextgen_state', JSON.stringify(appState));
+            updateUIStats();
+            showCustomModal("¡Lección Registrada! 🎉", `Llevas ${appState.lessonsCompleted}/30 lecciones en Beginner. ¡Vas con todo!`, "🚀");
+            loadProgressiveLesson();
+            resetStepBadgesUI();
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('[id^="content-"]').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('active', 'bg-gradient-to-r', 'from-sky-500', 'to-emerald-500', 'text-white', 'shadow-sm');
+                el.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+            });
+
+            document.getElementById('content-' + tabName).classList.remove('hidden');
+            const activeBtn = document.getElementById('tab-' + tabName);
+            activeBtn.classList.add('active');
+            activeBtn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+        }
+
         function saveUserProfileAndStart(title, tierKey) {
             const nameInput = document.getElementById('user-name-input').value.trim();
             if (!nameInput) {
@@ -867,16 +865,18 @@
             document.getElementById('profile-modal').classList.add('hidden');
             loadProgressiveLesson();
             updateUIStats();
+            startTutorialOnly();
         }
 
         function checkInitialFocus() {
-            // Si es la primera vez o no hay nombre, mostramos el tutorial y el modal de perfil
-            if (!appState.userName || appState.userName.trim() === "" || !appState.tutorialCompleted) {
-                startTutorialOnly();
+            loadProgressiveLesson();
+            updateUIStats();
+
+            // OBLIGATORIO: Si no hay nombre guardado, mostramos el modal de perfil de entrada
+            if (!appState.userName || appState.userName.trim() === "") {
+                document.getElementById('profile-modal').classList.remove('hidden');
             } else {
                 document.getElementById('profile-modal').classList.add('hidden');
-                loadProgressiveLesson();
-                updateUIStats();
             }
         }
 
