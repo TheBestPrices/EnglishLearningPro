@@ -110,27 +110,27 @@
                         <i data-lucide="book" class="w-3.5 h-3.5"></i> Bóveda
                     </button>
                     <button onclick="startTutorialOnly()" class="bg-sky-100 text-sky-700 border border-sky-200 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1 shadow-sm">
-                        <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Help
+                        <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Ayuda
                     </button>
                 </div>
             </div>
 
             <!-- Stats Bar -->
             <div class="flex items-center justify-center flex-wrap gap-2 text-xs w-full sm:w-auto">
-                <div class="flex items-center space-x-1.5 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200 font-semibold text-slate-700 shadow-sm">
+                <div class="flex items-center space-x-1.5 bg-slate-100 px-3.5 py-1.5 rounded-xl border border-slate-200 font-bold text-slate-700 shadow-sm">
                     <i data-lucide="award" class="w-3.5 h-3.5 text-purple-600"></i>
-                    <span>Tier: <strong class="text-slate-900" id="user-tier">Beginner</strong></span>
+                    <span>Nivel: <strong class="text-slate-900" id="user-tier">Beginner</strong> (Fijo)</span>
                 </div>
-                <div class="flex items-center space-x-1.5 bg-orange-50 px-3 py-1.5 rounded-xl border border-orange-200 font-semibold text-orange-700 shadow-sm">
+                <div class="flex items-center space-x-1.5 bg-orange-50 px-3.5 py-1.5 rounded-xl border border-orange-200 font-semibold text-orange-700 shadow-sm">
                     <i data-lucide="flame" class="w-3.5 h-3.5 text-orange-500"></i>
                     <span>Streak: <strong class="text-slate-900" id="streak-count">0d</strong></span>
                 </div>
-                <div class="flex items-center space-x-1.5 bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-200 font-semibold text-emerald-700 shadow-sm">
+                <div class="flex items-center space-x-1.5 bg-emerald-50 px-3.5 py-1.5 rounded-xl border border-emerald-200 font-semibold text-emerald-700 shadow-sm">
                     <i data-lucide="layers" class="w-3.5 h-3.5 text-emerald-600"></i>
                     <span>Vocab: <strong class="text-slate-900" id="vocab-vault-count">0</strong>/200</span>
                 </div>
                 <button onclick="openVocabularyVault()" class="hidden sm:flex bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 px-3.5 py-1.5 rounded-xl transition cursor-pointer items-center gap-1.5 text-xs font-bold shadow-sm">
-                    <i data-lucide="book" class="w-3.5 h-3.5"></i> Bóveda Vocabulario 📚
+                    <i data-lucide="book" class="w-3.5 h-3.5"></i> Bóveda 📚
                 </button>
                 <button onclick="startTutorialOnly()" class="hidden sm:flex bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 px-3.5 py-1.5 rounded-xl transition cursor-pointer items-center gap-1.5 text-xs font-bold shadow-sm">
                     <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Tutorial
@@ -157,10 +157,10 @@
                     </div>
 
                     <div class="flex-grow">
-                        <span id="tier-badge" class="text-[10px] font-extrabold uppercase tracking-widest text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">Modo Tutor Estricto (Reporte Final)</span>
+                        <span id="tier-badge" class="text-[10px] font-extrabold uppercase tracking-widest text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">Modo Tutor Estricto (Nivel Definitivo)</span>
                         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 tracking-tight" id="welcome-title">Welcome back!</h2>
                         <p class="text-slate-600 mt-1.5 text-xs sm:text-sm bg-white/80 border border-slate-200 px-4 py-2.5 rounded-2xl italic shadow-sm" id="mascot-bubble">
-                            "¡En Gramática te indicaré al instante si acertaste y al final te daré tu reporte con correcciones para aprender de tus errores!"
+                            "¡Tu nivel quedó establecido al registrarte! El tutor te guiará paso a paso por las 40 lecciones de este nivel."
                         </p>
                     </div>
                 </div>
@@ -250,7 +250,7 @@
                                 <i data-lucide="mic" class="w-4 h-4"></i> <span id="mic-status-text">Start Mic</span>
                             </button>
                         </div>
-                        <textarea id="user-response" rows="2" class="vibrant-input w-full rounded-2xl p-3.5 text-slate-800 focus:outline-none transition text-xs sm:text-sm leading-relaxed font-medium" placeholder="Escribe o practica tu respuesta oral..."></textarea>
+                        <textarea id="user-response" rows="2" class="vibrant-input w-full rounded-2xl p-3.5 text-slate-800 focus:outline-none transition text-xs sm:text-sm leading-relaxed font-medium" placeholder="Habla con el micro o escribe tu respuesta aquí..."></textarea>
                         
                         <div class="flex flex-wrap items-center justify-between mt-3.5 gap-2">
                             <button onclick="evaluateResponse()" class="bg-gradient-to-r from-sky-500 to-emerald-500 hover:from-sky-600 hover:to-emerald-600 text-white font-extrabold px-6 py-3 rounded-2xl text-xs transition flex items-center gap-2 shadow-lg shadow-emerald-500/25 cursor-pointer">
@@ -312,7 +312,7 @@
             </div>
         </div>
 
-        <!-- TAB 3: BASIC GRAMMAR (CON INMEDIATE FEEDBACK Y REPORTE FINAL) -->
+        <!-- TAB 3: BASIC GRAMMAR -->
         <div id="content-grammar" class="hidden space-y-4">
             <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-purple-100">
                 <div class="flex justify-between items-center mb-3.5">
@@ -417,11 +417,9 @@
                 <p class="text-xs text-slate-600 font-medium" id="report-summary-text">Resumen de tu desempeño</p>
             </div>
             
-            <div class="space-y-2 mb-5 max-h-56 overflow-y-auto pr-1" id="report-errors-container">
-                <!-- Se inyecta dinámicamente -->
-            </div>
+            <div class="space-y-2 mb-5 max-h-56 overflow-y-auto pr-1" id="report-errors-container"></div>
 
-            <button onclick="closeGrammarReportAndProceed()" id="report-action-btn" class="w-full bg-gradient-to-r from-purple-600 to-emerald-500 text-white font-extrabold py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg">
+            <button onclick="" id="report-action-btn" class="w-full bg-gradient-to-r from-purple-600 to-emerald-500 text-white font-extrabold py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg">
                 Continuar con Fase 4 (Listening) ➔
             </button>
         </div>
@@ -452,10 +450,10 @@
             </div>
             <div class="text-center mt-5 mb-4">
                 <span class="text-[10px] font-extrabold uppercase tracking-widest text-sky-700 bg-sky-100 px-3 py-1 rounded-full border border-sky-200" id="tutorial-step-indicator">Step 1 of 2</span>
-                <h3 class="font-extrabold text-xl text-slate-900 mt-2">Modo Tutor Estricto</h3>
+                <h3 class="font-extrabold text-xl text-slate-900 mt-2">Modo Tutor Estricto & Nivel Fijo</h3>
             </div>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed text-center mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200 shadow-inner font-medium" id="tutorial-text">
-                En Gramática verás el resultado al instante y recibirás un reporte detallado con correcciones al finalizar los 5 retos.
+                Tu nivel seleccionado al inicio es definitivo para guiarte a lo largo de las 40 lecciones del curso.
             </p>
             <div class="flex items-center justify-between gap-3">
                 <button onclick="prevTutorialStep()" id="tutorial-prev-btn" class="bg-slate-100 text-slate-600 px-4 py-2.5 rounded-2xl text-xs font-bold border border-slate-200 transition cursor-pointer hidden">Previous</button>
@@ -499,25 +497,33 @@
         </div>
     </div>
 
-    <!-- INITIAL PROFILE & NAME MODAL -->
+    <!-- INITIAL PROFILE & NAME MODAL (SOLO APARECE UNA VEZ) -->
     <div id="profile-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xl z-50 flex items-center justify-center hidden p-4">
         <div class="vibrant-card max-w-sm w-full rounded-3xl p-6 shadow-2xl border border-slate-200">
             <div class="text-center mb-5">
                 <div class="bg-gradient-to-tr from-sky-500 to-emerald-400 p-3.5 rounded-2xl text-white inline-block font-extrabold shadow-md mb-2.5">
                     <i data-lucide="zap" class="w-6 h-6"></i>
                 </div>
-                <h3 class="font-extrabold text-xl text-slate-900 tracking-tight">Personalize Profile</h3>
-                <p class="text-xs text-slate-500 mt-1 font-medium">Ingresa tu nombre y selecciona tu nivel:</p>
+                <h3 class="font-extrabold text-xl text-slate-900 tracking-tight">Registro de Estudiante</h3>
+                <p class="text-xs text-slate-500 mt-1 font-medium">Ingresa tu nombre y selecciona tu nivel definitivo:</p>
             </div>
             <div class="mb-4.5">
                 <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-1.5">Tu Nombre:</label>
                 <input type="text" id="user-name-input" value="" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Ej. Kevin...">
             </div>
-            <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">Selecciona tu Nivel:</label>
+            <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">Selecciona tu Nivel Definitivo:</label>
             <div class="space-y-2.5 mb-2">
                 <button onclick="saveUserProfileAndStart('Beginner', 'beginner')" class="w-full text-left bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 p-3.5 rounded-2xl text-xs text-slate-800 transition flex items-center justify-between cursor-pointer font-bold shadow-sm">
-                    <span>🌱 Beginner (Bilingüe / Desde Cero)</span>
+                    <span>🌱 Beginner (Desde Cero)</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-600"></i>
+                </button>
+                <button onclick="saveUserProfileAndStart('Intermediate', 'intermediate')" class="w-full text-left bg-sky-50 hover:bg-sky-100 border border-sky-200 p-3.5 rounded-2xl text-xs text-slate-800 transition flex items-center justify-between cursor-pointer font-bold shadow-sm">
+                    <span>⚡ Intermediate (Conversacional)</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-600"></i>
+                </button>
+                <button onclick="saveUserProfileAndStart('Advanced', 'advanced')" class="w-full text-left bg-purple-50 hover:bg-purple-100 border border-purple-200 p-3.5 rounded-2xl text-xs text-slate-800 transition flex items-center justify-between cursor-pointer font-bold shadow-sm">
+                    <span>🔥 Advanced (Nativo / Slang Pro)</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-purple-600"></i>
                 </button>
             </div>
         </div>
@@ -567,22 +573,53 @@
             { id: 15, term: "Coffee", def: "Bebida caliente.", es: "Café ☕", img: "☕" }
         ];
 
-        const universalData = {
+        // Bancos completos por Nivel (Beginner, Intermediate, Advanced)
+        const curriculumLevels = {
             beginner: {
                 prompts: [
                     { title: "Saludos y Presentaciones", text: "Aprende a presentarte educadamente.", formal: "Hello, my name is [Name].", informal: "Hey, I'm [Name]." },
                     { title: "Ubicaciones Básicas", text: "Pregunta por lugares clave.", formal: "Could you tell me where it is?", informal: "Where's the restroom?" },
-                    { title: "Ordenar Comida", text: "Pide alimentos o bebidas.", formal: "I would like a coffee.", informal: "Gimme a coffee!" },
-                    { title: "Estados de Ánimo", text: "Habla de cómo te sientes.", formal: "I am feeling great.", informal: "I'm good!" }
+                    { title: "Ordenar Comida", text: "Pide alimentos o bebidas.", formal: "I would like a coffee.", informal: "Gimme a coffee!" }
                 ],
-                shadowTexts: ["Hello, nice to meet you.", "Where is the door?", "I am very happy today.", "Thank you so much."],
-                listeningSnippets: ["Hello how are you", "Where is the water", "Thank you very much", "Good morning friend"],
+                shadowTexts: ["Hello, nice to meet you.", "Where is the door?", "I am very happy today."],
+                listeningSnippets: ["Hello how are you", "Where is the water", "Thank you very much"],
                 quizzesPool: [
                     { id: 'b_q1', type: "mc", title: "Verbo To Be (I)", desc: "I ___ a student.", options: [{ text: "A) am", correct: true }, { text: "B) is", correct: false }], correction: "La forma correcta para I es 'am'." },
                     { id: 'b_q2', type: "repair", title: "Completar Frase", desc: "He ___ my friend. (is/are)", answer: "is", correction: "Con terceras personas (He/She/It) se usa 'is'." },
                     { id: 'b_q3', type: "mc", title: "Pronombre femenino", desc: "Para decir 'ella' usas:", options: [{ text: "A) She", correct: true }, { text: "B) He", correct: false }], correction: "'She' es ella y 'He' es él." },
                     { id: 'b_q4', type: "repair", title: "Traducción", desc: "Traduce 'Hola':", answer: "hello", correction: "Hola en inglés se escribe 'hello'." },
                     { id: 'b_q5', type: "mc", title: "Verbo To Be (You)", desc: "You ___ smart.", options: [{ text: "A) are", correct: true }, { text: "B) am", correct: false }], correction: "Con You, We y They siempre se usa 'are'." }
+                ]
+            },
+            intermediate: {
+                prompts: [
+                    { title: "Planes de Viaje y Turismo", text: "Habla sobre tus próximos destinos turísticos.", formal: "I am planning to visit San Juan del Sur.", informal: "I'm heading to the beach this weekend." },
+                    { title: "Negocios y Reuniones", text: "Exprésate en entornos laborales.", formal: "Let's schedule a meeting for tomorrow morning.", informal: "Let's catch up tomorrow." },
+                    { title: "Tecnología y Proyectos", text: "Describe desarrollos de software y reparaciones.", formal: "I have configured the server successfully.", informal: "I got the system running smoothly." }
+                ],
+                shadowTexts: ["Could you give me a hand with this?", "I am looking forward to our next meeting.", "Let's build a robust application."],
+                listeningSnippets: ["Where should we go today", "I am working on a new project", "Let us schedule a meeting"],
+                quizzesPool: [
+                    { id: 'i_q1', type: "mc", title: "Present Perfect", desc: "I ___ finished my project.", options: [{ text: "A) have", correct: true }, { text: "B) has", correct: false }], correction: "Con I se utiliza el auxiliar 'have'." },
+                    { id: 'i_q2', type: "repair", title: "Pasado Simple", desc: "She ___ (go) to the store yesterday.", answer: "went", correction: "El pasado de go es 'went'." },
+                    { id: 'i_q3', type: "mc", title: "Modales (Habilidad)", desc: "___ you help me with this code?", options: [{ text: "A) Could", correct: true }, { text: "B) Should", correct: false }], correction: "'Could' es más educado para pedir favores." },
+                    { id: 'i_q4', type: "repair", title: "Condicionales", desc: "If I have time, I ___ visit you.", answer: "will", correction: "Primer condicional: If + present, will + verb." },
+                    { id: 'i_q5', type: "mc", title: "Gerundios", desc: "I enjoy ___ code in Godot 4.", options: [{ text: "A) coding", correct: true }, { text: "B) code", correct: false }], correction: "Después de 'enjoy' va el verbo en -ing." }
+                ]
+            },
+            advanced: {
+                prompts: [
+                    { title: "Native Idioms & Slang", text: "Domina expresiones idiomáticas nativas.", formal: "That requires significant effort.", informal: "That costs an arm and a leg!" },
+                    { title: "Discusiones Filosóficas y Técnicas", text: "Argumenta con fluidez profesional.", formal: "We must evaluate the architectural trade-offs.", informal: "We need to weigh our options carefully." }
+                ],
+                shadowTexts: ["It's raining cats and dogs outside.", "Let's hit the ground running.", "Break a leg on your presentation!"],
+                listeningSnippets: ["Piece of cake", "Hit the nail on the head", "Cost an arm and a leg"],
+                quizzesPool: [
+                    { id: 'a_q1', type: "mc", title: "Idiomatic Expression", desc: "To say something is extremely easy:", options: [{ text: "A) Piece of cake", correct: true }, { text: "B) Bite the bullet", correct: false }], correction: "'Piece of cake' significa pan comido." },
+                    { id: 'a_q2', type: "repair", title: "Subjunctive Mood", desc: "I insist that he ___ present.", answer: "be", correction: "En el subjuntivo inglés se usa la forma base 'be'." },
+                    { id: 'a_q3', type: "mc", title: "Advanced Vocabulary", desc: "Synonym for 'ubiquitous':", options: [{ text: "A) Omnipresent", correct: true }, { text: "B) Scarce", correct: false }], correction: "'Ubiquitous' significa que está en todas partes." },
+                    { id: 'a_q4', type: "repair", title: "Inversion", desc: "Hardly ___ I arrived when it started raining.", answer: "had", correction: "Estructura de inversión: Hardly had I..." },
+                    { id: 'a_q5', type: "mc", title: "Phrasal Verbs", desc: "To postpone a meeting:", options: [{ text: "A) Put off", correct: true }, { text: "B) Put up with", correct: false }], correction: "'Put off' significa posponer o aplazar." }
                 ]
             }
         };
@@ -594,7 +631,7 @@
         let activeQuizzes = [];
         let activeFlashcards = [];
         let currentPromptData = null;
-        let grammarErrorsLog = []; // Registro de fallos para el reporte final
+        let grammarErrorsLog = [];
 
         function saveState() {
             localStorage.setItem('english_pro_strict_state', JSON.stringify(appState));
@@ -613,8 +650,8 @@
 
         let currentTutorialStep = 0;
         const tutorialSteps = [
-            { title: "Modo Tutor Estricto 🦉", text: "El tutor evaluará cada fase de forma secuencial." },
-            { title: "Reporte de Gramática 📊", text: "En los quizzes de gramática verás tu acierto al instante y un reporte detallado con correcciones al final." }
+            { title: "Modo Tutor Estricto 🦉", text: "Tu nivel es definitivo y te guiará a través de las 40 lecciones." },
+            { title: "Micrófono Seguro 🎙️", text: "Activa el micro para hablar o escribe tu práctica directamente en la caja." }
         ];
 
         function startTutorialOnly() {
@@ -734,7 +771,7 @@
                 return;
             }
             appState.userName = nameInput;
-            appState.tierKey = tierKey || 'beginner';
+            appState.tierKey = tierKey;
             appState.tierTitle = title;
             appState.tutorialCompleted = true;
             saveState();
@@ -745,12 +782,12 @@
         }
 
         function checkInitialFocus() {
-            loadProgressiveLesson();
-            updateUIStats();
             if (!appState.userName || appState.userName.trim() === "") {
                 document.getElementById('profile-modal').classList.remove('hidden');
             } else {
                 document.getElementById('profile-modal').classList.add('hidden');
+                loadProgressiveLesson();
+                updateUIStats();
             }
         }
 
@@ -764,12 +801,12 @@
         }
 
         function loadProgressiveLesson() {
-            const data = universalData['beginner'];
-            currentPromptData = data.prompts[(appState.currentLesson - 1) % data.prompts.length];
-            const randomShadow = data.shadowTexts[Math.floor(Math.random() * data.shadowTexts.length)];
-            const randomListening = data.listeningSnippets[Math.floor(Math.random() * data.listeningSnippets.length)];
+            const levelData = curriculumLevels[appState.tierKey] || curriculumLevels['beginner'];
+            currentPromptData = levelData.prompts[(appState.currentLesson - 1) % levelData.prompts.length];
+            const randomShadow = levelData.shadowTexts[Math.floor(Math.random() * levelData.shadowTexts.length)];
+            const randomListening = levelData.listeningSnippets[Math.floor(Math.random() * levelData.listeningSnippets.length)];
 
-            document.getElementById('prompt-title').innerText = `Lección ${appState.currentLesson}: ${currentPromptData.title}`;
+            document.getElementById('prompt-title').innerText = `Lección ${appState.currentLesson} (${appState.tierTitle}): ${currentPromptData.title}`;
             document.getElementById('prompt-text').innerText = currentPromptData.text;
             document.getElementById('context-formal').innerText = currentPromptData.formal;
             document.getElementById('context-informal').innerText = currentPromptData.informal;
@@ -781,7 +818,7 @@
             if (unlearned.length < 5) unlearned = [...masterFlashcardsBank];
             activeFlashcards = shuffleArray(unlearned).slice(0, 5);
 
-            activeQuizzes = shuffleArray(data.quizzesPool).slice(0, 5);
+            activeQuizzes = shuffleArray(levelData.quizzesPool).slice(0, 5);
             currentCard = 0;
             currentQuizIndex = 0;
             grammarErrorsLog = [];
@@ -803,6 +840,86 @@
             const utterance = new SpeechSynthesisUtterance(cleanEnglishOnly);
             utterance.lang = 'en-US';
             window.speechSynthesis.speak(utterance);
+        }
+
+        // Activador de Micrófono Robusto
+        let activeRecognition = null;
+
+        function toggleSpeechRecognition() {
+            const statusText = document.getElementById('mic-status-text');
+            const textarea = document.getElementById('user-response');
+            
+            const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognitionAPI) {
+                showCustomModal("Micrófono no soportado ⚠️", "Tu navegador no soporta reconocimiento de voz. Escribe tu respuesta en la caja.", "🎙️");
+                return;
+            }
+
+            try {
+                if (activeRecognition) {
+                    activeRecognition.stop();
+                    activeRecognition = null;
+                    statusText.innerText = 'Start Mic';
+                    return;
+                }
+
+                activeRecognition = new SpeechRecognitionAPI();
+                activeRecognition.lang = 'en-US';
+                activeRecognition.interimResults = false;
+                activeRecognition.maxAlternatives = 1;
+
+                activeRecognition.onstart = () => {
+                    statusText.innerText = 'Escuchando...';
+                };
+
+                activeRecognition.onresult = (event) => {
+                    const speechResult = event.results[0][0].transcript;
+                    textarea.value = speechResult;
+                    statusText.innerText = 'Start Mic';
+                    activeRecognition = null;
+                };
+
+                activeRecognition.onerror = () => {
+                    statusText.innerText = 'Start Mic';
+                    activeRecognition = null;
+                    showCustomModal("Aviso de Micrófono ⚠️", "No se detectó voz o el permiso fue denegado. Escribe directamente en la caja.", "🎙️");
+                };
+
+                activeRecognition.onend = () => {
+                    statusText.innerText = 'Start Mic';
+                    activeRecognition = null;
+                };
+
+                activeRecognition.start();
+            } catch (err) {
+                statusText.innerText = 'Start Mic';
+                activeRecognition = null;
+                showCustomModal("Aviso de Micrófono ⚠️", "Escribe tu respuesta directamente en la caja de texto.", "🎙️");
+            }
+        }
+
+        function toggleShadowingMic() {
+            const statusText = document.getElementById('shadow-mic-status');
+            const textarea = document.getElementById('shadow-user-input');
+            
+            const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognitionAPI) {
+                showCustomModal("Aviso ⚠️", "Escribe tu frase en la caja.", "🎙️");
+                return;
+            }
+
+            try {
+                const rec = new SpeechRecognitionAPI();
+                rec.lang = 'en-US';
+                rec.onstart = () => { statusText.innerText = 'Listening...'; };
+                rec.onresult = (e) => { textarea.value = e.results[0][0].transcript; };
+                rec.onerror = () => { statusText.innerText = 'Record Mic'; };
+                rec.onend = () => { statusText.innerText = 'Record Mic'; };
+                rec.start();
+            } catch (err) {
+                statusText.innerText = 'Record Mic';
+                showCustomModal("Aviso ⚠️", "Escribe tu práctica en la caja.", "🎙️");
+            }
         }
 
         function evaluateResponse() {
@@ -903,7 +1020,6 @@
                 grammarErrorsLog.push({ question: activeQuizItem.title, correction: activeQuizItem.correction });
             }
 
-            // Avanzar automáticamente tras 1.5 segundos para que el usuario lea el feedback instantáneo
             setTimeout(() => {
                 currentQuizIndex++;
                 if (currentQuizIndex < activeQuizzes.length) {
@@ -962,10 +1078,6 @@
             modal.classList.remove('hidden');
         }
 
-        function closeGrammarReportAndProceed() {
-            // Manejado dinámicamente arriba según porcentaje
-        }
-
         function playListeningAudio() {
             if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
             const utterance = new SpeechSynthesisUtterance(currentListeningTarget);
@@ -985,36 +1097,12 @@
             }
         }
 
-        let recognition = null;
-        let isShadowingRecording = false;
-
         function speakShadowText() {
             if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
             const cleanText = document.getElementById('shadow-text').innerText.split('(')[0].replace(/"/g, '').trim();
             const utterance = new SpeechSynthesisUtterance(cleanText);
             utterance.lang = 'en-US';
             window.speechSynthesis.speak(utterance);
-        }
-
-        function toggleShadowingMic() {
-            const statusText = document.getElementById('shadow-mic-status');
-            const textarea = document.getElementById('shadow-user-input');
-            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                showCustomModal("Aviso", "Reconocimiento de voz no soportado.", "⚠️");
-                return;
-            }
-            if (isShadowingRecording) {
-                if (recognition) recognition.stop();
-                return;
-            }
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            recognition = new SpeechRecognition();
-            recognition.lang = 'en-US';
-            recognition.interimResults = true;
-            recognition.onstart = () => { isShadowingRecording = true; statusText.innerText = 'Listening...'; };
-            recognition.onresult = (e) => { textarea.value = e.results[0][0].transcript; };
-            recognition.onend = () => { isShadowingRecording = false; statusText.innerText = 'Record Mic'; };
-            recognition.start();
         }
 
         function verifyShadowingPractice() {
