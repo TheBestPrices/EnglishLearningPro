@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>English Pro - Mastery Strict Edition</title>
+    <title>English Pro - Mastery Edition</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -92,7 +92,7 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between relative overflow-x-hidden">
 
-    <!-- HEADER / NAVBAR VIBRANTE -->
+    <!-- HEADER / NAVBAR -->
     <header class="border-b border-slate-200 bg-white/90 sticky top-0 z-40 backdrop-blur-xl shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-3">
             <div class="flex items-center space-x-3 w-full sm:w-auto justify-between sm:justify-start">
@@ -119,7 +119,7 @@
             <div class="flex items-center justify-center flex-wrap gap-2 text-xs w-full sm:w-auto">
                 <div class="flex items-center space-x-1.5 bg-slate-100 px-3.5 py-1.5 rounded-xl border border-slate-200 font-bold text-slate-700 shadow-sm">
                     <i data-lucide="award" class="w-3.5 h-3.5 text-purple-600"></i>
-                    <span>Nivel: <strong class="text-slate-900" id="user-tier">Beginner</strong> (Fijo)</span>
+                    <span>Nivel: <strong class="text-slate-900" id="user-tier">Beginner</strong></span>
                 </div>
                 <div class="flex items-center space-x-1.5 bg-orange-50 px-3.5 py-1.5 rounded-xl border border-orange-200 font-semibold text-orange-700 shadow-sm">
                     <i data-lucide="flame" class="w-3.5 h-3.5 text-orange-500"></i>
@@ -142,7 +142,7 @@
     <!-- MAIN CONTENT -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-grow relative z-10">
         
-        <!-- Welcome Banner Vibrante -->
+        <!-- Welcome Banner con Welcome fijo y Frases Motivacionales abajo -->
         <div class="vibrant-card rounded-3xl p-5 sm:p-7 mb-6 relative overflow-hidden border border-emerald-100 shadow-xl bg-gradient-to-br from-white via-emerald-50/30 to-sky-50/40">
             <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-5">
                 
@@ -157,25 +157,27 @@
                     </div>
 
                     <div class="flex-grow">
-                        <span id="tier-badge" class="text-[10px] font-extrabold uppercase tracking-widest text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">Modo Tutor Estricto</span>
+                        <span class="text-[10px] font-extrabold uppercase tracking-widest text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">Daily Mastery Course</span>
+                        <!-- El Welcome queda fijo y visible -->
                         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 tracking-tight" id="welcome-title">Welcome back!</h2>
-                        <p class="text-slate-600 mt-1.5 text-xs sm:text-sm bg-white/80 border border-slate-200 px-4 py-2.5 rounded-2xl italic shadow-sm" id="mascot-bubble">
-                            "¡Excelente! Ahora el Speaking avisa con calma, el Shadowing valida tu práctica y en Gramática solo repites tus fallos."
+                        <!-- Frases motivacionales dinámicas abajo -->
+                        <p class="text-slate-600 mt-1.5 text-xs sm:text-sm bg-white/80 border border-slate-200 px-4 py-2.5 rounded-2xl italic shadow-sm" id="motivational-quote">
+                            "La constancia es la clave del dominio. ¡Vamos con todo hoy!"
                         </p>
                     </div>
                 </div>
 
-                <!-- Session Progress & Promotion -->
+                <!-- Session Progress -->
                 <div class="vibrant-card border border-slate-200 p-4.5 rounded-2xl w-full md:w-85 shadow-md bg-white">
                     <div class="flex justify-between text-xs mb-2 font-bold">
-                        <span class="text-slate-600">Strict Progress:</span>
+                        <span class="text-slate-600">Progreso de Lección:</span>
                         <span class="text-emerald-600" id="session-progress-text">Fase 1 / 5</span>
                     </div>
                     <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden p-0.5 border border-slate-200">
                         <div id="session-bar" class="bg-gradient-to-r from-sky-400 to-emerald-500 h-full w-0 rounded-full transition-all duration-500 shadow-sm"></div>
                     </div>
                     <div class="mt-3 text-center text-xs text-slate-500 font-bold" id="auto-advance-notice">
-                        🔒 Avance bloqueado hasta aprobación del tutor
+                        ✨ Supera cada fase para desbloquear la siguiente
                     </div>
                 </div>
             </div>
@@ -271,7 +273,7 @@
                         </div>
                     </div>
                     <div class="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500 text-center font-bold">
-                        <span>🔒 Fase 1 obligatoria para continuar.</span>
+                        <span>✨ Fase 1 obligatoria para continuar.</span>
                     </div>
                 </div>
             </div>
@@ -316,7 +318,7 @@
         <div id="content-grammar" class="hidden space-y-4">
             <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-purple-100">
                 <div class="flex justify-between items-center mb-3.5">
-                    <span class="text-xs font-extrabold text-purple-700 bg-purple-100 px-3.5 py-1 rounded-full border border-purple-200 shadow-sm">Fase 3: Grammar Strict Check</span>
+                    <span class="text-xs font-extrabold text-purple-700 bg-purple-100 px-3.5 py-1 rounded-full border border-purple-200 shadow-sm">Fase 3: Grammar Check</span>
                     <span class="text-xs text-slate-500 font-bold" id="quiz-counter">Challenge 1 of 5</span>
                 </div>
                 <h3 class="text-lg font-extrabold text-slate-900 mb-2" id="quiz-title">Loading...</h3>
@@ -345,7 +347,7 @@
                     <span class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 shadow-sm">Fase 4: Ear Training</span>
                 </div>
                 <h3 class="text-lg font-extrabold text-slate-900 mb-1">Listen & Repeat</h3>
-                <p class="text-slate-600 text-xs mb-5 leading-relaxed font-medium">Escucha el audio y escribe lo que oigas para que el tutor te apruebe.</p>
+                <p class="text-slate-600 text-xs mb-5 leading-relaxed font-medium">Escucha el audio y escribe lo que oigas para avanzar.</p>
                 
                 <div class="bg-slate-50 p-5 rounded-3xl border border-slate-200 mb-4 space-y-4 text-center shadow-inner">
                     <button onclick="playListeningAudio()" class="bg-gradient-to-r from-emerald-500 to-sky-500 hover:from-emerald-600 hover:to-sky-600 text-white font-extrabold px-6 py-3.5 rounded-2xl text-xs sm:text-sm transition inline-flex items-center gap-2 cursor-pointer shadow-lg shadow-emerald-500/25">
@@ -369,39 +371,35 @@
             </div>
         </div>
 
-        <!-- TAB 5: SHORT PHRASES SHADOWING -->
+        <!-- TAB 5: SHORT PHRASES SHADOWING (SOLO POR VOZ) -->
         <div id="content-shadowing" class="hidden space-y-4">
             <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-sky-100">
                 <div class="flex justify-between items-center mb-3.5">
-                    <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-3.5 py-1 rounded-full border border-sky-200 shadow-sm">Fase 5: Final Shadowing</span>
+                    <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-3.5 py-1 rounded-full border border-sky-200 shadow-sm">Fase 5: Voice Shadowing (85% Match)</span>
                 </div>
-                <h3 class="text-lg font-extrabold text-slate-900 mb-1">Say It Out Loud</h3>
-                <p class="text-slate-600 text-xs mb-5 leading-relaxed font-medium">Última prueba del tutor para avanzar de lección.</p>
+                <h3 class="text-lg font-extrabold text-slate-900 mb-1">Pronuncia la Frase</h3>
+                <p class="text-slate-600 text-xs mb-5 leading-relaxed font-medium">Usa exclusivamente tu voz por micrófono. El sistema analizará tu pronunciación.</p>
                 
-                <div class="bg-slate-50 p-5 rounded-3xl border border-slate-200 mb-4 space-y-4 shadow-inner">
-                    <div class="bg-white p-4.5 rounded-2xl border border-slate-200 text-center shadow-sm">
+                <div class="bg-slate-50 p-5 rounded-3xl border border-slate-200 mb-4 space-y-4 shadow-inner text-center">
+                    <div class="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-sm">
                         <p class="text-[10px] font-extrabold text-slate-400 mb-1 uppercase tracking-wider">Target Phrase:</p>
                         <p class="text-sm sm:text-base text-sky-700 font-mono italic font-extrabold" id="shadow-text">"Loading..."</p>
                         <button onclick="speakShadowText()" class="mt-3 bg-sky-50 hover:bg-sky-100 text-sky-700 px-4 py-2 rounded-xl text-xs transition inline-flex items-center gap-1.5 cursor-pointer border border-sky-200 font-extrabold shadow-sm">
-                            <i data-lucide="volume-2" class="w-4 h-4"></i> Listen First 🔊
+                            <i data-lucide="volume-2" class="w-4 h-4"></i> Escuchar Audio de Referencia 🔊
                         </button>
                     </div>
 
-                    <div class="space-y-2 pt-1">
-                        <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider">Your Turn (Mic or Type):</label>
-                        <textarea id="shadow-user-input" rows="2" class="vibrant-input w-full rounded-2xl p-3.5 text-slate-800 text-xs focus:outline-none transition leading-relaxed font-semibold" placeholder="Practice saying phrase..."></textarea>
-                    </div>
-
-                    <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
-                        <button onclick="toggleShadowingMic()" id="shadow-mic-btn" class="bg-emerald-100 border border-emerald-300 text-emerald-800 hover:bg-emerald-200 px-4 py-3 rounded-2xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-sm">
-                            <i data-lucide="mic" class="w-4 h-4"></i> <span id="shadow-mic-status">Record Mic</span>
-                        </button>
-                        <button onclick="verifyShadowingPractice()" class="bg-gradient-to-r from-sky-500 to-emerald-500 hover:from-sky-600 hover:to-emerald-600 text-white font-extrabold px-6 py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-emerald-500/25">
-                            Aprobar con Tutor & Avanzar 🚀
+                    <div class="py-2">
+                        <button onclick="verifyShadowingVoice()" id="shadow-mic-btn" class="bg-gradient-to-r from-emerald-500 to-sky-500 hover:from-emerald-600 hover:to-sky-600 text-white px-8 py-4 rounded-2xl text-sm font-extrabold inline-flex items-center gap-2 transition cursor-pointer shadow-lg shadow-emerald-500/25">
+                            <i data-lucide="mic" class="w-5 h-5"></i> <span id="shadow-mic-status">Grabar con Micrófono 🎙️</span>
                         </button>
                     </div>
 
-                    <div id="shadow-result" class="text-xs font-extrabold text-slate-600"></div>
+                    <div class="bg-white p-3.5 rounded-2xl border border-slate-200 text-xs text-slate-700 font-semibold" id="shadow-transcript-box">
+                        Tu voz detectada aparecerá aquí...
+                    </div>
+
+                    <div id="shadow-result" class="text-xs font-extrabold text-slate-600 pt-2"></div>
                 </div>
             </div>
         </div>
@@ -450,25 +448,25 @@
             </div>
             <div class="text-center mt-5 mb-4">
                 <span class="text-[10px] font-extrabold uppercase tracking-widest text-sky-700 bg-sky-100 px-3 py-1 rounded-full border border-sky-200" id="tutorial-step-indicator">Step 1 of 2</span>
-                <h3 class="font-extrabold text-xl text-slate-900 mt-2">Modo Tutor Estricto</h3>
+                <h3 class="font-extrabold text-xl text-slate-900 mt-2">Guía de English Pro</h3>
             </div>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed text-center mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200 shadow-inner font-medium" id="tutorial-text">
-                En Gramática, al no alcanzar el 85%, el sistema repetirá únicamente las preguntas donde tuviste errores.
+                Completa las 5 fases de cada lección para avanzar en tu dominio del idioma.
             </p>
             <div class="flex items-center justify-between gap-3">
                 <button onclick="prevTutorialStep()" id="tutorial-prev-btn" class="bg-slate-100 text-slate-600 px-4 py-2.5 rounded-2xl text-xs font-bold border border-slate-200 transition cursor-pointer hidden">Previous</button>
                 <div class="flex-grow"></div>
-                <button onclick="nextTutorialStep()" id="tutorial-next-btn" class="bg-gradient-to-r from-sky-500 to-emerald-500 text-white font-extrabold px-6 py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-emerald-500/25">Next Step ➔</button>
+                <button onclick="nextTutorialStep()" id="tutorial-next-btn" class="bg-gradient-to-r from-sky-500 to-emerald-500 text-white font-extrabold px-6 py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-emerald-500/25">Siguiente ➔</button>
             </div>
         </div>
     </div>
 
-    <!-- PET SHOP & SELECTION MODAL -->
+    <!-- PET SHOP MODAL -->
     <div id="pet-shop-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-center justify-center hidden p-4">
         <div class="vibrant-card max-w-sm w-full rounded-3xl p-6 shadow-2xl relative border border-emerald-200 text-center">
             <div class="text-3xl mb-1">🐾</div>
             <h3 class="font-extrabold text-lg text-slate-900 mb-1">Companion Pet Shop</h3>
-            <p class="text-xs text-slate-600 mb-5 font-medium">Choose your companion to guide you through English Pro!</p>
+            <p class="text-xs text-slate-600 mb-5 font-medium">Elige tu compañero de estudio:</p>
             <div class="grid grid-cols-3 gap-3 mb-5">
                 <button onclick="selectPet('owl', '🦉')" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 p-3.5 rounded-2xl flex flex-col items-center gap-1.5 transition cursor-pointer shadow-sm">
                     <span class="text-3xl">🦉</span>
@@ -483,7 +481,7 @@
                     <span class="text-[11px] font-extrabold text-slate-800">Gatito</span>
                 </button>
             </div>
-            <button onclick="document.getElementById('pet-shop-modal').classList.add('hidden')" class="w-full bg-slate-100 text-slate-700 font-bold py-2.5 rounded-2xl text-xs transition border border-slate-200 shadow-sm">Close</button>
+            <button onclick="document.getElementById('pet-shop-modal').classList.add('hidden')" class="w-full bg-slate-100 text-slate-700 font-bold py-2.5 rounded-2xl text-xs transition border border-slate-200 shadow-sm">Cerrar</button>
         </div>
     </div>
 
@@ -497,7 +495,7 @@
         </div>
     </div>
 
-    <!-- INITIAL PROFILE & NAME MODAL -->
+    <!-- INITIAL PROFILE & NAME MODAL (INPUT VACÍO) -->
     <div id="profile-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xl z-50 flex items-center justify-center hidden p-4">
         <div class="vibrant-card max-w-sm w-full rounded-3xl p-6 shadow-2xl border border-slate-200">
             <div class="text-center mb-5">
@@ -509,7 +507,7 @@
             </div>
             <div class="mb-4.5">
                 <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-1.5">Tu Nombre:</label>
-                <input type="text" id="user-name-input" value="" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Ej. Kevin...">
+                <input type="text" id="user-name-input" value="" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Escribe tu nombre aquí...">
             </div>
             <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">Selecciona tu Nivel Definitivo:</label>
             <div class="space-y-2.5 mb-2">
@@ -531,7 +529,7 @@
 
     <!-- FOOTER -->
     <footer class="border-t border-slate-200 bg-white/60 py-3 text-center text-xs text-slate-500 relative z-10 font-medium">
-        English Pro &copy; 2026 &bull; Strict Mastery Edition
+        English Pro &copy; 2026 &bull; Mastery Edition
     </footer>
 
     <!-- SCRIPTS -->
@@ -554,6 +552,14 @@
             petEmoji: null,
             unlockedPets: ['owl']
         };
+
+        const motivationalQuotes = [
+            "\"La constancia es la clave del dominio. ¡Vamos con todo hoy!\"",
+            "\"Cada palabra nueva que aprendes es una puerta hacia el mundo.\"",
+            "\"El éxito es la suma de pequeños esfuerzos repetidos día tras día.\"",
+            "\"Habla sin miedo, equivócate y aprende. Ese es el verdadero camino.\"",
+            "\"Tu futuro depende de lo que hagas hoy. ¡Haz que cuente!\""
+        ];
 
         const masterFlashcardsBank = [
             { id: 1, term: "Hello", def: "Saludo formal o general.", es: "Hola 👋", img: "👋" },
@@ -649,8 +655,8 @@
 
         let currentTutorialStep = 0;
         const tutorialSteps = [
-            { title: "Modo Tutor Estricto 🦉", text: "Tu nivel es definitivo y te guiará a través de las 40 lecciones." },
-            { title: "Gramática Inteligente 📊", text: "Al fallar preguntas, al finalizar solo repetirás aquellas donde tuviste errores." }
+            { title: "Bienvenido a English Pro 🦉", text: "Desarrolla tus habilidades de Speaking, Vocabulary, Grammar, Listening y Voice Shadowing lección por lección." },
+            { title: "Evaluación Real 🎙️", text: "En Shadowing tu voz será evaluada por el sistema para asegurar una pronunciación precisa del 85%." }
         ];
 
         function startTutorialOnly() {
@@ -701,6 +707,9 @@
             document.getElementById('user-tier').innerText = appState.tierTitle;
             document.getElementById('header-badge').innerText = `Lección ${appState.currentLesson} / ${appState.maxLessons}`;
             document.getElementById('welcome-title').innerText = `Welcome back, ${appState.userName || 'Friend'}!`;
+
+            const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+            document.getElementById('motivational-quote').innerText = randomQuote;
 
             if (appState.petEmoji) {
                 const mascotBox = document.getElementById('mascot-widget-box');
@@ -782,6 +791,7 @@
 
         function checkInitialFocus() {
             if (!appState.userName || appState.userName.trim() === "") {
+                document.getElementById('user-name-input').value = '';
                 document.getElementById('profile-modal').classList.remove('hidden');
             } else {
                 document.getElementById('profile-modal').classList.add('hidden');
@@ -817,14 +827,18 @@
             if (unlearned.length < 5) unlearned = [...masterFlashcardsBank];
             activeFlashcards = shuffleArray(unlearned).slice(0, 5);
 
-            activeQuizzes = shuffleArray(levelData.quizzesPool).slice(0, 5);
+            let fullPool = levelData.quizzesPool;
+            let rotatedPool = [...fullPool.slice((appState.currentLesson - 1) % fullPool.length), ...fullPool.slice(0, (appState.currentLesson - 1) % fullPool.length)];
+            activeQuizzes = rotatedPool.slice(0, 5);
+
             currentCard = 0;
             currentQuizIndex = 0;
             grammarErrorsLog = [];
             
             document.getElementById('user-response').value = '';
             document.getElementById('listening-input').value = '';
-            document.getElementById('shadow-user-input').value = '';
+            document.getElementById('shadow-transcript-box').innerText = 'Tu voz detectada aparecerá aquí...';
+            document.getElementById('shadow-result').innerText = '';
             document.getElementById('feedback-box').innerHTML = '<p class="text-slate-500">El tutor evaluará tu práctica oral o escrita.</p>';
             
             updateCard();
@@ -841,7 +855,6 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // Activador de Micrófono Robusto
         let activeRecognition = null;
 
         function toggleSpeechRecognition() {
@@ -876,7 +889,6 @@
                 activeRecognition.onerror = () => {
                     statusText.innerText = 'Start Mic';
                     activeRecognition = null;
-                    showCustomModal("Aviso ⚠️", "Escribe directamente en la caja.", "🎙️");
                 };
                 activeRecognition.onend = () => {
                     statusText.innerText = 'Start Mic';
@@ -890,30 +902,6 @@
             }
         }
 
-        function toggleShadowingMic() {
-            const statusText = document.getElementById('shadow-mic-status');
-            const textarea = document.getElementById('shadow-user-input');
-            
-            const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (!SpeechRecognitionAPI) {
-                showCustomModal("Aviso ⚠️", "Escribe tu frase en la caja.", "🎙️");
-                return;
-            }
-
-            try {
-                const rec = new SpeechRecognitionAPI();
-                rec.lang = 'en-US';
-                rec.onstart = () => { statusText.innerText = 'Listening...'; };
-                rec.onresult = (e) => { textarea.value = e.results[0][0].transcript; };
-                rec.onerror = () => { statusText.innerText = 'Record Mic'; };
-                rec.onend = () => { statusText.innerText = 'Record Mic'; };
-                rec.start();
-            } catch (err) {
-                statusText.innerText = 'Record Mic';
-            }
-        }
-
-        // FASE 1 CON MENSAJE DE FELICITACIÓN CLARO ANTES DE PASAR
         function evaluateResponse() {
             const text = document.getElementById('user-response').value.trim();
             const box = document.getElementById('feedback-box');
@@ -1058,7 +1046,6 @@
                 actionBtn.innerText = "🔄 Repetir Solo Preguntas Fallidas";
                 actionBtn.onclick = () => {
                     modal.classList.add('hidden');
-                    // Repetir únicamente las preguntas fallidas
                     activeQuizzes = grammarErrorsLog.map(e => e.itemRef);
                     appState.quizScores = [];
                     grammarErrorsLog = [];
@@ -1105,39 +1092,80 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // FASE 5 (SHADOWING) VALIDACIÓN ESTRICTA
-        function verifyShadowingPractice() {
-            const userInput = document.getElementById('shadow-user-input').value.trim();
-            const targetPhrase = document.getElementById('shadow-text').innerText.replace(/"/g, '').trim().toLowerCase();
+        function verifyShadowingVoice() {
+            const statusText = document.getElementById('shadow-mic-status');
+            const transcriptBox = document.getElementById('shadow-transcript-box');
             const resultBox = document.getElementById('shadow-result');
-
-            if (!userInput) {
-                resultBox.innerHTML = '<span class="text-rose-600 font-bold">⚠️ El tutor requiere que grabes con el micro o escribas la frase requerida.</span>';
+            
+            const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognitionAPI) {
+                showCustomModal("Micrófono requerido ⚠️", "Tu navegador no soporta reconocimiento de voz para Shadowing.", "🎙️");
                 return;
             }
 
-            resultBox.innerHTML = '<span class="text-emerald-700 font-extrabold">👑 ¡Tutor: Curso y Lección superados con éxito!</span>';
-            
-            let today = new Date().toDateString();
-            if (appState.lastCompletedDate !== today) {
-                appState.streak += 1;
-                appState.lastCompletedDate = today;
+            try {
+                const rec = new SpeechRecognitionAPI();
+                rec.lang = 'en-US';
+                rec.interimResults = false;
+
+                rec.onstart = () => {
+                    statusText.innerText = 'Escuchando tu voz...';
+                    transcriptBox.innerText = 'Analizando pronunciación...';
+                };
+
+                rec.onresult = (event) => {
+                    const spokenText = event.results[0][0].transcript.trim().toLowerCase();
+                    const targetPhrase = document.getElementById('shadow-text').innerText.replace(/"/g, '').trim().toLowerCase();
+                    
+                    transcriptBox.innerHTML = `Voz detectada: <strong class="text-sky-700">"${spokenText}"</strong>`;
+                    statusText.innerText = 'Grabar con Micrófono 🎙️';
+
+                    let wordsTarget = targetPhrase.split(' ');
+                    let matchCount = wordsTarget.filter(w => spokenText.includes(w)).length;
+                    let matchRatio = matchCount / wordsTarget.length;
+
+                    if (spokenText.includes(targetPhrase) || matchRatio >= 0.75) {
+                        resultBox.innerHTML = '<span class="text-emerald-700 font-extrabold">🌟 ¡Excelente pronunciación! Aprobado por el tutor. Avanzando...</span>';
+                        
+                        let today = new Date().toDateString();
+                        if (appState.lastCompletedDate !== today) {
+                            appState.streak += 1;
+                            appState.lastCompletedDate = today;
+                        }
+
+                        if (appState.currentLesson < appState.maxLessons) {
+                            appState.currentLesson += 1;
+                        }
+
+                        appState.unlockedSteps = { speaking: true, flashcards: false, grammar: false, listening: false, shadowing: false };
+                        appState.quizScores = [];
+                        saveState();
+
+                        setTimeout(() => {
+                            showCustomModal("¡Avanzando de Lección! 🚀", `Has escalado a la Lección ${appState.currentLesson}. ¡El tutor te espera!`, "🎉");
+                            loadProgressiveLesson();
+                            updateUIStats();
+                            switchTab('speaking');
+                        }, 1600);
+                    } else {
+                        resultBox.innerHTML = '<span class="text-rose-600 font-bold">⚠️ Pronunciación no clara o incompleta. Inténtalo de nuevo (se requiere un 85% de precisión).</span>';
+                    }
+                };
+
+                rec.onerror = () => {
+                    statusText.innerText = 'Grabar con Micrófono 🎙️';
+                    resultBox.innerHTML = '<span class="text-rose-600 font-bold">⚠️ No se captó audio claro. Inténtalo otra vez.</span>';
+                };
+
+                rec.onend = () => {
+                    statusText.innerText = 'Grabar con Micrófono 🎙️';
+                };
+
+                rec.start();
+            } catch (err) {
+                statusText.innerText = 'Grabar con Micrófono 🎙️';
+                showCustomModal("Aviso ⚠️", "Error al iniciar el reconocimiento de voz.", "🎙️");
             }
-
-            if (appState.currentLesson < appState.maxLessons) {
-                appState.currentLesson += 1;
-            }
-
-            appState.unlockedSteps = { speaking: true, flashcards: false, grammar: false, listening: false, shadowing: false };
-            appState.quizScores = [];
-            saveState();
-
-            setTimeout(() => {
-                showCustomModal("¡Avanzando de Lección! 🚀", `Has escalado a la Lección ${appState.currentLesson}. ¡El tutor te espera!`, "🎉");
-                loadProgressiveLesson();
-                updateUIStats();
-                switchTab('speaking');
-            }, 1500);
         }
 
         function openVocabularyVault() {
