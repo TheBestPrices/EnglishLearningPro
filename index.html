@@ -167,48 +167,51 @@
             </div>
         </div>
 
-        <!-- VISTA DE LECCIÓN ÚNICA EN PANTALLA (SIN MENÚ VISIBLE, PROGRESIÓN CIEGA) -->
+        <!-- VISTA DE LECCIÓN ÚNICA EN PANTALLA -->
         <div id="lesson-view-container" class="space-y-4">
 
-            <!-- FASE 1: SPEAKING & CONTEXT GUIDE -->
+            <!-- FASE 1: SPEAKING CONTEXTUALIZADO Y GUIADO -->
             <div id="content-speaking" class="space-y-4">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
                     <div class="vibrant-card lg:col-span-2 rounded-3xl p-5 sm:p-7 flex flex-col justify-between shadow-lg">
                         <div>
                             <div class="flex items-center justify-between mb-3.5">
                                 <span class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 flex items-center gap-1.5 shadow-sm">
-                                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Fase 1 de 5: Tutor Speaking & Context
+                                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Fase 1 de 5: Tutor Speaking Contextualizado
                                 </span>
                             </div>
-                            <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mb-2.5" id="prompt-title">Cargando lección...</h3>
-                            <p class="text-slate-700 text-xs sm:text-sm bg-slate-50 p-4.5 rounded-2xl border border-slate-200 leading-relaxed shadow-inner mb-4 font-medium" id="prompt-text">
-                                Espere un momento...
-                            </p>
+                            <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mb-2" id="prompt-title">Cargando lección...</h3>
+                            
+                            <!-- Pregunta o Reto del Tutor basado en el tema -->
+                            <div class="bg-sky-50 border border-sky-200 p-4 rounded-2xl mb-4 shadow-sm">
+                                <span class="text-[11px] font-extrabold text-sky-700 uppercase tracking-wider block mb-1">🤖 Reto del Tutor:</span>
+                                <p class="text-xs sm:text-sm text-slate-900 font-bold italic" id="tutor-challenge-question">...</p>
+                            </div>
 
-                            <!-- Guía Formal vs Informal con Traducción al Español -->
+                            <!-- Guía Formal vs Informal con Traducción -->
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-5">
-                                <div class="bg-sky-50 border border-sky-200 p-4 rounded-2xl shadow-sm flex flex-col justify-between">
+                                <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm flex flex-col justify-between">
                                     <div>
                                         <span class="text-[11px] font-extrabold text-sky-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-                                            <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> 👔 Formal:
+                                            <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> 👔 Ejemplo Formal:
                                         </span>
                                         <p class="text-xs text-slate-800 italic font-semibold mb-1" id="context-formal">...</p>
                                         <p class="text-[11px] text-sky-800 font-bold mb-3" id="context-formal-es">...</p>
                                     </div>
-                                    <button onclick="speakSpecificText('formal')" class="self-start bg-white hover:bg-sky-100 text-sky-700 border border-sky-300 px-3 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-sm">
+                                    <button onclick="speakSpecificText('formal')" class="self-start bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 px-3 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-sm">
                                         <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar Formal 🔊
                                     </button>
                                 </div>
 
-                                <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl shadow-sm flex flex-col justify-between">
+                                <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm flex flex-col justify-between">
                                     <div>
                                         <span class="text-[11px] font-extrabold text-emerald-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-                                            <i data-lucide="users" class="w-3.5 h-3.5"></i> 🏠 Informal:
+                                            <i data-lucide="users" class="w-3.5 h-3.5"></i> 🏠 Ejemplo Informal:
                                         </span>
                                         <p class="text-xs text-slate-800 italic font-semibold mb-1" id="context-informal">...</p>
                                         <p class="text-[11px] text-emerald-800 font-bold mb-3" id="context-informal-es">...</p>
                                     </div>
-                                    <button onclick="speakSpecificText('informal')" class="self-start bg-white hover:bg-emerald-100 text-emerald-700 border border-emerald-300 px-3 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-sm">
+                                    <button onclick="speakSpecificText('informal')" class="self-start bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 px-3 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-sm">
                                         <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar Informal 🔊
                                     </button>
                                 </div>
@@ -217,12 +220,12 @@
 
                         <div>
                             <div class="flex items-center justify-between mb-2 flex-wrap gap-2">
-                                <label class="block text-xs font-extrabold text-slate-600 uppercase tracking-wider">Tutor Mic Evaluation:</label>
+                                <label class="block text-xs font-extrabold text-slate-600 uppercase tracking-wider">Tu Respuesta (Usa estructuras acordes al tema):</label>
                                 <button onclick="toggleSpeechRecognition()" id="mic-btn" class="bg-emerald-500 hover:bg-emerald-600 text-white px-3.5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-md shadow-emerald-500/20">
                                     <i data-lucide="mic" class="w-4 h-4"></i> <span id="mic-status-text">Start Mic</span>
                                 </button>
                             </div>
-                            <textarea id="user-response" rows="2" class="vibrant-input w-full rounded-2xl p-3.5 text-slate-800 focus:outline-none transition text-xs sm:text-sm leading-relaxed font-medium" placeholder="Habla con el micro o escribe tu respuesta aquí..."></textarea>
+                            <textarea id="user-response" rows="2" class="vibrant-input w-full rounded-2xl p-3.5 text-slate-800 focus:outline-none transition text-xs sm:text-sm leading-relaxed font-medium" placeholder="Escribe o habla tu respuesta respondiendo al tutor..."></textarea>
                             
                             <div class="flex flex-wrap items-center justify-between mt-3.5 gap-2">
                                 <button onclick="evaluateResponse()" class="bg-gradient-to-r from-sky-500 to-emerald-500 hover:from-sky-600 hover:to-emerald-600 text-white font-extrabold px-6 py-3 rounded-2xl text-xs transition flex items-center gap-2 shadow-lg shadow-emerald-500/25 cursor-pointer">
@@ -239,7 +242,7 @@
                                 <i data-lucide="bot" class="w-4 h-4 text-sky-600"></i> Tutor Decision
                             </h3>
                             <div id="feedback-box" class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs text-slate-700 space-y-2.5 shadow-inner font-medium">
-                                <p class="text-slate-500">El tutor evaluará tu práctica para darte el pase a Vocabulary.</p>
+                                <p class="text-slate-500">El tutor evaluará que tu respuesta responda al tema de la lección.</p>
                             </div>
                         </div>
                         <div class="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500 text-center font-bold">
@@ -284,7 +287,7 @@
                 </div>
             </div>
 
-            <!-- FASE 3: GRAMMAR (COTIDIANA Y 100% VARIADA) -->
+            <!-- FASE 3: GRAMMAR CON EXPLICACIONES RIGUROSAS Y REGLAS -->
             <div id="content-grammar" class="hidden space-y-4">
                 <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-purple-100">
                     <div class="flex justify-between items-center mb-3.5">
@@ -306,7 +309,8 @@
                         </button>
                     </div>
 
-                    <div id="quiz-instant-feedback" class="text-xs font-extrabold mt-3 p-3 rounded-xl hidden"></div>
+                    <!-- Feedback detallado con reglas gramaticales -->
+                    <div id="quiz-instant-feedback" class="text-xs mt-3 p-4 rounded-2xl hidden space-y-1.5 shadow-sm"></div>
                 </div>
             </div>
 
@@ -423,7 +427,7 @@
                 <h3 class="font-extrabold text-xl text-slate-900 mt-2">Guía de English Pro</h3>
             </div>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed text-center mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200 shadow-inner font-medium" id="tutorial-text">
-                Completa las 5 fases de cada lección una a una para avanzar en tu dominio del idioma.
+                Responde a los retos del tutor en Speaking y lee las explicaciones gramaticales detalladas en caso de error.
             </p>
             <div class="flex items-center justify-between gap-3">
                 <button onclick="prevTutorialStep()" id="tutorial-prev-btn" class="bg-slate-100 text-slate-600 px-4 py-2.5 rounded-2xl text-xs font-bold border border-slate-200 transition cursor-pointer hidden">Previous</button>
@@ -551,53 +555,147 @@
             { id: 15, term: "Coffee", def: "Bebida caliente.", es: "Café ☕", img: "☕" }
         ];
 
-        // Currículo 100% cotidiano: vida diaria, viajes, familia, compras, expresiones comunes
+        // Currículo cotidiano con retos de Speaking dirigidos y Quizzes con explicaciones gramaticales profundas
         const curriculumLevels = {
             beginner: {
                 prompts: [
-                    { title: "Saludos y Presentaciones Diarias", text: "Aprende a presentarte con vecinos o amigos.", formal: "Hello, my name is [Name].", formalEs: "Hola, mi nombre es [Nombre].", informal: "Hey, I'm [Name].", informalEs: "Hola, soy [Nombre]." },
-                    { title: "Preguntar la Hora y el Clima", text: "Inicia una charla casual sobre el clima del día.", formal: "Could you tell me what time it is?", formalEs: "¿Podría decirme qué hora es?", informal: "What's the weather like today?", informalEs: "¿Cómo está el clima hoy?" },
-                    { title: "Compras en el Mercado", text: "Pregunta precios y alimentos básicos.", formal: "How much does this fruit cost?", formalEs: "¿Cuánto cuesta esta fruta?", informal: "How much is this?", informalEs: "¿Cuánto cuesta esto?" }
+                    { 
+                        title: "Saludos y Presentaciones Diarias", 
+                        challenge: "Responde al tutor presentándote formal o informalmente: ¿Cómo te llamas y de dónde eres?",
+                        formal: "Hello, my name is [Name] and I am from [Place].", formalEs: "Hola, mi nombre es [Nombre] y soy de [Lugar].", 
+                        informal: "Hey, I'm [Name] from [Place].", informalEs: "Hola, soy [Nombre] de [Lugar]." 
+                    },
+                    { 
+                        title: "Preguntar la Hora y el Clima", 
+                        challenge: "El tutor te pregunta: 'What is the weather like today?' Responde describiendo el clima.",
+                        formal: "Could you tell me if it is going to rain?", formalEs: "¿Podría decirme si va a llover?", 
+                        informal: "It's really sunny outside today!", informalEs: "¡Está muy soleado afuera hoy!" 
+                    },
+                    { 
+                        title: "Compras en el Mercado", 
+                        challenge: "Estás comprando fruta. Pregúntale al tendero cuánto cuesta y si está fresco.",
+                        formal: "How much does this fresh fruit cost?", formalEs: "¿Cuánto cuesta esta fruta fresca?", 
+                        informal: "How much is this?", informalEs: "¿Cuánto cuesta esto?" 
+                    }
                 ],
                 shadowTexts: ["Hello nice to meet you", "Where is the nearest store", "I am going to visit my family"],
                 listeningSnippets: ["How are you doing today", "What time is it now", "I would like some water"],
                 quizzesPool: [
-                    { id: 'b_q1', type: "mc", title: "Rutina Diaria (I)", desc: "I ___ up early every morning.", options: [{ text: "A) wake", correct: true }, { text: "B) wakes", correct: false }], correction: "Con 'I' se usa la forma base 'wake'." },
-                    { id: 'b_q2', type: "repair", title: "Familia y Posesivos", desc: "This is ___ mother. (my/mine)", answer: "my", correction: "Se usa el adjetivo posesivo 'my' antes del sustantivo." },
-                    { id: 'b_q3', type: "mc", title: "Viajes y Lugares", desc: "We are traveling ___ bus tomorrow.", options: [{ text: "A) by", correct: true }, { text: "B) in", correct: false }], correction: "Para medios de transporte se utiliza 'by'." },
-                    { id: 'b_q4', type: "repair", title: "Compras Cotidianas", desc: "Traduce '¿Cuánto cuesta?':", answer: "how much", correctText: "how much", correction: "Para preguntar precio se dice 'How much'." },
-                    { id: 'b_q5', type: "mc", title: "Comida y Gustos", desc: "I like ___ coffee in the morning.", options: [{ text: "A) drinking", correct: true }, { text: "B) drink", correct: false }], correction: "Después de 'like' se puede usar gerundio 'drinking'." }
+                    { 
+                        id: 'b_q1', type: "mc", title: "Rutina Diaria (Presente Simple)", desc: "I ___ up early every single morning.", 
+                        options: [{ text: "A) wake", correct: true }, { text: "B) wakes", correct: false }], 
+                        correction: "La forma correcta es 'wake'. Según las reglas gramaticales del inglés, con el pronombre 'I' el verbo en presente simple se mantiene en su forma base sin agregar 's' o 'es'." 
+                    },
+                    { 
+                        id: 'b_q2', type: "repair", title: "Familia y Posesivos", desc: "This is ___ mother. (my/mine)", answer: "my", 
+                        correction: "Se debe usar 'my'. La regla indica que los adjetivos posesivos (my, your, his, her) siempre van antes del sustantivo al que modifican ('mother'). 'Mine' es un pronombre posesivo que va al final." 
+                    },
+                    { 
+                        id: 'b_q3', type: "mc", title: "Viajes y Medios de Transporte", desc: "We are traveling ___ bus tomorrow morning.", 
+                        options: [{ text: "A) by", correct: true }, { text: "B) in", correct: false }], 
+                        correction: "La preposición correcta es 'by'. Gramaticalmente, usamos 'by' seguido directamente del medio de transporte (by bus, by car, by plane) cuando hablamos de cómo nos desplazamos de forma general." 
+                    },
+                    { 
+                        id: 'b_q4', type: "repair", title: "Compras Cotidianas (Precios)", desc: "Traduce '¿Cuánto cuesta esta camisa?':", answer: "how much", correctText: "how much", 
+                        correction: "Se escribe 'How much'. La regla gramatical para preguntar precios de sustantivos incontables o singulares en inglés utiliza la estructura interrogativa 'How much is...' o 'How much does... cost'." 
+                    },
+                    { 
+                        id: 'b_q5', type: "mc", title: "Comida y Gustos (Gerundios)", desc: "I really enjoy ___ coffee in the morning.", 
+                        options: [{ text: "A) drinking", correct: true }, { text: "B) drink", correct: false }], 
+                        correction: "Lo correcto es 'drinking'. Según la gramática inglesa, ciertos verbos de preferencia y disfrute como 'enjoy', 'love' o 'like' exigen obligatoriamente que el verbo siguiente termine en gerundio (-ing)." 
+                    }
                 ]
             },
             intermediate: {
                 prompts: [
-                    { title: "Planes de Viaje y Vacaciones", text: "Habla sobre tus próximos destinos de descanso.", formal: "I am planning a trip to the beach this weekend.", formalEs: "Estoy planeando un viaje a la playa este fin de semana.", informal: "I'm heading out of town for a few days.", informalEs: "Me voy fuera de la ciudad por unos días." },
-                    { title: "Conversaciones con Amigos", text: "Ponte al día con un viejo conocido.", formal: "It is a pleasure to see you again after so long.", formalEs: "Es un placer verte de nuevo después de tanto tiempo.", informal: "Long time no see! How have you been?", informalEs: "¡Cuánto tiempo sin verte! ¿Cómo has estado?" },
-                    { title: "Problemas con el Auto o Transporte", text: "Explica una falla mecánica sencilla.", formal: "My vehicle needs mechanical maintenance.", formalEs: "Mi vehículo necesita mantenimiento mecánico.", informal: "My car broke down on the way here.", informalEs: "Mi carro se descompuso camino hacia aquí." }
+                    { 
+                        title: "Planes de Viaje y Vacaciones", 
+                        challenge: "El tutor te pregunta: 'What are your plans for the upcoming weekend?' Responde mencionando un viaje o salida.",
+                        formal: "I am planning a trip to the beach this weekend.", formalEs: "Estoy planeando un viaje a la playa este fin de semana.", 
+                        informal: "I'm heading out of town for a few days.", informalEs: "Me voy fuera de la ciudad por unos días." 
+                    },
+                    { 
+                        title: "Conversaciones con Amigos", 
+                        challenge: "Te encuentras con un amigo en la calle después de meses. Salúdalo y pregúntale cómo está.",
+                        formal: "It is a pleasure to see you again after so long.", formalEs: "Es un placer verte de nuevo después de tanto tiempo.", 
+                        informal: "Long time no see! How have you been?", informalEs: "¡Cuánto tiempo sin verte! ¿Cómo has estado?" 
+                    },
+                    { 
+                        title: "Transporte y Fallas Mecánicas", 
+                        challenge: "Explícale al tutor que tuviste un problema con tu vehículo hoy.",
+                        formal: "My vehicle requires immediate mechanical maintenance.", formalEs: "Mi vehículo requiere mantenimiento mecánico inmediato.", 
+                        informal: "My car broke down on the way here.", informalEs: "Mi carro se descompuso camino hacia aquí." 
+                    }
                 ],
                 shadowTexts: ["Let us grab a cup of coffee later", "I am looking forward to the weekend", "Can you recommend a good restaurant"],
                 listeningSnippets: ["Where are we going tonight", "I need to buy some groceries", "Let us meet up tomorrow afternoon"],
                 quizzesPool: [
-                    { id: 'i_q1', type: "mc", title: "Planes Futuros", desc: "I ___ visit my parents this weekend.", options: [{ text: "A) am going to", correct: true }, { text: "B) will going to", correct: false }], correction: "La estructura correcta es 'am going to'." },
-                    { id: 'i_q2', type: "repair", title: "Pasado en Viajes", desc: "Yesterday we ___ (visit) our grandparents.", answer: "visited", correction: "En pasado regular se agrega '-ed'." },
-                    { id: 'i_q3', type: "mc", title: "Cortesía Diaria", desc: "___ you please pass me the salt?", options: [{ text: "A) Could", correct: true }, { text: "B) Must", correct: false }], correction: "'Could' es la forma educada para pedir un favor en la mesa." },
-                    { id: 'i_q4', type: "repair", title: "Frecuencia", desc: "I ___ (always) drink coffee in the morning.", answer: "always", correction: "Los adverbios de frecuencia van antes del verbo principal." },
-                    { id: 'i_q5', type: "mc", title: "Opiniones Personales", desc: "I think this food ___ delicious.", options: [{ text: "A) is", correct: true }, { text: "B) are", correct: false }], correction: "'Food' es incontable singular, por lo que lleva 'is'." }
+                    { 
+                        id: 'i_q1', type: "mc", title: "Planificación y Futuro (Going to)", desc: "I ___ visit my parents this coming weekend.", 
+                        options: [{ text: "A) am going to", correct: true }, { text: "B) will going to", correct: false }], 
+                        correction: "La estructura correcta es 'am going to'. Gramaticalmente, para expresar planes e intenciones futuras ya decididos, utilizamos el verbo to be + going to + verbo en forma base." 
+                    },
+                    { 
+                        id: 'i_q2', type: "repair", title: "Pasado Simple (Viajes)", desc: "Yesterday we ___ (visit) our grandparents in the countryside.", answer: "visited", 
+                        correction: "La respuesta es 'visited'. En el pasado simple para verbos regulares en inglés, la regla gramatical establece que se añade la partícula '-ed' al final del verbo base sin importar la persona." 
+                    },
+                    { 
+                        id: 'i_q3', type: "mc", title: "Cortesía y Peticiones Educadas", desc: "___ you please pass me the salt?", 
+                        options: [{ text: "A) Could", correct: true }, { text: "B) Must", correct: false }], 
+                        correction: "Se debe usar 'Could'. En las reglas de modales en inglés, 'Could' es el auxiliar modal estándar y educado para realizar solicitudes y peticiones formales o de cortesía." 
+                    },
+                    { 
+                        id: 'i_q4', type: "repair", title: "Adverbios de Frecuencia", desc: "I ___ (always) drink coffee in the morning.", answer: "always", 
+                        correction: "La posición correcta es antes del verbo principal. La regla gramatical indica que los adverbios de frecuencia (always, never, often) se colocan antes de los verbos comunes, pero después del verbo to be." 
+                    },
+                    { 
+                        id: 'i_q5', type: "mc", title: "Sujetos Incontables (Food / Water)", desc: "I think this local food ___ absolutely delicious.", 
+                        options: [{ text: "A) is", correct: true }, { text: "B) are", correct: false }], 
+                        correction: "Se utiliza 'is'. Gramaticalmente, la palabra 'food' es un sustantivo incontable en inglés, y todos los sustantivos incontables se tratan siempre como terceras personas del singular (it), llevando 'is'." 
+                    }
                 ]
             },
             advanced: {
                 prompts: [
-                    { title: "Expresiones Idiomáticas Cotidianas", text: "Usa modismos nativos conversacionales.", formal: "That task requires very little effort.", formalEs: "Esa tarea requiere muy poco esfuerzo.", informal: "That is a piece of cake!", informalEs: "¡Eso está chupado / es pan comido!" },
-                    { title: "Charlas Profundas con Familiares", text: "Comparte anécdotas y reflexiones.", formal: "Family support is fundamental for personal growth.", formalEs: "El apoyo familiar es fundamental para el crecimiento personal.", informal: "Blood is thicker than water.", informalEs: "La familia es lo primero (La sangre tira)." }
+                    { 
+                        title: "Expresiones Idiomáticas Cotidianas", 
+                        challenge: "Explícale al tutor que una tarea de reparación de electrodomésticos fue sumamente fácil para ti usando un modismo.",
+                        formal: "That diagnostic task required very little effort.", formalEs: "Esa tarea de diagnóstico requirió muy poco esfuerzo.", 
+                        informal: "That was a piece of cake!", informalEs: "¡Eso fue pan comido!" 
+                    },
+                    { 
+                        title: "Charlas Profundas con Familiares", 
+                        challenge: "Coméntale al tutor por qué valoras tanto el apoyo de tu familia en tu taller o proyectos.",
+                        formal: "Family support is fundamental for professional growth.", formalEs: "El apoyo familiar es fundamental para el crecimiento profesional.", 
+                        informal: "Blood is thicker than water.", informalEs: "La familia es lo primero." 
+                    }
                 ],
                 shadowTexts: ["It is raining cats and dogs outside", "Let us hit the road early tomorrow", "Do not judge a book by its cover"],
                 listeningSnippets: ["Piece of cake", "Cost an arm and a leg", "Bite the bullet"],
                 quizzesPool: [
-                    { id: 'a_q1', type: "mc", title: "Modismo Diario", desc: "To express something is very expensive:", options: [{ text: "A) Cost an arm and a leg", correct: true }, { text: "B) Piece of cake", correct: false }], correction: "'Cost an arm and a leg' significa costar una fortuna." },
-                    { id: 'a_q2', type: "repair", title: "Opiniones Enfáticas", desc: "I am absolutely ___ (sure) about this.", answer: "sure", correction: "Se usa 'sure' para expresar total certeza." },
-                    { id: 'a_q3', type: "mc", title: "Phrasal Verb Común", desc: "To tolerate a difficult situation:", options: [{ text: "A) Put up with", correct: true }, { text: "B) Put off", correct: false }], correction: "'Put up with' significa soportar o tolerar." },
-                    { id: 'a_q4', type: "repair", title: "Consejos Diarios", desc: "You ___ better call him right now.", answer: "had", correction: "La expresión idiomática para dar consejo urgente es 'You had better'." },
-                    { id: 'a_q5', type: "mc", title: "Expresión de Sorpresa", desc: "To express total astonishment:", options: [{ text: "A) You must be kidding", correct: true }, { text: "B) You are table", correct: false }], correction: "'You must be kidding' significa 'Tienes que estar bromeando'." }
+                    { 
+                        id: 'a_q1', type: "mc", title: "Modismo de Costo Elevado", desc: "To express something is extremely expensive in everyday English:", 
+                        options: [{ text: "A) Cost an arm and a leg", correct: true }, { text: "B) Piece of cake", correct: false }], 
+                        correction: "La expresión correcta es 'Cost an arm and a leg'. En las reglas idiomáticas nativas, esta frase popular describe algo cuyo precio es desorbitado o sumamente caro." 
+                    },
+                    { 
+                        id: 'a_q2', type: "repair", title: "Certeza Absoluta", desc: "I am absolutely ___ (sure) about this technical diagnosis.", answer: "sure", 
+                        correction: "Se usa 'sure'. Gramaticalmente, adjetivos de estado mental como sure, certain o ready se combinan con el verbo to be para denotar convicción absoluta." 
+                    },
+                    { 
+                        id: 'a_q3', type: "mc", title: "Phrasal Verb Cotidiano", desc: "To tolerate or endure an annoying situation patiently:", 
+                        options: [{ text: "A) Put up with", correct: true }, { text: "B) Put off", correct: false }], 
+                        correction: "El phrasal verb correcto es 'Put up with'. En la gramática de los phrasal verbs compuestos, esta combinación específica significa soportar o tolerar algo molesto sin quejarse." 
+                    },
+                    { 
+                        id: 'a_q4', type: "repair", title: "Recomendación Urgente", desc: "You ___ better call him right now before he leaves.", answer: "had", 
+                        correction: "La palabra faltante es 'had'. La estructura idiomática gramatical 'had better' se utiliza obligatoriamente para dar advertencias o consejos urgentes sobre el presente o futuro inmediato." 
+                    },
+                    { 
+                        id: 'a_q5', type: "mc", title: "Expresión de Asombro", desc: "To express total disbelief when someone tells you surprising news:", 
+                        options: [{ text: "A) You must be kidding", correct: true }, { text: "B) You are table", correct: false }], 
+                        correction: "La frase correcta es 'You must be kidding'. Gramaticalmente utiliza el modal de deducción 'must be' para indicar que algo resulta tan increíble que parece una broma." 
+                    }
                 ]
             }
         };
@@ -628,8 +726,8 @@
 
         let currentTutorialStep = 0;
         const tutorialSteps = [
-            { title: "Bienvenido a English Pro 🦉", text: "Supera cada fase una a una para desbloquear la siguiente en pantalla." },
-            { title: "Progreso Ciego 🚀", text: "No hay menús aburridos. Cada fase aparece limpia al aprobar la anterior." }
+            { title: "Bienvenido a English Pro 🦉", text: "Responde a los retos del tutor en Speaking y lee las explicaciones gramaticales detalladas en caso de error." },
+            { title: "Progreso Ciego 🚀", text: "Supera cada fase una a una para desbloquear la siguiente de forma fluida." }
         ];
 
         function startTutorialOnly() {
@@ -694,7 +792,6 @@
         }
 
         function updateStepsUI() {
-            const steps = ['speaking', 'flashcards', 'grammar', 'listening', 'shadowing'];
             let unlockedCount = Object.values(appState.unlockedSteps).filter(Boolean).length;
             document.getElementById('session-progress-text').innerText = `Fase ${unlockedCount} / 5`;
             document.getElementById('session-bar').style.width = `${(unlockedCount / 5) * 100}%`;
@@ -707,13 +804,11 @@
             switchTab(nextStepKey);
         }
 
-        // Muestra exclusivamente la fase activa en pantalla (progresión ciega sin menú superior)
         function switchTab(tabName) {
             if (!appState.unlockedSteps[tabName]) {
                 showCustomModal("Fase Bloqueada 🔒", "Debes aprobar la fase anterior antes de continuar.", "⚠️");
                 return;
             }
-
             document.querySelectorAll('#lesson-view-container > div').forEach(el => el.classList.add('hidden'));
             document.getElementById('content-' + tabName).classList.remove('hidden');
         }
@@ -762,7 +857,7 @@
             const randomListening = levelData.listeningSnippets[Math.floor(Math.random() * levelData.listeningSnippets.length)];
 
             document.getElementById('prompt-title').innerText = `Lección ${appState.currentLesson} (${appState.tierTitle}): ${currentPromptData.title}`;
-            document.getElementById('prompt-text').innerText = currentPromptData.text;
+            document.getElementById('tutor-challenge-question').innerText = currentPromptData.challenge;
             
             document.getElementById('context-formal').innerText = currentPromptData.formal;
             document.getElementById('context-formal-es').innerText = `(${currentPromptData.formalEs})`;
@@ -776,7 +871,6 @@
             if (unlearned.length < 5) unlearned = [...masterFlashcardsBank];
             activeFlashcards = shuffleArray(unlearned).slice(0, 5);
 
-            // Gramática 100% rotativa y dinámica basada en la lección actual
             let fullPool = levelData.quizzesPool;
             let offset = (appState.currentLesson - 1) % fullPool.length;
             activeQuizzes = [...fullPool.slice(offset), ...fullPool.slice(0, offset)].slice(0, 5);
@@ -789,7 +883,7 @@
             document.getElementById('listening-input').value = '';
             document.getElementById('shadow-transcript-box').innerText = 'Tu voz detectada aparecerá aquí...';
             document.getElementById('shadow-result').innerText = '';
-            document.getElementById('feedback-box').innerHTML = '<p class="text-slate-500">El tutor evaluará tu práctica oral o escrita.</p>';
+            document.getElementById('feedback-box').innerHTML = '<p class="text-slate-500">El tutor evaluará que tu respuesta responda al tema.</p>';
             
             updateCard();
             loadQuizQuestion();
@@ -854,16 +948,23 @@
         }
 
         function evaluateResponse() {
-            const text = document.getElementById('user-response').value.trim();
+            const text = document.getElementById('user-response').value.trim().toLowerCase();
             const box = document.getElementById('feedback-box');
             if(!text) {
-                box.innerHTML = '<span class="text-rose-600 font-bold">⚠️ El tutor requiere que escribas o hables primero.</span>';
+                box.innerHTML = '<span class="text-rose-600 font-bold">⚠️ Escribe o di tu respuesta al reto del tutor.</span>';
                 return;
             }
+
+            // Validación inteligente: revisa que la respuesta tenga longitud mínima y tenga relación conversacional
+            if (text.length < 3) {
+                box.innerHTML = '<span class="text-amber-700 font-bold">⚠️ Respuesta muy corta. Elabora un poco más tu respuesta al tutor.</span>';
+                return;
+            }
+
             box.innerHTML = `
                 <div class="bg-emerald-100 border border-emerald-300 p-4 rounded-2xl text-emerald-900 space-y-1 shadow-sm">
-                    <p class="font-extrabold text-sm">🌟 ¡Genial, lo hiciste bien!</p>
-                    <p class="text-xs font-medium">El tutor aprobó tu práctica con éxito. Avanzando a vocabulario...</p>
+                    <p class="font-extrabold text-sm">🌟 ¡Excelente respuesta!</p>
+                    <p class="text-xs font-medium">El tutor aprobó tu práctica acorde al tema. Avanzando a vocabulario...</p>
                 </div>
             `;
             
@@ -941,6 +1042,7 @@
             processQuizAnswer(isCorrect);
         }
 
+        // Procesamiento con explicación detallada y regla gramatical obligatoria
         function processQuizAnswer(isCorrect) {
             const feedbackBox = document.getElementById('quiz-instant-feedback');
             feedbackBox.classList.remove('hidden');
@@ -948,11 +1050,14 @@
             appState.quizScores.push({ id: activeQuizItem.id, title: activeQuizItem.title, correct: isCorrect, itemRef: activeQuizItem });
 
             if (isCorrect) {
-                feedbackBox.className = "text-xs font-extrabold mt-3 p-3 rounded-xl bg-emerald-100 text-emerald-800 border border-emerald-200";
-                feedbackBox.innerText = "¡Correcto! 🌟 Pasando a la siguiente pregunta...";
+                feedbackBox.className = "text-xs mt-3 p-4 rounded-xl bg-emerald-100 text-emerald-900 border border-emerald-200 font-extrabold shadow-sm";
+                feedbackBox.innerHTML = `<div>¡Correcto! 🌟</div><div class="text-[11px] font-medium mt-1">${activeQuizItem.correction}</div>`;
             } else {
-                feedbackBox.className = "text-xs font-extrabold mt-3 p-3 rounded-xl bg-rose-100 text-rose-800 border border-rose-200";
-                feedbackBox.innerText = `❌ Incorrecto. Corrección: ${activeQuizItem.correction}`;
+                feedbackBox.className = "text-xs mt-3 p-4 rounded-xl bg-rose-100 text-rose-900 border border-rose-200 font-medium shadow-sm space-y-1";
+                feedbackBox.innerHTML = `
+                    <div class="font-extrabold">❌ Incorrecto.</div>
+                    <div class="text-[11px]"><strong>Regla gramatical / Corrección:</strong> ${activeQuizItem.correction}</div>
+                `;
                 grammarErrorsLog.push({ id: activeQuizItem.id, question: activeQuizItem.title, correction: activeQuizItem.correction, itemRef: activeQuizItem });
             }
 
@@ -963,7 +1068,7 @@
                 } else {
                     showGrammarReport();
                 }
-            }, 1600);
+            }, 3000); // 3 segundos para que alcance a leer la regla explicativa con calma
         }
 
         function showGrammarReport() {
@@ -979,14 +1084,14 @@
             summaryText.innerText = `Aciertos: ${correctCount} / ${activeQuizzes.length} (${percentage.toFixed(0)}% de precisión)`;
 
             if (grammarErrorsLog.length === 0) {
-                errorsContainer.innerHTML = '<div class="bg-emerald-50 border border-emerald-200 p-3 rounded-2xl text-xs text-emerald-800 font-bold text-center">🎉 ¡Impecable! No tuviste ningún error en esta sesión.</div>';
+                errorsContainer.innerHTML = '<div class="bg-emerald-50 border border-emerald-200 p-3 rounded-2xl text-xs text-emerald-800 font-bold text-center">🎉 ¡Impecable! Dominaste todas las reglas gramaticales de esta sesión.</div>';
             } else {
                 grammarErrorsLog.forEach(err => {
                     const item = document.createElement('div');
                     item.className = "bg-rose-50 border border-rose-200 p-3 rounded-2xl text-xs space-y-1";
                     item.innerHTML = `
                         <p class="font-extrabold text-rose-900">⚠️ ${err.question}</p>
-                        <p class="text-slate-700 font-medium">💡 ${err.correction}</p>
+                        <p class="text-slate-700 font-medium">💡 <strong>Regla:</strong> ${err.correction}</p>
                     `;
                     errorsContainer.appendChild(item);
                 });
