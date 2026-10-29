@@ -203,19 +203,30 @@
                             Espere un momento...
                         </p>
 
-                        <!-- Guía de Respuestas Formales vs Informales -->
+                        <!-- Guía de Respuestas Formales vs Informales con Botones de Audio Individuales -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-5">
-                            <div class="bg-sky-50 border border-sky-200 p-4 rounded-2xl shadow-sm">
-                                <span class="text-[11px] font-extrabold text-sky-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-                                    <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> 👔 Formal (Trabajo / Desconocidos):
-                                </span>
-                                <p class="text-xs text-slate-800 italic font-semibold" id="context-formal">...</p>
+                            <div class="bg-sky-50 border border-sky-200 p-4 rounded-2xl shadow-sm flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[11px] font-extrabold text-sky-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
+                                        <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> 👔 Formal:
+                                    </span>
+                                    <p class="text-xs text-slate-800 italic font-semibold mb-3" id="context-formal">...</p>
+                                </div>
+                                <button onclick="speakSpecificText('formal')" class="self-start bg-white hover:bg-sky-100 text-sky-700 border border-sky-300 px-3 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-sm">
+                                    <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar Formal 🔊
+                                </button>
                             </div>
-                            <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl shadow-sm">
-                                <span class="text-[11px] font-extrabold text-emerald-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-                                    <i data-lucide="users" class="w-3.5 h-3.5"></i> 🏠 Informal (Amigos / Familia):
-                                </span>
-                                <p class="text-xs text-slate-800 italic font-semibold" id="context-informal">...</p>
+
+                            <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl shadow-sm flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[11px] font-extrabold text-emerald-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
+                                        <i data-lucide="users" class="w-3.5 h-3.5"></i> 🏠 Informal:
+                                    </span>
+                                    <p class="text-xs text-slate-800 italic font-semibold mb-3" id="context-informal">...</p>
+                                </div>
+                                <button onclick="speakSpecificText('informal')" class="self-start bg-white hover:bg-emerald-100 text-emerald-700 border border-emerald-300 px-3 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-sm">
+                                    <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar Informal 🔊
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -247,11 +258,8 @@
                             <p class="text-slate-500">Practice speaking or writing to get immediate feedback.</p>
                         </div>
                     </div>
-                    <div class="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-600 flex items-center justify-between font-bold">
-                        <span>Listen Audio:</span>
-                        <button onclick="speakText()" class="bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 px-4 py-2 rounded-xl flex items-center gap-1.5 transition cursor-pointer font-extrabold text-xs shadow-sm">
-                            <i data-lucide="volume-2" class="w-4 h-4"></i> Audio 🔊
-                        </button>
+                    <div class="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500 text-center font-bold">
+                        <span>💡 Tip: Usa los botones de audio arriba para escuchar cada ejemplo.</span>
                     </div>
                 </div>
             </div>
@@ -614,6 +622,7 @@
         let currentListeningTarget = "";
         let activeQuizzes = [];
         let activeFlashcards = [];
+        let currentPromptData = null;
 
         function checkStreakExpiration() {
             if (!appState.lastCompletedDate) return;
@@ -872,7 +881,6 @@
             loadProgressiveLesson();
             updateUIStats();
 
-            // OBLIGATORIO: Si no hay nombre guardado, mostramos el modal de perfil de entrada
             if (!appState.userName || appState.userName.trim() === "") {
                 document.getElementById('profile-modal').classList.remove('hidden');
             } else {
@@ -892,14 +900,14 @@
         function loadProgressiveLesson() {
             const currentTier = appState.tierKey || 'beginner';
             const data = universalData[currentTier] || universalData['beginner'];
-            const randomPrompt = data.prompts[Math.floor(Math.random() * data.prompts.length)];
+            currentPromptData = data.prompts[Math.floor(Math.random() * data.prompts.length)];
             const randomShadow = data.shadowTexts[Math.floor(Math.random() * data.shadowTexts.length)];
             const randomListening = data.listeningSnippets[Math.floor(Math.random() * data.listeningSnippets.length)];
 
-            document.getElementById('prompt-title').innerText = randomPrompt.title;
-            document.getElementById('prompt-text').innerText = randomPrompt.text;
-            document.getElementById('context-formal').innerText = randomPrompt.formal;
-            document.getElementById('context-informal').innerText = randomPrompt.informal;
+            document.getElementById('prompt-title').innerText = currentPromptData.title;
+            document.getElementById('prompt-text').innerText = currentPromptData.text;
+            document.getElementById('context-formal').innerText = currentPromptData.formal;
+            document.getElementById('context-informal').innerText = currentPromptData.informal;
 
             document.getElementById('shadow-text').innerText = `"${randomShadow}"`;
             currentListeningTarget = randomListening;
@@ -927,6 +935,19 @@
             
             updateCard();
             loadQuizQuestion();
+        }
+
+        function speakSpecificText(type) {
+            if (!currentPromptData) return;
+            if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+            
+            let textToSpeak = type === 'formal' ? currentPromptData.formal : currentPromptData.informal;
+            // Limpiar la parte en español entre paréntesis para que el sintetizador lea solo el inglés nativo con perfección
+            let cleanEnglishOnly = textToSpeak.split('(')[0].trim();
+
+            const utterance = new SpeechSynthesisUtterance(cleanEnglishOnly);
+            utterance.lang = 'en-US';
+            window.speechSynthesis.speak(utterance);
         }
 
         function loadQuizQuestion() {
@@ -1099,14 +1120,6 @@
             }
             box.innerHTML = '<p class="text-emerald-700 font-extrabold">¡Buen trabajo! 🌟</p><p class="text-slate-600">¡Tu práctica va excelente!</p>';
             markStep('speaking', 'badge-speaking');
-        }
-
-        function speakText() {
-            if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
-            const cleanText = document.getElementById('prompt-text').innerText.split('(')[0].trim();
-            const utterance = new SpeechSynthesisUtterance(cleanText);
-            utterance.lang = 'en-US';
-            window.speechSynthesis.speak(utterance);
         }
 
         checkInitialFocus();
