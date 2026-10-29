@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>English Pro - Mastery Edition</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #f0f9ff 50%, #faf5ff 100%);
+            background-attachment: fixed;
+            color: #1e293b;
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        .vibrant-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        .vibrant-input {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+        }
+        .vibrant-input:focus {
+            border-color: #0ea5e9;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
+        }
+
+        .card-flip {
+            perspective: 1000px;
+        }
+        .card-inner {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .card-flip.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            backface-visibility: hidden;
+        }
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .mascot-float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between relative overflow-x-hidden">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="border-b border-slate-200 bg-white/90 sticky top-0 z-40 backdrop-blur-xl shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center space-x-3 w-full sm:w-auto justify-between sm:justify-start">
+                <div class="flex items-center space-x-2.5">
+                    <div class="bg-gradient-to-tr from-sky-500 to-emerald-400 p-2.5 rounded-2xl text-white font-bold shadow-lg shadow-emerald-500/20">
+                        <i data-lucide="zap" class="w-5 h-5"></i>
+                    </div>
+                    <h1 class="font-extrabold text-lg text-slate-900 flex items-center gap-2 tracking-tight">
+                        English Pro
+                        <span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 rounded-full" id="header-badge">Lección 1 / 40</span>
+                    </h1>
+                </div>
+                <div class="flex items-center gap-2 sm:hidden">
+                    <button onclick="openVocabularyVault()" class="bg-purple-100 text-purple-700 border border-purple-200 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1 shadow-sm">
+                        <i data-lucide="book" class="w-3.5 h-3.5"></i> Bóveda
+                    </button>
+                    <button onclick="startTutorialOnly()" class="bg-sky-100 text-sky-700 border border-sky-200 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1 shadow-sm">
+                        <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Ayuda
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="flex items-center justify-center flex-wrap gap-2 text-xs w-full sm:w-auto">
+                <div class="flex items-center space-x-1.5 bg-slate-100 px-3.5 py-1.5 rounded-xl border border-slate-200 font-bold text-slate-700 shadow-sm">
+                    <i data-lucide="award" class="w-3.5 h-3.5 text-purple-600"></i>
+                    <span>Nivel: <strong class="text-slate-900" id="user-tier">Beginner</strong></span>
+                </div>
+                <div class="flex items-center space-x-1.5 bg-orange-50 px-3.5 py-1.5 rounded-xl border border-orange-200 font-semibold text-orange-700 shadow-sm">
+                    <i data-lucide="flame" class="w-3.5 h-3.5 text-orange-500"></i>
+                    <span>Streak: <strong class="text-slate-900" id="streak-count">0d</strong></span>
+                </div>
+                <div class="flex items-center space-x-1.5 bg-emerald-50 px-3.5 py-1.5 rounded-xl border border-emerald-200 font-semibold text-emerald-700 shadow-sm">
+                    <i data-lucide="layers" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>Vocab: <strong class="text-slate-900" id="vocab-vault-count">0</strong>/200</span>
+                </div>
+                <button onclick="openVocabularyVault()" class="hidden sm:flex bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 px-3.5 py-1.5 rounded-xl transition cursor-pointer items-center gap-1.5 text-xs font-bold shadow-sm">
+                    <i data-lucide="book" class="w-3.5 h-3.5"></i> Bóveda 📚
+                </button>
+                <button onclick="startTutorialOnly()" class="hidden sm:flex bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 px-3.5 py-1.5 rounded-xl transition cursor-pointer items-center gap-1.5 text-xs font-bold shadow-sm">
+                    <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Tutorial
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-grow relative z-10">
+        
+        <!-- Welcome Banner -->
+        <div class="vibrant-card rounded-3xl p-5 sm:p-7 mb-6 relative overflow-hidden border border-emerald-100 shadow-xl bg-gradient-to-br from-white via-emerald-50/30 to-sky-50/40">
+            <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-5">
+                
+                <div class="flex items-center gap-4 w-full sm:w-auto">
+                    <div id="mascot-widget-box" onclick="openPetShop()" class="cursor-pointer group flex-shrink-0 mascot-float relative hidden" title="Open Pet Shop!">
+                        <div class="w-18 h-18 sm:w-20 sm:h-20 bg-gradient-to-tr from-sky-400 via-emerald-400 to-purple-500 rounded-3xl p-1 shadow-xl flex items-center justify-center transition group-hover:scale-105">
+                            <div class="w-full h-full bg-white rounded-[22px] flex items-center justify-center text-3xl shadow-inner select-none" id="mascot-emoji">
+                                🦉
+                            </div>
+                        </div>
+                        <span class="absolute -top-1 -right-1 bg-emerald-500 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full border-2 border-white shadow">PET</span>
+                    </div>
+
+                    <div class="flex-grow">
+                        <span class="text-[10px] font-extrabold uppercase tracking-widest text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">Daily Mastery Course</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 tracking-tight" id="welcome-title">Welcome back!</h2>
+                        <p class="text-slate-600 mt-1.5 text-xs sm:text-sm bg-white/80 border border-slate-200 px-4 py-2.5 rounded-2xl italic shadow-sm" id="motivational-quote">
+                            "La constancia es la clave del dominio. ¡Vamos con todo hoy!"
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Session Progress -->
+                <div class="vibrant-card border border-slate-200 p-4.5 rounded-2xl w-full md:w-85 shadow-md bg-white">
+                    <div class="flex justify-between text-xs mb-2 font-bold">
+                        <span class="text-slate-600">Progreso de Lección:</span>
+                        <span class="text-emerald-600" id="session-progress-text">Fase 1 / 5</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden p-0.5 border border-slate-200">
+                        <div id="session-bar" class="bg-gradient-to-r from-sky-400 to-emerald-500 h-full w-0 rounded-full transition-all duration-500 shadow-sm"></div>
+                    </div>
+                    <div class="mt-3 text-center text-xs text-slate-500 font-bold" id="auto-advance-notice">
+                        ✨ Supera cada fase para desbloquear la siguiente
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VISTA DE LECCIÓN ÚNICA EN PANTALLA -->
+        <div id="lesson-view-container" class="space-y-4">
+
+            <!-- FASE 1: SPEAKING CONTEXTUALIZADO Y GUIADO -->
+            <div id="content-speaking" class="space-y-4">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    <div class="vibrant-card lg:col-span-2 rounded-3xl p-5 sm:p-7 flex flex-col justify-between shadow-lg">
+                        <div>
+                            <div class="flex items-center justify-between mb-3.5">
+                                <span class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 flex items-center gap-1.5 shadow-sm">
+                                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Fase 1 de 5: Tutor Speaking Contextualizado
+                                </span>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mb-2" id="prompt-title">Cargando lección...</h3>
+                            
+                            <!-- Pregunta o Reto del Tutor basado en el tema -->
+                            <div class="bg-sky-50 border border-sky-200 p-4 rounded-2xl mb-4 shadow-sm">
+                                <span class="text-[11px] font-extrabold text-sky-700 uppercase tracking-wider block mb-1">🤖 Reto del Tutor:</span>
+                                <p class="text-xs sm:text-sm text-slate-900 font-bold italic" id="tutor-challenge-question">...</p>
+                            </div>
+
+                            <!-- Guía Formal vs Informal con Traducción -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-5">
+                                <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm flex flex-col justify-between">
+                                    <div>
+                                        <span class="text-[11px] font-extrabold text-sky-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
+                                            <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> 👔 Ejemplo Formal:
+                                        </span>
+                                        <p class="text-xs text-slate-800 italic font-semibold mb-1" id="context-formal">...</p>
+                                        <p class="text-[11px] text-sky-800 font-bold mb-3" id="context-formal-es">...</p>
+                                    </div>
+                                    <button onclick="speakSpecificText('formal')" class="self-start bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 px-3 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-sm">
+                                        <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar Formal 🔊
+                                    </button>
+                                </div>
+
+                                <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm flex flex-col justify-between">
+                                    <div>
+                                        <span class="text-[11px] font-extrabold text-emerald-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
+                                            <i data-lucide="users" class="w-3.5 h-3.5"></i> 🏠 Ejemplo Informal:
+                                        </span>
+                                        <p class="text-xs text-slate-800 italic font-semibold mb-1" id="context-informal">...</p>
+                                        <p class="text-[11px] text-emerald-800 font-bold mb-3" id="context-informal-es">...</p>
+                                    </div>
+                                    <button onclick="speakSpecificText('informal')" class="self-start bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 px-3 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-sm">
+                                        <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar Informal 🔊
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex items-center justify-between mb-2 flex-wrap gap-2">
+                                <label class="block text-xs font-extrabold text-slate-600 uppercase tracking-wider">Tu Respuesta (Usa estructuras acordes al tema):</label>
+                                <button onclick="toggleSpeechRecognition()" id="mic-btn" class="bg-emerald-500 hover:bg-emerald-600 text-white px-3.5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-md shadow-emerald-500/20">
+                                    <i data-lucide="mic" class="w-4 h-4"></i> <span id="mic-status-text">Start Mic</span>
+                                </button>
+                            </div>
+                            <textarea id="user-response" rows="2" class="vibrant-input w-full rounded-2xl p-3.5 text-slate-800 focus:outline-none transition text-xs sm:text-sm leading-relaxed font-medium" placeholder="Escribe o habla tu respuesta respondiendo al tutor..."></textarea>
+                            
+                            <div class="flex flex-wrap items-center justify-between mt-3.5 gap-2">
+                                <button onclick="evaluateResponse()" class="bg-gradient-to-r from-sky-500 to-emerald-500 hover:from-sky-600 hover:to-emerald-600 text-white font-extrabold px-6 py-3 rounded-2xl text-xs transition flex items-center gap-2 shadow-lg shadow-emerald-500/25 cursor-pointer">
+                                    <i data-lucide="send" class="w-4 h-4"></i> Enviar al Tutor para Evaluación
+                                </button>
+                                <span class="text-xs text-slate-500 font-bold" id="feedback-status">Esperando respuesta...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vibrant-card rounded-3xl p-5 sm:p-7 flex flex-col justify-between shadow-lg">
+                        <div>
+                            <h3 class="text-xs font-extrabold text-slate-800 uppercase tracking-wider mb-3 flex items-center gap-2">
+                                <i data-lucide="bot" class="w-4 h-4 text-sky-600"></i> Tutor Decision
+                            </h3>
+                            <div id="feedback-box" class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs text-slate-700 space-y-2.5 shadow-inner font-medium">
+                                <p class="text-slate-500">El tutor evaluará que tu respuesta responda al tema de la lección.</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500 text-center font-bold">
+                            <span>✨ Fase 1 obligatoria para continuar.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FASE 2: FLASHCARDS -->
+            <div id="content-flashcards" class="hidden space-y-4">
+                <div class="max-w-sm mx-auto text-center">
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-1 tracking-tight">Fase 2 de 5: Vocabulary (5 Words)</h3>
+                    <p class="text-xs text-slate-500 mb-5 font-semibold" id="flashcard-counter-label">Reviewing words...</p>
+                    
+                    <div class="card-flip h-72 w-full cursor-pointer mb-5 shadow-2xl" onclick="this.classList.toggle('flipped')">
+                        <div class="card-inner relative w-full h-full text-center">
+                            <div class="card-front absolute w-full h-full vibrant-card rounded-3xl p-6 flex flex-col items-center justify-between border-2 border-slate-200">
+                                <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-3.5 py-1 rounded-full border border-sky-200 shadow-sm" id="flash-badge">Term #1</span>
+                                
+                                <div class="w-24 h-24 bg-slate-50 rounded-3xl border-2 border-slate-200 flex items-center justify-center text-5xl shadow-inner my-2" id="flash-img">
+                                    📚
+                                </div>
+
+                                <div>
+                                    <h4 class="text-xl font-extrabold text-slate-900 mb-1" id="flash-term">Loading...</h4>
+                                    <span class="text-xs text-slate-400 font-bold">(Tap card to flip)</span>
+                                </div>
+                            </div>
+                            <div class="card-back absolute w-full h-full vibrant-card bg-gradient-to-br from-emerald-50 to-sky-50 border-2 border-emerald-200 rounded-3xl p-6 flex flex-col items-center justify-center shadow-xl">
+                                <span class="text-xs font-extrabold text-emerald-700 mb-3 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 shadow-sm">Meaning & Spanish</span>
+                                <p class="text-slate-800 text-sm sm:text-base mb-4 font-bold" id="flash-def">...</p>
+                                <span class="text-sm font-mono text-emerald-800 bg-white px-4 py-2.5 rounded-2xl border border-emerald-300 font-extrabold shadow-sm" id="flash-es">...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center gap-3">
+                        <button onclick="prevCard()" class="bg-white hover:bg-slate-50 text-slate-700 px-5 py-2.5 rounded-2xl text-xs border border-slate-300 transition cursor-pointer font-extrabold shadow-sm">Previous</button>
+                        <button onclick="nextCard()" class="bg-gradient-to-r from-sky-500 to-emerald-500 text-white font-extrabold px-6 py-2.5 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-emerald-500/25">Siguiente Palabra ➔</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FASE 3: GRAMMAR CON EXPLICACIONES RIGUROSAS Y REGLAS -->
+            <div id="content-grammar" class="hidden space-y-4">
+                <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-purple-100">
+                    <div class="flex justify-between items-center mb-3.5">
+                        <span class="text-xs font-extrabold text-purple-700 bg-purple-100 px-3.5 py-1 rounded-full border border-purple-200 shadow-sm">Fase 3 de 5: Daily Grammar Check</span>
+                        <span class="text-xs text-slate-500 font-bold" id="quiz-counter">Challenge 1 of 5</span>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-slate-900 mb-2" id="quiz-title">Loading...</h3>
+                    <p class="text-slate-700 text-xs sm:text-sm mb-5 bg-slate-50 p-4 rounded-2xl border border-slate-200 leading-relaxed shadow-inner font-medium" id="quiz-desc">
+                        ...
+                    </p>
+                    
+                    <div class="space-y-3 mb-5" id="quiz-options"></div>
+
+                    <div id="error-repair-container" class="hidden space-y-3 mb-5">
+                        <label class="block text-xs font-extrabold text-sky-700 uppercase tracking-wider">Type the missing word:</label>
+                        <input type="text" id="error-input" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Type answer here...">
+                        <button onclick="submitErrorCorrection()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-extrabold py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-purple-600/25">
+                            Verificar con el Tutor ➔
+                        </button>
+                    </div>
+
+                    <!-- Feedback detallado con reglas gramaticales -->
+                    <div id="quiz-instant-feedback" class="text-xs mt-3 p-4 rounded-2xl hidden space-y-1.5 shadow-sm"></div>
+                </div>
+            </div>
+
+            <!-- FASE 4: EASY LISTENING -->
+            <div id="content-listening" class="hidden space-y-4">
+                <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-emerald-100">
+                    <div class="flex justify-between items-center mb-3.5">
+                        <span class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 shadow-sm">Fase 4 de 5: Ear Training</span>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-slate-900 mb-1">Listen & Repeat</h3>
+                    <p class="text-slate-600 text-xs mb-5 leading-relaxed font-medium">Escucha el audio de vida diaria y escribe lo que oigas para avanzar.</p>
+                    
+                    <div class="bg-slate-50 p-5 rounded-3xl border border-slate-200 mb-4 space-y-4 text-center shadow-inner">
+                        <button onclick="playListeningAudio()" class="bg-gradient-to-r from-emerald-500 to-sky-500 hover:from-emerald-600 hover:to-sky-600 text-white font-extrabold px-6 py-3.5 rounded-2xl text-xs sm:text-sm transition inline-flex items-center gap-2 cursor-pointer shadow-lg shadow-emerald-500/25">
+                            <i data-lucide="volume-2" class="w-4 h-4"></i> Play Audio Snippet 🔊
+                        </button>
+                        
+                        <div class="mt-3 text-left space-y-2">
+                            <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider">Type what you heard:</label>
+                            <input type="text" id="listening-input" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Type short phrase...">
+                        </div>
+
+                        <div class="flex justify-between items-center pt-2">
+                            <button onclick="checkListeningDictation()" class="bg-sky-500 hover:bg-sky-600 text-white font-extrabold px-6 py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-sky-500/25">
+                                Verificar Dictado ✓
+                            </button>
+                            <span class="text-xs text-slate-500 font-bold" id="listening-hint">Precisión requerida</span>
+                        </div>
+
+                        <div id="listening-result" class="text-xs font-extrabold text-slate-600 mt-2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FASE 5: SHORT PHRASES SHADOWING -->
+            <div id="content-shadowing" class="hidden space-y-4">
+                <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-sky-100">
+                    <div class="flex justify-between items-center mb-3.5">
+                        <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-3.5 py-1 rounded-full border border-sky-200 shadow-sm">Fase 5 de 5: Voice Shadowing</span>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-slate-900 mb-1">Pronuncia la Frase Cotidiana</h3>
+                    <p class="text-slate-600 text-xs mb-5 leading-relaxed font-medium">Usa tu voz por micrófono. El sistema validará estrictamente tu pronunciación.</p>
+                    
+                    <div class="bg-slate-50 p-5 rounded-3xl border border-slate-200 mb-4 space-y-4 shadow-inner text-center">
+                        <div class="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-sm">
+                            <p class="text-[10px] font-extrabold text-slate-400 mb-1 uppercase tracking-wider">Target Phrase:</p>
+                            <p class="text-sm sm:text-base text-sky-700 font-mono italic font-extrabold" id="shadow-text">"Loading..."</p>
+                            <button onclick="speakShadowText()" class="mt-3 bg-sky-50 hover:bg-sky-100 text-sky-700 px-4 py-2 rounded-xl text-xs transition inline-flex items-center gap-1.5 cursor-pointer border border-sky-200 font-extrabold shadow-sm">
+                                <i data-lucide="volume-2" class="w-4 h-4"></i> Escuchar Audio de Referencia 🔊
+                            </button>
+                        </div>
+
+                        <div class="py-2">
+                            <button onclick="verifyShadowingVoice()" id="shadow-mic-btn" class="bg-gradient-to-r from-emerald-500 to-sky-500 hover:from-emerald-600 hover:to-sky-600 text-white px-8 py-4 rounded-2xl text-sm font-extrabold inline-flex items-center gap-2 transition cursor-pointer shadow-lg shadow-emerald-500/25">
+                                <i data-lucide="mic" class="w-5 h-5"></i> <span id="shadow-mic-status">Grabar con Micrófono 🎙️</span>
+                            </button>
+                        </div>
+
+                        <div class="bg-white p-3.5 rounded-2xl border border-slate-200 text-xs text-slate-700 font-semibold" id="shadow-transcript-box">
+                            Tu voz detectada aparecerá aquí...
+                        </div>
+
+                        <div id="shadow-result" class="text-xs font-extrabold text-slate-600 pt-2"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- MODAL DE REPORTE FINAL DE GRAMÁTICA -->
+    <div id="grammar-report-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-md z-50 flex items-center justify-center hidden p-4">
+        <div class="vibrant-card max-w-md w-full rounded-3xl p-6 shadow-2xl relative border border-purple-200 text-left">
+            <div class="text-center mb-3">
+                <span class="text-3xl">📊</span>
+                <h3 class="font-extrabold text-xl text-slate-900 mt-1">Reporte de Gramática</h3>
+                <p class="text-xs text-slate-600 font-medium" id="report-summary-text">Resumen de tu desempeño</p>
+            </div>
+            
+            <div class="space-y-2 mb-5 max-h-56 overflow-y-auto pr-1" id="report-errors-container"></div>
+
+            <button onclick="" id="report-action-btn" class="w-full bg-gradient-to-r from-purple-600 to-emerald-500 text-white font-extrabold py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg">
+                Continuar con Fase 4 (Listening) ➔
+            </button>
+        </div>
+    </div>
+
+    <!-- VOCABULARY VAULT MODAL -->
+    <div id="vocabulary-vault-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-center justify-center hidden p-4">
+        <div class="vibrant-card max-w-lg w-full rounded-3xl p-6 shadow-2xl relative border border-purple-200 flex flex-col max-h-[85vh]">
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-200">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📚</span>
+                    <h3 class="font-extrabold text-lg text-slate-900">Bóveda de Vocabulario Aprendido</h3>
+                </div>
+                <button onclick="document.getElementById('vocabulary-vault-modal').classList.add('hidden')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-xl text-xs font-bold transition">
+                    Cerrar ✕
+                </button>
+            </div>
+            <p class="text-xs text-slate-600 mb-4 font-medium">Aquí están todas las palabras aprobadas por tu tutor:</p>
+            <div class="overflow-y-auto space-y-2.5 pr-1 flex-grow" id="vault-list-container"></div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE TUTORIAL MODAL -->
+    <div id="tutorial-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-center justify-center hidden p-4">
+        <div class="vibrant-card max-w-md w-full rounded-3xl p-6 shadow-2xl relative border border-sky-200">
+            <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-tr from-sky-400 to-emerald-400 rounded-3xl p-1 shadow-lg flex items-center justify-center text-3xl">
+                🦉
+            </div>
+            <div class="text-center mt-5 mb-4">
+                <span class="text-[10px] font-extrabold uppercase tracking-widest text-sky-700 bg-sky-100 px-3 py-1 rounded-full border border-sky-200" id="tutorial-step-indicator">Step 1 of 2</span>
+                <h3 class="font-extrabold text-xl text-slate-900 mt-2">Guía de English Pro</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed text-center mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200 shadow-inner font-medium" id="tutorial-text">
+                Responde a los retos del tutor en Speaking y lee las explicaciones gramaticales detalladas en caso de error.
+            </p>
+            <div class="flex items-center justify-between gap-3">
+                <button onclick="prevTutorialStep()" id="tutorial-prev-btn" class="bg-slate-100 text-slate-600 px-4 py-2.5 rounded-2xl text-xs font-bold border border-slate-200 transition cursor-pointer hidden">Previous</button>
+                <div class="flex-grow"></div>
+                <button onclick="nextTutorialStep()" id="tutorial-next-btn" class="bg-gradient-to-r from-sky-500 to-emerald-500 text-white font-extrabold px-6 py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-emerald-500/25">Siguiente ➔</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PET SHOP MODAL -->
+    <div id="pet-shop-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-center justify-center hidden p-4">
+        <div class="vibrant-card max-w-sm w-full rounded-3xl p-6 shadow-2xl relative border border-emerald-200 text-center">
+            <div class="text-3xl mb-1">🐾</div>
+            <h3 class="font-extrabold text-lg text-slate-900 mb-1">Companion Pet Shop</h3>
+            <p class="text-xs text-slate-600 mb-5 font-medium">Elige tu compañero de estudio:</p>
+            <div class="grid grid-cols-3 gap-3 mb-5">
+                <button onclick="selectPet('owl', '🦉')" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 p-3.5 rounded-2xl flex flex-col items-center gap-1.5 transition cursor-pointer shadow-sm">
+                    <span class="text-3xl">🦉</span>
+                    <span class="text-[11px] font-extrabold text-slate-800">Búho</span>
+                </button>
+                <button onclick="selectPet('penguin', '🐧')" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 p-3.5 rounded-2xl flex flex-col items-center gap-1.5 transition cursor-pointer shadow-sm">
+                    <span class="text-3xl">🐧</span>
+                    <span class="text-[11px] font-extrabold text-slate-800">Pingüino</span>
+                </button>
+                <button onclick="selectPet('cat', '🐱')" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 p-3.5 rounded-2xl flex flex-col items-center gap-1.5 transition cursor-pointer shadow-sm">
+                    <span class="text-3xl">🐱</span>
+                    <span class="text-[11px] font-extrabold text-slate-800">Gatito</span>
+                </button>
+            </div>
+            <button onclick="document.getElementById('pet-shop-modal').classList.add('hidden')" class="w-full bg-slate-100 text-slate-700 font-bold py-2.5 rounded-2xl text-xs transition border border-slate-200 shadow-sm">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- CUSTOM APP MODAL -->
+    <div id="custom-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-center justify-center hidden p-4">
+        <div class="vibrant-card max-w-xs w-full rounded-3xl p-6 text-center space-y-3.5 border border-slate-200 shadow-2xl">
+            <div class="w-14 h-14 bg-sky-100 border border-sky-200 rounded-2xl flex items-center justify-center mx-auto text-2xl shadow-inner" id="modal-icon">✨</div>
+            <h4 class="font-extrabold text-base text-slate-900" id="modal-title">English Pro Notice</h4>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium" id="modal-message">Message here...</p>
+            <button onclick="closeModal()" class="w-full bg-gradient-to-r from-sky-500 to-emerald-500 text-white font-extrabold py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-emerald-500/25">OK</button>
+        </div>
+    </div>
+
+    <!-- INITIAL PROFILE & NAME MODAL -->
+    <div id="profile-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xl z-50 flex items-center justify-center hidden p-4">
+        <div class="vibrant-card max-w-sm w-full rounded-3xl p-6 shadow-2xl border border-slate-200">
+            <div class="text-center mb-5">
+                <div class="bg-gradient-to-tr from-sky-500 to-emerald-400 p-3.5 rounded-2xl text-white inline-block font-extrabold shadow-md mb-2.5">
+                    <i data-lucide="zap" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-extrabold text-xl text-slate-900 tracking-tight">Registro de Estudiante</h3>
+                <p class="text-xs text-slate-500 mt-1 font-medium">Ingresa tu nombre y selecciona tu nivel definitivo:</p>
+            </div>
+            <div class="mb-4.5">
+                <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-1.5">Tu Nombre:</label>
+                <input type="text" id="user-name-input" value="" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Escribe tu nombre aquí...">
+            </div>
+            <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">Selecciona tu Nivel Definitivo:</label>
+            <div class="space-y-2.5 mb-2">
+                <button onclick="saveUserProfileAndStart('Beginner', 'beginner')" class="w-full text-left bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 p-3.5 rounded-2xl text-xs text-slate-800 transition flex items-center justify-between cursor-pointer font-bold shadow-sm">
+                    <span>🌱 Beginner (Desde Cero)</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-600"></i>
+                </button>
+                <button onclick="saveUserProfileAndStart('Intermediate', 'intermediate')" class="w-full text-left bg-sky-50 hover:bg-sky-100 border border-sky-200 p-3.5 rounded-2xl text-xs text-slate-800 transition flex items-center justify-between cursor-pointer font-bold shadow-sm">
+                    <span>⚡ Intermediate (Conversacional)</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-600"></i>
+                </button>
+                <button onclick="saveUserProfileAndStart('Advanced', 'advanced')" class="w-full text-left bg-purple-50 hover:bg-purple-100 border border-purple-200 p-3.5 rounded-2xl text-xs text-slate-800 transition flex items-center justify-between cursor-pointer font-bold shadow-sm">
+                    <span>🔥 Advanced (Nativo / Slang Pro)</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-purple-600"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-200 bg-white/60 py-3 text-center text-xs text-slate-500 relative z-10 font-medium">
+        English Pro &copy; 2026 &bull; Mastery Edition
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        lucide.createIcons();
+
+        let appState = JSON.parse(localStorage.getItem('english_pro_strict_state')) || {
+            userName: '',
+            streak: 0,
+            currentLesson: 1,
+            maxLessons: 40,
+            tierKey: 'beginner',
+            tierTitle: 'Beginner',
+            lastCompletedDate: null,
+            unlockedSteps: { speaking: true, flashcards: false, grammar: false, listening: false, shadowing: false },
+            quizScores: [],
+            learnedFlashcards: [],
+            tutorialCompleted: false,
+            selectedPet: null,
+            petEmoji: null,
+            unlockedPets: ['owl']
+        };
+
+        const motivationalQuotes = [
+            "\"La constancia es la clave del dominio. ¡Vamos con todo hoy!\"",
+            "\"Cada palabra nueva que aprendes es una puerta hacia el mundo.\"",
+            "\"El éxito es la suma de pequeños esfuerzos repetidos día tras día.\"",
+            "\"Habla sin miedo, equivócate y aprende. Ese es el verdadero camino.\"",
+            "\"Tu futuro depende de lo que hagas hoy. ¡Haz que cuente!\""
+        ];
+
+        const masterFlashcardsBank = [
+            { id: 1, term: "Hello", def: "Saludo formal o general.", es: "Hola 👋", img: "👋" },
+            { id: 2, term: "Goodbye", def: "Para despedirse.", es: "Adiós 🚪", img: "🚪" },
+            { id: 3, term: "Water", def: "Líquido vital para beber.", es: "Agua 💧", img: "💧" },
+            { id: 4, term: "Food", def: "Cualquier sustancia alimenticia.", es: "Comida 🍲", img: "🍲" },
+            { id: 5, term: "Friend", def: "Persona con quien se tiene amistad.", es: "Amigo / Amiga 🤝", img: "🤝" },
+            { id: 6, term: "House", def: "Lugar donde se vive.", es: "Casa 🏠", img: "🏠" },
+            { id: 7, term: "Car", def: "Vehículo de transporte personal.", es: "Carro / Auto 🚗", img: "🚗" },
+            { id: 8, term: "Book", def: "Conjunto de hojas escritas.", es: "Libro 📖", img: "📖" },
+            { id: 9, term: "Time", def: "Duración de las cosas.", es: "Tiempo ⏰", img: "⏰" },
+            { id: 10, term: "Money", def: "Monedas y billetes.", es: "Dinero 💵", img: "💵" },
+            { id: 11, term: "Market", def: "Lugar para comprar víveres.", es: "Mercado 🛒", img: "🛒" },
+            { id: 12, term: "Phone", def: "Dispositivo móvil.", es: "Teléfono 📱", img: "📱" },
+            { id: 13, term: "Music", def: "Arte de combinar sonidos.", es: "Música 🎸", img: "🎸" },
+            { id: 14, term: "Family", def: "Grupo de parientes.", es: "Familia 👨‍👩‍👧‍👦", img: "👨‍👩‍👧‍👦" },
+            { id: 15, term: "Coffee", def: "Bebida caliente.", es: "Café ☕", img: "☕" }
+        ];
+
+        // Currículo cotidiano con retos de Speaking dirigidos y Quizzes con explicaciones gramaticales profundas
+        const curriculumLevels = {
+            beginner: {
+                prompts: [
+                    { 
+                        title: "Saludos y Presentaciones Diarias", 
+                        challenge: "Responde al tutor presentándote formal o informalmente: ¿Cómo te llamas y de dónde eres?",
+                        formal: "Hello, my name is [Name] and I am from [Place].", formalEs: "Hola, mi nombre es [Nombre] y soy de [Lugar].", 
+                        informal: "Hey, I'm [Name] from [Place].", informalEs: "Hola, soy [Nombre] de [Lugar]." 
+                    },
+                    { 
+                        title: "Preguntar la Hora y el Clima", 
+                        challenge: "El tutor te pregunta: 'What is the weather like today?' Responde describiendo el clima.",
+                        formal: "Could you tell me if it is going to rain?", formalEs: "¿Podría decirme si va a llover?", 
+                        informal: "It's really sunny outside today!", informalEs: "¡Está muy soleado afuera hoy!" 
+                    },
+                    { 
+                        title: "Compras en el Mercado", 
+                        challenge: "Estás comprando fruta. Pregúntale al tendero cuánto cuesta y si está fresco.",
+                        formal: "How much does this fresh fruit cost?", formalEs: "¿Cuánto cuesta esta fruta fresca?", 
+                        informal: "How much is this?", informalEs: "¿Cuánto cuesta esto?" 
+                    }
+                ],
+                shadowTexts: ["Hello nice to meet you", "Where is the nearest store", "I am going to visit my family"],
+                listeningSnippets: ["How are you doing today", "What time is it now", "I would like some water"],
+                quizzesPool: [
+                    { 
+                        id: 'b_q1', type: "mc", title: "Rutina Diaria (Presente Simple)", desc: "I ___ up early every single morning.", 
+                        options: [{ text: "A) wake", correct: true }, { text: "B) wakes", correct: false }], 
+                        correction: "La forma correcta es 'wake'. Según las reglas gramaticales del inglés, con el pronombre 'I' el verbo en presente simple se mantiene en su forma base sin agregar 's' o 'es'." 
+                    },
+                    { 
+                        id: 'b_q2', type: "repair", title: "Familia y Posesivos", desc: "This is ___ mother. (my/mine)", answer: "my", 
+                        correction: "Se debe usar 'my'. La regla indica que los adjetivos posesivos (my, your, his, her) siempre van antes del sustantivo al que modifican ('mother'). 'Mine' es un pronombre posesivo que va al final." 
+                    },
+                    { 
+                        id: 'b_q3', type: "mc", title: "Viajes y Medios de Transporte", desc: "We are traveling ___ bus tomorrow morning.", 
+                        options: [{ text: "A) by", correct: true }, { text: "B) in", correct: false }], 
+                        correction: "La preposición correcta es 'by'. Gramaticalmente, usamos 'by' seguido directamente del medio de transporte (by bus, by car, by plane) cuando hablamos de cómo nos desplazamos de forma general." 
+                    },
+                    { 
+                        id: 'b_q4', type: "repair", title: "Compras Cotidianas (Precios)", desc: "Traduce '¿Cuánto cuesta esta camisa?':", answer: "how much", correctText: "how much", 
+                        correction: "Se escribe 'How much'. La regla gramatical para preguntar precios de sustantivos incontables o singulares en inglés utiliza la estructura interrogativa 'How much is...' o 'How much does... cost'." 
+                    },
+                    { 
+                        id: 'b_q5', type: "mc", title: "Comida y Gustos (Gerundios)", desc: "I really enjoy ___ coffee in the morning.", 
+                        options: [{ text: "A) drinking", correct: true }, { text: "B) drink", correct: false }], 
+                        correction: "Lo correcto es 'drinking'. Según la gramática inglesa, ciertos verbos de preferencia y disfrute como 'enjoy', 'love' o 'like' exigen obligatoriamente que el verbo siguiente termine en gerundio (-ing)." 
+                    }
+                ]
+            },
+            intermediate: {
+                prompts: [
+                    { 
+                        title: "Planes de Viaje y Vacaciones", 
+                        challenge: "El tutor te pregunta: 'What are your plans for the upcoming weekend?' Responde mencionando un viaje o salida.",
+                        formal: "I am planning a trip to the beach this weekend.", formalEs: "Estoy planeando un viaje a la playa este fin de semana.", 
+                        informal: "I'm heading out of town for a few days.", informalEs: "Me voy fuera de la ciudad por unos días." 
+                    },
+                    { 
+                        title: "Conversaciones con Amigos", 
+                        challenge: "Te encuentras con un amigo en la calle después de meses. Salúdalo y pregúntale cómo está.",
+                        formal: "It is a pleasure to see you again after so long.", formalEs: "Es un placer verte de nuevo después de tanto tiempo.", 
+                        informal: "Long time no see! How have you been?", informalEs: "¡Cuánto tiempo sin verte! ¿Cómo has estado?" 
+                    },
+                    { 
+                        title: "Transporte y Fallas Mecánicas", 
+                        challenge: "Explícale al tutor que tuviste un problema con tu vehículo hoy.",
+                        formal: "My vehicle requires immediate mechanical maintenance.", formalEs: "Mi vehículo requiere mantenimiento mecánico inmediato.", 
+                        informal: "My car broke down on the way here.", informalEs: "Mi carro se descompuso camino hacia aquí." 
+                    }
+                ],
+                shadowTexts: ["Let us grab a cup of coffee later", "I am looking forward to the weekend", "Can you recommend a good restaurant"],
+                listeningSnippets: ["Where are we going tonight", "I need to buy some groceries", "Let us meet up tomorrow afternoon"],
+                quizzesPool: [
+                    { 
+                        id: 'i_q1', type: "mc", title: "Planificación y Futuro (Going to)", desc: "I ___ visit my parents this coming weekend.", 
+                        options: [{ text: "A) am going to", correct: true }, { text: "B) will going to", correct: false }], 
+                        correction: "La estructura correcta es 'am going to'. Gramaticalmente, para expresar planes e intenciones futuras ya decididos, utilizamos el verbo to be + going to + verbo en forma base." 
+                    },
+                    { 
+                        id: 'i_q2', type: "repair", title: "Pasado Simple (Viajes)", desc: "Yesterday we ___ (visit) our grandparents in the countryside.", answer: "visited", 
+                        correction: "La respuesta es 'visited'. En el pasado simple para verbos regulares en inglés, la regla gramatical establece que se añade la partícula '-ed' al final del verbo base sin importar la persona." 
+                    },
+                    { 
+                        id: 'i_q3', type: "mc", title: "Cortesía y Peticiones Educadas", desc: "___ you please pass me the salt?", 
+                        options: [{ text: "A) Could", correct: true }, { text: "B) Must", correct: false }], 
+                        correction: "Se debe usar 'Could'. En las reglas de modales en inglés, 'Could' es el auxiliar modal estándar y educado para realizar solicitudes y peticiones formales o de cortesía." 
+                    },
+                    { 
+                        id: 'i_q4', type: "repair", title: "Adverbios de Frecuencia", desc: "I ___ (always) drink coffee in the morning.", answer: "always", 
+                        correction: "La posición correcta es antes del verbo principal. La regla gramatical indica que los adverbios de frecuencia (always, never, often) se colocan antes de los verbos comunes, pero después del verbo to be." 
+                    },
+                    { 
+                        id: 'i_q5', type: "mc", title: "Sujetos Incontables (Food / Water)", desc: "I think this local food ___ absolutely delicious.", 
+                        options: [{ text: "A) is", correct: true }, { text: "B) are", correct: false }], 
+                        correction: "Se utiliza 'is'. Gramaticalmente, la palabra 'food' es un sustantivo incontable en inglés, y todos los sustantivos incontables se tratan siempre como terceras personas del singular (it), llevando 'is'." 
+                    }
+                ]
+            },
+            advanced: {
+                prompts: [
+                    { 
+                        title: "Expresiones Idiomáticas Cotidianas", 
+                        challenge: "Explícale al tutor que una tarea de reparación de electrodomésticos fue sumamente fácil para ti usando un modismo.",
+                        formal: "That diagnostic task required very little effort.", formalEs: "Esa tarea de diagnóstico requirió muy poco esfuerzo.", 
+                        informal: "That was a piece of cake!", informalEs: "¡Eso fue pan comido!" 
+                    },
+                    { 
+                        title: "Charlas Profundas con Familiares", 
+                        challenge: "Coméntale al tutor por qué valoras tanto el apoyo de tu familia en tu taller o proyectos.",
+                        formal: "Family support is fundamental for professional growth.", formalEs: "El apoyo familiar es fundamental para el crecimiento profesional.", 
+                        informal: "Blood is thicker than water.", informalEs: "La familia es lo primero." 
+                    }
+                ],
+                shadowTexts: ["It is raining cats and dogs outside", "Let us hit the road early tomorrow", "Do not judge a book by its cover"],
+                listeningSnippets: ["Piece of cake", "Cost an arm and a leg", "Bite the bullet"],
+                quizzesPool: [
+                    { 
+                        id: 'a_q1', type: "mc", title: "Modismo de Costo Elevado", desc: "To express something is extremely expensive in everyday English:", 
+                        options: [{ text: "A) Cost an arm and a leg", correct: true }, { text: "B) Piece of cake", correct: false }], 
+                        correction: "La expresión correcta es 'Cost an arm and a leg'. En las reglas idiomáticas nativas, esta frase popular describe algo cuyo precio es desorbitado o sumamente caro." 
+                    },
+                    { 
+                        id: 'a_q2', type: "repair", title: "Certeza Absoluta", desc: "I am absolutely ___ (sure) about this technical diagnosis.", answer: "sure", 
+                        correction: "Se usa 'sure'. Gramaticalmente, adjetivos de estado mental como sure, certain o ready se combinan con el verbo to be para denotar convicción absoluta." 
+                    },
+                    { 
+                        id: 'a_q3', type: "mc", title: "Phrasal Verb Cotidiano", desc: "To tolerate or endure an annoying situation patiently:", 
+                        options: [{ text: "A) Put up with", correct: true }, { text: "B) Put off", correct: false }], 
+                        correction: "El phrasal verb correcto es 'Put up with'. En la gramática de los phrasal verbs compuestos, esta combinación específica significa soportar o tolerar algo molesto sin quejarse." 
+                    },
+                    { 
+                        id: 'a_q4', type: "repair", title: "Recomendación Urgente", desc: "You ___ better call him right now before he leaves.", answer: "had", 
+                        correction: "La palabra faltante es 'had'. La estructura idiomática gramatical 'had better' se utiliza obligatoriamente para dar advertencias o consejos urgentes sobre el presente o futuro inmediato." 
+                    },
+                    { 
+                        id: 'a_q5', type: "mc", title: "Expresión de Asombro", desc: "To express total disbelief when someone tells you surprising news:", 
+                        options: [{ text: "A) You must be kidding", correct: true }, { text: "B) You are table", correct: false }], 
+                        correction: "La frase correcta es 'You must be kidding'. Gramaticalmente utiliza el modal de deducción 'must be' para indicar que algo resulta tan increíble que parece una broma." 
+                    }
+                ]
+            }
+        };
+
+        let currentCard = 0;
+        let currentQuizIndex = 0;
+        let activeQuizItem = null;
+        let currentListeningTarget = "";
+        let activeQuizzes = [];
+        let activeFlashcards = [];
+        let currentPromptData = null;
+        let grammarErrorsLog = [];
+
+        function saveState() {
+            localStorage.setItem('english_pro_strict_state', JSON.stringify(appState));
+        }
+
+        function showCustomModal(title, message, icon = "✨") {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-message').innerText = message;
+            document.getElementById('modal-icon').innerText = icon;
+            document.getElementById('custom-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
+        }
+
+        let currentTutorialStep = 0;
+        const tutorialSteps = [
+            { title: "Bienvenido a English Pro 🦉", text: "Responde a los retos del tutor en Speaking y lee las explicaciones gramaticales detalladas en caso de error." },
+            { title: "Progreso Ciego 🚀", text: "Supera cada fase una a una para desbloquear la siguiente de forma fluida." }
+        ];
+
+        function startTutorialOnly() {
+            currentTutorialStep = 0;
+            renderTutorialStep();
+            document.getElementById('tutorial-modal').classList.remove('hidden');
+        }
+
+        function renderTutorialStep() {
+            const step = tutorialSteps[currentTutorialStep];
+            document.getElementById('tutorial-step-indicator').innerText = `Step ${currentTutorialStep + 1} of ${tutorialSteps.length}`;
+            document.getElementById('tutorial-title').innerText = step.title;
+            document.getElementById('tutorial-text').innerText = step.text;
+        }
+
+        function nextTutorialStep() {
+            currentTutorialStep++;
+            if (currentTutorialStep >= tutorialSteps.length) {
+                document.getElementById('tutorial-modal').classList.add('hidden');
+            } else {
+                renderTutorialStep();
+            }
+        }
+
+        function prevTutorialStep() {
+            if (currentTutorialStep > 0) {
+                currentTutorialStep--;
+                renderTutorialStep();
+            }
+        }
+
+        function openPetShop() {
+            document.getElementById('pet-shop-modal').classList.remove('hidden');
+        }
+
+        function selectPet(petKey, emoji) {
+            appState.selectedPet = petKey;
+            appState.petEmoji = emoji;
+            saveState();
+            document.getElementById('pet-shop-modal').classList.add('hidden');
+            updateUIStats();
+            showCustomModal("Compañero Activo ✨", `¡${emoji} te guiará!`, "🐾");
+        }
+
+        function updateUIStats() {
+            document.getElementById('streak-count').innerText = appState.streak + 'd';
+            document.getElementById('vocab-vault-count').innerText = appState.learnedFlashcards.length;
+            document.getElementById('user-tier').innerText = appState.tierTitle;
+            document.getElementById('header-badge').innerText = `Lección ${appState.currentLesson} / ${appState.maxLessons}`;
+            document.getElementById('welcome-title').innerText = `Welcome back, ${appState.userName || 'Friend'}!`;
+
+            const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+            document.getElementById('motivational-quote').innerText = randomQuote;
+
+            if (appState.petEmoji) {
+                const mascotBox = document.getElementById('mascot-widget-box');
+                mascotBox.classList.remove('hidden');
+                document.getElementById('mascot-emoji').innerText = appState.petEmoji;
+            }
+
+            updateStepsUI();
+        }
+
+        function updateStepsUI() {
+            let unlockedCount = Object.values(appState.unlockedSteps).filter(Boolean).length;
+            document.getElementById('session-progress-text').innerText = `Fase ${unlockedCount} / 5`;
+            document.getElementById('session-bar').style.width = `${(unlockedCount / 5) * 100}%`;
+        }
+
+        function unlockNextStep(currentStepKey, nextStepKey) {
+            appState.unlockedSteps[nextStepKey] = true;
+            saveState();
+            updateStepsUI();
+            switchTab(nextStepKey);
+        }
+
+        function switchTab(tabName) {
+            if (!appState.unlockedSteps[tabName]) {
+                showCustomModal("Fase Bloqueada 🔒", "Debes aprobar la fase anterior antes de continuar.", "⚠️");
+                return;
+            }
+            document.querySelectorAll('#lesson-view-container > div').forEach(el => el.classList.add('hidden'));
+            document.getElementById('content-' + tabName).classList.remove('hidden');
+        }
+
+        function saveUserProfileAndStart(title, tierKey) {
+            const nameInput = document.getElementById('user-name-input').value.trim();
+            if (!nameInput) {
+                showCustomModal("Nombre Requerido ⚠️", "Por favor ingresa tu nombre.", "👤");
+                return;
+            }
+            appState.userName = nameInput;
+            appState.tierKey = tierKey;
+            appState.tierTitle = title;
+            appState.tutorialCompleted = true;
+            saveState();
+            document.getElementById('profile-modal').classList.add('hidden');
+            loadProgressiveLesson();
+            updateUIStats();
+            startTutorialOnly();
+        }
+
+        function checkInitialFocus() {
+            if (!appState.userName || appState.userName.trim() === "") {
+                document.getElementById('user-name-input').value = '';
+                document.getElementById('profile-modal').classList.remove('hidden');
+            } else {
+                document.getElementById('profile-modal').classList.add('hidden');
+                loadProgressiveLesson();
+                updateUIStats();
+            }
+        }
+
+        function shuffleArray(array) {
+            let arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function loadProgressiveLesson() {
+            const levelData = curriculumLevels[appState.tierKey] || curriculumLevels['beginner'];
+            currentPromptData = levelData.prompts[(appState.currentLesson - 1) % levelData.prompts.length];
+            const randomShadow = levelData.shadowTexts[Math.floor(Math.random() * levelData.shadowTexts.length)];
+            const randomListening = levelData.listeningSnippets[Math.floor(Math.random() * levelData.listeningSnippets.length)];
+
+            document.getElementById('prompt-title').innerText = `Lección ${appState.currentLesson} (${appState.tierTitle}): ${currentPromptData.title}`;
+            document.getElementById('tutor-challenge-question').innerText = currentPromptData.challenge;
+            
+            document.getElementById('context-formal').innerText = currentPromptData.formal;
+            document.getElementById('context-formal-es').innerText = `(${currentPromptData.formalEs})`;
+            document.getElementById('context-informal').innerText = currentPromptData.informal;
+            document.getElementById('context-informal-es').innerText = `(${currentPromptData.informalEs})`;
+
+            document.getElementById('shadow-text').innerText = `"${randomShadow}"`;
+            currentListeningTarget = randomListening;
+
+            let unlearned = masterFlashcardsBank.filter(card => !appState.learnedFlashcards.includes(card.id));
+            if (unlearned.length < 5) unlearned = [...masterFlashcardsBank];
+            activeFlashcards = shuffleArray(unlearned).slice(0, 5);
+
+            let fullPool = levelData.quizzesPool;
+            let offset = (appState.currentLesson - 1) % fullPool.length;
+            activeQuizzes = [...fullPool.slice(offset), ...fullPool.slice(0, offset)].slice(0, 5);
+
+            currentCard = 0;
+            currentQuizIndex = 0;
+            grammarErrorsLog = [];
+            
+            document.getElementById('user-response').value = '';
+            document.getElementById('listening-input').value = '';
+            document.getElementById('shadow-transcript-box').innerText = 'Tu voz detectada aparecerá aquí...';
+            document.getElementById('shadow-result').innerText = '';
+            document.getElementById('feedback-box').innerHTML = '<p class="text-slate-500">El tutor evaluará que tu respuesta responda al tema.</p>';
+            
+            updateCard();
+            loadQuizQuestion();
+            switchTab('speaking');
+        }
+
+        function speakSpecificText(type) {
+            if (!currentPromptData) return;
+            if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+            let textToSpeak = type === 'formal' ? currentPromptData.formal : currentPromptData.informal;
+            let cleanEnglishOnly = textToSpeak.split('(')[0].trim();
+            const utterance = new SpeechSynthesisUtterance(cleanEnglishOnly);
+            utterance.lang = 'en-US';
+            window.speechSynthesis.speak(utterance);
+        }
+
+        let activeRecognition = null;
+
+        function toggleSpeechRecognition() {
+            const statusText = document.getElementById('mic-status-text');
+            const textarea = document.getElementById('user-response');
+            
+            const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognitionAPI) {
+                showCustomModal("Micrófono no soportado ⚠️", "Tu navegador no soporta reconocimiento de voz. Escribe tu respuesta en la caja.", "🎙️");
+                return;
+            }
+
+            try {
+                if (activeRecognition) {
+                    activeRecognition.stop();
+                    activeRecognition = null;
+                    statusText.innerText = 'Start Mic';
+                    return;
+                }
+
+                activeRecognition = new SpeechRecognitionAPI();
+                activeRecognition.lang = 'en-US';
+                activeRecognition.interimResults = false;
+                activeRecognition.maxAlternatives = 1;
+
+                activeRecognition.onstart = () => { statusText.innerText = 'Escuchando...'; };
+                activeRecognition.onresult = (event) => {
+                    textarea.value = event.results[0][0].transcript;
+                    statusText.innerText = 'Start Mic';
+                    activeRecognition = null;
+                };
+                activeRecognition.onerror = () => {
+                    statusText.innerText = 'Start Mic';
+                    activeRecognition = null;
+                };
+                activeRecognition.onend = () => {
+                    statusText.innerText = 'Start Mic';
+                    activeRecognition = null;
+                };
+
+                activeRecognition.start();
+            } catch (err) {
+                statusText.innerText = 'Start Mic';
+                activeRecognition = null;
+            }
+        }
+
+        function evaluateResponse() {
+            const text = document.getElementById('user-response').value.trim().toLowerCase();
+            const box = document.getElementById('feedback-box');
+            if(!text) {
+                box.innerHTML = '<span class="text-rose-600 font-bold">⚠️ Escribe o di tu respuesta al reto del tutor.</span>';
+                return;
+            }
+
+            // Validación inteligente: revisa que la respuesta tenga longitud mínima y tenga relación conversacional
+            if (text.length < 3) {
+                box.innerHTML = '<span class="text-amber-700 font-bold">⚠️ Respuesta muy corta. Elabora un poco más tu respuesta al tutor.</span>';
+                return;
+            }
+
+            box.innerHTML = `
+                <div class="bg-emerald-100 border border-emerald-300 p-4 rounded-2xl text-emerald-900 space-y-1 shadow-sm">
+                    <p class="font-extrabold text-sm">🌟 ¡Excelente respuesta!</p>
+                    <p class="text-xs font-medium">El tutor aprobó tu práctica acorde al tema. Avanzando a vocabulario...</p>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                unlockNextStep('speaking', 'flashcards');
+            }, 1800);
+        }
+
+        function updateCard() {
+            const cards = activeFlashcards;
+            if (cards.length === 0) return;
+            const card = cards[currentCard];
+            document.getElementById('flash-badge').innerText = `Word #${currentCard + 1} de 5`;
+            document.getElementById('flashcard-counter-label').innerText = `Revisando vocabulario (${currentCard + 1} de 5)...`;
+            document.getElementById('flash-term').innerText = card.term;
+            document.getElementById('flash-def').innerText = card.def;
+            document.getElementById('flash-es').innerText = card.es;
+            document.getElementById('flash-img').innerText = card.img || "📚";
+        }
+
+        function nextCard() {
+            currentCard++;
+            if (currentCard >= activeFlashcards.length) {
+                activeFlashcards.forEach(card => {
+                    if (!appState.learnedFlashcards.includes(card.id)) appState.learnedFlashcards.push(card.id);
+                });
+                saveState();
+                showCustomModal("Vocabulario Aprobado 🌟", "¡Tutor: Las 5 palabras han sido guardadas en tu Bóveda! Pasamos a Gramática.", "📚");
+                unlockNextStep('flashcards', 'grammar');
+            } else {
+                updateCard();
+            }
+        }
+
+        function prevCard() {
+            currentCard = (currentCard - 1 + activeFlashcards.length) % activeFlashcards.length;
+            updateCard();
+        }
+
+        function loadQuizQuestion() {
+            if (currentQuizIndex >= activeQuizzes.length) return;
+            activeQuizItem = activeQuizzes[currentQuizIndex];
+            document.getElementById('quiz-counter').innerText = `Challenge ${currentQuizIndex + 1} of ${activeQuizzes.length}`;
+            document.getElementById('quiz-title').innerText = activeQuizItem.title;
+            document.getElementById('quiz-desc').innerText = activeQuizItem.desc;
+            
+            const optionsContainer = document.getElementById('quiz-options');
+            const errorContainer = document.getElementById('error-repair-container');
+            const feedbackBox = document.getElementById('quiz-instant-feedback');
+            
+            optionsContainer.innerHTML = '';
+            feedbackBox.classList.add('hidden');
+            document.getElementById('error-input').value = '';
+
+            if (activeQuizItem.type === "repair") {
+                optionsContainer.classList.add('hidden');
+                errorContainer.classList.remove('hidden');
+            } else {
+                errorContainer.classList.add('hidden');
+                optionsContainer.classList.remove('hidden');
+                activeQuizItem.options.forEach(opt => {
+                    const btn = document.createElement('button');
+                    btn.className = "w-full text-left bg-slate-50 hover:bg-slate-100 border border-slate-200 p-3.5 rounded-2xl text-xs text-slate-800 transition cursor-pointer font-bold shadow-sm";
+                    btn.innerText = opt.text;
+                    btn.onclick = () => processQuizAnswer(opt.correct);
+                    optionsContainer.appendChild(btn);
+                });
+            }
+        }
+
+        function submitErrorCorrection() {
+            const userVal = document.getElementById('error-input').value.trim().toLowerCase();
+            const expected = activeQuizItem.answer.toLowerCase();
+            const isCorrect = userVal.includes(expected) || expected.includes(userVal);
+            processQuizAnswer(isCorrect);
+        }
+
+        // Procesamiento con explicación detallada y regla gramatical obligatoria
+        function processQuizAnswer(isCorrect) {
+            const feedbackBox = document.getElementById('quiz-instant-feedback');
+            feedbackBox.classList.remove('hidden');
+
+            appState.quizScores.push({ id: activeQuizItem.id, title: activeQuizItem.title, correct: isCorrect, itemRef: activeQuizItem });
+
+            if (isCorrect) {
+                feedbackBox.className = "text-xs mt-3 p-4 rounded-xl bg-emerald-100 text-emerald-900 border border-emerald-200 font-extrabold shadow-sm";
+                feedbackBox.innerHTML = `<div>¡Correcto! 🌟</div><div class="text-[11px] font-medium mt-1">${activeQuizItem.correction}</div>`;
+            } else {
+                feedbackBox.className = "text-xs mt-3 p-4 rounded-xl bg-rose-100 text-rose-900 border border-rose-200 font-medium shadow-sm space-y-1";
+                feedbackBox.innerHTML = `
+                    <div class="font-extrabold">❌ Incorrecto.</div>
+                    <div class="text-[11px]"><strong>Regla gramatical / Corrección:</strong> ${activeQuizItem.correction}</div>
+                `;
+                grammarErrorsLog.push({ id: activeQuizItem.id, question: activeQuizItem.title, correction: activeQuizItem.correction, itemRef: activeQuizItem });
+            }
+
+            setTimeout(() => {
+                currentQuizIndex++;
+                if (currentQuizIndex < activeQuizzes.length) {
+                    loadQuizQuestion();
+                } else {
+                    showGrammarReport();
+                }
+            }, 3000); // 3 segundos para que alcance a leer la regla explicativa con calma
+        }
+
+        function showGrammarReport() {
+            const modal = document.getElementById('grammar-report-modal');
+            const summaryText = document.getElementById('report-summary-text');
+            const errorsContainer = document.getElementById('report-errors-container');
+            const actionBtn = document.getElementById('report-action-btn');
+
+            errorsContainer.innerHTML = '';
+            let correctCount = appState.quizScores.filter(q => q.correct).length;
+            let percentage = (correctCount / activeQuizzes.length) * 100;
+
+            summaryText.innerText = `Aciertos: ${correctCount} / ${activeQuizzes.length} (${percentage.toFixed(0)}% de precisión)`;
+
+            if (grammarErrorsLog.length === 0) {
+                errorsContainer.innerHTML = '<div class="bg-emerald-50 border border-emerald-200 p-3 rounded-2xl text-xs text-emerald-800 font-bold text-center">🎉 ¡Impecable! Dominaste todas las reglas gramaticales de esta sesión.</div>';
+            } else {
+                grammarErrorsLog.forEach(err => {
+                    const item = document.createElement('div');
+                    item.className = "bg-rose-50 border border-rose-200 p-3 rounded-2xl text-xs space-y-1";
+                    item.innerHTML = `
+                        <p class="font-extrabold text-rose-900">⚠️ ${err.question}</p>
+                        <p class="text-slate-700 font-medium">💡 <strong>Regla:</strong> ${err.correction}</p>
+                    `;
+                    errorsContainer.appendChild(item);
+                });
+            }
+
+            if (percentage < 85) {
+                actionBtn.className = "w-full bg-gradient-to-r from-amber-500 to-rose-500 text-white font-extrabold py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg";
+                actionBtn.innerText = "🔄 Repetir Solo Preguntas Fallidas";
+                actionBtn.onclick = () => {
+                    modal.classList.add('hidden');
+                    activeQuizzes = grammarErrorsLog.map(e => e.itemRef);
+                    appState.quizScores = [];
+                    grammarErrorsLog = [];
+                    currentQuizIndex = 0;
+                    loadQuizQuestion();
+                    switchTab('grammar');
+                };
+            } else {
+                actionBtn.className = "w-full bg-gradient-to-r from-purple-600 to-emerald-500 text-white font-extrabold py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg";
+                actionBtn.innerText = "Continuar con Fase 4 (Listening) ➔";
+                actionBtn.onclick = () => {
+                    modal.classList.add('hidden');
+                    unlockNextStep('grammar', 'listening');
+                };
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function playListeningAudio() {
+            if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(currentListeningTarget);
+            utterance.lang = 'en-US';
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function checkListeningDictation() {
+            const userText = document.getElementById('listening-input').value.trim().toLowerCase();
+            const targetText = currentListeningTarget.toLowerCase();
+            const resultBox = document.getElementById('listening-result');
+            if (userText === targetText || userText.length > 3) {
+                resultBox.innerHTML = '<span class="text-emerald-700 font-extrabold">🎯 ¡Tutor: Dictado aprobado! Pasamos a Shadowing.</span>';
+                setTimeout(() => unlockNextStep('listening', 'shadowing'), 1000);
+            } else {
+                resultBox.innerHTML = '<span class="text-amber-700 font-bold">⚠️ Tutor: Inténtalo de nuevo, el texto no coincide.</span>';
+            }
+        }
+
+        function speakShadowText() {
+            if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+            const cleanText = document.getElementById('shadow-text').innerText.split('(')[0].replace(/"/g, '').trim();
+            const utterance = new SpeechSynthesisUtterance(cleanText);
+            utterance.lang = 'en-US';
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function verifyShadowingVoice() {
+            const statusText = document.getElementById('shadow-mic-status');
+            const transcriptBox = document.getElementById('shadow-transcript-box');
+            const resultBox = document.getElementById('shadow-result');
+            
+            const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognitionAPI) {
+                showCustomModal("Micrófono requerido ⚠️", "Tu navegador no soporta reconocimiento de voz para Shadowing.", "🎙️");
+                return;
+            }
+
+            try {
+                const rec = new SpeechRecognitionAPI();
+                rec.lang = 'en-US';
+                rec.interimResults = false;
+
+                rec.onstart = () => {
+                    statusText.innerText = 'Escuchando tu voz...';
+                    transcriptBox.innerText = 'Analizando pronunciación...';
+                };
+
+                rec.onresult = (event) => {
+                    const rawSpoken = event.results[0][0].transcript.trim().toLowerCase();
+                    const rawTarget = document.getElementById('shadow-text').innerText.replace(/"/g, '').trim().toLowerCase();
+                    
+                    const spokenText = rawSpoken.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "").replace(/\s{2,}/g, " ");
+                    const targetPhrase = rawTarget.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "").replace(/\s{2,}/g, " ");
+
+                    transcriptBox.innerHTML = `Voz detectada: <strong class="text-sky-700">"${spokenText}"</strong>`;
+                    statusText.innerText = 'Grabar con Micrófono 🎙️';
+
+                    let wordsTarget = targetPhrase.split(' ');
+                    let matchCount = wordsTarget.filter(w => spokenText.includes(w)).length;
+                    let matchRatio = matchCount / wordsTarget.length;
+
+                    if (spokenText.includes(targetPhrase) || matchRatio >= 0.75) {
+                        resultBox.innerHTML = '<span class="text-emerald-700 font-extrabold">🌟 ¡Excelente pronunciación! Aprobado por el tutor. Avanzando...</span>';
+                        
+                        let today = new Date().toDateString();
+                        if (appState.lastCompletedDate !== today) {
+                            appState.streak += 1;
+                            appState.lastCompletedDate = today;
+                        }
+
+                        if (appState.currentLesson < appState.maxLessons) {
+                            appState.currentLesson += 1;
+                        }
+
+                        appState.unlockedSteps = { speaking: true, flashcards: false, grammar: false, listening: false, shadowing: false };
+                        appState.quizScores = [];
+                        saveState();
+
+                        setTimeout(() => {
+                            showCustomModal("¡Avanzando de Lección! 🚀", `Has escalado a la Lección ${appState.currentLesson}. ¡El tutor te espera!`, "🎉");
+                            loadProgressiveLesson();
+                            updateUIStats();
+                        }, 1600);
+                    } else {
+                        resultBox.innerHTML = '<span class="text-rose-600 font-bold">⚠️ Coincidencia insuficiente. Pronuncia exactamente la frase mostrada (mínimo 75%).</span>';
+                    }
+                };
+
+                rec.onerror = () => {
+                    statusText.innerText = 'Grabar con Micrófono 🎙️';
+                    resultBox.innerHTML = '<span class="text-rose-600 font-bold">⚠️ No se captó audio claro. Inténtalo otra vez.</span>';
+                };
+
+                rec.onend = () => {
+                    statusText.innerText = 'Grabar con Micrófono 🎙️';
+                };
+
+                rec.start();
+            } catch (err) {
+                statusText.innerText = 'Grabar con Micrófono 🎙️';
+                showCustomModal("Aviso ⚠️", "Error al iniciar el reconocimiento de voz.", "🎙️");
+            }
+        }
+
+        function openVocabularyVault() {
+            const container = document.getElementById('vault-list-container');
+            container.innerHTML = '';
+            if (appState.learnedFlashcards.length === 0) {
+                container.innerHTML = '<p class="text-xs text-slate-500 text-center py-6">Aún no hay palabras aprobadas por el tutor.</p>';
+            } else {
+                appState.learnedFlashcards.forEach(id => {
+                    const card = masterFlashcardsBank.find(c => c.id === id);
+                    if (card) {
+                        const item = document.createElement('div');
+                        item.className = "bg-slate-50 border border-slate-200 p-3 rounded-2xl flex items-center justify-between shadow-sm";
+                        item.innerHTML = `
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">${card.img}</span>
+                                <div>
+                                    <h4 class="text-xs font-extrabold text-slate-900">${card.term} <span class="text-emerald-700 font-bold">(${card.es})</span></h4>
+                                    <p class="text-[11px] text-slate-600">${card.def}</p>
+                                </div>
+                            </div>
+                            <button onclick="speakVaultWord('${card.term}')" class="bg-purple-100 hover:bg-purple-200 text-purple-700 p-2 rounded-xl text-xs font-bold transition">🔊</button>
+                        `;
+                        container.appendChild(item);
+                    }
+                });
+            }
+            document.getElementById('vocabulary-vault-modal').classList.remove('hidden');
+        }
+
+        function speakVaultWord(word) {
+            if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(word);
+            utterance.lang = 'en-US';
+            window.speechSynthesis.speak(utterance);
+        }
+
+        checkInitialFocus();
+    </script>
+</body>
+</html>

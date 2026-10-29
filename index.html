@@ -182,13 +182,11 @@
                             </div>
                             <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mb-2" id="prompt-title">Cargando lección...</h3>
                             
-                            <!-- Pregunta o Reto del Tutor basado en el tema -->
                             <div class="bg-sky-50 border border-sky-200 p-4 rounded-2xl mb-4 shadow-sm">
                                 <span class="text-[11px] font-extrabold text-sky-700 uppercase tracking-wider block mb-1">🤖 Reto del Tutor:</span>
                                 <p class="text-xs sm:text-sm text-slate-900 font-bold italic" id="tutor-challenge-question">...</p>
                             </div>
 
-                            <!-- Guía Formal vs Informal con Traducción -->
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-5">
                                 <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm flex flex-col justify-between">
                                     <div>
@@ -252,10 +250,10 @@
                 </div>
             </div>
 
-            <!-- FASE 2: FLASHCARDS -->
+            <!-- FASE 2: FLASHCARDS ESPECIALIZADAS POR NIVEL -->
             <div id="content-flashcards" class="hidden space-y-4">
                 <div class="max-w-sm mx-auto text-center">
-                    <h3 class="text-xl font-extrabold text-slate-900 mb-1 tracking-tight">Fase 2 de 5: Vocabulary (5 Words)</h3>
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-1 tracking-tight" id="flashcard-phase-title">Fase 2 de 5: Vocabulary Mastery</h3>
                     <p class="text-xs text-slate-500 mb-5 font-semibold" id="flashcard-counter-label">Reviewing words...</p>
                     
                     <div class="card-flip h-72 w-full cursor-pointer mb-5 shadow-2xl" onclick="this.classList.toggle('flipped')">
@@ -273,9 +271,9 @@
                                 </div>
                             </div>
                             <div class="card-back absolute w-full h-full vibrant-card bg-gradient-to-br from-emerald-50 to-sky-50 border-2 border-emerald-200 rounded-3xl p-6 flex flex-col items-center justify-center shadow-xl">
-                                <span class="text-xs font-extrabold text-emerald-700 mb-3 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 shadow-sm">Meaning & Spanish</span>
-                                <p class="text-slate-800 text-sm sm:text-base mb-4 font-bold" id="flash-def">...</p>
-                                <span class="text-sm font-mono text-emerald-800 bg-white px-4 py-2.5 rounded-2xl border border-emerald-300 font-extrabold shadow-sm" id="flash-es">...</span>
+                                <span class="text-xs font-extrabold text-emerald-700 mb-3 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 shadow-sm">Meaning & Context</span>
+                                <p class="text-slate-800 text-xs sm:text-sm mb-3 font-bold" id="flash-def">...</p>
+                                <span class="text-xs sm:text-sm font-mono text-emerald-900 bg-white px-4 py-2.5 rounded-2xl border border-emerald-300 font-extrabold shadow-sm" id="flash-es">...</span>
                             </div>
                         </div>
                     </div>
@@ -309,7 +307,6 @@
                         </button>
                     </div>
 
-                    <!-- Feedback detallado con reglas gramaticales -->
                     <div id="quiz-instant-feedback" class="text-xs mt-3 p-4 rounded-2xl hidden space-y-1.5 shadow-sm"></div>
                 </div>
             </div>
@@ -427,7 +424,7 @@
                 <h3 class="font-extrabold text-xl text-slate-900 mt-2">Guía de English Pro</h3>
             </div>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed text-center mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200 shadow-inner font-medium" id="tutorial-text">
-                Responde a los retos del tutor en Speaking y lee las explicaciones gramaticales detalladas en caso de error.
+                Responde a los retos del tutor en Speaking y repasa vocabulario especializado según tu nivel.
             </p>
             <div class="flex items-center justify-between gap-3">
                 <button onclick="prevTutorialStep()" id="tutorial-prev-btn" class="bg-slate-100 text-slate-600 px-4 py-2.5 rounded-2xl text-xs font-bold border border-slate-200 transition cursor-pointer hidden">Previous</button>
@@ -537,165 +534,100 @@
             "\"Tu futuro depende de lo que hagas hoy. ¡Haz que cuente!\""
         ];
 
-        const masterFlashcardsBank = [
-            { id: 1, term: "Hello", def: "Saludo formal o general.", es: "Hola 👋", img: "👋" },
-            { id: 2, term: "Goodbye", def: "Para despedirse.", es: "Adiós 🚪", img: "🚪" },
-            { id: 3, term: "Water", def: "Líquido vital para beber.", es: "Agua 💧", img: "💧" },
-            { id: 4, term: "Food", def: "Cualquier sustancia alimenticia.", es: "Comida 🍲", img: "🍲" },
-            { id: 5, term: "Friend", def: "Persona con quien se tiene amistad.", es: "Amigo / Amiga 🤝", img: "🤝" },
-            { id: 6, term: "House", def: "Lugar donde se vive.", es: "Casa 🏠", img: "🏠" },
-            { id: 7, term: "Car", def: "Vehículo de transporte personal.", es: "Carro / Auto 🚗", img: "🚗" },
-            { id: 8, term: "Book", def: "Conjunto de hojas escritas.", es: "Libro 📖", img: "📖" },
-            { id: 9, term: "Time", def: "Duración de las cosas.", es: "Tiempo ⏰", img: "⏰" },
-            { id: 10, term: "Money", def: "Monedas y billetes.", es: "Dinero 💵", img: "💵" },
-            { id: 11, term: "Market", def: "Lugar para comprar víveres.", es: "Mercado 🛒", img: "🛒" },
-            { id: 12, term: "Phone", def: "Dispositivo móvil.", es: "Teléfono 📱", img: "📱" },
-            { id: 13, term: "Music", def: "Arte de combinar sonidos.", es: "Música 🎸", img: "🎸" },
-            { id: 14, term: "Family", def: "Grupo de parientes.", es: "Familia 👨‍👩‍👧‍👦", img: "👨‍👩‍👧‍👦" },
-            { id: 15, term: "Coffee", def: "Bebida caliente.", es: "Café ☕", img: "☕" }
-        ];
+        // Bancos de vocabulario especializados por nivel
+        const flashcardsBanksByTier = {
+            beginner: [
+                { id: 101, term: "Hello", def: "Saludo formal o general.", es: "Hola 👋", img: "👋" },
+                { id: 102, term: "Goodbye", def: "Para despedirse.", es: "Adiós 🚪", img: "🚪" },
+                { id: 103, term: "Water", def: "Líquido vital para beber.", es: "Agua 💧", img: "💧" },
+                { id: 104, term: "Food", def: "Cualquier sustancia alimenticia.", es: "Comida 🍲", img: "🍲" },
+                { id: 105, term: "Friend", def: "Persona con quien se tiene amistad.", es: "Amigo / Amiga 🤝", img: "🤝" },
+                { id: 106, term: "House", def: "Lugar donde se vive.", es: "Casa 🏠", img: "🏠" },
+                { id: 107, term: "Car", def: "Vehículo de transporte personal.", es: "Carro / Auto 🚗", img: "🚗" },
+                { id: 108, term: "Book", def: "Conjunto de hojas escritas.", es: "Libro 📖", img: "📖" },
+                { id: 109, term: "Time", def: "Duración de las cosas.", es: "Tiempo ⏰", img: "⏰" },
+                { id: 110, term: "Money", def: "Monedas y billetes.", es: "Dinero 💵", img: "💵" }
+            ],
+            intermediate: [
+                { id: 201, term: "Break down", def: "Phrasal verb: Dejar de funcionar / descomponerse.", es: "Averiarse / Descomponerse 🚗💥", img: "🛠️" },
+                { id: 202, term: "Figure out", def: "Phrasal verb: Encontrar la solución a un problema.", es: "Resolver / Comprender 💡", img: "🔍" },
+                { id: 203, term: "Look forward to", def: "Phrasal verb: Esperar algo con mucha ilusión.", es: "Anhelar / Esperar con ansias ⭐", img: "📅" },
+                { id: 204, term: "Reliable", def: "Adjetivo: En el que se puede confiar plenamente.", es: "Confiable / Seguro ⚙️", img: "🛡️" },
+                { id: 205, term: "Straightforward", def: "Adjetivo: Directo, claro y sin complicaciones.", es: "Directo / Sencillo 📝", img: "🎯" },
+                { id: 206, term: "Maintenance", def: "Sustantivo: Acción de mantener algo operativo.", es: "Mantenimiento técnico 🔧", img: "⚙️" },
+                { id: 207, term: "Schedule", def: "Sustantivo: Planificación de tiempos o agenda.", es: "Horario / Programar 📅", img: "⏰" },
+                { id: 208, term: "Enhance", def: "Verbo: Mejorar o elevar la calidad de algo.", es: "Mejorar / Potenciar 🚀", img: "📈" },
+                { id: 209, term: "Achievement", def: "Sustantivo: Resultado exitoso tras esfuerzo.", es: "Logro / Conquista 🏆", img: "🎖️" },
+                { id: 210, term: "Convenient", def: "Adjetivo: Útil, oportuno o práctico.", es: "Conveniente / Práctico ✨", img: "👍" }
+            ],
+            advanced: [
+                { id: 301, term: "Piece of cake", def: "Idiom: Algo sumamente fácil de realizar.", es: "Pan comido / Muy fácil 🍰", img: "🍰" },
+                { id: 302, term: "Cost an arm and a leg", def: "Idiom: Algo extremadamente costoso.", es: "Costar una fortuna 💸", img: "💰" },
+                { id: 303, term: "Bite the bullet", def: "Idiom: Afrontar una situación difícil con valentía.", es: "Aceptar el reto / Apechugar 🎯", img: "🛡️" },
+                { id: 304, term: "Burn the midnight oil", def: "Idiom: Trabajar o estudiar hasta altas horas.", es: "Desvelarse trabajando 🌙", img: "💻" },
+                { id: 305, term: "Hit the nail on the head", def: "Idiom: Adivinar o acertar exactamente.", es: "Dar en el clavo 🔨", img: "🎯" },
+                { id: 306, term: "Substantial", def: "Adjetivo formal: De gran importancia o valor.", es: "Sustantivo / Significativo 📊", img: "📈" },
+                { id: 307, term: "Troubleshoot", def: "Término técnico: Aislar y resolver fallas complejas.", es: "Diagnosticar y reparar fallas 🛠️", img: "⚡" },
+                { id: 308, term: "State-of-the-art", def: "Adjetivo: Lo más avanzado en tecnología.", es: "De última generación 🚀", img: "💎" },
+                { id: 309, term: "Pivotal", def: "Adjetivo: De vital importancia para el desarrollo.", es: "Crucial / Pivotal 🗝️", img: "🔑" },
+                { id: 310, term: "Pragmatic", def: "Adjetivo: Enfocado en la práctica y resultados.", es: "Pragmático / Realista ⚖️", img: "⚖️" }
+            ]
+        };
 
-        // Currículo cotidiano con retos de Speaking dirigidos y Quizzes con explicaciones gramaticales profundas
+        // Currículo completo con todos los prompts, listening y quizzes restaurados
         const curriculumLevels = {
             beginner: {
                 prompts: [
-                    { 
-                        title: "Saludos y Presentaciones Diarias", 
-                        challenge: "Responde al tutor presentándote formal o informalmente: ¿Cómo te llamas y de dónde eres?",
-                        formal: "Hello, my name is [Name] and I am from [Place].", formalEs: "Hola, mi nombre es [Nombre] y soy de [Lugar].", 
-                        informal: "Hey, I'm [Name] from [Place].", informalEs: "Hola, soy [Nombre] de [Lugar]." 
-                    },
-                    { 
-                        title: "Preguntar la Hora y el Clima", 
-                        challenge: "El tutor te pregunta: 'What is the weather like today?' Responde describiendo el clima.",
-                        formal: "Could you tell me if it is going to rain?", formalEs: "¿Podría decirme si va a llover?", 
-                        informal: "It's really sunny outside today!", informalEs: "¡Está muy soleado afuera hoy!" 
-                    },
-                    { 
-                        title: "Compras en el Mercado", 
-                        challenge: "Estás comprando fruta. Pregúntale al tendero cuánto cuesta y si está fresco.",
-                        formal: "How much does this fresh fruit cost?", formalEs: "¿Cuánto cuesta esta fruta fresca?", 
-                        informal: "How much is this?", informalEs: "¿Cuánto cuesta esto?" 
-                    }
+                    { title: "Saludos y Presentaciones Diarias", challenge: "Responde al tutor presentándote formal o informalmente: ¿Cómo te llamas y de dónde eres?", formal: "Hello, my name is [Name] and I am from [Place].", formalEs: "Hola, mi nombre es [Nombre] y soy de [Lugar].", informal: "Hey, I'm [Name] from [Place].", informalEs: "Hola, soy [Nombre] de [Lugar]." },
+                    { title: "Preguntar la Hora y el Clima", challenge: "El tutor te pregunta: 'What is the weather like today?' Responde describiendo el clima.", formal: "Could you tell me if it is going to rain?", formalEs: "¿Podría decirme si va a llover?", informal: "It's really sunny outside today!", informalEs: "¡Está muy soleado afuera hoy!" },
+                    { title: "Compras en el Mercado", challenge: "Estás comprando fruta. Pregúntale al tendero cuánto cuesta y si está fresco.", formal: "How much does this fresh fruit cost?", formalEs: "¿Cuánto cuesta esta fruta fresca?", informal: "How much is this?", informalEs: "¿Cuánto cuesta esto?" },
+                    { title: "Hablando de la Familia", challenge: "El tutor te pregunta: 'Who do you live with?' Cuéntale sobre tu familia.", formal: "I live with my parents and my siblings.", formalEs: "Vivo con mis padres y mis hermanos.", informal: "I live with my family at home.", informalEs: "Vivo con mi familia en casa." },
+                    { title: "Planes para el Fin de Semana", challenge: "El tutor te pregunta: 'What are you going to do on Sunday?'", formal: "I am going to rest and visit some relatives.", formalEs: "Voy a descansar y a visitar a algunos parientes.", informal: "I'm just going to relax at home.", informalEs: "Solo voy a relajarme en casa." }
                 ],
-                shadowTexts: ["Hello nice to meet you", "Where is the nearest store", "I am going to visit my family"],
-                listeningSnippets: ["How are you doing today", "What time is it now", "I would like some water"],
+                shadowTexts: ["Hello nice to meet you", "Where is the nearest store", "I am going to visit my family", "Can you help me please", "What time does the store open", "I love drinking hot coffee in the morning"],
+                listeningSnippets: ["How are you doing today", "What time is it now", "I would like some water", "Where is my phone", "My mother is cooking dinner"],
                 quizzesPool: [
-                    { 
-                        id: 'b_q1', type: "mc", title: "Rutina Diaria (Presente Simple)", desc: "I ___ up early every single morning.", 
-                        options: [{ text: "A) wake", correct: true }, { text: "B) wakes", correct: false }], 
-                        correction: "La forma correcta es 'wake'. Según las reglas gramaticales del inglés, con el pronombre 'I' el verbo en presente simple se mantiene en su forma base sin agregar 's' o 'es'." 
-                    },
-                    { 
-                        id: 'b_q2', type: "repair", title: "Familia y Posesivos", desc: "This is ___ mother. (my/mine)", answer: "my", 
-                        correction: "Se debe usar 'my'. La regla indica que los adjetivos posesivos (my, your, his, her) siempre van antes del sustantivo al que modifican ('mother'). 'Mine' es un pronombre posesivo que va al final." 
-                    },
-                    { 
-                        id: 'b_q3', type: "mc", title: "Viajes y Medios de Transporte", desc: "We are traveling ___ bus tomorrow morning.", 
-                        options: [{ text: "A) by", correct: true }, { text: "B) in", correct: false }], 
-                        correction: "La preposición correcta es 'by'. Gramaticalmente, usamos 'by' seguido directamente del medio de transporte (by bus, by car, by plane) cuando hablamos de cómo nos desplazamos de forma general." 
-                    },
-                    { 
-                        id: 'b_q4', type: "repair", title: "Compras Cotidianas (Precios)", desc: "Traduce '¿Cuánto cuesta esta camisa?':", answer: "how much", correctText: "how much", 
-                        correction: "Se escribe 'How much'. La regla gramatical para preguntar precios de sustantivos incontables o singulares en inglés utiliza la estructura interrogativa 'How much is...' o 'How much does... cost'." 
-                    },
-                    { 
-                        id: 'b_q5', type: "mc", title: "Comida y Gustos (Gerundios)", desc: "I really enjoy ___ coffee in the morning.", 
-                        options: [{ text: "A) drinking", correct: true }, { text: "B) drink", correct: false }], 
-                        correction: "Lo correcto es 'drinking'. Según la gramática inglesa, ciertos verbos de preferencia y disfrute como 'enjoy', 'love' o 'like' exigen obligatoriamente que el verbo siguiente termine en gerundio (-ing)." 
-                    }
+                    { id: 'b_q1', type: "mc", title: "Rutina Diaria (Presente Simple)", desc: "I ___ up early every single morning.", options: [{ text: "A) wake", correct: true }, { text: "B) wakes", correct: false }], correction: "La forma correcta es 'wake'. Con el pronombre 'I' el verbo en presente simple se mantiene en su forma base." },
+                    { id: 'b_q2', type: "repair", title: "Familia y Posesivos", desc: "This is ___ mother. (my/mine)", answer: "my", correction: "Se usa 'my'. Los adjetivos posesivos van antes del sustantivo al que modifican ('mother')." },
+                    { id: 'b_q3', type: "mc", title: "Viajes y Transporte", desc: "We are traveling ___ bus tomorrow morning.", options: [{ text: "A) by", correct: true }, { text: "B) in", correct: false }], correction: "La preposición correcta es 'by' seguida directamente del medio de transporte." },
+                    { id: 'b_q4', type: "repair", title: "Precios Cotidianos", desc: "Traduce '¿Cuánto cuesta esta camisa?':", answer: "how much", correctText: "how much", correction: "Se escribe 'How much' para preguntar precios de sustantivos singulares." },
+                    { id: 'b_q5', type: "mc", title: "Preferencias (Gerundios)", desc: "I really enjoy ___ coffee in the morning.", options: [{ text: "A) drinking", correct: true }, { text: "B) drink", correct: false }], correction: "Verbos como 'enjoy' exigen obligatoriamente que el verbo siguiente termine en gerundio (-ing)." },
+                    { id: 'b_q6', type: "mc", title: "Plurativos Comunes", desc: "I have two ___ in my house. (cat/cats)", options: [{ text: "A) cats", correct: true }, { text: "B) cat", correct: false }], correction: "Al hablar de plurales contables se añade '-s' al final del sustantivo." },
+                    { id: 'b_q7', type: "repair", title: "Verbo To Be (Negativo)", desc: "She ___ (not) at home right now.", answer: "is not", correctText: "is not", correction: "Para el pronombre 'She' en presente se usa 'is not' o la contracción 'isn't'." }
                 ]
             },
             intermediate: {
                 prompts: [
-                    { 
-                        title: "Planes de Viaje y Vacaciones", 
-                        challenge: "El tutor te pregunta: 'What are your plans for the upcoming weekend?' Responde mencionando un viaje o salida.",
-                        formal: "I am planning a trip to the beach this weekend.", formalEs: "Estoy planeando un viaje a la playa este fin de semana.", 
-                        informal: "I'm heading out of town for a few days.", informalEs: "Me voy fuera de la ciudad por unos días." 
-                    },
-                    { 
-                        title: "Conversaciones con Amigos", 
-                        challenge: "Te encuentras con un amigo en la calle después de meses. Salúdalo y pregúntale cómo está.",
-                        formal: "It is a pleasure to see you again after so long.", formalEs: "Es un placer verte de nuevo después de tanto tiempo.", 
-                        informal: "Long time no see! How have you been?", informalEs: "¡Cuánto tiempo sin verte! ¿Cómo has estado?" 
-                    },
-                    { 
-                        title: "Transporte y Fallas Mecánicas", 
-                        challenge: "Explícale al tutor que tuviste un problema con tu vehículo hoy.",
-                        formal: "My vehicle requires immediate mechanical maintenance.", formalEs: "Mi vehículo requiere mantenimiento mecánico inmediato.", 
-                        informal: "My car broke down on the way here.", informalEs: "Mi carro se descompuso camino hacia aquí." 
-                    }
+                    { title: "Planes de Viaje y Vacaciones", challenge: "El tutor te pregunta: 'What are your plans for the upcoming weekend?' Responde mencionando un viaje o salida.", formal: "I am planning a trip to the beach this weekend.", formalEs: "Estoy planeando un viaje a la playa este fin de semana.", informal: "I'm heading out of town for a few days.", informalEs: "Me voy fuera de la ciudad por unos días." },
+                    { title: "Conversaciones con Amigos", challenge: "Te encuentras con un amigo en la calle después de meses. Salúdalo y pregúntale cómo está.", formal: "It is a pleasure to see you again after so long.", formalEs: "Es un placer verte de nuevo después de tanto tiempo.", informal: "Long time no see! How have you been?", informalEs: "¡Cuánto tiempo sin verte! ¿Cómo has estado?" },
+                    { title: "Transporte y Fallas Mecánicas", challenge: "Explícale al tutor que tuviste un problema con tu vehículo hoy.", formal: "My vehicle requires immediate mechanical maintenance.", formalEs: "Mi vehículo requiere mantenimiento mecánico inmediato.", informal: "My car broke down on the way here.", informalEs: "Mi carro se descompuso camino hacia aquí." },
+                    { title: "Trabajo y Proyectos Técnicos", challenge: "Describe brevemente en qué estás trabajando hoy.", formal: "I am currently configuring a new server system.", formalEs: "Actualmente estoy configurando un nuevo sistema de servidor.", informal: "I'm working on fixing an electronics board.", informalEs: "Estoy trabajando en reparar una tarjeta electrónica." }
                 ],
-                shadowTexts: ["Let us grab a cup of coffee later", "I am looking forward to the weekend", "Can you recommend a good restaurant"],
-                listeningSnippets: ["Where are we going tonight", "I need to buy some groceries", "Let us meet up tomorrow afternoon"],
+                shadowTexts: ["Let us grab a cup of coffee later", "I am looking forward to the weekend", "Can you recommend a good restaurant", "Everything is under control now", "We need to finish this project before Friday"],
+                listeningSnippets: ["Where are we going tonight", "I need to buy some groceries", "Let us meet up tomorrow afternoon", "Did you check the email I sent", "The weather is getting colder"],
                 quizzesPool: [
-                    { 
-                        id: 'i_q1', type: "mc", title: "Planificación y Futuro (Going to)", desc: "I ___ visit my parents this coming weekend.", 
-                        options: [{ text: "A) am going to", correct: true }, { text: "B) will going to", correct: false }], 
-                        correction: "La estructura correcta es 'am going to'. Gramaticalmente, para expresar planes e intenciones futuras ya decididos, utilizamos el verbo to be + going to + verbo en forma base." 
-                    },
-                    { 
-                        id: 'i_q2', type: "repair", title: "Pasado Simple (Viajes)", desc: "Yesterday we ___ (visit) our grandparents in the countryside.", answer: "visited", 
-                        correction: "La respuesta es 'visited'. En el pasado simple para verbos regulares en inglés, la regla gramatical establece que se añade la partícula '-ed' al final del verbo base sin importar la persona." 
-                    },
-                    { 
-                        id: 'i_q3', type: "mc", title: "Cortesía y Peticiones Educadas", desc: "___ you please pass me the salt?", 
-                        options: [{ text: "A) Could", correct: true }, { text: "B) Must", correct: false }], 
-                        correction: "Se debe usar 'Could'. En las reglas de modales en inglés, 'Could' es el auxiliar modal estándar y educado para realizar solicitudes y peticiones formales o de cortesía." 
-                    },
-                    { 
-                        id: 'i_q4', type: "repair", title: "Adverbios de Frecuencia", desc: "I ___ (always) drink coffee in the morning.", answer: "always", 
-                        correction: "La posición correcta es antes del verbo principal. La regla gramatical indica que los adverbios de frecuencia (always, never, often) se colocan antes de los verbos comunes, pero después del verbo to be." 
-                    },
-                    { 
-                        id: 'i_q5', type: "mc", title: "Sujetos Incontables (Food / Water)", desc: "I think this local food ___ absolutely delicious.", 
-                        options: [{ text: "A) is", correct: true }, { text: "B) are", correct: false }], 
-                        correction: "Se utiliza 'is'. Gramaticalmente, la palabra 'food' es un sustantivo incontable en inglés, y todos los sustantivos incontables se tratan siempre como terceras personas del singular (it), llevando 'is'." 
-                    }
+                    { id: 'i_q1', type: "mc", title: "Planificación y Futuro", desc: "I ___ visit my parents this coming weekend.", options: [{ text: "A) am going to", correct: true }, { text: "B) will going to", correct: false }], correction: "Para planes e intenciones futuras ya decididas, utilizamos 'am going to'." },
+                    { id: 'i_q2', type: "repair", title: "Pasado Simple (Regulares)", desc: "Yesterday we ___ (visit) our grandparents.", answer: "visited", correction: "En el pasado simple para verbos regulares se añade la partícula '-ed'." },
+                    { id: 'i_q3', type: "mc", title: "Peticiones Educadas", desc: "___ you please pass me the salt?", options: [{ text: "A) Could", correct: true }, { text: "B) Must", correct: false }], correction: "'Could' es el auxiliar modal estándar y educado para realizar solicitudes." },
+                    { id: 'i_q4', type: "repair", title: "Adverbios de Frecuencia", desc: "I ___ (always) drink coffee in the morning.", answer: "always", correction: "Los adverbios de frecuencia se colocan antes del verbo principal." },
+                    { id: 'i_q5', type: "mc", title: "Sujetos Incontables", desc: "I think this local food ___ absolutely delicious.", options: [{ text: "A) is", correct: true }, { text: "B) are", correct: false }], correction: "La palabra 'food' es incontable y se trata siempre como singular ('is')." },
+                    { id: 'i_q6', type: "repair", title: "Comparativos", desc: "This car is ___ (fast) than that one.", answer: "faster", correction: "En adjetivos cortos, el comparativo añade '-er' seguido de 'than'." }
                 ]
             },
             advanced: {
                 prompts: [
-                    { 
-                        title: "Expresiones Idiomáticas Cotidianas", 
-                        challenge: "Explícale al tutor que una tarea de reparación de electrodomésticos fue sumamente fácil para ti usando un modismo.",
-                        formal: "That diagnostic task required very little effort.", formalEs: "Esa tarea de diagnóstico requirió muy poco esfuerzo.", 
-                        informal: "That was a piece of cake!", informalEs: "¡Eso fue pan comido!" 
-                    },
-                    { 
-                        title: "Charlas Profundas con Familiares", 
-                        challenge: "Coméntale al tutor por qué valoras tanto el apoyo de tu familia en tu taller o proyectos.",
-                        formal: "Family support is fundamental for professional growth.", formalEs: "El apoyo familiar es fundamental para el crecimiento profesional.", 
-                        informal: "Blood is thicker than water.", informalEs: "La familia es lo primero." 
-                    }
+                    { title: "Expresiones Idiomáticas Cotidianas", challenge: "Explícale al tutor que una tarea de reparación de electrodomésticos fue sumamente fácil para ti usando un modismo.", formal: "That diagnostic task required very little effort.", formalEs: "Esa tarea de diagnóstico requirió muy poco esfuerzo.", informal: "That was a piece of cake!", informalEs: "¡Eso fue pan comido!" },
+                    { title: "Charlas Profundas con Familiares", challenge: "Coméntale al tutor por qué valoras tanto el apoyo de tu familia en tu taller o proyectos.", formal: "Family support is fundamental for professional growth.", formalEs: "El apoyo familiar es fundamental para el crecimiento profesional.", informal: "Blood is thicker than water.", informalEs: "La familia es lo primero." },
+                    { title: "Negociando Imprevistos", challenge: "Describe cómo manejas un imprevisto grave en tu trabajo diario.", formal: "We must analyze every variable before taking action.", formalEs: "Debemos analizar cada variable antes de tomar acción.", informal: "We need to think outside the box on this one.", informalEs: "Necesitamos pensar fuera de lo común en esto." }
                 ],
-                shadowTexts: ["It is raining cats and dogs outside", "Let us hit the road early tomorrow", "Do not judge a book by its cover"],
-                listeningSnippets: ["Piece of cake", "Cost an arm and a leg", "Bite the bullet"],
+                shadowTexts: ["It is raining cats and dogs outside", "Let us hit the road early tomorrow", "Do not judge a book by its cover", "Actions speak louder than words", "Burn the midnight oil to finish the task"],
+                listeningSnippets: ["Piece of cake", "Cost an arm and a leg", "Bite the bullet", "Hit the nail on the head", "Under the weather"],
                 quizzesPool: [
-                    { 
-                        id: 'a_q1', type: "mc", title: "Modismo de Costo Elevado", desc: "To express something is extremely expensive in everyday English:", 
-                        options: [{ text: "A) Cost an arm and a leg", correct: true }, { text: "B) Piece of cake", correct: false }], 
-                        correction: "La expresión correcta es 'Cost an arm and a leg'. En las reglas idiomáticas nativas, esta frase popular describe algo cuyo precio es desorbitado o sumamente caro." 
-                    },
-                    { 
-                        id: 'a_q2', type: "repair", title: "Certeza Absoluta", desc: "I am absolutely ___ (sure) about this technical diagnosis.", answer: "sure", 
-                        correction: "Se usa 'sure'. Gramaticalmente, adjetivos de estado mental como sure, certain o ready se combinan con el verbo to be para denotar convicción absoluta." 
-                    },
-                    { 
-                        id: 'a_q3', type: "mc", title: "Phrasal Verb Cotidiano", desc: "To tolerate or endure an annoying situation patiently:", 
-                        options: [{ text: "A) Put up with", correct: true }, { text: "B) Put off", correct: false }], 
-                        correction: "El phrasal verb correcto es 'Put up with'. En la gramática de los phrasal verbs compuestos, esta combinación específica significa soportar o tolerar algo molesto sin quejarse." 
-                    },
-                    { 
-                        id: 'a_q4', type: "repair", title: "Recomendación Urgente", desc: "You ___ better call him right now before he leaves.", answer: "had", 
-                        correction: "La palabra faltante es 'had'. La estructura idiomática gramatical 'had better' se utiliza obligatoriamente para dar advertencias o consejos urgentes sobre el presente o futuro inmediato." 
-                    },
-                    { 
-                        id: 'a_q5', type: "mc", title: "Expresión de Asombro", desc: "To express total disbelief when someone tells you surprising news:", 
-                        options: [{ text: "A) You must be kidding", correct: true }, { text: "B) You are table", correct: false }], 
-                        correction: "La frase correcta es 'You must be kidding'. Gramaticalmente utiliza el modal de deducción 'must be' para indicar que algo resulta tan increíble que parece una broma." 
-                    }
+                    { id: 'a_q1', type: "mc", title: "Modismo de Costo Elevado", desc: "To express something is extremely expensive in everyday English:", options: [{ text: "A) Cost an arm and a leg", correct: true }, { text: "B) Piece of cake", correct: false }], correction: "'Cost an arm and a leg' describe algo cuyo precio es desorbitado o sumamente caro." },
+                    { id: 'a_q2', type: "repair", title: "Certeza Absoluta", desc: "I am absolutely ___ (sure) about this technical diagnosis.", answer: "sure", correction: "Adjetivos de estado mental como 'sure' se combinan con el verbo to be para convicción." },
+                    { id: 'a_q3', type: "mc", title: "Phrasal Verb Cotidiano", desc: "To tolerate or endure an annoying situation patiently:", options: [{ text: "A) Put up with", correct: true }, { text: "B) Put off", correct: false }], correction: "'Put up with' significa soportar o tolerar algo molesto sin quejarse." },
+                    { id: 'a_q4', type: "repair", title: "Recomendación Urgente", desc: "You ___ better call him right now before he leaves.", answer: "had", correction: "La estructura idiomática 'had better' se usa para advertencias o consejos urgentes." },
+                    { id: 'a_q5', type: "mc", title: "Expresión de Asombro", desc: "To express total disbelief when someone tells you surprising news:", options: [{ text: "A) You must be kidding", correct: true }, { text: "B) You are table", correct: false }], correction: "'You must be kidding' utiliza el modal de deducción 'must be' para indicar asombro." }
                 ]
             }
         };
@@ -726,8 +658,8 @@
 
         let currentTutorialStep = 0;
         const tutorialSteps = [
-            { title: "Bienvenido a English Pro 🦉", text: "Responde a los retos del tutor en Speaking y lee las explicaciones gramaticales detalladas en caso de error." },
-            { title: "Progreso Ciego 🚀", text: "Supera cada fase una a una para desbloquear la siguiente de forma fluida." }
+            { title: "Bienvenido a English Pro 🦉", text: "Responde a los retos del tutor en Speaking y repasa vocabulario especializado según tu nivel." },
+            { title: "Progreso Dinámico 🚀", text: "Supera cada fase una a una para desbloquear la siguiente de forma fluida." }
         ];
 
         function startTutorialOnly() {
@@ -852,6 +784,7 @@
 
         function loadProgressiveLesson() {
             const levelData = curriculumLevels[appState.tierKey] || curriculumLevels['beginner'];
+            
             currentPromptData = levelData.prompts[(appState.currentLesson - 1) % levelData.prompts.length];
             const randomShadow = levelData.shadowTexts[Math.floor(Math.random() * levelData.shadowTexts.length)];
             const randomListening = levelData.listeningSnippets[Math.floor(Math.random() * levelData.listeningSnippets.length)];
@@ -867,13 +800,15 @@
             document.getElementById('shadow-text').innerText = `"${randomShadow}"`;
             currentListeningTarget = randomListening;
 
-            let unlearned = masterFlashcardsBank.filter(card => !appState.learnedFlashcards.includes(card.id));
-            if (unlearned.length < 5) unlearned = [...masterFlashcardsBank];
+            const selectedBank = flashcardsBanksByTier[appState.tierKey] || flashcardsBanksByTier['beginner'];
+            document.getElementById('flashcard-phase-title').innerText = `Fase 2 de 5: Vocabulary Mastery (${appState.tierTitle})`;
+
+            let unlearned = selectedBank.filter(card => !appState.learnedFlashcards.includes(card.id));
+            if (unlearned.length < 5) unlearned = [...selectedBank];
             activeFlashcards = shuffleArray(unlearned).slice(0, 5);
 
             let fullPool = levelData.quizzesPool;
-            let offset = (appState.currentLesson - 1) % fullPool.length;
-            activeQuizzes = [...fullPool.slice(offset), ...fullPool.slice(0, offset)].slice(0, 5);
+            activeQuizzes = shuffleArray(fullPool).slice(0, 5);
 
             currentCard = 0;
             currentQuizIndex = 0;
@@ -955,7 +890,6 @@
                 return;
             }
 
-            // Validación inteligente: revisa que la respuesta tenga longitud mínima y tenga relación conversacional
             if (text.length < 3) {
                 box.innerHTML = '<span class="text-amber-700 font-bold">⚠️ Respuesta muy corta. Elabora un poco más tu respuesta al tutor.</span>';
                 return;
@@ -992,7 +926,7 @@
                     if (!appState.learnedFlashcards.includes(card.id)) appState.learnedFlashcards.push(card.id);
                 });
                 saveState();
-                showCustomModal("Vocabulario Aprobado 🌟", "¡Tutor: Las 5 palabras han sido guardadas en tu Bóveda! Pasamos a Gramática.", "📚");
+                showCustomModal("Vocabulario Aprobado 🌟", "¡Tutor: Las palabras han sido guardadas en tu Bóveda! Pasamos a Gramática.", "📚");
                 unlockNextStep('flashcards', 'grammar');
             } else {
                 updateCard();
@@ -1042,7 +976,6 @@
             processQuizAnswer(isCorrect);
         }
 
-        // Procesamiento con explicación detallada y regla gramatical obligatoria
         function processQuizAnswer(isCorrect) {
             const feedbackBox = document.getElementById('quiz-instant-feedback');
             feedbackBox.classList.remove('hidden');
@@ -1068,7 +1001,7 @@
                 } else {
                     showGrammarReport();
                 }
-            }, 3000); // 3 segundos para que alcance a leer la regla explicativa con calma
+            }, 3000);
         }
 
         function showGrammarReport() {
@@ -1233,7 +1166,11 @@
                 container.innerHTML = '<p class="text-xs text-slate-500 text-center py-6">Aún no hay palabras aprobadas por el tutor.</p>';
             } else {
                 appState.learnedFlashcards.forEach(id => {
-                    const card = masterFlashcardsBank.find(c => c.id === id);
+                    let card = null;
+                    for (let key in flashcardsBanksByTier) {
+                        let found = flashcardsBanksByTier[key].find(c => c.id === id);
+                        if (found) { card = found; break; }
+                    }
                     if (card) {
                         const item = document.createElement('div');
                         item.className = "bg-slate-50 border border-slate-200 p-3 rounded-2xl flex items-center justify-between shadow-sm";
