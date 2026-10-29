@@ -218,14 +218,15 @@
                                 Espere un momento...
                             </p>
 
-                            <!-- Guía Formal vs Informal -->
+                            <!-- Guía Formal vs Informal con Traducción al Español -->
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-5">
                                 <div class="bg-sky-50 border border-sky-200 p-4 rounded-2xl shadow-sm flex flex-col justify-between">
                                     <div>
                                         <span class="text-[11px] font-extrabold text-sky-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
                                             <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> 👔 Formal:
                                         </span>
-                                        <p class="text-xs text-slate-800 italic font-semibold mb-3" id="context-formal">...</p>
+                                        <p class="text-xs text-slate-800 italic font-semibold mb-1" id="context-formal">...</p>
+                                        <p class="text-[11px] text-sky-800 font-bold mb-3" id="context-formal-es">...</p>
                                     </div>
                                     <button onclick="speakSpecificText('formal')" class="self-start bg-white hover:bg-sky-100 text-sky-700 border border-sky-300 px-3 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-sm">
                                         <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar Formal 🔊
@@ -237,7 +238,8 @@
                                         <span class="text-[11px] font-extrabold text-emerald-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
                                             <i data-lucide="users" class="w-3.5 h-3.5"></i> 🏠 Informal:
                                         </span>
-                                        <p class="text-xs text-slate-800 italic font-semibold mb-3" id="context-informal">...</p>
+                                        <p class="text-xs text-slate-800 italic font-semibold mb-1" id="context-informal">...</p>
+                                        <p class="text-[11px] text-emerald-800 font-bold mb-3" id="context-informal-es">...</p>
                                     </div>
                                     <button onclick="speakSpecificText('informal')" class="self-start bg-white hover:bg-emerald-100 text-emerald-700 border border-emerald-300 px-3 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-sm">
                                         <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar Informal 🔊
@@ -372,14 +374,14 @@
                 </div>
             </div>
 
-            <!-- TAB 5: SHORT PHRASES SHADOWING (SOLO VOZ CON LIMPIEZA DE COMAS) -->
+            <!-- TAB 5: SHORT PHRASES SHADOWING (VALIDACIÓN ESTRICTA Y COHERENTE) -->
             <div id="content-shadowing" class="hidden space-y-4">
                 <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-sky-100">
                     <div class="flex justify-between items-center mb-3.5">
                         <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-3.5 py-1 rounded-full border border-sky-200 shadow-sm">Fase 5: Voice Shadowing</span>
                     </div>
                     <h3 class="text-lg font-extrabold text-slate-900 mb-1">Pronuncia la Frase</h3>
-                    <p class="text-slate-600 text-xs mb-5 leading-relaxed font-medium">Usa tu voz por micrófono. El sistema analizará tu pronunciación omitiendo comas y signos.</p>
+                    <p class="text-slate-600 text-xs mb-5 leading-relaxed font-medium">Usa tu voz por micrófono. El sistema validará que digas la frase correcta.</p>
                     
                     <div class="bg-slate-50 p-5 rounded-3xl border border-slate-200 mb-4 space-y-4 shadow-inner text-center">
                         <div class="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-sm">
@@ -582,12 +584,13 @@
             { id: 15, term: "Coffee", def: "Bebida caliente.", es: "Café ☕", img: "☕" }
         ];
 
+        // Currículo con frases y traducciones exactas al español formal/informal
         const curriculumLevels = {
             beginner: {
                 prompts: [
-                    { title: "Saludos y Presentaciones", text: "Aprende a presentarte educadamente.", formal: "Hello, my name is [Name].", informal: "Hey, I'm [Name]." },
-                    { title: "Ubicaciones Básicas", text: "Pregunta por lugares clave.", formal: "Could you tell me where it is?", informal: "Where's the restroom?" },
-                    { title: "Ordenar Comida", text: "Pide alimentos o bebidas.", formal: "I would like a coffee.", informal: "Gimme a coffee!" }
+                    { title: "Saludos y Presentaciones", text: "Aprende a presentarte educadamente.", formal: "Hello, my name is [Name].", formalEs: "Hola, mi nombre es [Nombre].", informal: "Hey, I'm [Name].", informalEs: "Hola, soy [Nombre]." },
+                    { title: "Ubicaciones Básicas", text: "Pregunta por lugares clave.", formal: "Could you tell me where it is?", formalEs: "¿Podría decirme dónde está?", informal: "Where's the restroom?", informalEs: "¿Dónde está el baño?" },
+                    { title: "Ordenar Comida", text: "Pide alimentos o bebidas.", formal: "I would like a coffee.", formalEs: "Me gustaría un café.", informal: "Gimme a coffee!", informalEs: "¡Dame un café!" }
                 ],
                 shadowTexts: ["Hello, nice to meet you.", "Where is the door?", "I am very happy today."],
                 listeningSnippets: ["Hello how are you", "Where is the water", "Thank you very much"],
@@ -601,9 +604,9 @@
             },
             intermediate: {
                 prompts: [
-                    { title: "Planes de Viaje y Turismo", text: "Habla sobre tus próximos destinos turísticos.", formal: "I am planning to visit San Juan del Sur.", informal: "I'm heading to the beach this weekend." },
-                    { title: "Negocios y Reuniones", text: "Exprésate en entornos laborales.", formal: "Let's schedule a meeting for tomorrow morning.", informal: "Let's catch up tomorrow." },
-                    { title: "Tecnología y Proyectos", text: "Describe desarrollos de software y reparaciones.", formal: "I have configured the server successfully.", informal: "I got the system running smoothly." }
+                    { title: "Planes de Viaje y Turismo", text: "Habla sobre tus próximos destinos turísticos.", formal: "I am planning to visit San Juan del Sur.", formalEs: "Estoy planeando visitar San Juan del Sur.", informal: "I'm heading to the beach this weekend.", informalEs: "Me voy a la playa este fin de semana." },
+                    { title: "Negocios y Reuniones", text: "Exprésate en entornos laborales.", formal: "Let's schedule a meeting for tomorrow morning.", formalEs: "Programemos una reunión para mañana por la mañana.", informal: "Let's catch up tomorrow.", informalEs: "Nos ponemos al día mañana." },
+                    { title: "Tecnología y Proyectos", text: "Describe desarrollos de software y reparaciones.", formal: "I have configured the server successfully.", formalEs: "He configurado el servidor con éxito.", informal: "I got the system running smoothly.", informalEs: "Dejé el sistema funcionando a la perfección." }
                 ],
                 shadowTexts: ["Could you give me a hand with this?", "I am looking forward to our next meeting.", "Let's build a robust application."],
                 listeningSnippets: ["Where should we go today", "I am working on a new project", "Let us schedule a meeting"],
@@ -617,8 +620,8 @@
             },
             advanced: {
                 prompts: [
-                    { title: "Native Idioms & Slang", text: "Domina expresiones idiomáticas nativas.", formal: "That requires significant effort.", informal: "That costs an arm and a leg!" },
-                    { title: "Discusiones Filosóficas y Técnicas", text: "Argumenta con fluidez profesional.", formal: "We must evaluate the architectural trade-offs.", informal: "We need to weigh our options carefully." }
+                    { title: "Native Idioms & Slang", text: "Domina expresiones idiomáticas nativas.", formal: "That requires significant effort.", formalEs: "Eso requiere un esfuerzo significativo.", informal: "That costs an arm and a leg!", informalEs: "¡Eso cuesta un ojo de la cara!" },
+                    { title: "Discusiones Filosóficas y Técnicas", text: "Argumenta con fluidez profesional.", formal: "We must evaluate the architectural trade-offs.", formalEs: "Debemos evaluar las compensaciones arquitectónicas.", informal: "We need to weigh our options carefully.", informalEs: "Tenemos que sopesar nuestras opciones con cuidado." }
                 ],
                 shadowTexts: ["It's raining cats and dogs outside.", "Let's hit the ground running.", "Break a leg on your presentation!"],
                 listeningSnippets: ["Piece of cake", "Hit the nail on the head", "Cost an arm and a leg"],
@@ -659,7 +662,7 @@
         let currentTutorialStep = 0;
         const tutorialSteps = [
             { title: "Bienvenido a English Pro 🦉", text: "Desarrolla tus habilidades lección por lección con una interfaz limpia." },
-            { title: "Evaluación Real 🎙️", text: "En Shadowing tu voz será evaluada por el sistema omitiendo comas y signos para una práctica fluida." }
+            { title: "Evaluación Real 🎙️", text: "En Shadowing tu voz será validada estrictamente contra la frase objetivo." }
         ];
 
         function startTutorialOnly() {
@@ -820,8 +823,12 @@
 
             document.getElementById('prompt-title').innerText = `Lección ${appState.currentLesson} (${appState.tierTitle}): ${currentPromptData.title}`;
             document.getElementById('prompt-text').innerText = currentPromptData.text;
+            
+            // Asignación de textos y traducciones exactas al español
             document.getElementById('context-formal').innerText = currentPromptData.formal;
+            document.getElementById('context-formal-es').innerText = `(${currentPromptData.formalEs})`;
             document.getElementById('context-informal').innerText = currentPromptData.informal;
+            document.getElementById('context-informal-es').innerText = `(${currentPromptData.informalEs})`;
 
             document.getElementById('shadow-text').innerText = `"${randomShadow}"`;
             currentListeningTarget = randomListening;
@@ -830,9 +837,10 @@
             if (unlearned.length < 5) unlearned = [...masterFlashcardsBank];
             activeFlashcards = shuffleArray(unlearned).slice(0, 5);
 
+            // Banco de gramática rotativo real y dinámico por cada lección
             let fullPool = levelData.quizzesPool;
-            let rotatedPool = [...fullPool.slice((appState.currentLesson - 1) % fullPool.length), ...fullPool.slice(0, (appState.currentLesson - 1) % fullPool.length)];
-            activeQuizzes = rotatedPool.slice(0, 5);
+            let offset = (appState.currentLesson - 1) % fullPool.length;
+            activeQuizzes = [...fullPool.slice(offset), ...fullPool.slice(0, offset)].slice(0, 5);
 
             currentCard = 0;
             currentQuizIndex = 0;
@@ -1096,7 +1104,7 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // FASE 5 (SHADOWING CON LIMPIEZA DE PUNTUACIÓN Y COMAS)
+        // FASE 5 (SHADOWING ESTRICTO Y COHERENTE CON EL TEXTO OBJETIVO)
         function verifyShadowingVoice() {
             const statusText = document.getElementById('shadow-mic-status');
             const transcriptBox = document.getElementById('shadow-transcript-box');
@@ -1122,18 +1130,19 @@
                     const rawSpoken = event.results[0][0].transcript.trim().toLowerCase();
                     const rawTarget = document.getElementById('shadow-text').innerText.replace(/"/g, '').trim().toLowerCase();
                     
-                    // Limpieza absoluta de comas, puntos y signos de puntuación para evitar falsos negativos
+                    // Limpieza de signos para comparación exacta de la frase
                     const spokenText = rawSpoken.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "").replace(/\s{2,}/g, " ");
                     const targetPhrase = rawTarget.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "").replace(/\s{2,}/g, " ");
 
                     transcriptBox.innerHTML = `Voz detectada: <strong class="text-sky-700">"${spokenText}"</strong>`;
                     statusText.innerText = 'Grabar con Micrófono 🎙️';
 
+                    // Validación exigente: exige al menos el 75% de coincidencia de palabras clave con el texto objetivo
                     let wordsTarget = targetPhrase.split(' ');
                     let matchCount = wordsTarget.filter(w => spokenText.includes(w)).length;
                     let matchRatio = matchCount / wordsTarget.length;
 
-                    if (spokenText.includes(targetPhrase) || matchRatio >= 0.45 || spokenText.length > 3) {
+                    if (spokenText.includes(targetPhrase) || matchRatio >= 0.75) {
                         resultBox.innerHTML = '<span class="text-emerald-700 font-extrabold">🌟 ¡Excelente pronunciación! Aprobado por el tutor. Avanzando...</span>';
                         
                         let today = new Date().toDateString();
@@ -1156,7 +1165,7 @@
                             updateUIStats();
                         }, 1600);
                     } else {
-                        resultBox.innerHTML = '<span class="text-rose-600 font-bold">⚠️ Inténtalo de nuevo. Habla un poco más fuerte y claro hacia el micrófono.</span>';
+                        resultBox.innerHTML = '<span class="text-rose-600 font-bold">⚠️ Coincidencia insuficiente. Debes pronunciar exactamente la frase mostrada (mínimo 75% de precisión).</span>';
                     }
                 };
 
