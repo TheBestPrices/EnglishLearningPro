@@ -32,7 +32,6 @@
             border-radius: 4px;
         }
 
-        /* Vibrant Amigable Cards */
         .vibrant-card {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(12px);
@@ -116,7 +115,7 @@
                 </div>
                 <div class="flex items-center space-x-1.5 bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-200 font-semibold text-emerald-700 shadow-sm">
                     <i data-lucide="book-open" class="w-3.5 h-3.5 text-emerald-600"></i>
-                    <span>Mastered: <strong class="text-slate-900" id="terms-count">0</strong></span>
+                    <span>Lessons: <strong class="text-slate-900" id="lessons-count">0</strong>/30</span>
                 </div>
                 <button onclick="startTutorialOnly()" class="hidden sm:flex bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 px-3.5 py-1.5 rounded-xl transition cursor-pointer items-center gap-1.5 text-xs font-bold shadow-sm">
                     <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Tutorial
@@ -143,10 +142,10 @@
                     </div>
 
                     <div class="flex-grow">
-                        <span id="tier-badge" class="text-[10px] font-extrabold uppercase tracking-widest text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">Tier: Beginner</span>
+                        <span id="tier-badge" class="text-[10px] font-extrabold uppercase tracking-widest text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">Tier: Beginner (Español de Apoyo)</span>
                         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 tracking-tight" id="welcome-title">Welcome back!</h2>
                         <p class="text-slate-600 mt-1.5 text-xs sm:text-sm bg-white/80 border border-slate-200 px-4 py-2.5 rounded-2xl italic shadow-sm" id="mascot-bubble">
-                            "Absolute beginner foundations: basic grammar, short sentences, and real social context (formal vs. informal)!"
+                            "¡Lecciones bilingües diseñadas para entender desde cero absoluto! Al completar 30 lecciones pasaremos a full inglés."
                         </p>
                     </div>
                 </div>
@@ -196,7 +195,7 @@
                     <div>
                         <div class="flex items-center justify-between mb-3.5">
                             <span class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 flex items-center gap-1.5 shadow-sm">
-                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Step 1: Lesson & Social Context
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Step 1: Lesson & Social Context (Bilingual)
                             </span>
                         </div>
                         <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mb-2.5" id="prompt-title">Lesson Title</h3>
@@ -208,13 +207,13 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-5">
                             <div class="bg-sky-50 border border-sky-200 p-4 rounded-2xl shadow-sm">
                                 <span class="text-[11px] font-extrabold text-sky-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-                                    <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> 👔 Formal (Work / Strangers):
+                                    <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> 👔 Formal (Trabajo / Desconocidos):
                                 </span>
                                 <p class="text-xs text-slate-800 italic font-semibold" id="context-formal">...</p>
                             </div>
                             <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl shadow-sm">
                                 <span class="text-[11px] font-extrabold text-emerald-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-                                    <i data-lucide="users" class="w-3.5 h-3.5"></i> 🏠 Informal (Friends / Family):
+                                    <i data-lucide="users" class="w-3.5 h-3.5"></i> 🏠 Informal (Amigos / Familia):
                                 </span>
                                 <p class="text-xs text-slate-800 italic font-semibold" id="context-informal">...</p>
                             </div>
@@ -486,7 +485,7 @@
             <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">Select Tier:</label>
             <div class="space-y-2.5 mb-2">
                 <button onclick="saveUserProfileAndStart('Beginner', 'beginner')" class="w-full text-left bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 p-3.5 rounded-2xl text-xs text-slate-800 transition flex items-center justify-between cursor-pointer font-bold shadow-sm">
-                    <span>🌱 Beginner (Absolute Zero)</span>
+                    <span>🌱 Beginner (Absolute Zero - Bilingual)</span>
                     <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-600"></i>
                 </button>
                 <button onclick="saveUserProfileAndStart('Intermediate', 'intermediate')" class="w-full text-left bg-sky-50 hover:bg-sky-100 border border-sky-200 p-3.5 rounded-2xl text-xs text-slate-800 transition flex items-center justify-between cursor-pointer font-bold shadow-sm">
@@ -513,6 +512,7 @@
         let appState = JSON.parse(localStorage.getItem('english_pro_nextgen_state')) || {
             userName: '',
             streak: 0,
+            lessonsCompleted: 0,
             termsMastered: 0,
             tierKey: 'beginner',
             tierTitle: 'Beginner',
@@ -554,19 +554,19 @@
         const tutorialSteps = [
             {
                 title: "Welcome to English Pro! 🦉",
-                text: "This quick tour will show you how to complete your daily sessions, use the microphone, and practice real-life conversations."
+                text: "Esta guía rápida te mostrará cómo completar tus sesiones diarias, usar el micrófono y practicar situaciones reales."
             },
             {
                 title: "1. 5 Core Steps Daily 🚀",
-                text: "Complete all 5 daily steps: Lesson & Context, Vocabulary Cards, Basic Grammar, Easy Listening, and Short Phrases."
+                text: "Completa los 5 pasos diarios: Lección y Contexto, Tarjetas de vocabulario, Gramática básica, Listening y Frases cortas."
             },
             {
                 title: "2. Microphone 🎙️",
-                text: "Tap the mic button once to start speaking basic phrases, and tap again when you finish!"
+                text: "¡Toca el botón de micrófono para hablar y practicar tu pronunciación en inglés!"
             },
             {
-                title: "3. Social Context 👔🏠",
-                text: "Learn how to speak politely in formal settings and casually with friends or family."
+                title: "3. Cambio Automático tras 30 Lecciones 🔥",
+                text: "Al completar 30 lecciones en Beginner con ayuda en español, la app subirá de nivel automáticamente a Full Inglés."
             }
         ];
 
@@ -592,7 +592,7 @@
             }
 
             if (currentTutorialStep === tutorialSteps.length - 1) {
-                nextBtn.innerText = "Let's set up my profile! ✨";
+                nextBtn.innerText = "¡Configurar mi perfil! ✨";
             } else {
                 nextBtn.innerText = "Next Step ➔";
             }
@@ -624,7 +624,7 @@
 
         function selectPet(petKey, emoji) {
             if (petKey !== 'owl' && appState.streak < 5 && !appState.unlockedPets.includes(petKey)) {
-                showCustomModal("Pet Locked 🔒", "You need a streak of 5 consecutive days to unlock this companion!", "🐾");
+                showCustomModal("Pet Locked 🔒", "Necesitas una racha de 5 días para desbloquear esta mascota.", "🐾");
                 return;
             }
             if (!appState.unlockedPets.includes(petKey)) appState.unlockedPets.push(petKey);
@@ -637,21 +637,21 @@
             document.getElementById('mascot-emoji').innerText = emoji;
 
             document.getElementById('pet-shop-modal').classList.add('hidden');
-            showCustomModal("Companion Selected! ✨", `Your companion ${emoji} is now active!`, "🐾");
+            showCustomModal("Companion Selected! ✨", `¡Tu compañero ${emoji} está activo!`, "🐾");
         }
 
         function bypassUnlockForTesting() {
             appState.unlockedPets = ['owl', 'penguin', 'cat'];
             localStorage.setItem('english_pro_nextgen_state', JSON.stringify(appState));
             openPetShop();
-            showCustomModal("Dev Mode", "All pets unlocked!", "⚡");
+            showCustomModal("Dev Mode", "¡Todas las mascotas desbloqueadas!", "⚡");
         }
 
         function updateUIStats() {
             document.getElementById('streak-count').innerText = appState.streak + 'd';
-            document.getElementById('terms-count').innerText = appState.termsMastered;
+            document.getElementById('terms-count').innerText = appState.lessonsCompleted || 0;
             document.getElementById('user-tier').innerText = appState.tierTitle;
-            document.getElementById('tier-badge').innerText = `Tier: ${appState.tierTitle}`;
+            document.getElementById('tier-badge').innerText = `Tier: ${appState.tierTitle} ${appState.tierKey === 'beginner' ? '(Bilingüe)' : ''}`;
             document.getElementById('header-badge').innerText = appState.tierTitle;
             document.getElementById('welcome-title').innerText = `Welcome back, ${appState.userName || 'Friend'}!`;
 
@@ -675,16 +675,16 @@
             if (completedCount === 5) {
                 if (appState.lastCompletedDate === today) {
                     claimBtn.className = "mt-3.5 w-full bg-slate-100 text-emerald-700 font-extrabold py-2.5 rounded-xl text-xs cursor-default transition border border-emerald-200 shadow-sm";
-                    claimBtn.innerText = "✨ Daily Streak Claimed Today!";
+                    claimBtn.innerText = "✨ ¡Sesión registrada hoy!";
                     claimBtn.disabled = true;
                 } else {
                     claimBtn.className = "mt-3.5 w-full bg-gradient-to-r from-emerald-500 to-sky-500 text-white font-extrabold py-2.5 rounded-xl text-xs cursor-pointer transition shadow-lg shadow-emerald-500/25";
-                    claimBtn.innerText = "🚀 Claim Daily Streak Reward";
+                    claimBtn.innerText = "🚀 Reclamar Progreso y Lección";
                     claimBtn.disabled = false;
                 }
             } else {
                 claimBtn.className = "mt-3.5 w-full bg-slate-100 text-slate-400 font-bold py-2.5 rounded-xl text-xs cursor-not-allowed transition border border-slate-200 shadow-sm";
-                claimBtn.innerText = `🔒 Complete all 5 steps first`;
+                claimBtn.innerText = `🔒 Completa los 5 pasos primero`;
                 claimBtn.disabled = true;
             }
         }
@@ -692,7 +692,7 @@
         function loadNewRandomBatch() {
             loadProgressiveLesson();
             resetStepBadgesUI();
-            showCustomModal("Fresh Lesson Loaded! 🔄", "New beginner grammar, phrases, and vocabulary generated!", "✨");
+            showCustomModal("Fresh Lesson Loaded! 🔄", "¡Nueva lección cargada con éxito!", "✨");
         }
 
         function markStepUI(stepKey, badgeId) {
@@ -726,11 +726,26 @@
             let today = new Date().toDateString();
             if (appState.lastCompletedDate === today) return;
             appState.streak += 1;
+            appState.lessonsCompleted = (appState.lessonsCompleted || 0) + 1;
             appState.termsMastered += 10;
             appState.lastCompletedDate = today;
+
+            // REVISAR SI LLEGÓ A 30 LECCIONES PARA SUBIR AUTOMÁTICAMENTE DE NIVEL
+            if (appState.tierKey === 'beginner' && appState.lessonsCompleted >= 30) {
+                appState.tierKey = 'intermediate';
+                appState.tierTitle = 'Intermediate';
+                localStorage.setItem('english_pro_nextgen_state', JSON.stringify(appState));
+                updateUIStats();
+                showCustomModal("¡Felicidades! 🎉🔥", "¡Increíble! Has completado tus 30 lecciones de base. ¡Has subido automáticamente al nivel INTERMEDIATE de pura inmersión en inglés!", "👑");
+                loadProgressiveLesson();
+                return;
+            }
+
             localStorage.setItem('english_pro_nextgen_state', JSON.stringify(appState));
             updateUIStats();
-            showCustomModal("Streak Boosted! 🎉", `Streak increased to ${appState.streak} days!`, "🚀");
+            showCustomModal("¡Lección Registrada! 🎉", `Llevas ${appState.lessonsCompleted}/30 lecciones en Beginner. ¡Vas con todo!`, "🚀");
+            loadProgressiveLesson();
+            resetStepBadgesUI();
         }
 
         function switchTab(tabName) {
@@ -751,34 +766,34 @@
                 prompts: [
                     { 
                         title: "1. Saludos y Presentaciones (Greetings)", 
-                        text: "Aprende a decir 'Hola, mi nombre es...' y a saludar educadamente.",
-                        formal: "Hello, my name is [Name]. It is a pleasure to meet you.",
-                        informal: "Hey! I'm [Name]. What's up?"
+                        text: "Aprende a decir 'Hola, mi nombre es...' y a saludar educadamente combinando español e inglés.",
+                        formal: "Hello, my name is [Name]. It is a pleasure to meet you. (Hola, mi nombre es... Es un placer conocerle).",
+                        informal: "Hey! I'm [Name]. What's up? (¡Hola! Soy... ¿Qué tal?)"
                     },
                     { 
                         title: "2. Ubicaciones Básicas (Where is...?)", 
                         text: "Cómo preguntar dónde está un lugar clave usando 'Where is...?'",
-                        formal: "Excuse me, could you tell me where the bathroom is?",
-                        informal: "Hey, where's the restroom?"
+                        formal: "Excuse me, could you tell me where the bathroom is? (Disculpe, ¿podría decirme dónde está el baño?)",
+                        informal: "Hey, where's the restroom? (Oye, ¿dónde está el baño?)"
                     },
                     { 
                         title: "3. Pedir algo de comer (I would like...)", 
                         text: "Frases súper sencillas para ordenar comida o bebida en un negocio.",
-                        formal: "I would like to order a cup of coffee, please.",
-                        informal: "Gimme a coffee, please!"
+                        formal: "I would like to order a cup of coffee, please. (Me gustaría ordenar una taza de café, por favor).",
+                        informal: "Gimme a coffee, please! (¡Dame un café, por favor!)"
                     },
                     { 
                         title: "4. Expresar cómo te sientes (I am...)", 
                         text: "Uso del verbo To Be básico para hablar de tu estado de ánimo.",
-                        formal: "I am feeling a little tired today, thank you.",
-                        informal: "I'm good / I'm fine!"
+                        formal: "I am feeling a little tired today, thank you. (Me siento un poco cansado hoy, gracias).",
+                        informal: "I'm good / I'm fine! (¡Estoy bien! / ¡Todo bien!)"
                     }
                 ],
                 shadowTexts: [
-                    "Hello, nice to meet you.",
-                    "Where is the door?",
-                    "I am very happy today.",
-                    "Thank you so much."
+                    "Hello, nice to meet you. (Hola, mucho gusto).",
+                    "Where is the door? (¿Dónde está la puerta?)",
+                    "I am very happy today. (Estoy muy feliz hoy).",
+                    "Thank you so much. (Muchas gracias)."
                 ],
                 listeningSnippets: [
                     "Hello how are you",
@@ -787,34 +802,41 @@
                     "Good morning friend"
                 ],
                 quizzesPool: [
-                    { id: 'b_q1', type: "mc", title: "Verbo To Be (I)", desc: "Elige la forma correcta: 'I ___ a student.'", options: [{ text: "A) am", correct: true }, { text: "B) is", correct: false }] },
-                    { id: 'b_q2', type: "repair", title: "Completar Frase", desc: "Completa con 'is' o 'are': 'He ___ my friend.'", answer: "is" },
+                    { id: 'b_q1', type: "mc", title: "Verbo To Be (I) - Soy / Estoy", desc: "Elige la forma correcta: 'I ___ a student.' (Yo soy un estudiante)", options: [{ text: "A) am", correct: true }, { text: "B) is", correct: false }] },
+                    { id: 'b_q2', type: "repair", title: "Completar Frase", desc: "Completa con 'is' o 'are': 'He ___ my friend.' (Él es mi amigo)", answer: "is" },
                     { id: 'b_q3', type: "mc", title: "Pronombre correcto", desc: "Para hablar de una mujer (ella), usas:", options: [{ text: "A) She", correct: true }, { text: "B) He", correct: false }] },
-                    { id: 'b_q4', type: "repair", title: "Completar Frase", desc: "Escribe la traducción de 'Hola':", answer: "hello" },
-                    { id: 'b_q5', type: "mc", title: "Verbo To Be (You)", desc: "Elige la forma correcta: 'You ___ smart.'", options: [{ text: "A) are", correct: true }, { text: "B) am", correct: false }] }
+                    { id: 'b_q4', type: "repair", title: "Completar Frase", desc: "Escribe en inglés la traducción de 'Hola':", answer: "hello" },
+                    { id: 'b_q5', type: "mc", title: "Verbo To Be (You) - Tú eres / estás", desc: "Elige la forma correcta: 'You ___ smart.' (Tú eres inteligente)", options: [{ text: "A) are", correct: true }, { text: "B) am", correct: false }] }
                 ],
                 flashcards: [
-                    { term: "Hello", def: "Saludo formal o general.", es: "Hola", img: "👋" },
-                    { term: "Goodbye", def: "Para despedirse.", es: "Adiós", img: "🚪" },
-                    { term: "Water", def: "Líquido vital para beber.", es: "Agua", img: "💧" },
-                    { term: "Food", def: "Cualquier sustancia alimenticia.", es: "Comida", img: "🍲" },
-                    { term: "Friend", def: "Persona con quien se tiene amistad.", es: "Amigo / Amiga", img: "🤝" },
-                    { term: "House", def: "Lugar donde se vive.", es: "Casa", img: "🏠" },
-                    { term: "Car", def: "Vehículo de transporte personal.", es: "Carro / Auto", img: "🚗" },
-                    { term: "Book", def: "Conjunto de hojas escritas.", es: "Libro", img: "📖" },
-                    { term: "Time", def: "Duración de las cosas.", es: "Tiempo", img: "⏰" },
-                    { term: "Money", def: "Monedas y billetes.", es: "Dinero", img: "💵" }
+                    { term: "Hello", def: "Saludo formal o general.", es: "Hola 👋", img: "👋" },
+                    { term: "Goodbye", def: "Para despedirse.", es: "Adiós 🚪", img: "🚪" },
+                    { term: "Water", def: "Líquido vital para beber.", es: "Agua 💧", img: "💧" },
+                    { term: "Food", def: "Cualquier sustancia alimenticia.", es: "Comida 🍲", img: "🍲" },
+                    { term: "Friend", def: "Persona con quien se tiene amistad.", es: "Amigo / Amiga 🤝", img: "🤝" },
+                    { term: "House", def: "Lugar donde se vive.", es: "Casa 🏠", img: "🏠" },
+                    { term: "Car", def: "Vehículo de transporte personal.", es: "Carro / Auto 🚗", img: "🚗" },
+                    { term: "Book", def: "Conjunto de hojas escritas.", es: "Libro 📖", img: "📖" },
+                    { term: "Time", def: "Duración de las cosas.", es: "Tiempo ⏰", img: "⏰" },
+                    { term: "Money", def: "Monedas y billetes.", es: "Dinero 💵", img: "💵" }
                 ]
             },
             intermediate: {
-                prompts: [{ title: "Intermediate Level", text: "Working on intermediate lessons...", formal: "...", informal: "..." }],
+                prompts: [
+                    {
+                        title: "1. Advanced Daily Conversation",
+                        text: "Practicing fluid English without translation.",
+                        formal: "Could you please review this report by tomorrow?",
+                        informal: "Hey, can you check this real quick?"
+                    }
+                ],
                 shadowTexts: ["My flight was delayed."],
                 listeningSnippets: ["Where is my luggage"],
                 quizzesPool: [{ id: 'i_q1', type: "mc", title: "Test", desc: "Select option", options: [{ text: "A) correct", correct: true }] }],
                 flashcards: [{ term: "Schedule", def: "Plan", es: "Horario", img: "⏰" }]
             },
             advanced: {
-                prompts: [{ title: "Advanced Level", text: "Working on advanced lessons...", formal: "...", informal: "..." }],
+                prompts: [{ title: "Advanced Level", text: "Hardcore native communication.", formal: "...", informal: "..." }],
                 shadowTexts: ["Hardly had I arrived."],
                 listeningSnippets: ["Call a supervisor"],
                 quizzesPool: [{ id: 'a_q1', type: "repair", title: "Test", desc: "Fix", answer: "test" }],
@@ -833,7 +855,7 @@
         function saveUserProfileAndStart(title, tierKey) {
             const nameInput = document.getElementById('user-name-input').value.trim();
             if (!nameInput) {
-                showCustomModal("Name Required ⚠️", "Please enter your name.", "👤");
+                showCustomModal("Nombre Requerido ⚠️", "Por favor ingresa tu nombre para continuar.", "👤");
                 return;
             }
             appState.userName = nameInput;
@@ -848,7 +870,8 @@
         }
 
         function checkInitialFocus() {
-            if (!appState.userName || appState.userName.trim() === "") {
+            // Si es la primera vez o no hay nombre, mostramos el tutorial y el modal de perfil
+            if (!appState.userName || appState.userName.trim() === "" || !appState.tutorialCompleted) {
                 startTutorialOnly();
             } else {
                 document.getElementById('profile-modal').classList.add('hidden');
@@ -954,7 +977,7 @@
                 document.getElementById('quiz-options').classList.add('hidden');
                 document.getElementById('error-repair-container').classList.add('hidden');
                 document.getElementById('quiz-title').innerText = "Grammar Completed! 🎉";
-                document.getElementById('quiz-result').innerHTML = '<span class="text-emerald-700 font-extrabold text-xs">✓ Step 3 completed successfully!</span>';
+                document.getElementById('quiz-result').innerHTML = '<span class="text-emerald-700 font-extrabold text-xs">✓ ¡Paso 3 completado con éxito!</span>';
                 markStep('grammar', 'badge-grammar');
             }
         }
@@ -971,10 +994,10 @@
             const targetText = currentListeningTarget.toLowerCase();
             const resultBox = document.getElementById('listening-result');
             if (userText === targetText || userText.length > 3) {
-                resultBox.innerHTML = '<span class="text-emerald-700 font-extrabold">🎯 Spot on! Step 4 completed!</span>';
+                resultBox.innerHTML = '<span class="text-emerald-700 font-extrabold">🎯 ¡Perfecto! ¡Paso 4 completado!</span>';
                 markStep('listening', 'badge-listening');
             } else {
-                resultBox.innerHTML = '<span class="text-amber-700 font-bold">⚠️ Try again! Listen carefully.</span>';
+                resultBox.innerHTML = '<span class="text-amber-700 font-bold">⚠️ Inténtalo de nuevo. Escucha con atención.</span>';
             }
         }
 
@@ -983,7 +1006,8 @@
 
         function speakShadowText() {
             if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
-            const utterance = new SpeechSynthesisUtterance(document.getElementById('shadow-text').innerText);
+            const cleanText = document.getElementById('shadow-text').innerText.split('(')[0].replace(/"/g, '').trim();
+            const utterance = new SpeechSynthesisUtterance(cleanText);
             utterance.lang = 'en-US';
             window.speechSynthesis.speak(utterance);
         }
@@ -993,7 +1017,7 @@
             const textarea = document.getElementById('shadow-user-input');
 
             if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                showCustomModal("Browser Notice", "Speech recognition not supported.", "⚠️");
+                showCustomModal("Aviso", "El reconocimiento de voz no está soportado en este navegador.", "⚠️");
                 return;
             }
             if (isShadowingRecording) {
@@ -1011,7 +1035,7 @@
         }
 
         function verifyShadowingPractice() {
-            document.getElementById('shadow-result').innerHTML = '<span class="text-emerald-700 font-extrabold">✓ Step 5 completed!</span>';
+            document.getElementById('shadow-result').innerHTML = '<span class="text-emerald-700 font-extrabold">✓ ¡Paso 5 completado!</span>';
             markStep('shadowing', 'badge-shadowing');
         }
 
@@ -1049,7 +1073,7 @@
             const statusText = document.getElementById('mic-status-text');
             const textarea = document.getElementById('user-response');
             if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                showCustomModal("Notice", "Speech recognition not supported.", "⚠️");
+                showCustomModal("Aviso", "Reconocimiento de voz no soportado.", "⚠️");
                 return;
             }
             if (isRecording) {
@@ -1070,16 +1094,17 @@
             const text = document.getElementById('user-response').value.trim();
             const box = document.getElementById('feedback-box');
             if(!text) {
-                box.innerHTML = '<span class="text-rose-600 font-bold">⚠️ Type or speak first!</span>';
+                box.innerHTML = '<span class="text-rose-600 font-bold">⚠️ ¡Escribe o di algo primero!</span>';
                 return;
             }
-            box.innerHTML = '<p class="text-emerald-700 font-extrabold">Good job! 🌟</p><p class="text-slate-600">Your beginner practice looks great!</p>';
+            box.innerHTML = '<p class="text-emerald-700 font-extrabold">¡Buen trabajo! 🌟</p><p class="text-slate-600">¡Tu práctica va excelente!</p>';
             markStep('speaking', 'badge-speaking');
         }
 
         function speakText() {
             if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
-            const utterance = new SpeechSynthesisUtterance(document.getElementById('prompt-text').innerText);
+            const cleanText = document.getElementById('prompt-text').innerText.split('(')[0].trim();
+            const utterance = new SpeechSynthesisUtterance(cleanText);
             utterance.lang = 'en-US';
             window.speechSynthesis.speak(utterance);
         }
