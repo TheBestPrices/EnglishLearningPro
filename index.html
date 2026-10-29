@@ -158,9 +158,7 @@
 
                     <div class="flex-grow">
                         <span class="text-[10px] font-extrabold uppercase tracking-widest text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">Daily Mastery Course</span>
-                        <!-- El Welcome queda fijo y visible -->
                         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 tracking-tight" id="welcome-title">Welcome back!</h2>
-                        <!-- Frases motivacionales dinámicas abajo -->
                         <p class="text-slate-600 mt-1.5 text-xs sm:text-sm bg-white/80 border border-slate-200 px-4 py-2.5 rounded-2xl italic shadow-sm" id="motivational-quote">
                             "La constancia es la clave del dominio. ¡Vamos con todo hoy!"
                         </p>
@@ -177,7 +175,7 @@
                         <div id="session-bar" class="bg-gradient-to-r from-sky-400 to-emerald-500 h-full w-0 rounded-full transition-all duration-500 shadow-sm"></div>
                     </div>
                     <div class="mt-3 text-center text-xs text-slate-500 font-bold" id="auto-advance-notice">
-                        ✨ Supera cada fase para desbloquear la siguiente
+                        ✨ Supera cada fase para avanzar
                     </div>
                 </div>
             </div>
@@ -202,206 +200,211 @@
             </button>
         </div>
 
-        <!-- TAB 1: SPEAKING & CONTEXT GUIDE -->
-        <div id="content-speaking" class="space-y-4">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
-                <div class="vibrant-card lg:col-span-2 rounded-3xl p-5 sm:p-7 flex flex-col justify-between shadow-lg">
-                    <div>
-                        <div class="flex items-center justify-between mb-3.5">
-                            <span class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 flex items-center gap-1.5 shadow-sm">
-                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Fase 1: Tutor Speaking Evaluation
-                            </span>
-                        </div>
-                        <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mb-2.5" id="prompt-title">Cargando lección...</h3>
-                        <p class="text-slate-700 text-xs sm:text-sm bg-slate-50 p-4.5 rounded-2xl border border-slate-200 leading-relaxed shadow-inner mb-4 font-medium" id="prompt-text">
-                            Espere un momento...
-                        </p>
+        <!-- VISTA DE LECCIÓN ÚNICA EN PANTALLA -->
+        <div id="lesson-view-container" class="space-y-4">
 
-                        <!-- Guía Formal vs Informal -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-5">
-                            <div class="bg-sky-50 border border-sky-200 p-4 rounded-2xl shadow-sm flex flex-col justify-between">
-                                <div>
-                                    <span class="text-[11px] font-extrabold text-sky-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-                                        <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> 👔 Formal:
-                                    </span>
-                                    <p class="text-xs text-slate-800 italic font-semibold mb-3" id="context-formal">...</p>
+            <!-- TAB 1: SPEAKING & CONTEXT GUIDE -->
+            <div id="content-speaking" class="space-y-4">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    <div class="vibrant-card lg:col-span-2 rounded-3xl p-5 sm:p-7 flex flex-col justify-between shadow-lg">
+                        <div>
+                            <div class="flex items-center justify-between mb-3.5">
+                                <span class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 flex items-center gap-1.5 shadow-sm">
+                                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Fase 1: Tutor Speaking Evaluation
+                                </span>
+                            </div>
+                            <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mb-2.5" id="prompt-title">Cargando lección...</h3>
+                            <p class="text-slate-700 text-xs sm:text-sm bg-slate-50 p-4.5 rounded-2xl border border-slate-200 leading-relaxed shadow-inner mb-4 font-medium" id="prompt-text">
+                                Espere un momento...
+                            </p>
+
+                            <!-- Guía Formal vs Informal -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-5">
+                                <div class="bg-sky-50 border border-sky-200 p-4 rounded-2xl shadow-sm flex flex-col justify-between">
+                                    <div>
+                                        <span class="text-[11px] font-extrabold text-sky-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
+                                            <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> 👔 Formal:
+                                        </span>
+                                        <p class="text-xs text-slate-800 italic font-semibold mb-3" id="context-formal">...</p>
+                                    </div>
+                                    <button onclick="speakSpecificText('formal')" class="self-start bg-white hover:bg-sky-100 text-sky-700 border border-sky-300 px-3 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-sm">
+                                        <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar Formal 🔊
+                                    </button>
                                 </div>
-                                <button onclick="speakSpecificText('formal')" class="self-start bg-white hover:bg-sky-100 text-sky-700 border border-sky-300 px-3 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-sm">
-                                    <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar Formal 🔊
+
+                                <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl shadow-sm flex flex-col justify-between">
+                                    <div>
+                                        <span class="text-[11px] font-extrabold text-emerald-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
+                                            <i data-lucide="users" class="w-3.5 h-3.5"></i> 🏠 Informal:
+                                        </span>
+                                        <p class="text-xs text-slate-800 italic font-semibold mb-3" id="context-informal">...</p>
+                                    </div>
+                                    <button onclick="speakSpecificText('informal')" class="self-start bg-white hover:bg-emerald-100 text-emerald-700 border border-emerald-300 px-3 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-sm">
+                                        <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar Informal 🔊
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex items-center justify-between mb-2 flex-wrap gap-2">
+                                <label class="block text-xs font-extrabold text-slate-600 uppercase tracking-wider">Tutor Mic Evaluation:</label>
+                                <button onclick="toggleSpeechRecognition()" id="mic-btn" class="bg-emerald-500 hover:bg-emerald-600 text-white px-3.5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-md shadow-emerald-500/20">
+                                    <i data-lucide="mic" class="w-4 h-4"></i> <span id="mic-status-text">Start Mic</span>
                                 </button>
                             </div>
-
-                            <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl shadow-sm flex flex-col justify-between">
-                                <div>
-                                    <span class="text-[11px] font-extrabold text-emerald-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-                                        <i data-lucide="users" class="w-3.5 h-3.5"></i> 🏠 Informal:
-                                    </span>
-                                    <p class="text-xs text-slate-800 italic font-semibold mb-3" id="context-informal">...</p>
-                                </div>
-                                <button onclick="speakSpecificText('informal')" class="self-start bg-white hover:bg-emerald-100 text-emerald-700 border border-emerald-300 px-3 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-sm">
-                                    <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar Informal 🔊
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="flex items-center justify-between mb-2 flex-wrap gap-2">
-                            <label class="block text-xs font-extrabold text-slate-600 uppercase tracking-wider">Tutor Mic Evaluation:</label>
-                            <button onclick="toggleSpeechRecognition()" id="mic-btn" class="bg-emerald-500 hover:bg-emerald-600 text-white px-3.5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-md shadow-emerald-500/20">
-                                <i data-lucide="mic" class="w-4 h-4"></i> <span id="mic-status-text">Start Mic</span>
-                            </button>
-                        </div>
-                        <textarea id="user-response" rows="2" class="vibrant-input w-full rounded-2xl p-3.5 text-slate-800 focus:outline-none transition text-xs sm:text-sm leading-relaxed font-medium" placeholder="Habla con el micro o escribe tu respuesta aquí..."></textarea>
-                        
-                        <div class="flex flex-wrap items-center justify-between mt-3.5 gap-2">
-                            <button onclick="evaluateResponse()" class="bg-gradient-to-r from-sky-500 to-emerald-500 hover:from-sky-600 hover:to-emerald-600 text-white font-extrabold px-6 py-3 rounded-2xl text-xs transition flex items-center gap-2 shadow-lg shadow-emerald-500/25 cursor-pointer">
-                                <i data-lucide="send" class="w-4 h-4"></i> Enviar al Tutor para Evaluación
-                            </button>
-                            <span class="text-xs text-slate-500 font-bold" id="feedback-status">Esperando respuesta...</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="vibrant-card rounded-3xl p-5 sm:p-7 flex flex-col justify-between shadow-lg">
-                    <div>
-                        <h3 class="text-xs font-extrabold text-slate-800 uppercase tracking-wider mb-3 flex items-center gap-2">
-                            <i data-lucide="bot" class="w-4 h-4 text-sky-600"></i> Tutor Decision
-                        </h3>
-                        <div id="feedback-box" class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs text-slate-700 space-y-2.5 shadow-inner font-medium">
-                            <p class="text-slate-500">El tutor evaluará tu práctica para darte el pase a Vocabulary.</p>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500 text-center font-bold">
-                        <span>✨ Fase 1 obligatoria para continuar.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 2: FLASHCARDS -->
-        <div id="content-flashcards" class="hidden space-y-4">
-            <div class="max-w-sm mx-auto text-center">
-                <h3 class="text-xl font-extrabold text-slate-900 mb-1 tracking-tight">Fase 2: Vocabulary (5 Words)</h3>
-                <p class="text-xs text-slate-500 mb-5 font-semibold" id="flashcard-counter-label">Reviewing words...</p>
-                
-                <div class="card-flip h-72 w-full cursor-pointer mb-5 shadow-2xl" onclick="this.classList.toggle('flipped')">
-                    <div class="card-inner relative w-full h-full text-center">
-                        <div class="card-front absolute w-full h-full vibrant-card rounded-3xl p-6 flex flex-col items-center justify-between border-2 border-slate-200">
-                            <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-3.5 py-1 rounded-full border border-sky-200 shadow-sm" id="flash-badge">Term #1</span>
+                            <textarea id="user-response" rows="2" class="vibrant-input w-full rounded-2xl p-3.5 text-slate-800 focus:outline-none transition text-xs sm:text-sm leading-relaxed font-medium" placeholder="Habla con el micro o escribe tu respuesta aquí..."></textarea>
                             
-                            <div class="w-24 h-24 bg-slate-50 rounded-3xl border-2 border-slate-200 flex items-center justify-center text-5xl shadow-inner my-2" id="flash-img">
-                                📚
-                            </div>
-
-                            <div>
-                                <h4 class="text-xl font-extrabold text-slate-900 mb-1" id="flash-term">Loading...</h4>
-                                <span class="text-xs text-slate-400 font-bold">(Tap card to flip)</span>
+                            <div class="flex flex-wrap items-center justify-between mt-3.5 gap-2">
+                                <button onclick="evaluateResponse()" class="bg-gradient-to-r from-sky-500 to-emerald-500 hover:from-sky-600 hover:to-emerald-600 text-white font-extrabold px-6 py-3 rounded-2xl text-xs transition flex items-center gap-2 shadow-lg shadow-emerald-500/25 cursor-pointer">
+                                    <i data-lucide="send" class="w-4 h-4"></i> Enviar al Tutor para Evaluación
+                                </button>
+                                <span class="text-xs text-slate-500 font-bold" id="feedback-status">Esperando respuesta...</span>
                             </div>
                         </div>
-                        <div class="card-back absolute w-full h-full vibrant-card bg-gradient-to-br from-emerald-50 to-sky-50 border-2 border-emerald-200 rounded-3xl p-6 flex flex-col items-center justify-center shadow-xl">
-                            <span class="text-xs font-extrabold text-emerald-700 mb-3 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 shadow-sm">Meaning & Spanish</span>
-                            <p class="text-slate-800 text-sm sm:text-base mb-4 font-bold" id="flash-def">...</p>
-                            <span class="text-sm font-mono text-emerald-800 bg-white px-4 py-2.5 rounded-2xl border border-emerald-300 font-extrabold shadow-sm" id="flash-es">...</span>
+                    </div>
+
+                    <div class="vibrant-card rounded-3xl p-5 sm:p-7 flex flex-col justify-between shadow-lg">
+                        <div>
+                            <h3 class="text-xs font-extrabold text-slate-800 uppercase tracking-wider mb-3 flex items-center gap-2">
+                                <i data-lucide="bot" class="w-4 h-4 text-sky-600"></i> Tutor Decision
+                            </h3>
+                            <div id="feedback-box" class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs text-slate-700 space-y-2.5 shadow-inner font-medium">
+                                <p class="text-slate-500">El tutor evaluará tu práctica para darte el pase a Vocabulary.</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500 text-center font-bold">
+                            <span>✨ Fase 1 obligatoria para continuar.</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="flex justify-center gap-3">
-                    <button onclick="prevCard()" class="bg-white hover:bg-slate-50 text-slate-700 px-5 py-2.5 rounded-2xl text-xs border border-slate-300 transition cursor-pointer font-extrabold shadow-sm">Previous</button>
-                    <button onclick="nextCard()" class="bg-gradient-to-r from-sky-500 to-emerald-500 text-white font-extrabold px-6 py-2.5 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-emerald-500/25">Siguiente Palabra ➔</button>
-                </div>
             </div>
-        </div>
 
-        <!-- TAB 3: BASIC GRAMMAR -->
-        <div id="content-grammar" class="hidden space-y-4">
-            <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-purple-100">
-                <div class="flex justify-between items-center mb-3.5">
-                    <span class="text-xs font-extrabold text-purple-700 bg-purple-100 px-3.5 py-1 rounded-full border border-purple-200 shadow-sm">Fase 3: Grammar Check</span>
-                    <span class="text-xs text-slate-500 font-bold" id="quiz-counter">Challenge 1 of 5</span>
-                </div>
-                <h3 class="text-lg font-extrabold text-slate-900 mb-2" id="quiz-title">Loading...</h3>
-                <p class="text-slate-700 text-xs sm:text-sm mb-5 bg-slate-50 p-4 rounded-2xl border border-slate-200 leading-relaxed shadow-inner font-medium" id="quiz-desc">
-                    ...
-                </p>
-                
-                <div class="space-y-3 mb-5" id="quiz-options"></div>
-
-                <div id="error-repair-container" class="hidden space-y-3 mb-5">
-                    <label class="block text-xs font-extrabold text-sky-700 uppercase tracking-wider">Type the missing word:</label>
-                    <input type="text" id="error-input" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Type answer here...">
-                    <button onclick="submitErrorCorrection()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-extrabold py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-purple-600/25">
-                        Verificar con el Tutor ➔
-                    </button>
-                </div>
-
-                <div id="quiz-instant-feedback" class="text-xs font-extrabold mt-3 p-3 rounded-xl hidden"></div>
-            </div>
-        </div>
-
-        <!-- TAB 4: EASY LISTENING -->
-        <div id="content-listening" class="hidden space-y-4">
-            <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-emerald-100">
-                <div class="flex justify-between items-center mb-3.5">
-                    <span class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 shadow-sm">Fase 4: Ear Training</span>
-                </div>
-                <h3 class="text-lg font-extrabold text-slate-900 mb-1">Listen & Repeat</h3>
-                <p class="text-slate-600 text-xs mb-5 leading-relaxed font-medium">Escucha el audio y escribe lo que oigas para avanzar.</p>
-                
-                <div class="bg-slate-50 p-5 rounded-3xl border border-slate-200 mb-4 space-y-4 text-center shadow-inner">
-                    <button onclick="playListeningAudio()" class="bg-gradient-to-r from-emerald-500 to-sky-500 hover:from-emerald-600 hover:to-sky-600 text-white font-extrabold px-6 py-3.5 rounded-2xl text-xs sm:text-sm transition inline-flex items-center gap-2 cursor-pointer shadow-lg shadow-emerald-500/25">
-                        <i data-lucide="volume-2" class="w-4 h-4"></i> Play Audio Snippet 🔊
-                    </button>
+            <!-- TAB 2: FLASHCARDS -->
+            <div id="content-flashcards" class="hidden space-y-4">
+                <div class="max-w-sm mx-auto text-center">
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-1 tracking-tight">Fase 2: Vocabulary (5 Words)</h3>
+                    <p class="text-xs text-slate-500 mb-5 font-semibold" id="flashcard-counter-label">Reviewing words...</p>
                     
-                    <div class="mt-3 text-left space-y-2">
-                        <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider">Type what you heard:</label>
-                        <input type="text" id="listening-input" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Type short phrase...">
+                    <div class="card-flip h-72 w-full cursor-pointer mb-5 shadow-2xl" onclick="this.classList.toggle('flipped')">
+                        <div class="card-inner relative w-full h-full text-center">
+                            <div class="card-front absolute w-full h-full vibrant-card rounded-3xl p-6 flex flex-col items-center justify-between border-2 border-slate-200">
+                                <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-3.5 py-1 rounded-full border border-sky-200 shadow-sm" id="flash-badge">Term #1</span>
+                                
+                                <div class="w-24 h-24 bg-slate-50 rounded-3xl border-2 border-slate-200 flex items-center justify-center text-5xl shadow-inner my-2" id="flash-img">
+                                    📚
+                                </div>
+
+                                <div>
+                                    <h4 class="text-xl font-extrabold text-slate-900 mb-1" id="flash-term">Loading...</h4>
+                                    <span class="text-xs text-slate-400 font-bold">(Tap card to flip)</span>
+                                </div>
+                            </div>
+                            <div class="card-back absolute w-full h-full vibrant-card bg-gradient-to-br from-emerald-50 to-sky-50 border-2 border-emerald-200 rounded-3xl p-6 flex flex-col items-center justify-center shadow-xl">
+                                <span class="text-xs font-extrabold text-emerald-700 mb-3 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 shadow-sm">Meaning & Spanish</span>
+                                <p class="text-slate-800 text-sm sm:text-base mb-4 font-bold" id="flash-def">...</p>
+                                <span class="text-sm font-mono text-emerald-800 bg-white px-4 py-2.5 rounded-2xl border border-emerald-300 font-extrabold shadow-sm" id="flash-es">...</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flex justify-between items-center pt-2">
-                        <button onclick="checkListeningDictation()" class="bg-sky-500 hover:bg-sky-600 text-white font-extrabold px-6 py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-sky-500/25">
-                            Verificar Dictado ✓
-                        </button>
-                        <span class="text-xs text-slate-500 font-bold" id="listening-hint">Precisión requerida</span>
+                    <div class="flex justify-center gap-3">
+                        <button onclick="prevCard()" class="bg-white hover:bg-slate-50 text-slate-700 px-5 py-2.5 rounded-2xl text-xs border border-slate-300 transition cursor-pointer font-extrabold shadow-sm">Previous</button>
+                        <button onclick="nextCard()" class="bg-gradient-to-r from-sky-500 to-emerald-500 text-white font-extrabold px-6 py-2.5 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-emerald-500/25">Siguiente Palabra ➔</button>
                     </div>
-
-                    <div id="listening-result" class="text-xs font-extrabold text-slate-600 mt-2"></div>
                 </div>
             </div>
-        </div>
 
-        <!-- TAB 5: SHORT PHRASES SHADOWING (SOLO POR VOZ) -->
-        <div id="content-shadowing" class="hidden space-y-4">
-            <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-sky-100">
-                <div class="flex justify-between items-center mb-3.5">
-                    <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-3.5 py-1 rounded-full border border-sky-200 shadow-sm">Fase 5: Voice Shadowing (85% Match)</span>
-                </div>
-                <h3 class="text-lg font-extrabold text-slate-900 mb-1">Pronuncia la Frase</h3>
-                <p class="text-slate-600 text-xs mb-5 leading-relaxed font-medium">Usa exclusivamente tu voz por micrófono. El sistema analizará tu pronunciación.</p>
-                
-                <div class="bg-slate-50 p-5 rounded-3xl border border-slate-200 mb-4 space-y-4 shadow-inner text-center">
-                    <div class="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-sm">
-                        <p class="text-[10px] font-extrabold text-slate-400 mb-1 uppercase tracking-wider">Target Phrase:</p>
-                        <p class="text-sm sm:text-base text-sky-700 font-mono italic font-extrabold" id="shadow-text">"Loading..."</p>
-                        <button onclick="speakShadowText()" class="mt-3 bg-sky-50 hover:bg-sky-100 text-sky-700 px-4 py-2 rounded-xl text-xs transition inline-flex items-center gap-1.5 cursor-pointer border border-sky-200 font-extrabold shadow-sm">
-                            <i data-lucide="volume-2" class="w-4 h-4"></i> Escuchar Audio de Referencia 🔊
+            <!-- TAB 3: BASIC GRAMMAR -->
+            <div id="content-grammar" class="hidden space-y-4">
+                <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-purple-100">
+                    <div class="flex justify-between items-center mb-3.5">
+                        <span class="text-xs font-extrabold text-purple-700 bg-purple-100 px-3.5 py-1 rounded-full border border-purple-200 shadow-sm">Fase 3: Grammar Check</span>
+                        <span class="text-xs text-slate-500 font-bold" id="quiz-counter">Challenge 1 of 5</span>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-slate-900 mb-2" id="quiz-title">Loading...</h3>
+                    <p class="text-slate-700 text-xs sm:text-sm mb-5 bg-slate-50 p-4 rounded-2xl border border-slate-200 leading-relaxed shadow-inner font-medium" id="quiz-desc">
+                        ...
+                    </p>
+                    
+                    <div class="space-y-3 mb-5" id="quiz-options"></div>
+
+                    <div id="error-repair-container" class="hidden space-y-3 mb-5">
+                        <label class="block text-xs font-extrabold text-sky-700 uppercase tracking-wider">Type the missing word:</label>
+                        <input type="text" id="error-input" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Type answer here...">
+                        <button onclick="submitErrorCorrection()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-extrabold py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-purple-600/25">
+                            Verificar con el Tutor ➔
                         </button>
                     </div>
 
-                    <div class="py-2">
-                        <button onclick="verifyShadowingVoice()" id="shadow-mic-btn" class="bg-gradient-to-r from-emerald-500 to-sky-500 hover:from-emerald-600 hover:to-sky-600 text-white px-8 py-4 rounded-2xl text-sm font-extrabold inline-flex items-center gap-2 transition cursor-pointer shadow-lg shadow-emerald-500/25">
-                            <i data-lucide="mic" class="w-5 h-5"></i> <span id="shadow-mic-status">Grabar con Micrófono 🎙️</span>
-                        </button>
-                    </div>
-
-                    <div class="bg-white p-3.5 rounded-2xl border border-slate-200 text-xs text-slate-700 font-semibold" id="shadow-transcript-box">
-                        Tu voz detectada aparecerá aquí...
-                    </div>
-
-                    <div id="shadow-result" class="text-xs font-extrabold text-slate-600 pt-2"></div>
+                    <div id="quiz-instant-feedback" class="text-xs font-extrabold mt-3 p-3 rounded-xl hidden"></div>
                 </div>
             </div>
+
+            <!-- TAB 4: EASY LISTENING -->
+            <div id="content-listening" class="hidden space-y-4">
+                <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-emerald-100">
+                    <div class="flex justify-between items-center mb-3.5">
+                        <span class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 shadow-sm">Fase 4: Ear Training</span>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-slate-900 mb-1">Listen & Repeat</h3>
+                    <p class="text-slate-600 text-xs mb-5 leading-relaxed font-medium">Escucha el audio y escribe lo que oigas para avanzar.</p>
+                    
+                    <div class="bg-slate-50 p-5 rounded-3xl border border-slate-200 mb-4 space-y-4 text-center shadow-inner">
+                        <button onclick="playListeningAudio()" class="bg-gradient-to-r from-emerald-500 to-sky-500 hover:from-emerald-600 hover:to-sky-600 text-white font-extrabold px-6 py-3.5 rounded-2xl text-xs sm:text-sm transition inline-flex items-center gap-2 cursor-pointer shadow-lg shadow-emerald-500/25">
+                            <i data-lucide="volume-2" class="w-4 h-4"></i> Play Audio Snippet 🔊
+                        </button>
+                        
+                        <div class="mt-3 text-left space-y-2">
+                            <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider">Type what you heard:</label>
+                            <input type="text" id="listening-input" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Type short phrase...">
+                        </div>
+
+                        <div class="flex justify-between items-center pt-2">
+                            <button onclick="checkListeningDictation()" class="bg-sky-500 hover:bg-sky-600 text-white font-extrabold px-6 py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-sky-500/25">
+                                Verificar Dictado ✓
+                            </button>
+                            <span class="text-xs text-slate-500 font-bold" id="listening-hint">Precisión requerida</span>
+                        </div>
+
+                        <div id="listening-result" class="text-xs font-extrabold text-slate-600 mt-2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: SHORT PHRASES SHADOWING (SOLO VOZ CON LIMPIEZA DE COMAS) -->
+            <div id="content-shadowing" class="hidden space-y-4">
+                <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-sky-100">
+                    <div class="flex justify-between items-center mb-3.5">
+                        <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-3.5 py-1 rounded-full border border-sky-200 shadow-sm">Fase 5: Voice Shadowing</span>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-slate-900 mb-1">Pronuncia la Frase</h3>
+                    <p class="text-slate-600 text-xs mb-5 leading-relaxed font-medium">Usa tu voz por micrófono. El sistema analizará tu pronunciación omitiendo comas y signos.</p>
+                    
+                    <div class="bg-slate-50 p-5 rounded-3xl border border-slate-200 mb-4 space-y-4 shadow-inner text-center">
+                        <div class="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-sm">
+                            <p class="text-[10px] font-extrabold text-slate-400 mb-1 uppercase tracking-wider">Target Phrase:</p>
+                            <p class="text-sm sm:text-base text-sky-700 font-mono italic font-extrabold" id="shadow-text">"Loading..."</p>
+                            <button onclick="speakShadowText()" class="mt-3 bg-sky-50 hover:bg-sky-100 text-sky-700 px-4 py-2 rounded-xl text-xs transition inline-flex items-center gap-1.5 cursor-pointer border border-sky-200 font-extrabold shadow-sm">
+                                <i data-lucide="volume-2" class="w-4 h-4"></i> Escuchar Audio de Referencia 🔊
+                            </button>
+                        </div>
+
+                        <div class="py-2">
+                            <button onclick="verifyShadowingVoice()" id="shadow-mic-btn" class="bg-gradient-to-r from-emerald-500 to-sky-500 hover:from-emerald-600 hover:to-sky-600 text-white px-8 py-4 rounded-2xl text-sm font-extrabold inline-flex items-center gap-2 transition cursor-pointer shadow-lg shadow-emerald-500/25">
+                                <i data-lucide="mic" class="w-5 h-5"></i> <span id="shadow-mic-status">Grabar con Micrófono 🎙️</span>
+                            </button>
+                        </div>
+
+                        <div class="bg-white p-3.5 rounded-2xl border border-slate-200 text-xs text-slate-700 font-semibold" id="shadow-transcript-box">
+                            Tu voz detectada aparecerá aquí...
+                        </div>
+
+                        <div id="shadow-result" class="text-xs font-extrabold text-slate-600 pt-2"></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </main>
@@ -495,7 +498,7 @@
         </div>
     </div>
 
-    <!-- INITIAL PROFILE & NAME MODAL (INPUT VACÍO) -->
+    <!-- INITIAL PROFILE & NAME MODAL -->
     <div id="profile-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xl z-50 flex items-center justify-center hidden p-4">
         <div class="vibrant-card max-w-sm w-full rounded-3xl p-6 shadow-2xl border border-slate-200">
             <div class="text-center mb-5">
@@ -655,8 +658,8 @@
 
         let currentTutorialStep = 0;
         const tutorialSteps = [
-            { title: "Bienvenido a English Pro 🦉", text: "Desarrolla tus habilidades de Speaking, Vocabulary, Grammar, Listening y Voice Shadowing lección por lección." },
-            { title: "Evaluación Real 🎙️", text: "En Shadowing tu voz será evaluada por el sistema para asegurar una pronunciación precisa del 85%." }
+            { title: "Bienvenido a English Pro 🦉", text: "Desarrolla tus habilidades lección por lección con una interfaz limpia." },
+            { title: "Evaluación Real 🎙️", text: "En Shadowing tu voz será evaluada por el sistema omitiendo comas y signos para una práctica fluida." }
         ];
 
         function startTutorialOnly() {
@@ -754,11 +757,11 @@
 
         function switchTab(tabName) {
             if (!appState.unlockedSteps[tabName]) {
-                showCustomModal("Fase Bloqueada 🔒", "El tutor indica que debes aprobar la fase anterior antes de continuar.", "⚠️");
+                showCustomModal("Fase Bloqueada 🔒", "Debes aprobar la fase anterior antes de continuar.", "⚠️");
                 return;
             }
 
-            document.querySelectorAll('[id^="content-"]').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('#lesson-view-container > div').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.tab-btn').forEach(el => {
                 el.classList.remove('active', 'bg-gradient-to-r', 'from-sky-500', 'to-emerald-500', 'text-white', 'shadow-sm');
                 if(!el.classList.contains('locked')) {
@@ -843,6 +846,7 @@
             
             updateCard();
             loadQuizQuestion();
+            switchTab('speaking');
         }
 
         function speakSpecificText(type) {
@@ -1092,6 +1096,7 @@
             window.speechSynthesis.speak(utterance);
         }
 
+        // FASE 5 (SHADOWING CON LIMPIEZA DE PUNTUACIÓN Y COMAS)
         function verifyShadowingVoice() {
             const statusText = document.getElementById('shadow-mic-status');
             const transcriptBox = document.getElementById('shadow-transcript-box');
@@ -1114,9 +1119,13 @@
                 };
 
                 rec.onresult = (event) => {
-                    const spokenText = event.results[0][0].transcript.trim().toLowerCase();
-                    const targetPhrase = document.getElementById('shadow-text').innerText.replace(/"/g, '').trim().toLowerCase();
+                    const rawSpoken = event.results[0][0].transcript.trim().toLowerCase();
+                    const rawTarget = document.getElementById('shadow-text').innerText.replace(/"/g, '').trim().toLowerCase();
                     
+                    // Limpieza absoluta de comas, puntos y signos de puntuación para evitar falsos negativos
+                    const spokenText = rawSpoken.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "").replace(/\s{2,}/g, " ");
+                    const targetPhrase = rawTarget.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, "").replace(/\s{2,}/g, " ");
+
                     transcriptBox.innerHTML = `Voz detectada: <strong class="text-sky-700">"${spokenText}"</strong>`;
                     statusText.innerText = 'Grabar con Micrófono 🎙️';
 
@@ -1124,7 +1133,7 @@
                     let matchCount = wordsTarget.filter(w => spokenText.includes(w)).length;
                     let matchRatio = matchCount / wordsTarget.length;
 
-                    if (spokenText.includes(targetPhrase) || matchRatio >= 0.75) {
+                    if (spokenText.includes(targetPhrase) || matchRatio >= 0.45 || spokenText.length > 3) {
                         resultBox.innerHTML = '<span class="text-emerald-700 font-extrabold">🌟 ¡Excelente pronunciación! Aprobado por el tutor. Avanzando...</span>';
                         
                         let today = new Date().toDateString();
@@ -1145,10 +1154,9 @@
                             showCustomModal("¡Avanzando de Lección! 🚀", `Has escalado a la Lección ${appState.currentLesson}. ¡El tutor te espera!`, "🎉");
                             loadProgressiveLesson();
                             updateUIStats();
-                            switchTab('speaking');
                         }, 1600);
                     } else {
-                        resultBox.innerHTML = '<span class="text-rose-600 font-bold">⚠️ Pronunciación no clara o incompleta. Inténtalo de nuevo (se requiere un 85% de precisión).</span>';
+                        resultBox.innerHTML = '<span class="text-rose-600 font-bold">⚠️ Inténtalo de nuevo. Habla un poco más fuerte y claro hacia el micrófono.</span>';
                     }
                 };
 
