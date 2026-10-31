@@ -87,7 +87,7 @@
                         <i data-lucide="zap" class="w-5 h-5"></i>
                     </div>
                     <h1 class="font-extrabold text-lg text-slate-900 flex items-center gap-2 tracking-tight">
-                        English Pro
+                        <a href="https://thebestprices.github.io/EnglishLearningPro/" class="hover:text-emerald-600 transition">English Pro</a>
                         <span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 rounded-full" id="header-badge">Lección 1 / 40</span>
                     </h1>
                 </div>
@@ -96,7 +96,7 @@
                         <i data-lucide="book" class="w-3.5 h-3.5"></i> Bóveda
                     </button>
                     <button onclick="startTutorialOnly()" class="bg-sky-100 text-sky-700 border border-sky-200 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1 shadow-sm">
-                        <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Ayuda
+                        <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Tutorial
                     </button>
                 </div>
             </div>
@@ -119,7 +119,7 @@
                     <i data-lucide="book" class="w-3.5 h-3.5"></i> Bóveda 📚
                 </button>
                 <button onclick="startTutorialOnly()" class="hidden sm:flex bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 px-3.5 py-1.5 rounded-xl transition cursor-pointer items-center gap-1.5 text-xs font-bold shadow-sm">
-                    <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Tutorial
+                    <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Tutorial 🦉
                 </button>
             </div>
         </div>
@@ -250,7 +250,7 @@
                 </div>
             </div>
 
-            <!-- FASE 2: FLASHCARDS ESPECIALIZADAS POR NIVEL -->
+            <!-- FASE 2: FLASHCARDS (8 PALABRAS POR SESIÓN) -->
             <div id="content-flashcards" class="hidden space-y-4">
                 <div class="max-w-sm mx-auto text-center">
                     <h3 class="text-xl font-extrabold text-slate-900 mb-1 tracking-tight" id="flashcard-phase-title">Fase 2 de 5: Vocabulary Mastery</h3>
@@ -285,12 +285,12 @@
                 </div>
             </div>
 
-            <!-- FASE 3: GRAMMAR CON EXPLICACIONES RIGUROSAS Y REGLAS -->
+            <!-- FASE 3: GRAMMAR (8 PREGUNTAS POR SESIÓN) -->
             <div id="content-grammar" class="hidden space-y-4">
                 <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-purple-100">
                     <div class="flex justify-between items-center mb-3.5">
                         <span class="text-xs font-extrabold text-purple-700 bg-purple-100 px-3.5 py-1 rounded-full border border-purple-200 shadow-sm">Fase 3 de 5: Daily Grammar Check</span>
-                        <span class="text-xs text-slate-500 font-bold" id="quiz-counter">Challenge 1 of 5</span>
+                        <span class="text-xs text-slate-500 font-bold" id="quiz-counter">Challenge 1 of 8</span>
                     </div>
                     <h3 class="text-lg font-extrabold text-slate-900 mb-2" id="quiz-title">Loading...</h3>
                     <p class="text-slate-700 text-xs sm:text-sm mb-5 bg-slate-50 p-4 rounded-2xl border border-slate-200 leading-relaxed shadow-inner font-medium" id="quiz-desc">
@@ -413,21 +413,21 @@
         </div>
     </div>
 
-    <!-- INTERACTIVE TUTORIAL MODAL -->
-    <div id="tutorial-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-center justify-center hidden p-4">
-        <div class="vibrant-card max-w-md w-full rounded-3xl p-6 shadow-2xl relative border border-sky-200">
-            <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-tr from-sky-400 to-emerald-400 rounded-3xl p-1 shadow-lg flex items-center justify-center text-3xl">
+    <!-- TUTORIAL INTERACTIVO FUNCIONAL (PASO A PASO) -->
+    <div id="tutorial-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-md z-50 flex items-center justify-center hidden p-4">
+        <div class="vibrant-card max-w-md w-full rounded-3xl p-6 shadow-2xl relative border border-sky-200 text-center">
+            <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-tr from-sky-400 to-emerald-400 rounded-3xl p-1 shadow-lg flex items-center justify-center text-3xl" id="tutorial-icon-box">
                 🦉
             </div>
-            <div class="text-center mt-5 mb-4">
-                <span class="text-[10px] font-extrabold uppercase tracking-widest text-sky-700 bg-sky-100 px-3 py-1 rounded-full border border-sky-200" id="tutorial-step-indicator">Step 1 of 2</span>
-                <h3 class="font-extrabold text-xl text-slate-900 mt-2">Guía de English Pro</h3>
+            <div class="mt-5 mb-3">
+                <span class="text-[10px] font-extrabold uppercase tracking-widest text-sky-700 bg-sky-100 px-3 py-1 rounded-full border border-sky-200" id="tutorial-step-indicator">Paso 1 de 5</span>
+                <h3 class="font-extrabold text-xl text-slate-900 mt-2" id="tutorial-title">Fase 1: Speaking Contextualizado</h3>
             </div>
-            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed text-center mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200 shadow-inner font-medium" id="tutorial-text">
-                Responde a los retos del tutor en Speaking y repasa vocabulario especializado según tu nivel.
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200 shadow-inner font-medium text-left" id="tutorial-text">
+                El tutor te lanzará un reto o pregunta basada en la lección actual. Debes responder por escrito o usando el micrófono. El tutor evaluará tu respuesta para darte el pase a la siguiente fase.
             </p>
             <div class="flex items-center justify-between gap-3">
-                <button onclick="prevTutorialStep()" id="tutorial-prev-btn" class="bg-slate-100 text-slate-600 px-4 py-2.5 rounded-2xl text-xs font-bold border border-slate-200 transition cursor-pointer hidden">Previous</button>
+                <button onclick="prevTutorialStep()" id="tutorial-prev-btn" class="bg-slate-100 text-slate-600 px-4 py-2.5 rounded-2xl text-xs font-bold border border-slate-200 transition cursor-pointer hidden">Anterior</button>
                 <div class="flex-grow"></div>
                 <button onclick="nextTutorialStep()" id="tutorial-next-btn" class="bg-gradient-to-r from-sky-500 to-emerald-500 text-white font-extrabold px-6 py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-emerald-500/25">Siguiente ➔</button>
             </div>
@@ -534,7 +534,6 @@
             "\"Tu futuro depende de lo que hagas hoy. ¡Haz que cuente!\""
         ];
 
-        // Bancos de vocabulario especializados por nivel
         const flashcardsBanksByTier = {
             beginner: [
                 { id: 101, term: "Hello", def: "Saludo formal o general.", es: "Hola 👋", img: "👋" },
@@ -546,7 +545,9 @@
                 { id: 107, term: "Car", def: "Vehículo de transporte personal.", es: "Carro / Auto 🚗", img: "🚗" },
                 { id: 108, term: "Book", def: "Conjunto de hojas escritas.", es: "Libro 📖", img: "📖" },
                 { id: 109, term: "Time", def: "Duración de las cosas.", es: "Tiempo ⏰", img: "⏰" },
-                { id: 110, term: "Money", def: "Monedas y billetes.", es: "Dinero 💵", img: "💵" }
+                { id: 110, term: "Money", def: "Monedas y billetes.", es: "Dinero 💵", img: "💵" },
+                { id: 111, term: "Market", def: "Lugar para comprar víveres.", es: "Mercado 🛒", img: "🛒" },
+                { id: 112, term: "Phone", def: "Dispositivo móvil.", es: "Teléfono 📱", img: "📱" }
             ],
             intermediate: [
                 { id: 201, term: "Break down", def: "Phrasal verb: Dejar de funcionar / descomponerse.", es: "Averiarse / Descomponerse 🚗💥", img: "🛠️" },
@@ -558,7 +559,9 @@
                 { id: 207, term: "Schedule", def: "Sustantivo: Planificación de tiempos o agenda.", es: "Horario / Programar 📅", img: "⏰" },
                 { id: 208, term: "Enhance", def: "Verbo: Mejorar o elevar la calidad de algo.", es: "Mejorar / Potenciar 🚀", img: "📈" },
                 { id: 209, term: "Achievement", def: "Sustantivo: Resultado exitoso tras esfuerzo.", es: "Logro / Conquista 🏆", img: "🎖️" },
-                { id: 210, term: "Convenient", def: "Adjetivo: Útil, oportuno o práctico.", es: "Conveniente / Práctico ✨", img: "👍" }
+                { id: 210, term: "Convenient", def: "Adjetivo: Útil, oportuno o práctico.", es: "Conveniente / Práctico ✨", img: "👍" },
+                { id: 211, term: "Optimize", def: "Verbo: Hacer que un proceso sea lo más eficiente posible.", es: "Optimizar / Mejorar rendimiento ⚡", img: "⚙️" },
+                { id: 212, term: "Requirement", def: "Sustantivo: Condición necesaria para un propósito.", es: "Requisito / Exigencia 📋", img: "📝" }
             ],
             advanced: [
                 { id: 301, term: "Piece of cake", def: "Idiom: Algo sumamente fácil de realizar.", es: "Pan comido / Muy fácil 🍰", img: "🍰" },
@@ -570,11 +573,12 @@
                 { id: 307, term: "Troubleshoot", def: "Término técnico: Aislar y resolver fallas complejas.", es: "Diagnosticar y reparar fallas 🛠️", img: "⚡" },
                 { id: 308, term: "State-of-the-art", def: "Adjetivo: Lo más avanzado en tecnología.", es: "De última generación 🚀", img: "💎" },
                 { id: 309, term: "Pivotal", def: "Adjetivo: De vital importancia para el desarrollo.", es: "Crucial / Pivotal 🗝️", img: "🔑" },
-                { id: 310, term: "Pragmatic", def: "Adjetivo: Enfocado en la práctica y resultados.", es: "Pragmático / Realista ⚖️", img: "⚖️" }
+                { id: 310, term: "Pragmatic", def: "Adjetivo: Enfocado en la práctica y resultados.", es: "Pragmático / Realista ⚖️", img: "⚖️" },
+                { id: 311, term: "Breakthrough", def: "Sustantivo: Avance importante o descubrimiento clave.", es: "Gran avance / Innovación 💡", img: "🌟" },
+                { id: 312, term: "Benchmark", def: "Sustantivo: Estándar o punto de referencia para medir calidad.", es: "Punto de referencia / Estándar 📏", img: "📊" }
             ]
         };
 
-        // Currículo completo con todos los prompts, listening y quizzes restaurados
         const curriculumLevels = {
             beginner: {
                 prompts: [
@@ -593,7 +597,8 @@
                     { id: 'b_q4', type: "repair", title: "Precios Cotidianos", desc: "Traduce '¿Cuánto cuesta esta camisa?':", answer: "how much", correctText: "how much", correction: "Se escribe 'How much' para preguntar precios de sustantivos singulares." },
                     { id: 'b_q5', type: "mc", title: "Preferencias (Gerundios)", desc: "I really enjoy ___ coffee in the morning.", options: [{ text: "A) drinking", correct: true }, { text: "B) drink", correct: false }], correction: "Verbos como 'enjoy' exigen obligatoriamente que el verbo siguiente termine en gerundio (-ing)." },
                     { id: 'b_q6', type: "mc", title: "Plurativos Comunes", desc: "I have two ___ in my house. (cat/cats)", options: [{ text: "A) cats", correct: true }, { text: "B) cat", correct: false }], correction: "Al hablar de plurales contables se añade '-s' al final del sustantivo." },
-                    { id: 'b_q7', type: "repair", title: "Verbo To Be (Negativo)", desc: "She ___ (not) at home right now.", answer: "is not", correctText: "is not", correction: "Para el pronombre 'She' en presente se usa 'is not' o la contracción 'isn't'." }
+                    { id: 'b_q7', type: "repair", title: "Verbo To Be (Negativo)", desc: "She ___ (not) at home right now.", answer: "is not", correctText: "is not", correction: "Para el pronombre 'She' en presente se usa 'is not' o la contracción 'isn't'." },
+                    { id: 'b_q8', type: "mc", title: "Preposiciones de Lugar", desc: "My keys are ___ the wooden table.", options: [{ text: "A) on", correct: true }, { text: "B) in", correct: false }], correction: "Se usa 'on' para indicar que un objeto está sobre la superficie de una mesa o mueble." }
                 ]
             },
             intermediate: {
@@ -611,7 +616,9 @@
                     { id: 'i_q3', type: "mc", title: "Peticiones Educadas", desc: "___ you please pass me the salt?", options: [{ text: "A) Could", correct: true }, { text: "B) Must", correct: false }], correction: "'Could' es el auxiliar modal estándar y educado para realizar solicitudes." },
                     { id: 'i_q4', type: "repair", title: "Adverbios de Frecuencia", desc: "I ___ (always) drink coffee in the morning.", answer: "always", correction: "Los adverbios de frecuencia se colocan antes del verbo principal." },
                     { id: 'i_q5', type: "mc", title: "Sujetos Incontables", desc: "I think this local food ___ absolutely delicious.", options: [{ text: "A) is", correct: true }, { text: "B) are", correct: false }], correction: "La palabra 'food' es incontable y se trata siempre como singular ('is')." },
-                    { id: 'i_q6', type: "repair", title: "Comparativos", desc: "This car is ___ (fast) than that one.", answer: "faster", correction: "En adjetivos cortos, el comparativo añade '-er' seguido de 'than'." }
+                    { id: 'i_q6', type: "repair", title: "Comparativos", desc: "This car is ___ (fast) than that one.", answer: "faster", correction: "En adjetivos cortos, el comparativo añade '-er' seguido de 'than'." },
+                    { id: 'i_q7', type: "mc", title: "Presente Perfecto", desc: "I ___ already finished my technical report.", options: [{ text: "A) have", correct: true }, { text: "B) has", correct: false }], correction: "Con el pronombre 'I' en presente perfecto se utiliza el auxiliar 'have'." },
+                    { id: 'i_q8', type: "repair", title: "Modales de Obligación", desc: "You ___ (must) wear safety glasses in the workshop.", answer: "must", correction: "Se usa 'must' para indicar obligación estricta o norma de seguridad." }
                 ]
             },
             advanced: {
@@ -627,7 +634,10 @@
                     { id: 'a_q2', type: "repair", title: "Certeza Absoluta", desc: "I am absolutely ___ (sure) about this technical diagnosis.", answer: "sure", correction: "Adjetivos de estado mental como 'sure' se combinan con el verbo to be para convicción." },
                     { id: 'a_q3', type: "mc", title: "Phrasal Verb Cotidiano", desc: "To tolerate or endure an annoying situation patiently:", options: [{ text: "A) Put up with", correct: true }, { text: "B) Put off", correct: false }], correction: "'Put up with' significa soportar o tolerar algo molesto sin quejarse." },
                     { id: 'a_q4', type: "repair", title: "Recomendación Urgente", desc: "You ___ better call him right now before he leaves.", answer: "had", correction: "La estructura idiomática 'had better' se usa para advertencias o consejos urgentes." },
-                    { id: 'a_q5', type: "mc", title: "Expresión de Asombro", desc: "To express total disbelief when someone tells you surprising news:", options: [{ text: "A) You must be kidding", correct: true }, { text: "B) You are table", correct: false }], correction: "'You must be kidding' utiliza el modal de deducción 'must be' para indicar asombro." }
+                    { id: 'a_q5', type: "mc", title: "Expresión de Asombro", desc: "To express total disbelief when someone tells you surprising news:", options: [{ text: "A) You must be kidding", correct: true }, { text: "B) You are table", correct: false }], correction: "'You must be kidding' utiliza el modal de deducción 'must be' para indicar asombro." },
+                    { id: 'a_q6', type: "repair", title: "Condicional Avanzado (Tercero)", desc: "If I ___ (know) about the issue earlier, I would have fixed it.", answer: "had known", correction: "En el tercer condicional, la cláusula 'if' exige Past Perfect ('had + participio')." },
+                    { id: 'a_q7', type: "mc", title: "Voz Pasiva Técnica", desc: "The broken motherboard ___ repaired by Samir yesterday.", options: [{ text: "A) was", correct: true }, { text: "B) were", correct: false }], correction: "Al hablar de un sujeto singular en pasado ('motherboard'), el auxiliar pasivo correcto es 'was'." },
+                    { id: 'a_q8', type: "repair", title: "Inversión Enfática", desc: "Seldom ___ I seen such a brilliant technical solution.", answer: "have", correction: "Tras adverbios negativos de frecuencia inicial como 'Seldom', se invierte el auxiliar y el sujeto." }
                 ]
             }
         };
@@ -656,10 +666,34 @@
             document.getElementById('custom-modal').classList.add('hidden');
         }
 
+        // SISTEMA DE TUTORIAL INTERACTIVO PASO A PASO (FUNCIONAL)
         let currentTutorialStep = 0;
         const tutorialSteps = [
-            { title: "Bienvenido a English Pro 🦉", text: "Responde a los retos del tutor en Speaking y repasa vocabulario especializado según tu nivel." },
-            { title: "Progreso Dinámico 🚀", text: "Supera cada fase una a una para desbloquear la siguiente de forma fluida." }
+            { 
+                title: "Fase 1: Speaking Contextualizado", 
+                text: "El tutor te lanzará un reto o pregunta basada en la lección actual. Puedes escribir tu respuesta o usar el micrófono. El tutor evaluará que respondas acorde al tema para desbloquear la siguiente fase.",
+                icon: "🗣️"
+            },
+            { 
+                title: "Fase 2: Vocabulary Mastery (Flashcards)", 
+                text: "Repasa 8 tarjetas interactivas de vocabulario avanzado, phrasal verbs o idioms según tu nivel. Al voltearlas verás su significado en inglés y español. ¡Guárdalas en tu Bóveda!",
+                icon: "📚"
+            },
+            { 
+                title: "Fase 3: Daily Grammar Check", 
+                text: "Resuelve 8 retos de gramática rigurosa. Si fallas, el tutor te explicará detalladamente cuál fue el error y la regla gramatical exacta que debes aplicar.",
+                icon: "✍️"
+            },
+            { 
+                title: "Fase 4: Ear Training (Listening)", 
+                text: "Escucha el audio de vida diaria o profesional reproduciendo el snippet y escribe exactamente lo que escuchaste para entrenar tu oído.",
+                icon: "🎧"
+            },
+            { 
+                title: "Fase 5: Voice Shadowing", 
+                text: "Pronuncia la frase clave usando tu micrófono. El sistema validará estrictamente tu pronunciación (mínimo 80%) para aprobar la lección y subir de nivel.",
+                icon: "🎙️"
+            }
         ];
 
         function startTutorialOnly() {
@@ -670,9 +704,24 @@
 
         function renderTutorialStep() {
             const step = tutorialSteps[currentTutorialStep];
-            document.getElementById('tutorial-step-indicator').innerText = `Step ${currentTutorialStep + 1} of ${tutorialSteps.length}`;
+            document.getElementById('tutorial-step-indicator').innerText = `Paso ${currentTutorialStep + 1} de ${tutorialSteps.length}`;
             document.getElementById('tutorial-title').innerText = step.title;
             document.getElementById('tutorial-text').innerText = step.text;
+            document.getElementById('tutorial-icon-box').innerText = step.icon;
+
+            const prevBtn = document.getElementById('tutorial-prev-btn');
+            if (currentTutorialStep === 0) {
+                prevBtn.classList.add('hidden');
+            } else {
+                prevBtn.classList.remove('hidden');
+            }
+
+            const nextBtn = document.getElementById('tutorial-next-btn');
+            if (currentTutorialStep === tutorialSteps.length - 1) {
+                nextBtn.innerText = "¡Entendido, a Estudiar! 🚀";
+            } else {
+                nextBtn.innerText = "Siguiente ➔";
+            }
         }
 
         function nextTutorialStep() {
@@ -803,12 +852,14 @@
             const selectedBank = flashcardsBanksByTier[appState.tierKey] || flashcardsBanksByTier['beginner'];
             document.getElementById('flashcard-phase-title').innerText = `Fase 2 de 5: Vocabulary Mastery (${appState.tierTitle})`;
 
+            // 8 flashcards por sesión para mayor contenido
             let unlearned = selectedBank.filter(card => !appState.learnedFlashcards.includes(card.id));
-            if (unlearned.length < 5) unlearned = [...selectedBank];
-            activeFlashcards = shuffleArray(unlearned).slice(0, 5);
+            if (unlearned.length < 8) unlearned = [...selectedBank];
+            activeFlashcards = shuffleArray(unlearned).slice(0, 8);
 
+            // 8 preguntas de gramática por sesión
             let fullPool = levelData.quizzesPool;
-            activeQuizzes = shuffleArray(fullPool).slice(0, 5);
+            activeQuizzes = shuffleArray(fullPool).slice(0, 8);
 
             currentCard = 0;
             currentQuizIndex = 0;
@@ -911,8 +962,8 @@
             const cards = activeFlashcards;
             if (cards.length === 0) return;
             const card = cards[currentCard];
-            document.getElementById('flash-badge').innerText = `Word #${currentCard + 1} de 5`;
-            document.getElementById('flashcard-counter-label').innerText = `Revisando vocabulario (${currentCard + 1} de 5)...`;
+            document.getElementById('flash-badge').innerText = `Word #${currentCard + 1} de 8`;
+            document.getElementById('flashcard-counter-label').innerText = `Revisando vocabulario (${currentCard + 1} de 8)...`;
             document.getElementById('flash-term').innerText = card.term;
             document.getElementById('flash-def').innerText = card.def;
             document.getElementById('flash-es').innerText = card.es;
@@ -941,7 +992,7 @@
         function loadQuizQuestion() {
             if (currentQuizIndex >= activeQuizzes.length) return;
             activeQuizItem = activeQuizzes[currentQuizIndex];
-            document.getElementById('quiz-counter').innerText = `Challenge ${currentQuizIndex + 1} of ${activeQuizzes.length}`;
+            document.getElementById('quiz-counter').innerText = `Challenge ${currentQuizIndex + 1} of 8`;
             document.getElementById('quiz-title').innerText = activeQuizItem.title;
             document.getElementById('quiz-desc').innerText = activeQuizItem.desc;
             
@@ -1099,7 +1150,7 @@
 
                 rec.onstart = () => {
                     statusText.innerText = 'Escuchando tu voz...';
-                    transcriptBox.innerText = 'Analizando pronunciación...';
+                    transcriptBox.innerText = 'Analizando pronunciación exacta...';
                 };
 
                 rec.onresult = (event) => {
@@ -1116,7 +1167,7 @@
                     let matchCount = wordsTarget.filter(w => spokenText.includes(w)).length;
                     let matchRatio = matchCount / wordsTarget.length;
 
-                    if (spokenText.includes(targetPhrase) || matchRatio >= 0.75) {
+                    if (matchRatio >= 0.80 || spokenText.includes(targetPhrase)) {
                         resultBox.innerHTML = '<span class="text-emerald-700 font-extrabold">🌟 ¡Excelente pronunciación! Aprobado por el tutor. Avanzando...</span>';
                         
                         let today = new Date().toDateString();
@@ -1139,7 +1190,7 @@
                             updateUIStats();
                         }, 1600);
                     } else {
-                        resultBox.innerHTML = '<span class="text-rose-600 font-bold">⚠️ Coincidencia insuficiente. Pronuncia exactamente la frase mostrada (mínimo 75%).</span>';
+                        resultBox.innerHTML = '<span class="text-rose-600 font-bold">⚠️ Pronunciación incompleta o incorrecta. Inténtalo de nuevo (mínimo 80% de coincidencia).</span>';
                     }
                 };
 
