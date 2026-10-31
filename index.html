@@ -525,9 +525,9 @@
         const beginnerCurriculum40 = [
             {
                 id: 1,
-                theme: "Saludos y Presentaciones (Greetings & Intros)",
+                theme: "Greetings & Introductions",
                 prompt: {
-                    title: "Lección 1: Saludos y Presentaciones",
+                    title: "Lección 1: Greetings & Introductions",
                     challenge: "Preséntate con el tutor usando inglés natural de EE. UU.: ¿Cómo saludas y dices tu nombre?",
                     formal: "Hello, my name is Kevin and I am pleased to meet you.",
                     formalEs: "Hola, mi nombre es Kevin y mucho gusto en conocerte.",
@@ -559,9 +559,9 @@
             },
             {
                 id: 2,
-                theme: "La Familia y el Hogar (Family & Home)",
+                theme: "Family & Home",
                 prompt: {
-                    title: "Lección 2: La Familia y el Hogar",
+                    title: "Lección 2: Family & Home",
                     challenge: "Describe brevemente quiénes viven contigo en tu casa usando inglés cotidiano.",
                     formal: "I live with my parents and my siblings in our house.",
                     formalEs: "Vivo con mis padres y mis hermanos en nuestra casa.",
@@ -593,25 +593,49 @@
             }
         ];
 
-        // Generar dinámicamente el resto de lecciones Beginner (3 a 40) con temarios cotidianos reales de EE.UU.
+        // Temas limpios y profesionales en inglés para las lecciones 3 a 40
         const beginnerThemes = [
-            { t: "Food y Restaurants (Food & Diner)", words: [ {w:"Food", d:"Alimento", e:"Comida 🍔"}, {w:"Water", d:"Líquido vital", e:"Agua 💧"}, {w:"Eat", d:"Consumir alimentos", e:"Comer 🍽️"}, {w:"Want", d:"Tener deseo de algo", e:"Querer ✨"}, {w:"Please", d:"Por favor", e:"Por favor 🙏"}, {w:"Menu", d:"Lista de platillos", e:"Menú 📋"}, {w:"Bill", d:"Cuenta a pagar", e:"Cuenta 💵"}, {w:"Good", d:"De buena calidad", e:"Bueno 👍"} ] },
-            { t: "Compras y Precios (Shopping)", words: [ {w:"Store", d:"Tienda comercial", e:"Tienda 🏬"}, {w:"Buy", d:"Adquirir un producto", e:"Comprar 🛍️"}, {w:"Price", d:"Valor monetario", e:"Precio 🏷️"}, {w:"Money", d:"Efectivo", e:"Dinero 💵"}, {w:"Cost", d:"Tener un precio", e:"Costar 💲"}, {w:"Shirt", d:"Prenda superior", e:"Camisa 👕"}, {w:"Size", d:"Medida", e:"Talla 📏"}, {w:"Pay", d:"Entregar dinero", e:"Pagar 💳"} ] },
-            { t: "Trabajo y Rutina (Work & Daily Routine)", words: [ {w:"Work", d:"Laborar", e:"Trabajar 💼"}, {w:"Job", d:"Empleo", e:"Empleo 📄"}, {w:"Time", d:"Horas o minutos", e:"Tiempo ⏰"}, {w:"Day", d:"Jornada diurna", e:"Día ☀️"}, {w:"Morning", d:"Mañana", e:"Mañana 🌅"}, {w:"Start", d:"Comenzar", e:"Empezar 🚀"}, {w:"Finish", d:"Terminar", e:"Terminar 🏁"}, {w:"Break", d:"Pausa laboral", e:"Descanso ☕"} ] }
+            { 
+                t: "Food & Restaurants", 
+                promptText: "Explain your food preferences and how you order at a US diner",
+                formal: "It is very important to choose healthy food and clean restaurants.",
+                formalEs: "Es muy importante elegir comida saludable y restaurantes limpios.",
+                informal: "I really like grabbing good food at local diners.",
+                informalEs: "Me gusta mucho comer rico en los diners locales.",
+                words: [ {w:"Food", d:"Alimento", e:"Comida 🍔"}, {w:"Water", d:"Líquido vital", e:"Agua 💧"}, {w:"Eat", d:"Consumir alimentos", e:"Comer 🍽️"}, {w:"Want", d:"Tener deseo de algo", e:"Querer ✨"}, {w:"Please", d:"Por favor", e:"Por favor 🙏"}, {w:"Menu", d:"Lista de platillos", e:"Menú 📋"}, {w:"Bill", d:"Cuenta a pagar", e:"Cuenta 💵"}, {w:"Good", d:"De buena calidad", e:"Bueno 👍"} ] 
+            },
+            { 
+                t: "Shopping & Prices", 
+                promptText: "Explain how you look for clothes and prices when shopping",
+                formal: "Checking store prices carefully is essential before buying.",
+                formalEs: "Revisar cuidadosamente los precios de las tiendas es esencial antes de comprar.",
+                informal: "I always look for a good price when shopping for shirts.",
+                informalEs: "Siempre busco un buen precio cuando compro camisas.",
+                words: [ {w:"Store", d:"Tienda comercial", e:"Tienda 🏬"}, {w:"Buy", d:"Adquirir un producto", e:"Comprar 🛍️"}, {w:"Price", d:"Valor monetario", e:"Precio 🏷️"}, {w:"Money", d:"Efectivo", e:"Dinero 💵"}, {w:"Cost", d:"Tener un precio", e:"Costar 💲"}, {w:"Shirt", d:"Prenda superior", e:"Camisa 👕"}, {w:"Size", d:"Medida", e:"Talla 📏"}, {w:"Pay", d:"Entregar dinero", e:"Pagar 💳"} ] 
+            },
+            { 
+                t: "Work & Daily Routine", 
+                promptText: "Describe your work routine and schedule during the morning",
+                formal: "I start my daily work routine early in the morning.",
+                formalEs: "Comienzo mi rutina de trabajo diario temprano en la mañana.",
+                informal: "I work hard every day and take a nice coffee break.",
+                informalEs: "Trabajo duro todos los días y tomo un buen descanso para café.",
+                words: [ {w:"Work", d:"Laborar", e:"Trabajar 💼"}, {w:"Job", d:"Empleo", e:"Empleo 📄"}, {w:"Time", d:"Horas o minutos", e:"Tiempo ⏰"}, {w:"Day", d:"Jornada diurna", e:"Día ☀️"}, {w:"Morning", d:"Mañana", e:"Mañana 🌅"}, {w:"Start", d:"Comenzar", e:"Empezar 🚀"}, {w:"Finish", d:"Terminar", e:"Terminar 🏁"}, {w:"Break", d:"Pausa laboral", e:"Descanso ☕"} ] 
+            }
         ];
 
         for (let i = 3; i <= 40; i++) {
             let th = beginnerThemes[(i - 3) % beginnerThemes.length];
             beginnerCurriculum40.push({
                 id: i,
-                theme: `${th.t} (Lección ${i})`,
+                theme: `${th.t} (Lesson ${i})`,
                 prompt: {
                     title: `Lección ${i}: ${th.t}`,
-                    challenge: `Explícale al tutor tu rutina o preferencia sobre ${th.t.toLowerCase()} usando inglés sencillo de EE.UU.`,
-                    formal: `It is very important to manage ${th.t.toLowerCase()} correctly every day.`,
-                    formalEs: `Es muy importante manejar ${th.t.toLowerCase()} correctamente todos los días.`,
-                    informal: `I really like dealing with ${th.t.toLowerCase()} in my daily life.`,
-                    informalEs: `Me gusta mucho lidiar con ${th.t.toLowerCase()} en mi vida diaria.`
+                    challenge: `${th.promptText} using simple US English.`,
+                    formal: th.formal,
+                    formalEs: `(${th.formalEs})`,
+                    informal: th.informal,
+                    informalEs: `(${th.informalEs})`
                 },
                 flashcards: th.words.map((w, idx) => ({ id: i*10 + idx, term: w.w, def: w.d, es: w.e, img: w.e.split(' ').pop() })),
                 quizzes: [
@@ -797,9 +821,9 @@
             document.getElementById('tutor-challenge-question').innerText = currentPromptData.challenge;
             
             document.getElementById('context-formal').innerText = currentPromptData.formal;
-            document.getElementById('context-formal-es').innerText = `(${currentPromptData.formalEs})`;
+            document.getElementById('context-formal-es').innerText = `${currentPromptData.formalEs}`;
             document.getElementById('context-informal').innerText = currentPromptData.informal;
-            document.getElementById('context-informal-es').innerText = `(${currentPromptData.informalEs})`;
+            document.getElementById('context-informal-es').innerText = `${currentPromptData.informalEs}`;
 
             document.getElementById('shadow-text').innerText = `"${lessonData.shadow}"`;
             document.getElementById('flashcard-phase-title').innerText = `Fase 2 de 5: Vocabulary Mastery (${lessonData.theme})`;
