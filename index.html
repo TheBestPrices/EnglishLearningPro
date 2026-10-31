@@ -96,7 +96,7 @@
                         <i data-lucide="book" class="w-3.5 h-3.5"></i> Bóveda
                     </button>
                     <button onclick="startTutorialOnly()" class="bg-sky-100 text-sky-700 border border-sky-200 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1 shadow-sm">
-                        <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Tutorial
+                        <i data-lucide="help-circle" class="w-3.5 h-3.5"></i> Ayuda
                     </button>
                 </div>
             </div>
@@ -760,7 +760,6 @@
         }
 
         function loadProgressiveLesson() {
-            // Obtener lección actual (1 al 40)
             let lessonIndex = (appState.currentLesson - 1) % curriculum40Lessons.length;
             const lessonData = curriculum40Lessons[lessonIndex];
 
