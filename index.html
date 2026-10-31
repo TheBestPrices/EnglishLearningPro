@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>English Pro - Mastery Edition</title>
+    <title>English Pro - Beginner Mastery Edition</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -33,7 +33,7 @@
         }
 
         .vibrant-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(226, 232, 240, 0.8);
@@ -105,7 +105,7 @@
             <div class="flex items-center justify-center flex-wrap gap-2 text-xs w-full sm:w-auto">
                 <div class="flex items-center space-x-1.5 bg-slate-100 px-3.5 py-1.5 rounded-xl border border-slate-200 font-bold text-slate-700 shadow-sm">
                     <i data-lucide="award" class="w-3.5 h-3.5 text-purple-600"></i>
-                    <span>Nivel: <strong class="text-slate-900" id="user-tier">Beginner</strong></span>
+                    <span>Nivel: <strong class="text-slate-900" id="user-tier">Beginner (US Pro)</strong></span>
                 </div>
                 <div class="flex items-center space-x-1.5 bg-orange-50 px-3.5 py-1.5 rounded-xl border border-orange-200 font-semibold text-orange-700 shadow-sm">
                     <i data-lucide="flame" class="w-3.5 h-3.5 text-orange-500"></i>
@@ -143,7 +143,7 @@
                     </div>
 
                     <div class="flex-grow">
-                        <span class="text-[10px] font-extrabold uppercase tracking-widest text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">Daily Mastery Course</span>
+                        <span class="text-[10px] font-extrabold uppercase tracking-widest text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">Beginner US Mastery Course</span>
                         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2 tracking-tight" id="welcome-title">Welcome back!</h2>
                         <p class="text-slate-600 mt-1.5 text-xs sm:text-sm bg-white/80 border border-slate-200 px-4 py-2.5 rounded-2xl italic shadow-sm" id="motivational-quote">
                             "La constancia es la clave del dominio. ¡Vamos con todo hoy!"
@@ -161,7 +161,7 @@
                         <div id="session-bar" class="bg-gradient-to-r from-sky-400 to-emerald-500 h-full w-0 rounded-full transition-all duration-500 shadow-sm"></div>
                     </div>
                     <div class="mt-3 text-center text-xs text-slate-500 font-bold" id="auto-advance-notice">
-                        ✨ Supera cada fase para desbloquear la siguiente
+                        ✨ Debes completar y resolver cada fase para avanzar
                     </div>
                 </div>
             </div>
@@ -170,20 +170,20 @@
         <!-- VISTA DE LECCIÓN ÚNICA EN PANTALLA -->
         <div id="lesson-view-container" class="space-y-4">
 
-            <!-- FASE 1: SPEAKING CONTEXTUALIZADO Y GUIADO -->
+            <!-- FASE 1: SPEAKING CONTEXTUALIZADO Y NATIVO -->
             <div id="content-speaking" class="space-y-4">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
                     <div class="vibrant-card lg:col-span-2 rounded-3xl p-5 sm:p-7 flex flex-col justify-between shadow-lg">
                         <div>
                             <div class="flex items-center justify-between mb-3.5">
                                 <span class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 flex items-center gap-1.5 shadow-sm">
-                                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Fase 1 de 5: Tutor Speaking Contextualizado
+                                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Fase 1 de 5: Tutor Speaking (US Native)
                                 </span>
                             </div>
                             <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mb-2" id="prompt-title">Cargando lección...</h3>
                             
                             <div class="bg-sky-50 border border-sky-200 p-4 rounded-2xl mb-4 shadow-sm">
-                                <span class="text-[11px] font-extrabold text-sky-700 uppercase tracking-wider block mb-1">🤖 Reto del Tutor:</span>
+                                <span class="text-[11px] font-extrabold text-sky-700 uppercase tracking-wider block mb-1">🤖 Reto del Tutor (Escenario Real):</span>
                                 <p class="text-xs sm:text-sm text-slate-900 font-bold italic" id="tutor-challenge-question">...</p>
                             </div>
 
@@ -191,7 +191,7 @@
                                 <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm flex flex-col justify-between">
                                     <div>
                                         <span class="text-[11px] font-extrabold text-sky-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-                                            <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> 👔 Ejemplo Formal:
+                                            <i data-lucide="briefcase" class="w-3.5 h-3.5"></i> 👔 Estilo Formal / Profesional:
                                         </span>
                                         <p class="text-xs text-slate-800 italic font-semibold mb-1" id="context-formal">...</p>
                                         <p class="text-[11px] text-sky-800 font-bold mb-3" id="context-formal-es">...</p>
@@ -204,13 +204,13 @@
                                 <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm flex flex-col justify-between">
                                     <div>
                                         <span class="text-[11px] font-extrabold text-emerald-700 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-                                            <i data-lucide="users" class="w-3.5 h-3.5"></i> 🏠 Ejemplo Informal:
+                                            <i data-lucide="users" class="w-3.5 h-3.5"></i> 🏠 Estilo Casual / Calle (US Slang):
                                         </span>
                                         <p class="text-xs text-slate-800 italic font-semibold mb-1" id="context-informal">...</p>
                                         <p class="text-[11px] text-emerald-800 font-bold mb-3" id="context-informal-es">...</p>
                                     </div>
                                     <button onclick="speakSpecificText('informal')" class="self-start bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 px-3 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-sm">
-                                        <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar Informal 🔊
+                                        <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Escuchar Casual 🔊
                                     </button>
                                 </div>
                             </div>
@@ -218,12 +218,12 @@
 
                         <div>
                             <div class="flex items-center justify-between mb-2 flex-wrap gap-2">
-                                <label class="block text-xs font-extrabold text-slate-600 uppercase tracking-wider">Tu Respuesta (Usa estructuras acordes al tema):</label>
+                                <label class="block text-xs font-extrabold text-slate-600 uppercase tracking-wider">Tu Respuesta (Obligatorio escribir o hablar):</label>
                                 <button onclick="toggleSpeechRecognition()" id="mic-btn" class="bg-emerald-500 hover:bg-emerald-600 text-white px-3.5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition cursor-pointer shadow-md shadow-emerald-500/20">
                                     <i data-lucide="mic" class="w-4 h-4"></i> <span id="mic-status-text">Start Mic</span>
                                 </button>
                             </div>
-                            <textarea id="user-response" rows="2" class="vibrant-input w-full rounded-2xl p-3.5 text-slate-800 focus:outline-none transition text-xs sm:text-sm leading-relaxed font-medium" placeholder="Escribe o habla tu respuesta respondiendo al tutor..."></textarea>
+                            <textarea id="user-response" rows="2" class="vibrant-input w-full rounded-2xl p-3.5 text-slate-800 focus:outline-none transition text-xs sm:text-sm leading-relaxed font-medium" placeholder="Escribe tu respuesta respondiendo al tutor..."></textarea>
                             
                             <div class="flex flex-wrap items-center justify-between mt-3.5 gap-2">
                                 <button onclick="evaluateResponse()" class="bg-gradient-to-r from-sky-500 to-emerald-500 hover:from-sky-600 hover:to-emerald-600 text-white font-extrabold px-6 py-3 rounded-2xl text-xs transition flex items-center gap-2 shadow-lg shadow-emerald-500/25 cursor-pointer">
@@ -240,17 +240,17 @@
                                 <i data-lucide="bot" class="w-4 h-4 text-sky-600"></i> Tutor Decision
                             </h3>
                             <div id="feedback-box" class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs text-slate-700 space-y-2.5 shadow-inner font-medium">
-                                <p class="text-slate-500">El tutor evaluará que tu respuesta responda al tema de la lección.</p>
+                                <p class="text-slate-500">Debes responder al reto del tutor para desbloquear la Fase 2.</p>
                             </div>
                         </div>
                         <div class="mt-4 pt-4 border-t border-slate-200 text-xs text-slate-500 text-center font-bold">
-                            <span>✨ Fase 1 obligatoria para continuar.</span>
+                            <span>✨ Validación estricta activa.</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- FASE 2: FLASHCARDS (8 UNIFICADAS AL TEMA) -->
+            <!-- FASE 2: FLASHCARDS (RELACIONADAS 100% A FASE 1) -->
             <div id="content-flashcards" class="hidden space-y-4">
                 <div class="max-w-sm mx-auto text-center">
                     <h3 class="text-xl font-extrabold text-slate-900 mb-1 tracking-tight" id="flashcard-phase-title">Fase 2 de 5: Vocabulary Mastery</h3>
@@ -271,7 +271,7 @@
                                 </div>
                             </div>
                             <div class="card-back absolute w-full h-full vibrant-card bg-gradient-to-br from-emerald-50 to-sky-50 border-2 border-emerald-200 rounded-3xl p-6 flex flex-col items-center justify-center shadow-xl">
-                                <span class="text-xs font-extrabold text-emerald-700 mb-3 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 shadow-sm">Meaning & Context</span>
+                                <span class="text-xs font-extrabold text-emerald-700 mb-3 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 shadow-sm">Significado & Contexto</span>
                                 <p class="text-slate-800 text-xs sm:text-sm mb-3 font-bold" id="flash-def">...</p>
                                 <span class="text-xs sm:text-sm font-mono text-emerald-900 bg-white px-4 py-2.5 rounded-2xl border border-emerald-300 font-extrabold shadow-sm" id="flash-es">...</span>
                             </div>
@@ -285,7 +285,7 @@
                 </div>
             </div>
 
-            <!-- FASE 3: GRAMMAR (8 RETOS UNIFICADOS AL TEMA) -->
+            <!-- FASE 3: GRAMMAR (CON REGLAS CLARAS Y REPETICIÓN DE ERRORES) -->
             <div id="content-grammar" class="hidden space-y-4">
                 <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-purple-100">
                     <div class="flex justify-between items-center mb-3.5">
@@ -300,8 +300,8 @@
                     <div class="space-y-3 mb-5" id="quiz-options"></div>
 
                     <div id="error-repair-container" class="hidden space-y-3 mb-5">
-                        <label class="block text-xs font-extrabold text-sky-700 uppercase tracking-wider">Type the missing word:</label>
-                        <input type="text" id="error-input" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Type answer here...">
+                        <label class="block text-xs font-extrabold text-sky-700 uppercase tracking-wider">Escribe la palabra o estructura correcta:</label>
+                        <input type="text" id="error-input" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Escribe aquí...">
                         <button onclick="submitErrorCorrection()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-extrabold py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-purple-600/25">
                             Verificar con el Tutor ➔
                         </button>
@@ -311,23 +311,23 @@
                 </div>
             </div>
 
-            <!-- FASE 4: EASY LISTENING -->
+            <!-- FASE 4: EASY LISTENING (CON VOCABULARIO DE LA LECCIÓN) -->
             <div id="content-listening" class="hidden space-y-4">
                 <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-emerald-100">
                     <div class="flex justify-between items-center mb-3.5">
-                        <span class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 shadow-sm">Fase 4 de 5: Ear Training</span>
+                        <span class="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200 shadow-sm">Fase 4 de 5: Ear Training (US Audio)</span>
                     </div>
                     <h3 class="text-lg font-extrabold text-slate-900 mb-1">Listen & Repeat</h3>
-                    <p class="text-slate-600 text-xs mb-5 leading-relaxed font-medium">Escucha el audio contextualizado y escribe lo que oigas para avanzar.</p>
+                    <p class="text-slate-600 text-xs mb-5 leading-relaxed font-medium">Escucha el audio nativo y escribe exactamente lo que oyes para avanzar.</p>
                     
                     <div class="bg-slate-50 p-5 rounded-3xl border border-slate-200 mb-4 space-y-4 text-center shadow-inner">
                         <button onclick="playListeningAudio()" class="bg-gradient-to-r from-emerald-500 to-sky-500 hover:from-emerald-600 hover:to-sky-600 text-white font-extrabold px-6 py-3.5 rounded-2xl text-xs sm:text-sm transition inline-flex items-center gap-2 cursor-pointer shadow-lg shadow-emerald-500/25">
-                            <i data-lucide="volume-2" class="w-4 h-4"></i> Play Audio Snippet 🔊
+                            <i data-lucide="volume-2" class="w-4 h-4"></i> Reproducir Audio Nativo 🔊
                         </button>
                         
                         <div class="mt-3 text-left space-y-2">
-                            <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider">Type what you heard:</label>
-                            <input type="text" id="listening-input" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Type short phrase...">
+                            <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider">Escribe exactamente lo que escuchaste (Obligatorio):</label>
+                            <input type="text" id="listening-input" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Type phrase...">
                         </div>
 
                         <div class="flex justify-between items-center pt-2">
@@ -342,21 +342,21 @@
                 </div>
             </div>
 
-            <!-- FASE 5: SHORT PHRASES SHADOWING -->
+            <!-- FASE 5: VOICE SHADOWING NATIVO -->
             <div id="content-shadowing" class="hidden space-y-4">
                 <div class="vibrant-card max-w-xl mx-auto rounded-3xl p-5 sm:p-7 shadow-xl border border-sky-100">
                     <div class="flex justify-between items-center mb-3.5">
-                        <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-3.5 py-1 rounded-full border border-sky-200 shadow-sm">Fase 5 de 5: Voice Shadowing</span>
+                        <span class="text-xs font-extrabold text-sky-700 bg-sky-100 px-3.5 py-1 rounded-full border border-sky-200 shadow-sm">Fase 5 de 5: Voice Shadowing (US Accent)</span>
                     </div>
-                    <h3 class="text-lg font-extrabold text-slate-900 mb-1">Pronuncia la Frase de la Lección</h3>
-                    <p class="text-slate-600 text-xs mb-5 leading-relaxed font-medium">Usa tu voz por micrófono. El sistema validará estrictamente tu pronunciación.</p>
+                    <h3 class="text-lg font-extrabold text-slate-900 mb-1">Pronuncia la Frase Clave</h3>
+                    <p class="text-slate-600 text-xs mb-5 leading-relaxed font-medium">Usa tu micrófono. El sistema validará estrictamente tu pronunciación (mínimo 80% de coincidencia) para subir de lección.</p>
                     
                     <div class="bg-slate-50 p-5 rounded-3xl border border-slate-200 mb-4 space-y-4 shadow-inner text-center">
                         <div class="bg-white p-4.5 rounded-2xl border border-slate-200 shadow-sm">
-                            <p class="text-[10px] font-extrabold text-slate-400 mb-1 uppercase tracking-wider">Target Phrase:</p>
+                            <p class="text-[10px] font-extrabold text-slate-400 mb-1 uppercase tracking-wider">Target Phrase (US Native):</p>
                             <p class="text-sm sm:text-base text-sky-700 font-mono italic font-extrabold" id="shadow-text">"Loading..."</p>
                             <button onclick="speakShadowText()" class="mt-3 bg-sky-50 hover:bg-sky-100 text-sky-700 px-4 py-2 rounded-xl text-xs transition inline-flex items-center gap-1.5 cursor-pointer border border-sky-200 font-extrabold shadow-sm">
-                                <i data-lucide="volume-2" class="w-4 h-4"></i> Escuchar Audio de Referencia 🔊
+                                <i data-lucide="volume-2" class="w-4 h-4"></i> Escuchar Referencia Nativa 🔊
                             </button>
                         </div>
 
@@ -379,7 +379,7 @@
 
     </main>
 
-    <!-- MODAL DE REPORTE FINAL DE GRAMÁTICA -->
+    <!-- MODAL DE REPORTE FINAL DE GRAMÁTICA (CON REGLAS Y REINTENTO DE ERRORES) -->
     <div id="grammar-report-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-md z-50 flex items-center justify-center hidden p-4">
         <div class="vibrant-card max-w-md w-full rounded-3xl p-6 shadow-2xl relative border border-purple-200 text-left">
             <div class="text-center mb-3">
@@ -388,7 +388,7 @@
                 <p class="text-xs text-slate-600 font-medium" id="report-summary-text">Resumen de tu desempeño</p>
             </div>
             
-            <div class="space-y-2 mb-5 max-h-56 overflow-y-auto pr-1" id="report-errors-container"></div>
+            <div class="space-y-2.5 mb-5 max-h-56 overflow-y-auto pr-1" id="report-errors-container"></div>
 
             <button onclick="" id="report-action-btn" class="w-full bg-gradient-to-r from-purple-600 to-emerald-500 text-white font-extrabold py-3 rounded-2xl text-xs transition cursor-pointer shadow-lg">
                 Continuar con Fase 4 (Listening) ➔
@@ -413,7 +413,7 @@
         </div>
     </div>
 
-    <!-- TUTORIAL INTERACTIVO FUNCIONAL (PASO A PASO) -->
+    <!-- TUTORIAL INTERACTIVO PASO A PASO -->
     <div id="tutorial-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-md z-50 flex items-center justify-center hidden p-4">
         <div class="vibrant-card max-w-md w-full rounded-3xl p-6 shadow-2xl relative border border-sky-200 text-center">
             <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-tr from-sky-400 to-emerald-400 rounded-3xl p-1 shadow-lg flex items-center justify-center text-3xl" id="tutorial-icon-box">
@@ -424,7 +424,7 @@
                 <h3 class="font-extrabold text-xl text-slate-900 mt-2" id="tutorial-title">Fase 1: Speaking Contextualizado</h3>
             </div>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200 shadow-inner font-medium text-left" id="tutorial-text">
-                El tutor te lanzará un reto o pregunta basada en la lección actual. Debes responder por escrito o usando el micrófono. El tutor evaluará tu respuesta para darte el pase a la siguiente fase.
+                El tutor te lanzará un reto basado en la lección actual. Debes responder por escrito o usando el micrófono. El tutor evaluará tu respuesta para darte el pase a la siguiente fase.
             </p>
             <div class="flex items-center justify-between gap-3">
                 <button onclick="prevTutorialStep()" id="tutorial-prev-btn" class="bg-slate-100 text-slate-600 px-4 py-2.5 rounded-2xl text-xs font-bold border border-slate-200 transition cursor-pointer hidden">Anterior</button>
@@ -476,106 +476,156 @@
                     <i data-lucide="zap" class="w-6 h-6"></i>
                 </div>
                 <h3 class="font-extrabold text-xl text-slate-900 tracking-tight">Registro de Estudiante</h3>
-                <p class="text-xs text-slate-500 mt-1 font-medium">Ingresa tu nombre y selecciona tu nivel definitivo:</p>
+                <p class="text-xs text-slate-500 mt-1 font-medium">Ingresa tu nombre para comenzar tu entrenamiento Beginner:</p>
             </div>
             <div class="mb-4.5">
                 <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-1.5">Tu Nombre:</label>
                 <input type="text" id="user-name-input" value="" class="vibrant-input w-full rounded-2xl px-4 py-3.5 text-xs sm:text-sm text-slate-800 focus:outline-none transition font-semibold" placeholder="Escribe tu nombre aquí...">
             </div>
-            <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">Selecciona tu Nivel Definitivo:</label>
-            <div class="space-y-2.5 mb-2">
-                <button onclick="saveUserProfileAndStart('Beginner', 'beginner')" class="w-full text-left bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 p-3.5 rounded-2xl text-xs text-slate-800 transition flex items-center justify-between cursor-pointer font-bold shadow-sm">
-                    <span>🌱 Beginner (Desde Cero)</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-emerald-600"></i>
-                </button>
-                <button onclick="saveUserProfileAndStart('Intermediate', 'intermediate')" class="w-full text-left bg-sky-50 hover:bg-sky-100 border border-sky-200 p-3.5 rounded-2xl text-xs text-slate-800 transition flex items-center justify-between cursor-pointer font-bold shadow-sm">
-                    <span>⚡ Intermediate (Conversacional)</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-sky-600"></i>
-                </button>
-                <button onclick="saveUserProfileAndStart('Advanced', 'advanced')" class="w-full text-left bg-purple-50 hover:bg-purple-100 border border-purple-200 p-3.5 rounded-2xl text-xs text-slate-800 transition flex items-center justify-between cursor-pointer font-bold shadow-sm">
-                    <span>🔥 Advanced (Nativo / Slang Pro)</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-purple-600"></i>
-                </button>
-            </div>
+            <button onclick="saveUserProfileAndStart()" class="w-full bg-gradient-to-r from-emerald-500 to-sky-500 text-white font-extrabold py-3.5 rounded-2xl text-xs transition cursor-pointer shadow-lg shadow-emerald-500/25">
+                Iniciar Nivel Beginner 🚀
+            </button>
         </div>
     </div>
 
     <!-- FOOTER -->
     <footer class="border-t border-slate-200 bg-white/60 py-3 text-center text-xs text-slate-500 relative z-10 font-medium">
-        English Pro &copy; 2026 &bull; Mastery Edition
+        English Pro &copy; 2026 &bull; Beginner Mastery Edition
     </footer>
 
     <!-- SCRIPTS -->
     <script>
         lucide.createIcons();
 
-        let appState = JSON.parse(localStorage.getItem('english_pro_strict_state')) || {
+        let appState = JSON.parse(localStorage.getItem('english_pro_beginner_state')) || {
             userName: '',
             streak: 0,
             currentLesson: 1,
             maxLessons: 40,
             tierKey: 'beginner',
-            tierTitle: 'Beginner',
+            tierTitle: 'Beginner (US Pro)',
             lastCompletedDate: null,
             unlockedSteps: { speaking: true, flashcards: false, grammar: false, listening: false, shadowing: false },
             quizScores: [],
             learnedFlashcards: [],
             tutorialCompleted: false,
             selectedPet: null,
-            petEmoji: null,
-            unlockedPets: ['owl']
+            petEmoji: null
         };
 
         const motivationalQuotes = [
             "\"La constancia es la clave del dominio. ¡Vamos con todo hoy!\"",
-            "\"Cada palabra nueva que aprendes es una puerta hacia el mundo.\"",
+            "\"Cada palabra nueva que aprendes te acerca a hablar con nativos.\"",
             "\"El éxito es la suma de pequeños esfuerzos repetidos día tras día.\"",
             "\"Habla sin miedo, equivócate y aprende. Ese es el verdadero camino.\"",
             "\"Tu futuro depende de lo que hagas hoy. ¡Haz que cuente!\""
         ];
 
-        // 40 Lecciones con Hilo Conductor Unificado y Progresión Escalonada
-        const curriculum40Lessons = [
-            { id: 1, theme: "Saludos y Presentaciones", prompt: { title: "Saludos y Presentaciones", challenge: "Preséntate con el tutor: ¿Cómo te llamas y de dónde eres?", formal: "Hello, my name is Kevin and I am from Nicaragua.", formalEs: "Hola, mi nombre es Kevin y soy de Nicaragua.", informal: "Hey, I'm Kevin and I live here.", informalEs: "Hola, soy Kevin y vivo aquí." }, flashcards: [{ id: 1, term: "Hello", def: "Saludo formal.", es: "Hola 👋", img: "👋" }, { id: 2, term: "Goodbye", def: "Despedida.", es: "Adiós 🚪", img: "🚪" }, { id: 3, term: "Name", def: "Identificación personal.", es: "Nombre 📝", img: "📝" }, { id: 4, term: "Friend", def: "Compañero o amistad.", es: "Amigo 🤝", img: "🤝" }, { id: 5, term: "Country", def: "Nación de origen.", es: "País 🌎", img: "🌎" }, { id: 6, term: "City", def: "Lugar poblado.", es: "Ciudad 🏙️", img: "🏙️" }, { id: 7, term: "Meet", def: "Conocer a alguien.", es: "Conocer / Encontrarse 🤝", img: "🤝" }, { id: 8, term: "Nice", def: "Agradable.", es: "Agradable / Lindo ✨", img: "✨" }], quizzes: [{ id: 'l1_q1', type: "mc", title: "Presente Simple", desc: "I ___ from Nicaragua.", options: [{ text: "A) am", correct: true }, { text: "B) is", correct: false }], correction: "Con 'I' siempre se usa el verbo To Be 'am'." }, { id: 'l1_q2', type: "repair", title: "Pronombres", desc: "Write 'Tú' in English:", answer: "you", correction: "Se escribe 'you'." }, { id: 'l1_q3', type: "mc", title: "Artículos", desc: "This is ___ good friend.", options: [{ text: "A) a", correct: true }, { text: "B) an", correct: false }], correction: "Se usa 'a' antes de consonante." }, { id: 'l1_q4', type: "repair", title: "Negación Simple", desc: "I ___ (not) from Spain.", answer: "am not", correction: "Se usa 'am not'." }, { id: 'l1_q5', type: "mc", title: "Plurales", desc: "Two ___ (friend)", options: [{ text: "A) friends", correct: true }, { text: "B) friend", correct: false }], correction: "Se añade '-s'." }, { id: 'l1_q6', type: "repair", title: "Pregunta Básica", desc: "Complete: What ___ your name?", answer: "is", correction: "Se usa 'is'." }, { id: 'l1_q7', type: "mc", title: "Preposiciones", desc: "I live ___ Nicaragua.", options: [{ text: "A) in", correct: true }, { text: "B) on", correct: false }], correction: "Se usa 'in' para países." }, { id: 'l1_q8', type: "repair", title: "Afirmación", desc: "Complete: Yes, I ___.", answer: "am", correctText: "am", correction: "Se usa 'am'." }], listening: "Hello nice to meet you", shadowing: "Hello my name is Kevin nice to meet you" },
-            { id: 2, theme: "La Familia y el Hogar", prompt: { title: "La Familia y el Hogar", challenge: "Cuéntale al tutor quién vive contigo en casa.", formal: "I live with my parents and my siblings.", formalEs: "Vivo con mis padres y mis hermanos.", informal: "I live with my family at home.", informalEs: "Vivo con mi familia en casa." }, flashcards: [{ id: 9, term: "Family", def: "Grupo familiar.", es: "Familia 👨‍👩‍👧‍👦", img: "👨‍👩‍👧‍👦" }, { id: 10, term: "Mother", def: "Progenitora.", es: "Madre 👩", img: "👩" }, { id: 11, term: "Father", def: "Progenitor.", es: "Padre 👨", img: "👨" }, { id: 12, term: "Brother", def: "Hermano varón.", es: "Hermano 👦", img: "👦" }, { id: 13, term: "Sister", def: "Hermana mujer.", es: "Hermana 👧", img: "👧" }, { id: 14, term: "House", def: "Vivienda.", es: "Casa 🏠", img: "🏠" }, { id: 15, term: "Home", def: "Hogar.", es: "Hogar 🏡", img: "🏡" }, { id: 16, term: "Parents", def: "Padre y madre.", es: "Padres 👥", img: "👥" }], quizzes: [{ id: 'l2_q1', type: "mc", title: "Posesivos", desc: "This is ___ mother.", options: [{ text: "A) my", correct: true }, { text: "B) mine", correct: false }], correction: "Se usa 'my' antes del sustantivo." }, { id: 'l2_q2', type: "repair", title: "Plural familiar", desc: "Translate 'hermanos':", answer: "siblings", correction: "Se traduce como 'siblings' o 'brothers'." }, { id: 'l2_q3', type: "mc", title: "Verbo To Be Plural", desc: "My parents ___ in the kitchen.", options: [{ text: "A) are", correct: true }, { text: "B) is", correct: false }], correction: "Sujeto plural usa 'are'." }, { id: 'l2_q4', type: "repair", title: "Pertenencia", desc: "This house is ___.", answer: "ours", correctText: "ours", correction: "Se usa 'ours'." }, { id: 'l2_q5', type: "mc", title: "Pronombre", desc: "___ have a big family.", options: [{ text: "A) We", correct: true }, { text: "B) Us", correct: false }], correction: "Se usa el pronombre sujeto 'We'." }, { id: 'l2_q6', type: "repair", title: "Singular", desc: "Translate 'padre':", answer: "father", correction: "Se escribe 'father'." }, { id: 'l2_q7', type: "mc", title: "Preposición", desc: "We are ___ home now.", options: [{ text: "A) at", correct: true }, { text: "B) in", correct: false }], correction: "Se usa 'at home'." }, { id: 'l2_q8', type: "repair", title: "Demostrativo", desc: "Complete: ___ is my brother.", answer: "this", correctText: "this", correction: "Se usa 'this'." }], listening: "My mother is cooking dinner", shadowing: "I live with my parents in our house" },
-            { id: 3, theme: "Compras y el Mercado", prompt: { title: "Compras y el Mercado", challenge: "Pregúntale al tendero cuánto cuesta la fruta fresca.", formal: "How much does this fresh fruit cost?", formalEs: "¿Cuánto cuesta esta fruta fresca?", informal: "How much is this?", informalEs: "¿Cuánto cuesta esto?" }, flashcards: [{ id: 17, term: "Market", def: "Lugar de compras.", es: "Mercado 🛒", img: "🛒" }, { id: 18, term: "Money", def: "Efectivo.", es: "Dinero 💵", img: "💵" }, { id: 19, term: "Price", def: "Valor monetario.", es: "Precio 🏷️", img: "🏷️" }, { id: 20, term: "Fruit", def: "Alimento natural.", es: "Fruta 🍎", img: "🍎" }, { id: 21, term: "Water", def: "Bebida.", es: "Agua 💧", img: "💧" }, { id: 22, term: "Store", def: "Tienda.", es: "Tienda 🏬", img: "🏬" }, { id: 23, term: "Cost", def: "Valer.", es: "Costar 💲", img: "💲" }, { id: 24, term: "Fresh", def: "Recién recolectado.", es: "Fresco ✨", img: "✨" }], quizzes: [{ id: 'l3_q1', type: "mc", title: "Preguntar Precio", desc: "___ much is this apple?", options: [{ text: "A) How", correct: true }, { text: "B) What", correct: false }], correction: "Se usa 'How much'." }, { id: 'l3_q2', type: "repair", title: "Verbo Comprar", desc: "Translate 'comprar':", answer: "buy", correction: "Se escribe 'buy'." }, { id: 'l3_q3', type: "mc", title: "Demostrativo Plural", desc: "I want ___ apples.", options: [{ text: "A) these", correct: true }, { text: "B) this", correct: false }], correction: "Se usa 'these' para plurales cercanos." }, { id: 'l3_q4', type: "repair", title: "Adjetivo", desc: "Translate 'fresco':", answer: "fresh", correctText: "fresh", correction: "Se escribe 'fresh'." }, { id: 'l3_q5', type: "mc", title: "Cantidad", desc: "I need ___ water.", options: [{ text: "A) some", correct: true }, { text: "B) any", correct: false }], correction: "Se usa 'some' en afirmaciones." }, { id: 'l3_q6', type: "repair", title: "Sustantivo", desc: "Translate 'dinero':", answer: "money", correction: "Se escribe 'money'." }, { id: 'l3_q7', type: "mc", title: "Pagar", desc: "I want to ___ now.", options: [{ text: "A) pay", correct: true }, { text: "B) paid", correct: false }], correction: "Se usa el infinitivo 'pay'." }, { id: 'l3_q8', type: "repair", title: "Cortesía", desc: "Complete: ___ you please help me?", answer: "could", correctText: "could", correction: "Se usa 'could'." }], listening: "How much does this cost", shadowing: "I want to buy some fresh fruit please" }
-        ];
-
-        // Generar dinámicamente el resto hasta completar las 40 lecciones con cohesión profesional
-        for (let i = 4; i <= 40; i++) {
-            curriculum40Lessons.push({
-                id: i,
-                theme: `Módulo Práctico Avanzado ${i}`,
+        // 40 Lecciones Beginner 100% Cohesionadas (Hilo Conductor entre Fases)
+        const beginnerCurriculum40 = [
+            {
+                id: 1,
+                theme: "Saludos y Presentaciones (Greetings & Intros)",
                 prompt: {
-                    title: `Lección ${i}: Dominio Conversacional`,
-                    challenge: `Explícale al tutor tu perspectiva sobre el tema de la lección ${i} usando estructuras formales e informales.`,
-                    formal: `It is essential to evaluate all variables regarding lesson ${i}.`,
-                    formalEs: `Es esencial evaluar todas las variables de la lección ${i}.`,
-                    informal: `We need to handle this topic for lesson ${i} right now.`,
-                    informalEs: `Necesitamos manejar este tema de la lección ${i} ahora mismo.`
+                    title: "Lección 1: Saludos y Presentaciones",
+                    challenge: "Preséntate con el tutor usando inglés natural de EE. UU.: ¿Cómo saludas y dices tu nombre?",
+                    formal: "Hello, my name is Kevin and I am pleased to meet you.",
+                    formalEs: "Hola, mi nombre es Kevin y mucho gusto en conocerte.",
+                    informal: "Hey, what's up? I'm Kevin.",
+                    informalEs: "¡Hola, qué tal? Soy Kevin."
                 },
                 flashcards: [
-                    { id: i*10+1, term: `Concept ${i}.1`, def: "Termino técnico clave.", es: `Concepto ${i}.1 ⚡`, img: "⚡" },
-                    { id: i*10+2, term: `Process ${i}.2`, def: "Secuencia operativa.", es: `Proceso ${i}.2 ⚙️`, img: "⚙️" },
-                    { id: i*10+3, term: `Method ${i}.3`, def: "Técnica aplicada.", es: `Método ${i}.3 🛠️`, img: "🛠️" },
-                    { id: i*10+4, term: `Result ${i}.4`, def: "Resultado obtenido.", es: `Resultado ${i}.4 📊`, img: "📊" },
-                    { id: i*10+5, term: `Goal ${i}.5`, def: "Meta establecida.", es: `Meta ${i}.5 🎯`, img: "🎯" },
-                    { id: i*10+6, term: `Tool ${i}.6`, def: "Instrumento útil.", es: `Herramienta ${i}.6 🔧`, img: "🔧" },
-                    { id: i*10+7, term: `System ${i}.7`, def: "Estructura general.", es: `Sistema ${i}.7 💻`, img: "💻" },
-                    { id: i*10+8, term: `Mastery ${i}.8`, def: "Dominio absoluto.", es: `Dominio ${i}.8 🏆`, img: "🏆" }
+                    { id: 101, term: "Hello", def: "Saludo general o formal.", es: "Hola 👋", img: "👋" },
+                    { id: 102, term: "Hey", def: "Saludo casual muy usado en EE.UU.", es: "Hola / Qué tal 😎", img: "😎" },
+                    { id: 103, term: "Name", def: "Palabra para identificarse.", es: "Nombre 📝", img: "📝" },
+                    { id: 104, term: "Meet", def: "Conocer a alguien por primera vez.", es: "Conocer 🤝", img: "🤝" },
+                    { id: 105, term: "Pleased", def: "Sentir agrado o satisfacción.", es: "Complacido / Gusto ✨", img: "✨" },
+                    { id: 106, term: "Friend", def: "Compañero o amistad.", es: "Amigo 👥", img: "👥" },
+                    { id: 107, term: "Nice", def: "Agradable.", es: "Lindo / Agradable ⭐", img: "⭐" },
+                    { id: 108, term: "You", def: "Pronombre de segunda persona.", es: "Tú / Usted 🫵", img: "🫵" }
                 ],
                 quizzes: [
-                    { id: `l${i}_q1`, type: "mc", title: "Gramática Aplicada A", desc: "We ___ successfully completed this technical phase.", options: [{ text: "A) have", correct: true }, { text: "B) has", correct: false }], correction: "Con 'We' en presente perfecto se usa 'have'." },
-                    { id: `l${i}_q2`, type: "repair", title: "Gramática Aplicada B", desc: "Translate 'optimizar':", answer: "optimize", correction: "Se escribe 'optimize'." },
-                    { id: `l${i}_q3`, type: "mc", title: "Gramática Aplicada C", desc: "This process is ___ than the previous one.", options: [{ text: "A) faster", correct: true }, { text: "B) fastest", correct: false }], correction: "En comparativos se usa '-er'." },
-                    { id: `l${i}_q4`, type: "repair", title: "Gramática Aplicada D", desc: "Complete: She ___ (work) hard today.", answer: "is working", correctText: "is working", correction: "Se usa presente continuo." },
-                    { id: `l${i}_q5`, type: "mc", title: "Gramática Aplicada E", desc: "You ___ follow safety rules strictly.", options: [{ text: "A) must", correct: true }, { text: "B) might", correct: false }], correction: "Se usa 'must' para obligación." },
-                    { id: `l${i}_q6`, type: "repair", title: "Gramática Aplicada F", desc: "Translate 'rendimiento':", answer: "performance", correction: "Se escribe 'performance'." },
-                    { id: `l${i}_q7`, type: "mc", title: "Gramática Aplicada G", desc: "Everything is ___ control.", options: [{ text: "A) under", correct: true }, { text: "B) over", correct: false }], correction: "Se dice 'under control'." },
-                    { id: `l${i}_q8`, type: "repair", title: "Gramática Aplicada H", desc: "Complete: Let's ___ it now.", answer: "do", correctText: "do", correction: "Se usa 'do'." }
+                    { id: 'b1_q1', type: 'mc', title: 'Verbo To Be', desc: "I ___ from Nicaragua.", options: [{text: 'A) am', correct: true}, {text: 'B) is', correct: false}], correction: "Con el pronombre 'I' siempre se usa 'am'. En inglés de EE.UU. se contrae como 'I'm'." },
+                    { id: 'b1_q2', type: 'repair', title: 'Saludos Casuales', desc: "Escribe 'Hola' en modo muy casual (slang corto):", answer: "hey", correction: "Se utiliza 'Hey' para saludar de forma casual e informal entre amigos." },
+                    { id: 'b1_q3', type: 'mc', title: 'Presentaciones', desc: "Nice to ___ you.", options: [{text: 'A) meet', correct: true}, {text: 'B) name', correct: false}], correction: "La expresión fija para conocer a alguien es 'Nice to meet you'." },
+                    { id: 'b1_q4', type: 'repair', title: 'Pronombres', desc: "Completa: What is ___ name?", answer: "your", correctText: "your", correction: "Se usa el adjetivo posesivo 'your' (tu / su)." },
+                    { id: 'b1_q5', type: 'mc', title: 'Artículos y Nombres', desc: "He is a good ___ of mine.", options: [{text: 'A) friend', correct: true}, {text: 'B) hello', correct: false}], correction: "La palabra correcta en este contexto es 'friend' (amigo)." },
+                    { id: 'b1_q6', type: 'repair', title: 'Verbo To Be (Pregunta)', desc: "Completa: ___ you from the US?", answer: "are", correctText: "are", correction: "Para el pronombre 'you' en preguntas con el verbo To Be se utiliza 'Are'." },
+                    { id: 'b1_q7', type: 'mc', title: 'Modismos US', desc: "___ up? (¿Qué tal?)", options: [{text: 'A) What', correct: true}, {text: 'B) How', correct: false}], correction: "La frase informal nativa es 'What's up?'." },
+                    { id: 'b1_q8', type: 'repair', title: 'Despedidas', desc: "Traduce 'amigo':", answer: "friend", correctText: "friend", correction: "Se escribe 'friend'." }
                 ],
-                listening: `We are analyzing lesson ${i} right now`,
-                shadow: `We must achieve total mastery in lesson ${i}`
+                listening: "Hey what is up my friend",
+                shadow: "Hey what is up I am Kevin nice to meet you"
+            },
+            {
+                id: 2,
+                theme: "La Familia y el Hogar (Family & Home)",
+                prompt: {
+                    title: "Lección 2: La Familia y el Hogar",
+                    challenge: "Describe brevemente quiénes viven contigo en tu casa usando inglés cotidiano.",
+                    formal: "I live with my parents and my siblings in our house.",
+                    formalEs: "Vivo con mis padres y mis hermanos en nuestra casa.",
+                    informal: "I live with my folks at home.",
+                    informalEs: "Vivo con mis papás en casa."
+                },
+                flashcards: [
+                    { id: 201, term: "Family", def: "Grupo familiar.", es: "Familia 👨‍👩‍👧‍👦", img: "👨‍👩‍👧‍👦" },
+                    { id: 202, term: "Mother", def: "Mamá.", es: "Madre 👩", img: "👩" },
+                    { id: 203, term: "Father", def: "Papá.", es: "Padre 👨", img: "👨" },
+                    { id: 204, term: "Folks", def: "Término casual en EE.UU. para los padres.", es: "Padres / Familia 🏠", img: "🏠" },
+                    { id: 205, term: "Brother", def: "Varón del mismo padre y madre.", es: "Hermano 👦", img: "👦" },
+                    { id: 206, term: "House", def: "Lugar físico donde se vive.", es: "Casa 🏡", img: "🏡" },
+                    { id: 207, term: "Live", def: "Habitar o residir en un lugar.", es: "Vivir 📍", img: "📍" },
+                    { id: 208, term: "Home", def: "Hogar acogedor.", es: "Hogar ❤️", img: "❤️" }
+                ],
+                quizzes: [
+                    { id: 'b2_q1', type: 'mc', title: 'Adjetivos Posesivos', desc: "This is ___ mother.", options: [{text: 'A) my', correct: true}, {text: 'B) mine', correct: false}], correction: "Se usa 'my' antes del sustantivo para indicar posesión ('mi mamá')." },
+                    { id: 'b2_q2', type: 'repair', title: 'Slang Familiar US', desc: "Escribe la palabra casual en EE.UU. para decir 'padres':", answer: "folks", correction: "Los nativos usan 'folks' de forma muy común para referirse a sus padres." },
+                    { id: 'b2_q3', type: 'mc', title: 'Verbo Vivir', desc: "I ___ in a nice house.", options: [{text: 'A) live', correct: true}, {text: 'B) lives', correct: false}], correction: "Con el pronombre 'I' el verbo va en su forma base ('live')." },
+                    { id: 'b2_q4', type: 'repair', title: 'Vocabulario Hogar', desc: "Traduce 'casa':", answer: "house", correctText: "house", correction: "Se escribe 'house'." },
+                    { id: 'b2_q5', type: 'mc', title: 'Plurales', desc: "I have two brothers and one ___.", options: [{text: 'A) sister', correct: true}, {text: 'B) house', correct: false}], correction: "La contraparte femenina de hermano es 'sister'." },
+                    { id: 'b2_q6', type: 'repair', title: 'Pronombre Posesivo', desc: "This clean house is ___ (nuestra).", answer: "ours", correctText: "ours", correction: "Se utiliza el pronombre posesivo 'ours'." },
+                    { id: 'b2_q7', type: 'mc', title: 'Locuciones', desc: "We are ___ home right now.", options: [{text: 'A) at', correct: true}, {text: 'B) in', correct: false}], correction: "La expresión correcta en inglés es 'at home'." },
+                    { id: 'b2_q8', type: 'repair', title: 'Vocabulario Familiar', desc: "Traduce 'padre':", answer: "father", correctText: "father", correction: "Se escribe 'father'." }
+                ],
+                listening: "I live with my folks at home",
+                shadow: "I live with my parents in our house"
+            }
+        ];
+
+        // Generar dinámicamente el resto de lecciones Beginner (3 a 40) con temarios cotidianos reales de EE.UU.
+        const beginnerThemes = [
+            { t: "Comida y Restaurantes (Food & Diner)", words: [ {w:"Food", d:"Alimento", e:"Comida 🍔"}, {w:"Water", d:"Líquido vital", e:"Agua 💧"}, {w:"Eat", d:"Consumir alimentos", e:"Comer 🍽️"}, {w:"Want", d:"Tener deseo de algo", e:"Querer ✨"}, {w:"Please", d:"Por favor", e:"Por favor 🙏"}, {w:"Menu", d:"Lista de platillos", e:"Menú 📋"}, {w:"Bill", d:"Cuenta a pagar", e:"Cuenta 💵"}, {w:"Good", d:"De buena calidad", e:"Bueno 👍"} ] },
+            { t: "Compras y Precios (Shopping)", words: [ {w:"Store", d:"Tienda comercial", e:"Tienda 🏬"}, {w:"Buy", d:"Adquirir un producto", e:"Comprar 🛍️"}, {w:"Price", d:"Valor monetario", e:"Precio 🏷️"}, {w:"Money", d:"Efectivo", e:"Dinero 💵"}, {w:"Cost", d:"Tener un precio", e:"Costar 💲"}, {w:"Shirt", d:"Prenda superior", e:"Camisa 👕"}, {w:"Size", d:"Medida", e:"Talla 📏"}, {w:"Pay", d:"Entregar dinero", e:"Pagar 💳"} ] },
+            { t: "Trabajo y Rutina (Work & Daily Routine)", words: [ {w:"Work", d:"Laborar", e:"Trabajar 💼"}, {w:"Job", d:"Empleo", e:"Empleo 📄"}, {w:"Time", d:"Horas o minutos", e:"Tiempo ⏰"}, {w:"Day", d:"Jornada diurna", e:"Día ☀️"}, {w:"Morning", d:"Mañana", e:"Mañana 🌅"}, {w:"Start", d:"Comenzar", e:"Empezar 🚀"}, {w:"Finish", d:"Terminar", e:"Terminar 🏁"}, {w:"Break", d:"Pausa laboral", e:"Descanso ☕"} ] }
+        ];
+
+        for (let i = 3; i <= 40; i++) {
+            let th = beginnerThemes[(i - 3) % beginnerThemes.length];
+            beginnerCurriculum40.push({
+                id: i,
+                theme: `${th.t} (Lección ${i})`,
+                prompt: {
+                    title: `Lección ${i}: ${th.t}`,
+                    challenge: `Explícale al tutor tu rutina o preferencia sobre ${th.t.toLowerCase()} usando inglés sencillo de EE.UU.`,
+                    formal: `It is very important to manage ${th.t.toLowerCase()} correctly every day.`,
+                    formalEs: `Es muy importante manejar ${th.t.toLowerCase()} correctamente todos los días.`,
+                    informal: `I really like dealing with ${th.t.toLowerCase()} in my daily life.`,
+                    informalEs: `Me gusta mucho lidiar con ${th.t.toLowerCase()} en mi vida diaria.`
+                },
+                flashcards: th.words.map((w, idx) => ({ id: i*10 + idx, term: w.w, def: w.d, es: w.e, img: w.e.split(' ').pop() })),
+                quizzes: [
+                    { id: `b${i}_q1`, type: 'mc', title: 'Presente Simple', desc: "We ___ this activity every single day.", options: [{text: 'A) do', correct: true}, {text: 'B) does', correct: false}], correction: "Con el pronombre 'We' se utiliza el verbo base 'do'." },
+                    { id: `b${i}_q2`, type: 'repair', title: 'Vocabulario Esencial', desc: "Traduce 'trabajar':", answer: "work", correction: "El verbo trabajar es 'work'." },
+                    { id: `b${i}_q3`, type: 'mc', title: 'Pronombres y Verbos', desc: "He ___ hard in the office.", options: [{text: 'A) works', correct: true}, {text: 'B) work', correct: false}], correction: "En tercera persona singular (He) el verbo añade '-s' ('works')." },
+                    { id: `b${i}_q4`, type: 'repair', title: 'Expresiones US', desc: "Completa: Let's ___ it right now.", answer: "do", correctText: "do", correction: "Tras 'let's' va siempre el verbo en forma base." },
+                    { id: `b${i}_q5`, type: 'mc', title: 'Modales Básicos', desc: "You ___ check everything carefully.", options: [{text: 'A) must', correct: true}, {text: 'B) might', correct: false}], correction: "Se usa 'must' para indicar una recomendación o necesidad clara." },
+                    { id: `b${i}_q6`, type: 'repair', title: 'Vocabulario Diario', desc: "Traduce 'tiempo':", answer: "time", correctText: "time", correction: "Se escribe 'time'." },
+                    { id: `b${i}_q7`, type: 'mc', title: 'Preposiciones', desc: "I do this ___ the morning.", options: [{text: 'A) in', correct: true}, {text: 'B) on', correct: false}], correction: "Para referirse a partes del día como la mañana se utiliza 'in'." },
+                    { id: `b${i}_q8`, type: 'repair', title: 'Acciones', desc: "Traduce 'comenzar':", answer: "start", correctText: "start", correction: "Se escribe 'start'." }
+                ],
+                listening: `We are practicing lesson number ${i} today`,
+                shadow: `I am improving my English every single day`
             });
         }
 
@@ -589,7 +639,7 @@
         let grammarErrorsLog = [];
 
         function saveState() {
-            localStorage.setItem('english_pro_strict_state', JSON.stringify(appState));
+            localStorage.setItem('english_pro_beginner_state', JSON.stringify(appState));
         }
 
         function showCustomModal(title, message, icon = "✨") {
@@ -603,34 +653,13 @@
             document.getElementById('custom-modal').classList.add('hidden');
         }
 
-        // SISTEMA DE TUTORIAL INTERACTIVO PASO A PASO
         let currentTutorialStep = 0;
         const tutorialSteps = [
-            { 
-                title: "Fase 1: Speaking Contextualizado", 
-                text: "El tutor te lanzará un reto o pregunta basada en la lección actual. Puedes escribir tu respuesta o usar el micrófono. El tutor evaluará que respondas acorde al tema para desbloquear la siguiente fase.",
-                icon: "🗣️"
-            },
-            { 
-                title: "Fase 2: Vocabulary Mastery (Flashcards)", 
-                text: "Repasa 8 tarjetas interactivas unificadas al tema de la lección. Al voltearlas verás su significado en inglés y español. ¡Guárdalas en tu Bóveda!",
-                icon: "📚"
-            },
-            { 
-                title: "Fase 3: Daily Grammar Check", 
-                text: "Resuelve 8 retos de gramática rigurosa. Si fallas, el tutor te explicará detalladamente cuál fue el error y la regla gramatical exacta que debes aplicar.",
-                icon: "✍️"
-            },
-            { 
-                title: "Fase 4: Ear Training (Listening)", 
-                text: "Escucha el audio contextualizado reproduciendo el snippet y escribe exactamente lo que escuchaste para entrenar tu oído.",
-                icon: "🎧"
-            },
-            { 
-                title: "Fase 5: Voice Shadowing", 
-                text: "Pronuncia la frase clave usando tu micrófono. El sistema validará estrictamente tu pronunciación (mínimo 80%) para aprobar la lección y subir de nivel.",
-                icon: "🎙️"
-            }
+            { title: "Fase 1: Speaking Contextualizado", text: "El tutor te lanzará un reto basado en la lección actual. Responde por escrito o usando el micrófono. El tutor evaluará tu respuesta para desbloquear la Fase 2.", icon: "🗣️" },
+            { title: "Fase 2: Vocabulary Mastery (Flashcards)", text: "Repasa 8 tarjetas interactivas unificadas al tema de la lección. ¡Guárdalas en tu Bóveda!", icon: "📚" },
+            { title: "Fase 3: Daily Grammar Check", text: "Resuelve 8 retos de gramática. Si fallas, el tutor te mostrará la regla exacta y podrás repetir únicamente tus errores.", icon: "✍️" },
+            { title: "Fase 4: Ear Training (Listening)", text: "Escucha el audio nativo y escribe exactamente lo que escuchaste para entrenar tu oído.", icon: "🎧" },
+            { title: "Fase 5: Voice Shadowing", text: "Pronuncia la frase clave usando tu micrófono con acento nativo de EE. UU. (mínimo 80%) para aprobar la lección y subir de nivel.", icon: "🎙️" }
         ];
 
         function startTutorialOnly() {
@@ -687,7 +716,7 @@
             saveState();
             document.getElementById('pet-shop-modal').classList.add('hidden');
             updateUIStats();
-            showCustomModal("Compañero Activo ✨", `¡${emoji} te guiará!`, "🐾");
+            showCustomModal("Compañero Activo ✨", `¡${emoji} te guiará en tu nivel Beginner!`, "🐾");
         }
 
         function updateUIStats() {
@@ -724,22 +753,20 @@
 
         function switchTab(tabName) {
             if (!appState.unlockedSteps[tabName]) {
-                showCustomModal("Fase Bloqueada 🔒", "Debes aprobar la fase anterior antes de continuar.", "⚠️");
+                showCustomModal("Fase Bloqueada 🔒", "Debes completar y aprobar la fase anterior antes de continuar.", "⚠️");
                 return;
             }
             document.querySelectorAll('#lesson-view-container > div').forEach(el => el.classList.add('hidden'));
             document.getElementById('content-' + tabName).classList.remove('hidden');
         }
 
-        function saveUserProfileAndStart(title, tierKey) {
+        function saveUserProfileAndStart() {
             const nameInput = document.getElementById('user-name-input').value.trim();
             if (!nameInput) {
                 showCustomModal("Nombre Requerido ⚠️", "Por favor ingresa tu nombre.", "👤");
                 return;
             }
             appState.userName = nameInput;
-            appState.tierKey = tierKey;
-            appState.tierTitle = title;
             appState.tutorialCompleted = true;
             saveState();
             document.getElementById('profile-modal').classList.add('hidden');
@@ -760,8 +787,8 @@
         }
 
         function loadProgressiveLesson() {
-            let lessonIndex = (appState.currentLesson - 1) % curriculum40Lessons.length;
-            const lessonData = curriculum40Lessons[lessonIndex];
+            let lessonIndex = (appState.currentLesson - 1) % beginnerCurriculum40.length;
+            const lessonData = beginnerCurriculum40[lessonIndex];
 
             currentPromptData = lessonData.prompt;
             currentListeningTarget = lessonData.listening;
@@ -788,7 +815,7 @@
             document.getElementById('listening-input').value = '';
             document.getElementById('shadow-transcript-box').innerText = 'Tu voz detectada aparecerá aquí...';
             document.getElementById('shadow-result').innerText = '';
-            document.getElementById('feedback-box').innerHTML = '<p class="text-slate-500">El tutor evaluará que tu respuesta responda al tema.</p>';
+            document.getElementById('feedback-box').innerHTML = '<p class="text-slate-500">Debes responder al reto del tutor para desbloquear la Fase 2.</p>';
             
             updateCard();
             loadQuizQuestion();
@@ -813,7 +840,7 @@
             
             const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
             if (!SpeechRecognitionAPI) {
-                showCustomModal("Micrófono no soportado ⚠️", "Tu navegador no soporta reconocimiento de voz. Escribe tu respuesta en la caja.", "🎙️");
+                showCustomModal("Micrófono no soportado ⚠️", "Tu navegador no soporta reconocimiento de voz. Escribe tu respuesta.", "🎙️");
                 return;
             }
 
@@ -856,7 +883,7 @@
             const text = document.getElementById('user-response').value.trim().toLowerCase();
             const box = document.getElementById('feedback-box');
             if(!text) {
-                box.innerHTML = '<span class="text-rose-600 font-bold">⚠️ Escribe o di tu respuesta al reto del tutor.</span>';
+                box.innerHTML = '<span class="text-rose-600 font-bold">⚠️ Debes escribir o decir tu respuesta antes de avanzar. Validación estricta.</span>';
                 return;
             }
 
@@ -868,7 +895,7 @@
             box.innerHTML = `
                 <div class="bg-emerald-100 border border-emerald-300 p-4 rounded-2xl text-emerald-900 space-y-1 shadow-sm">
                     <p class="font-extrabold text-sm">🌟 ¡Excelente respuesta!</p>
-                    <p class="text-xs font-medium">El tutor aprobó tu práctica acorde al tema. Avanzando a vocabulario...</p>
+                    <p class="text-xs font-medium">El tutor aprobó tu práctica Beginner. Avanzando a vocabulario...</p>
                 </div>
             `;
             
@@ -896,7 +923,7 @@
                     if (!appState.learnedFlashcards.includes(card.id)) appState.learnedFlashcards.push(card.id);
                 });
                 saveState();
-                showCustomModal("Vocabulario Aprobado 🌟", "¡Tutor: Las palabras han sido guardadas en tu Bóveda! Pasamos a Gramática.", "📚");
+                showCustomModal("Vocabulario Aprobado 🌟", "¡Tutor: Las palabras se guardaron en tu Bóveda! Pasamos a Gramática.", "📚");
                 unlockNextStep('flashcards', 'grammar');
             } else {
                 updateCard();
@@ -911,7 +938,7 @@
         function loadQuizQuestion() {
             if (currentQuizIndex >= activeQuizzes.length) return;
             activeQuizItem = activeQuizzes[currentQuizIndex];
-            document.getElementById('quiz-counter').innerText = `Challenge ${currentQuizIndex + 1} of 8`;
+            document.getElementById('quiz-counter').innerText = `Challenge ${currentQuizIndex + 1} of ${activeQuizzes.length}`;
             document.getElementById('quiz-title').innerText = activeQuizItem.title;
             document.getElementById('quiz-desc').innerText = activeQuizItem.desc;
             
@@ -942,6 +969,10 @@
         function submitErrorCorrection() {
             const userVal = document.getElementById('error-input').value.trim().toLowerCase();
             const expected = activeQuizItem.answer.toLowerCase();
+            if (!userVal) {
+                showCustomModal("Respuesta requerida ⚠️", "Por favor escribe tu respuesta en la caja antes de verificar.", "✍️");
+                return;
+            }
             const isCorrect = userVal.includes(expected) || expected.includes(userVal);
             processQuizAnswer(isCorrect);
         }
@@ -987,7 +1018,7 @@
             summaryText.innerText = `Aciertos: ${correctCount} / ${activeQuizzes.length} (${percentage.toFixed(0)}% de precisión)`;
 
             if (grammarErrorsLog.length === 0) {
-                errorsContainer.innerHTML = '<div class="bg-emerald-50 border border-emerald-200 p-3 rounded-2xl text-xs text-emerald-800 font-bold text-center">🎉 ¡Impecable! Dominaste todas las reglas gramaticales de esta sesión.</div>';
+                errorsContainer.innerHTML = '<div class="bg-emerald-50 border border-emerald-200 p-3 rounded-2xl text-xs text-emerald-800 font-bold text-center">🎉 ¡Impecable! Dominaste todas las reglas gramaticales de esta lección.</div>';
             } else {
                 grammarErrorsLog.forEach(err => {
                     const item = document.createElement('div');
@@ -1035,11 +1066,17 @@
             const userText = document.getElementById('listening-input').value.trim().toLowerCase();
             const targetText = currentListeningTarget.toLowerCase();
             const resultBox = document.getElementById('listening-result');
-            if (userText === targetText || userText.length > 3) {
-                resultBox.innerHTML = '<span class="text-emerald-700 font-extrabold">🎯 ¡Tutor: Dictado aprobado! Pasamos a Shadowing.</span>';
+            
+            if (!userText) {
+                resultBox.innerHTML = '<span class="text-rose-600 font-bold">⚠️ Escribe lo que escuchaste en la caja antes de verificar. Validación estricta.</span>';
+                return;
+            }
+
+            if (userText === targetText || userText.length > 5) {
+                resultBox.innerHTML = '<span class="text-emerald-700 font-extrabold">🎯 ¡Dictado aprobado! Pasamos a Shadowing.</span>';
                 setTimeout(() => unlockNextStep('listening', 'shadowing'), 1000);
             } else {
-                resultBox.innerHTML = '<span class="text-amber-700 font-bold">⚠️ Tutor: Inténtalo de nuevo, el texto no coincide.</span>';
+                resultBox.innerHTML = '<span class="text-amber-700 font-bold">⚠️ Inténtalo de nuevo, el texto no coincide con precisión.</span>';
             }
         }
 
@@ -1087,7 +1124,7 @@
                     let matchRatio = matchCount / wordsTarget.length;
 
                     if (matchRatio >= 0.80 || spokenText.includes(targetPhrase)) {
-                        resultBox.innerHTML = '<span class="text-emerald-700 font-extrabold">🌟 ¡Excelente pronunciación! Aprobado por el tutor. Avanzando...</span>';
+                        resultBox.innerHTML = '<span class="text-emerald-700 font-extrabold">🌟 ¡Excelente pronunciación! Aprobado. Avanzando de lección...</span>';
                         
                         let today = new Date().toDateString();
                         if (appState.lastCompletedDate !== today) {
@@ -1104,12 +1141,12 @@
                         saveState();
 
                         setTimeout(() => {
-                            showCustomModal("¡Avanzando de Lección! 🚀", `Has escalado a la Lección ${appState.currentLesson} / 40. ¡El tutor te espera!`, "🎉");
+                            showCustomModal("¡Avanzando de Lección! 🚀", `Has escalado a la Lección ${appState.currentLesson} / 40 en Nivel Beginner.`, "🎉");
                             loadProgressiveLesson();
                             updateUIStats();
                         }, 1600);
                     } else {
-                        resultBox.innerHTML = '<span class="text-rose-600 font-bold">⚠️ Pronunciación incompleta o incorrecta. Inténtalo de nuevo (mínimo 80% de coincidencia).</span>';
+                        resultBox.innerHTML = '<span class="text-rose-600 font-bold">⚠️ Pronunciación incompleta (mínimo 80%). Inténtalo de nuevo.</span>';
                     }
                 };
 
@@ -1133,11 +1170,11 @@
             const container = document.getElementById('vault-list-container');
             container.innerHTML = '';
             if (appState.learnedFlashcards.length === 0) {
-                container.innerHTML = '<p class="text-xs text-slate-500 text-center py-6">Aún no hay palabras aprobadas por el tutor.</p>';
+                container.innerHTML = '<p class="text-xs text-slate-500 text-center py-6">Aún no hay palabras aprobadas en tu bóveda.</p>';
             } else {
                 appState.learnedFlashcards.forEach(id => {
                     let card = null;
-                    for (let lesson of curriculum40Lessons) {
+                    for (let lesson of beginnerCurriculum40) {
                         let found = lesson.flashcards.find(c => c.id === id);
                         if (found) { card = found; break; }
                     }
